@@ -1,5 +1,5 @@
 from widgets.button import *
-from widgets.text_frame import *
+from widgets.code_frame import *
 
 # load Assets
 # buttons
@@ -71,6 +71,8 @@ text_frame = pygame.transform.scale(
 
 
 class Keyboard():
+
+    # initializer
     def __init__(self, x_pos, y_pos):
         self.button_0 = Button(number_0,
                                number_0, number_0_small, x_pos + button_spaces, y_pos + 3 * button_spaces)
@@ -99,6 +101,7 @@ class Keyboard():
         self.text_frame = Text_frame(
             text_frame, "", x_pos + button_spaces, y_pos - button_spaces)
 
+    #######################################################################################
     def display(self):
         self.text_frame.display()
         self.button_1.display()
@@ -114,6 +117,7 @@ class Keyboard():
         self.button_0.display()
         self.enter_button.display()
 
+    #######################################################################################
     def pressed_button(self):
         if self.button_0.mouse_on_button():
             self.button_0.display_click_animation()
@@ -153,6 +157,7 @@ class Keyboard():
             return 11
         return 99
 
+    #######################################################################################
     def resize_buttons(self):
         self.button_0.restore_normal_size()
         self.button_1.restore_normal_size()
@@ -167,5 +172,34 @@ class Keyboard():
         self.enter_button.restore_normal_size()
         self.delete_button.restore_normal_size()
 
+    #######################################################################################
     def move_to(self, x_pos, y_pos):
         self.__init__(x_pos, y_pos)
+
+    #######################################################################################
+    def keyboard_button_pressed(self, pressed_button, code):
+        if len(code) < 4:
+            if pressed_button == 0:
+                code += "0"
+            elif pressed_button == 1:
+                code += "1"
+            elif pressed_button == 2:
+                code += "2"
+            elif pressed_button == 3:
+                code += "3"
+            elif pressed_button == 4:
+                code += "4"
+            elif pressed_button == 5:
+                code += "5"
+            elif pressed_button == 6:
+                code += "6"
+            elif pressed_button == 7:
+                code += "7"
+            elif pressed_button == 8:
+                code += "8"
+            elif pressed_button == 9:
+                code += "9"
+        if pressed_button == 11:
+            if len(code) > 0:
+                code = code[:-1]
+        return code

@@ -42,7 +42,7 @@ def game_6_window():
                     m.wrong_answer_sound.play()
             else:
                 m.click_sound.play()
-            code = m.keyboard_button_pressed(pressed_button, code)
+            code = keyboard.keyboard_button_pressed(pressed_button, code)
             keyboard.text_frame.change_input_text(code)
             # reset
             keyboard.resize_buttons()
