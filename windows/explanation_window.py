@@ -1,9 +1,13 @@
 import main as m
-
+from widgets.massage_box import Massage_box
 
 #######################################################################################
+
+
 def explanation_window():
 
+    massage = Massage_box(m.message, 400, 300, m.text_2,
+                          m.black_color, 400, 300)
     # background music
     # m.intro_sound.play()
     # m.pygame.mixer.music.load("Assets/sounds/start.wav")
@@ -15,6 +19,7 @@ def explanation_window():
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(m.background_start, (0, 0))
+        massage.display()
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():

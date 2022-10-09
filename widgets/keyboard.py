@@ -1,105 +1,38 @@
+import main as m
 from widgets.button import *
 from widgets.code_frame import *
-
-# load Assets
-# buttons
-number_0 = pygame.image.load("Assets/images/number_0.png")
-number_0 = pygame.transform.scale(number_0, (button_width, button_hight))
-number_0_small = pygame.transform.scale(
-    number_0, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_1 = pygame.image.load("Assets/images/number_1.png")
-number_1 = pygame.transform.scale(number_1, (button_width, button_hight))
-number_1_small = pygame.transform.scale(
-    number_1, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_2 = pygame.image.load("Assets/images/number_2.png")
-number_2 = pygame.transform.scale(number_2, (button_width, button_hight))
-number_2_small = pygame.transform.scale(
-    number_2, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_3 = pygame.image.load("Assets/images/number_3.png")
-number_3 = pygame.transform.scale(number_3, (button_width, button_hight))
-number_3_small = pygame.transform.scale(
-    number_3, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_4 = pygame.image.load("Assets/images/number_4.png")
-number_4 = pygame.transform.scale(number_4, (button_width, button_hight))
-number_4_small = pygame.transform.scale(
-    number_4, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_5 = pygame.image.load("Assets/images/number_5.png")
-number_5 = pygame.transform.scale(number_5, (button_width, button_hight))
-number_5_small = pygame.transform.scale(
-    number_5, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_6 = pygame.image.load("Assets/images/number_6.png")
-number_6 = pygame.transform.scale(number_6, (button_width, button_hight))
-number_6_small = pygame.transform.scale(
-    number_6, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_7 = pygame.image.load("Assets/images/number_7.png")
-number_7 = pygame.transform.scale(number_7, (button_width, button_hight))
-number_7_small = pygame.transform.scale(
-    number_7, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_8 = pygame.image.load("Assets/images/number_8.png")
-number_8 = pygame.transform.scale(number_8, (button_width, button_hight))
-number_8_small = pygame.transform.scale(
-    number_8, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-number_9 = pygame.image.load("Assets/images/number_9.png")
-number_9 = pygame.transform.scale(number_9, (button_width, button_hight))
-number_9_small = pygame.transform.scale(
-    number_9, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-enter_button = pygame.image.load("Assets/images/enter.png")
-enter_button = pygame.transform.scale(
-    enter_button, (button_width - 3, button_hight - 3))
-enter_button_small = pygame.transform.scale(
-    enter_button, (button_width - reduction_ratio, button_hight - reduction_ratio))
-delete_button = pygame.image.load("Assets/images/delete.png")
-delete_button = pygame.transform.scale(
-    delete_button, (button_width - 3, button_hight - 3))
-delete_button_small = pygame.transform.scale(
-    delete_button, (button_width - reduction_ratio, button_hight - reduction_ratio))
-
-# text frame
-text_frame = pygame.image.load("Assets/images/frame.png")
-text_frame = pygame.transform.scale(
-    text_frame, (button_width * 3, button_hight))
 
 
 class Keyboard():
 
     # initializer
     def __init__(self, x_pos, y_pos):
-        self.button_0 = Button(number_0,
-                               number_0, number_0_small, x_pos + button_spaces, y_pos + 3 * button_spaces)
+        self.button_0 = Button(m.number_0,
+                               m.number_0, m.number_0_small, x_pos + m.button_spaces, y_pos + 3 * m.button_spaces)
         self.button_1 = Button(
-            number_1, number_1, number_1_small, x_pos, y_pos)
-        self.button_2 = Button(number_2, number_2, number_2_small,
-                               x_pos + button_spaces, y_pos)
-        self.button_3 = Button(number_3, number_3, number_3_small,
-                               x_pos + 2 * button_spaces, y_pos)
-        self.button_4 = Button(number_4, number_4, number_4_small,
-                               x_pos, y_pos + button_spaces)
-        self.button_5 = Button(number_5, number_5, number_5_small, x_pos + button_spaces,
-                               y_pos + button_spaces)
-        self.button_6 = Button(number_6, number_6, number_6_small, x_pos + 2 *
-                               button_spaces, y_pos + button_spaces)
-        self.button_7 = Button(number_7, number_7, number_7_small,
-                               x_pos, y_pos + 2 * button_spaces)
-        self.button_8 = Button(number_8, number_8, number_8_small, x_pos + button_spaces,
-                               y_pos + 2 * button_spaces)
-        self.button_9 = Button(number_9, number_9, number_9_small, x_pos + 2 * button_spaces,
-                               y_pos + 2 * button_spaces)
-        self.enter_button = Button(enter_button, enter_button, enter_button_small,
-                                   x_pos + 2 * button_spaces, y_pos + 3 * button_spaces)
-        self.delete_button = Button(delete_button, delete_button,
-                                    delete_button_small, x_pos, y_pos + 3 * button_spaces)
+            m.number_1, m.number_1, m.number_1_small, x_pos, y_pos)
+        self.button_2 = Button(m.number_2, m.number_2, m.number_2_small,
+                               x_pos + m.button_spaces, y_pos)
+        self.button_3 = Button(m.number_3, m.number_3, m.number_3_small,
+                               x_pos + 2 * m.button_spaces, y_pos)
+        self.button_4 = Button(m.number_4, m.number_4, m.number_4_small,
+                               x_pos, y_pos + m.button_spaces)
+        self.button_5 = Button(m.number_5, m.number_5, m.number_5_small, x_pos + m.button_spaces,
+                               y_pos + m.button_spaces)
+        self.button_6 = Button(m.number_6, m.number_6, m.number_6_small, x_pos + 2 *
+                               m.button_spaces, y_pos + m.button_spaces)
+        self.button_7 = Button(m.number_7, m.number_7, m.number_7_small,
+                               x_pos, y_pos + 2 * m.button_spaces)
+        self.button_8 = Button(m.number_8, m.number_8, m.number_8_small, x_pos + m.button_spaces,
+                               y_pos + 2 * m.button_spaces)
+        self.button_9 = Button(m.number_9, m.number_9, m.number_9_small, x_pos + 2 * m.button_spaces,
+                               y_pos + 2 * m.button_spaces)
+        self.enter_button = Button(m.enter_button, m.enter_button, m.enter_button_small,
+                                   x_pos + 2 * m.button_spaces, y_pos + 3 * m.button_spaces)
+        self.delete_button = Button(m.delete_button, m.delete_button,
+                                    m.delete_button_small, x_pos, y_pos + 3 * m.button_spaces)
         self.text_frame = Text_frame(
-            text_frame, "", x_pos + button_spaces, y_pos - button_spaces)
+            m.text_frame, "", x_pos + m.button_spaces, y_pos - m.button_spaces)
 
     #######################################################################################
     def display(self):
