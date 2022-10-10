@@ -40,6 +40,12 @@ background_game_6 = pygame.image.load("Assets/images/background_game_6.jpg")
 background_game_6 = pygame.transform.scale(background_game_6, (WIDTH, HIGHT))
 background_end = pygame.image.load("Assets/images/background_end.jpg")
 background_end = pygame.transform.scale(background_end, (WIDTH, HIGHT))
+
+background_gears = pygame.image.load("Assets/images/background_gearsv1.jpg")
+background_gears = pygame.transform.scale(background_gears, (WIDTH, HIGHT))
+yellowbar = pygame.image.load("Assets/images/yellowbar.jpg")
+yellowbar = pygame.transform.scale(yellowbar, (WIDTH, HIGHT))
+
 message = pygame.image.load("Assets/images/message.png")
 
 # clock_box = pygame.image.load("Assets/images/clock_box.png")

@@ -18,7 +18,7 @@ def explanation_window():
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(m.background_start, (0, 0))
+        m.SCREEN.blit(m.background_gears, (0, 0))
         massage.display()
 
         # every interaction with the game is an event ( mouse, Keyboard )
