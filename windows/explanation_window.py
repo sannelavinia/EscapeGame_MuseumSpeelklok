@@ -21,6 +21,12 @@ def explanation_window():
         m.SCREEN.blit(m.background_gears, (0, 0))
         massage.display()
 
+        #display yellow title bar
+        m.SCREEN.blit(m.yellowbar, (0,30))
+        title1 = m.speelklok_website_font.render('Spelregels', True, m.black_color)
+        text_rect_title1 = title1.get_rect(center=(m.WIDTH/2, (m.HIGHT/2)-255))
+        m.SCREEN.blit(title1, text_rect_title1)
+
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 

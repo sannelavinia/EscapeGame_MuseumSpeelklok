@@ -44,7 +44,7 @@ background_end = pygame.transform.scale(background_end, (WIDTH, HIGHT))
 background_gears = pygame.image.load("Assets/images/background_gearsv1.jpg")
 background_gears = pygame.transform.scale(background_gears, (WIDTH, HIGHT))
 yellowbar = pygame.image.load("Assets/images/yellowbar.jpg")
-yellowbar = pygame.transform.scale(yellowbar, (WIDTH, HIGHT))
+yellowbar = pygame.transform.scale(yellowbar, (1400, 125))
 
 message = pygame.image.load("Assets/images/message.png")
 
@@ -139,6 +139,7 @@ game_1_explanation = text_file.read().split('\n')
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
+speelklok_website_font = pygame.font.SysFont("avenirnext", 70)
 
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HIGHT))
