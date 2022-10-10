@@ -1,13 +1,14 @@
 import main as m
 from widgets.massage_box import Massage_box
+from widgets.instruction_box import Instruction_Box
 
 #######################################################################################
 
 
 def explanation_window():
 
-    massage = Massage_box(m.message, 400, 300, m.text_2,
-                          m.black_color, 400, 300)
+    massage = Instruction_Box(m.instruction_box, 1000, 450, m.text_2, m.black_color, 200, 175)
+
     # background music
     # m.intro_sound.play()
     # m.pygame.mixer.music.load("Assets/sounds/start.wav")

@@ -47,6 +47,7 @@ yellowbar = pygame.image.load("Assets/images/yellowbar.jpg")
 yellowbar = pygame.transform.scale(yellowbar, (1400, 125))
 
 message = pygame.image.load("Assets/images/message.png")
+instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
 
 # clock_box = pygame.image.load("Assets/images/clock_box.png")
 # clock_box = pygame.transform.scale(clock_box, (WIDTH/8, HIGHT/12))
