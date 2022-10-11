@@ -14,6 +14,7 @@ from windows.game_6_window import *
 from windows.end_window import *
 
 
+
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
 
