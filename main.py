@@ -48,6 +48,7 @@ yellowbar = pygame.transform.scale(yellowbar, (1400, 120))
 ms_logo = pygame.image.load("Assets/images/ms_logo.png")
 ms_logo = pygame.transform.scale(ms_logo, (120, 36))
 
+
 message = pygame.image.load("Assets/images/message.png")
 instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
 
@@ -55,6 +56,11 @@ instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
 # clock_box = pygame.transform.scale(clock_box, (WIDTH/8, HIGHT/12))
 
 # buttons
+button_verder = pygame.image.load("Assets/images/button_verder.jpg")
+button_verder = pygame.transform.scale(button_verder, (166, 45))
+button_verder_small = pygame.transform.scale(
+    button_verder, (166 - 100, 45 - 10))
+
 button_start = pygame.image.load("Assets/images/button_start.png")
 button_start = pygame.transform.scale(button_start, (200, 150))
 

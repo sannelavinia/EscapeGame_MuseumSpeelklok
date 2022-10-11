@@ -1,6 +1,8 @@
+import pygame
 import main as m
 from widgets.massage_box import Massage_box
 from widgets.instruction_box import Instruction_Box
+import widgets.button as b
 
 #######################################################################################
 
@@ -31,6 +33,16 @@ def explanation_window():
         #display logo
         m.SCREEN.blit(m.ms_logo, (1400-130,700-46))
 
+        #display button
+        vbutton = b.Button(m.button_verder, m.button_verder, m.button_verder_small, m.WIDTH//2, (m.HIGHT//2)+225)
+        vbutton.display()
+        if vbutton.pressed_button() == True:
+            vbutton.display_click_animation()
+            vbutton.display()
+            m.click_sound.play()
+            pygame.time.delay(250)
+            return
+    
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
@@ -39,9 +51,9 @@ def explanation_window():
                 m.pygame.quit()
 
             # when pressing a mouse button
-            if event.type == m.pygame.MOUSEBUTTONDOWN:
-                # m.correct_answer_sound.play()
-                return
+            # if event.type == m.pygame.MOUSEBUTTONDOWN:
+            #     m.correct_answer_sound.play()
+                # return
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
