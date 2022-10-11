@@ -142,7 +142,7 @@ game_1_explanation = text_file.read().split('\n')
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
-speelklok_website_font = pygame.font.SysFont("avenirnext", 70)
+speelklok_website_font = pygame.font.Font("Assets/fonts/Avenir Next.ttc", 70)
 
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HIGHT))
