@@ -28,6 +28,9 @@ def explanation_window():
         text_rect_title1 = title1.get_rect(center=(m.WIDTH/2, (m.HIGHT/2)-255))
         m.SCREEN.blit(title1, text_rect_title1)
 
+        #display logo
+        m.SCREEN.blit(m.ms_logo, (1400-130,700-46))
+
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
@@ -37,7 +40,7 @@ def explanation_window():
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
-                m.correct_answer_sound.play()
+                # m.correct_answer_sound.play()
                 return
 
         # the window should be updated after each while-loop
