@@ -18,7 +18,7 @@ def game_1_window():
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
-    keyboard = k.Keyboard(600, 300)  # the input keyboard
+    keyboard = k.Keyboard(m.WIDTH - 350, 300)  # the input keyboard
     button_pressed = False
     pressed_button = 99
     code = ""
