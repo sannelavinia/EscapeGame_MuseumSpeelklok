@@ -1,16 +1,18 @@
+from tkinter.messagebox import NO
 import pygame
 import main as m
 import widgets.keyboard as k
 from widgets.massage_box import Massage_box
+from widgets.code_frame import Text_frame
 
 
 #######################################################################################
 def game_1_window():
 
-    # text, message_box = m.render_text(m.text_2, m.black_color, 400, 300)
-
     massage = Massage_box(m.message, 400, 300,
                           m.game_1_explanation, m.black_color, 100, 300)
+    title = Text_frame(None, "Spel 1", m.black_color,
+                       m.speelklok_website_font, m.WIDTH/2, (m.HIGHT/2)-255)
 
     # background music
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
@@ -30,6 +32,8 @@ def game_1_window():
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(m.background_gears, (0, 0))
+        m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
+        title.display()
         massage.display()
         keyboard.display()
 
@@ -49,7 +53,7 @@ def game_1_window():
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
-            keyboard.text_frame.change_input_text(code)
+            keyboard.text_frame.change_input_text(code, m.white_color)
             # reset
             keyboard.resize_buttons()
             button_pressed = False
