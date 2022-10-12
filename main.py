@@ -47,7 +47,7 @@ message = pygame.image.load("Assets/images/message.png")
 
 # buttons
 button_start = pygame.image.load("Assets/images/button_start.png")
-button_start = pygame.transform.scale(button_start, (200, 150))
+button_start = pygame.transform.scale(button_start, (166, 45))
 
 number_0 = pygame.image.load("Assets/images/number_0.png")
 number_0 = pygame.transform.scale(number_0, (button_width, button_hight))
