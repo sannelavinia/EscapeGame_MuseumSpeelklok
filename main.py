@@ -54,6 +54,7 @@ instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
 
 tip_message_box = pygame.image.load("Assets/images/tip_message_box.png")
 
+
 # clock_box = pygame.image.load("Assets/images/clock_box.png")
 # clock_box = pygame.transform.scale(clock_box, (WIDTH/8, HIGHT/12))
 
