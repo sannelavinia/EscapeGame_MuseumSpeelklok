@@ -1,5 +1,3 @@
-import imp
-from tkinter.messagebox import NO
 import pygame
 import main as m
 import widgets.keyboard as k
@@ -30,6 +28,14 @@ def game_1_window():
     tip_button = b.Button(m.tip_button, m.tip_button,
                           m.tip_button_small, 40, m.HIGHT-40)
 
+    tip_message_box = pygame.transform.scale(m.tip_message_box, (100, 200))
+    tip_message_box = Text_frame(
+        tip_message_box, "", m.black_color, m.main_font, 100, m.HIGHT - 120)
+
+    tip_message = Text_frame(None, "hint!", m.black_color,
+                             m.main_font, 150, m.HIGHT - 130)
+
+    start_display_tip_message = False
     # background music
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
@@ -57,6 +63,10 @@ def game_1_window():
         logo_button.display()
         tip_button.display()
 
+        if start_display_tip_message:
+            tip_message_box.display()
+            tip_message.display()
+
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
@@ -76,6 +86,7 @@ def game_1_window():
             keyboard.text_frame.change_input_text(code, m.white_color)
             # reset
             keyboard.resize_buttons()
+            tip_button.restore_normal_size()
             button_pressed = False
             pressed_button = 99
             timer = 0
@@ -93,6 +104,10 @@ def game_1_window():
 
                 if pressed_button in range(0, 12):
                     button_pressed = True
+                if tip_button.mouse_on_button():
+                    tip_button.display_click_animation()
+                    button_pressed = True
+                    start_display_tip_message = True
 
         play_time = pygame.time.get_ticks()
 

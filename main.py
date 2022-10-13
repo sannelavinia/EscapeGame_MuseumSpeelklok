@@ -52,6 +52,8 @@ ms_logo = pygame.transform.scale(ms_logo, (120, 36))
 message = pygame.image.load("Assets/images/message.png")
 instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
 
+tip_message_box = pygame.image.load("Assets/images/tip_message_box.png")
+
 # clock_box = pygame.image.load("Assets/images/clock_box.png")
 # clock_box = pygame.transform.scale(clock_box, (WIDTH/8, HIGHT/12))
 
