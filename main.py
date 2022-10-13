@@ -174,9 +174,60 @@ def from_millisecond_to_clock(time_in_millisecond):
 
     return f"{hours}:{minutes}:{seconds}:{milliseconds}"
 
+
+def admin_mode():
+    keyboard = Keyboard(WIDTH/2, HIGHT/2)
+    button_pressed = False
+    pressed_button = 99
+    code = ""
+    timer = 0  # used for animating the buttons
+
+    while True:
+
+        SCREEN.fill(black_color)
+        keyboard.display()
+
+        # delay after clicking before resizing
+        if button_pressed:
+            timer += 1
+
+        # resize the clicked button
+        if timer >= button_resizing_delay:
+            # to the next window (if the code was correct)
+            if pressed_button == 10:
+                if code == admin_code:
+                    correct_answer_sound.play()
+                    return
+                else:
+                    wrong_answer_sound.play()
+            else:
+                click_sound.play()
+            code = keyboard.keyboard_button_pressed(pressed_button, code)
+            keyboard.text_frame.change_input_text(code, m.white_color)
+            # reset
+            keyboard.resize_buttons()
+            button_pressed = False
+            pressed_button = 99
+            timer = 0
+
+        # every interaction with the game is an event ( mouse, Keyboard )
+        for event in m.pygame.event.get():
+
+            # when pressing the close button "X" at the top-right of the game-window
+            if event.type == m.pygame.QUIT:
+                m.pygame.quit()
+
+            # when pressing a mouse button
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+                pressed_button = keyboard.pressed_button()
+
+                if pressed_button in range(0, 12):
+                    button_pressed = True
+        # the window should be updated after each while-loop
+        m.pygame.display.update()
+
+
 #######################################################################################
-
-
 def main():
 
     if __name__ == "__main__":
@@ -188,6 +239,8 @@ def main():
                     game_5_window() != 1 and game_6_window() != 1 and \
                     end_window() != 1:
                 pass
+            else:
+                admin_mode()
 
 
 main()
