@@ -1,0 +1,21 @@
+name: run-unit-tests
+on: [pull_request]
+jobs:
+  run_tests:
+    runs_on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+      
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.6"
+ 
+      - name: Install dependencies
+        run: pip install -r requirements.txt # or any installs
+ 
+      - name: Run tests with Pytest
+        run: pytest tests/
+
+
+
