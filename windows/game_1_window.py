@@ -44,11 +44,16 @@ def game_1_window():
     pressed_button = 99
     code = ""
     timer = 0  # used for animating the buttons
+    start_display_tip_icon = False
     start_display_tip_message = False
     logo_button_pressed = False
     restart_timer = 0
 
-    play_time = 0
+    start_time = m.pygame.time.get_ticks()
+    time_difference = 0
+    previous_second = 0
+    play_time = Text_frame(None, m.from_millisecond_to_clock(
+        m.TOTAL_PLAY_TIME + time_difference), m.green_color, m.code_font, m.WIDTH/8, (m.HIGHT/2)-260)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -56,18 +61,22 @@ def game_1_window():
         if restart_timer >= 300:
             return 1
 
+        time_difference = m.pygame.time.get_ticks()-start_time
+
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(m.background_gears, (0, 0))
         m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
+        play_time.display()
         title.display()
         instruction_box.display()
         instruction_title.display()
         # massage.display()
         keyboard.display()
         logo_button.display()
-        tip_button.display()
 
+        if start_display_tip_icon:
+            tip_button.display()
         if start_display_tip_message:
             tip_message_box.display()
             tip_message.display()
@@ -116,14 +125,20 @@ def game_1_window():
 
                 if pressed_button in range(0, 12):
                     button_pressed = True
-                if tip_button.mouse_on_button():
+                if tip_button.mouse_on_button() and start_display_tip_icon:
                     tip_button.display_click_animation()
                     button_pressed = True
                     start_display_tip_message = True
                 if logo_button.mouse_on_button():
                     logo_button_pressed = True
 
-        play_time = pygame.time.get_ticks()
+        if time_difference < m.game_1_normal_time:
+            play_time.change_input_text(m.from_millisecond_to_clock(
+                m.TOTAL_PLAY_TIME + time_difference), m.green_color)
+        else:
+            play_time.change_input_text(m.from_millisecond_to_clock(
+                m.TOTAL_PLAY_TIME + time_difference), m.red_color)
+            start_display_tip_icon = True
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

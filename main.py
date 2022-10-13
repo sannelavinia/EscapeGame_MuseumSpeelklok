@@ -160,8 +160,22 @@ speelklok_website_font = pygame.font.Font("Assets/fonts/Avenir Next.ttc", 70)
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HIGHT))
 
+TOTAL_PLAY_TIME = 0
+
 
 #######################################################################################
+def from_millisecond_to_clock(time_in_millisecond):
+
+    milliseconds = time_in_millisecond % 1000
+    seconds = int((time_in_millisecond / 1000) % 60)
+    minutes = int(((time_in_millisecond / 1000) / 60) % 60)
+    hours = int((((time_in_millisecond / 1000) / 60) / 60) % 60)
+
+    return f"{hours}:{minutes}:{seconds}:{milliseconds}"
+
+#######################################################################################
+
+
 def main():
 
     if __name__ == "__main__":
