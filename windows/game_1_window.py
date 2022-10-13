@@ -25,7 +25,10 @@ def game_1_window():
                                    m.code_font, 500, 300)
 
     logo_button = b.Button(m.ms_logo, m.ms_logo,
-                           m.ms_logo, m.WIDTH-75, m.HIGHT-25)
+                           m.ms_logo, m.WIDTH-70, m.HIGHT-27)
+
+    tip_button = b.Button(m.tip_button, m.tip_button,
+                          m.tip_button_small, 40, m.HIGHT-40)
 
     # background music
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
@@ -52,6 +55,7 @@ def game_1_window():
         # massage.display()
         keyboard.display()
         logo_button.display()
+        tip_button.display()
 
         # delay after clicking before resizing
         if button_pressed:
