@@ -143,6 +143,7 @@ wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
+clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 
 # texts
 text_file = open("Assets/texts/text_1.txt", 'r')

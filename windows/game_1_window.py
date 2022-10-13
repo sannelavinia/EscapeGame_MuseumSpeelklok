@@ -81,6 +81,11 @@ def game_1_window():
             tip_message_box.display()
             tip_message.display()
 
+        # tik-sound every second
+        if int((time_difference / 1000) % 60) != previous_second:
+            previous_second = int((time_difference / 1000) % 60)
+            m.clock_tik.play()
+
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
