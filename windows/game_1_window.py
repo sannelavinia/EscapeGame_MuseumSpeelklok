@@ -35,7 +35,6 @@ def game_1_window():
     tip_message = Text_frame(None, "hint!", m.black_color,
                              m.main_font, 150, m.HIGHT - 130)
 
-    start_display_tip_message = False
     # background music
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
@@ -45,11 +44,17 @@ def game_1_window():
     pressed_button = 99
     code = ""
     timer = 0  # used for animating the buttons
+    start_display_tip_message = False
+    logo_button_pressed = False
+    restart_timer = 0
 
     play_time = 0
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
+
+        if restart_timer >= 300:
+            return 1
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
@@ -70,6 +75,13 @@ def game_1_window():
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
+
+        # logo button functionality
+        if logo_button_pressed and logo_button.mouse_on_button():
+            restart_timer += 1
+        else:
+            logo_button_pressed = False
+            restart_timer = 0
 
         # resize the clicked button
         if timer >= m.button_resizing_delay:
@@ -108,6 +120,8 @@ def game_1_window():
                     tip_button.display_click_animation()
                     button_pressed = True
                     start_display_tip_message = True
+                if logo_button.mouse_on_button():
+                    logo_button_pressed = True
 
         play_time = pygame.time.get_ticks()
 

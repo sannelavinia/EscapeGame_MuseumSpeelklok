@@ -166,15 +166,13 @@ def main():
 
     if __name__ == "__main__":
 
-        start_window()
-        explanation_window()
-        game_1_window()
-        game_2_window()
-        game_3_window()
-        game_4_window()
-        game_5_window()
-        game_6_window()
-        end_window()
+        while True:
+            if start_window() != 1 and explanation_window() != 1 and \
+                    game_1_window() != 1 and game_2_window() != 1 and \
+                    game_3_window() != 1 and game_4_window() != 1 and \
+                    game_5_window() != 1 and game_6_window() != 1 and \
+                    end_window() != 1:
+                pass
 
 
 main()
