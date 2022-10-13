@@ -1,24 +1,37 @@
+import imp
 from tkinter.messagebox import NO
 import pygame
 import main as m
 import widgets.keyboard as k
 from widgets.massage_box import Massage_box
 from widgets.code_frame import Text_frame
+import widgets.button as b
 
 
 #######################################################################################
 def game_1_window():
 
-    massage = Massage_box(m.message, 400, 300,
-                          m.game_1_explanation, m.black_color, 100, 300)
+    # massage = Massage_box(m.message, 400, 300,
+    #                       m.game_1_explanation, m.black_color, 100, 300)
     title = Text_frame(None, "Spel 1", m.black_color,
                        m.speelklok_website_font, m.WIDTH/2, (m.HIGHT/2)-255)
+
+    instruction_box = pygame.transform.scale(m.instruction_box, (500, 400))
+
+    instruction_box = Text_frame(instruction_box, "", m.black_color,
+                                 m.code_font, m.WIDTH/3, m.HIGHT*3/5)
+
+    instruction_title = Text_frame(None, "Instructies", m.black_color,
+                                   m.code_font, 500, 300)
+
+    # logo_button = b.Button(m.ms_logo, m.ms_logo,
+    #                        m.ms_logo, m.WIDTH-75, m.HIGHT-25)
 
     # background music
     m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
-    keyboard = k.Keyboard(m.WIDTH - 350, 300)  # the input keyboard
+    keyboard = k.Keyboard(m.WIDTH*2/3, 300)  # the input keyboard
     button_pressed = False
     pressed_button = 99
     code = ""
@@ -34,8 +47,11 @@ def game_1_window():
         m.SCREEN.blit(m.background_gears, (0, 0))
         m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
         title.display()
-        massage.display()
+        instruction_box.display()
+        instruction_title.display()
+        # massage.display()
         keyboard.display()
+        # logo_button.display()
 
         # delay after clicking before resizing
         if button_pressed:
