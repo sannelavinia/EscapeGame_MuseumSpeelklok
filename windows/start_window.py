@@ -9,6 +9,9 @@ def start_window():
 
     # massage = Massage_box(m.message, 400, 300, m.text_1,
     #                       m.white_color, 400, 300)
+    start_window_museum_logo = m.pygame.image.load("Assets/images/start_window_museum_logo.png")
+    start_window_museum_logo = m.pygame.transform.scale(start_window_museum_logo, (120, 36))
+    logo = Button(start_window_museum_logo, start_window_museum_logo, start_window_museum_logo, m.WIDTH - 70, m.HIGHT - 25)
     start_button = Button(m.button_start, m.button_start, m.button_start, m.WIDTH / 2, m.HIGHT * 2/3 )
 
     title_1 = Text_frame(None, "Escaperoom Museum", m.black_color, m.code_font, (m.WIDTH / 2) + 50, (m.HIGHT / 2) - 50 )
@@ -31,6 +34,7 @@ def start_window():
         title_2.display()
         instruction_1.display()
         start_button.display()
+        logo.display()
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
