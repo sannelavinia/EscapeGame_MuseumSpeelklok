@@ -25,6 +25,7 @@ def end_window():
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
+                m.clapping_sound.stop()
                 return
 
         # the window should be updated after each while-loop

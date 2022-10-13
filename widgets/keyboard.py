@@ -32,7 +32,7 @@ class Keyboard():
         self.delete_button = Button(m.delete_button, m.delete_button,
                                     m.delete_button_small, x_pos, y_pos + 3 * m.button_spaces)
         self.text_frame = Text_frame(
-            m.text_frame, "", x_pos + m.button_spaces, y_pos - m.button_spaces)
+            m.text_frame, "", m.white_color, m.code_font, x_pos + m.button_spaces, y_pos - m.button_spaces)
 
     #######################################################################################
     def display(self):
