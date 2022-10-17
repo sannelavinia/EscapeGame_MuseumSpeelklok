@@ -65,7 +65,7 @@ button_verder_small = pygame.transform.scale(
     button_verder, (166 - 100, 45 - 10))
 
 button_start = pygame.image.load("Assets/images/button_start.png")
-button_start = pygame.transform.scale(button_start, (200, 150))
+button_start = pygame.transform.scale(button_start, (166, 45))
 
 tip_button = pygame.image.load("Assets/images/tip_button.png")
 tip_button = pygame.transform.scale(tip_button, (75, 75))
