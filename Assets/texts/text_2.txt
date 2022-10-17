@@ -1,4 +1,8 @@
-this is the explanation window
-!!!!!!!!!!!!!!!!!!!!
-now it is black!!!!
-ggggggggg
+Twee tieners moeten een lied voor een orgelboek programmeren. Tijdens hun zoektocht naar
+inspiratie belanden ze in een tijdmachine en worden ze teruggespoeld naar het jaar 1580: een tijd
+waarin het enige mechanische muziekinstrument het carillon is. Door het oplossen van
+opdrachten/puzzels worden de tieners steeds iets verder in de tijd gespoeld. In elke tijdsperiode doen
+ze kennis op over een instrument uit die tijd en leren ze over de techniek, muziek en/of geschiedenis.
+De spelers van de escaperoom verzamelen bij elke opdracht (digitale) tandwielen, die op het eind
+nodig zijn voor het repareren van de tijdmachine. Zo kunnen de tieners weer naar hun eigen tijd
+reizen.

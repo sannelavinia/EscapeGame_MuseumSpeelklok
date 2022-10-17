@@ -40,14 +40,37 @@ background_game_6 = pygame.image.load("Assets/images/background_game_6.jpg")
 background_game_6 = pygame.transform.scale(background_game_6, (WIDTH, HIGHT))
 background_end = pygame.image.load("Assets/images/background_end.jpg")
 background_end = pygame.transform.scale(background_end, (WIDTH, HIGHT))
+
+background_gears = pygame.image.load("Assets/images/background_gearsv1.jpg")
+background_gears = pygame.transform.scale(background_gears, (WIDTH, HIGHT))
+yellowbar = pygame.image.load("Assets/images/yellowbar.jpg")
+yellowbar = pygame.transform.scale(yellowbar, (1400, 120))
+ms_logo = pygame.image.load("Assets/images/ms_logo.png")
+ms_logo = pygame.transform.scale(ms_logo, (120, 36))
+
+
 message = pygame.image.load("Assets/images/message.png")
+instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
+
+tip_message_box = pygame.image.load("Assets/images/tip_message_box.png")
+
 
 # clock_box = pygame.image.load("Assets/images/clock_box.png")
 # clock_box = pygame.transform.scale(clock_box, (WIDTH/8, HIGHT/12))
 
 # buttons
+button_verder = pygame.image.load("Assets/images/button_verder.jpg")
+button_verder = pygame.transform.scale(button_verder, (166, 45))
+button_verder_small = pygame.transform.scale(
+    button_verder, (166 - 100, 45 - 10))
+
 button_start = pygame.image.load("Assets/images/button_start.png")
 button_start = pygame.transform.scale(button_start, (166, 45))
+
+tip_button = pygame.image.load("Assets/images/tip_button.png")
+tip_button = pygame.transform.scale(tip_button, (75, 75))
+tip_button_small = pygame.transform.scale(
+    tip_button, (75 - reduction_ratio, 75 - reduction_ratio))
 
 number_0 = pygame.image.load("Assets/images/number_0.png")
 number_0 = pygame.transform.scale(number_0, (button_width, button_hight))
@@ -121,6 +144,7 @@ wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
+clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 
 # texts
 text_file = open("Assets/texts/text_1.txt", 'r')
@@ -133,9 +157,75 @@ game_1_explanation = text_file.read().split('\n')
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
+speelklok_website_font = pygame.font.Font("Assets/fonts/Avenir Next.ttc", 70)
 
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HIGHT))
+
+TOTAL_PLAY_TIME = 0
+
+
+#######################################################################################
+def from_millisecond_to_clock(time_in_millisecond):
+
+    milliseconds = time_in_millisecond % 1000
+    seconds = int((time_in_millisecond / 1000) % 60)
+    minutes = int(((time_in_millisecond / 1000) / 60) % 60)
+    hours = int((((time_in_millisecond / 1000) / 60) / 60) % 60)
+
+    return f"{hours}:{minutes}:{seconds}:{milliseconds}"
+
+
+def admin_mode():
+    keyboard = Keyboard(WIDTH/2, HIGHT/2)
+    button_pressed = False
+    pressed_button = 99
+    code = ""
+    timer = 0  # used for animating the buttons
+
+    while True:
+
+        SCREEN.fill(black_color)
+        keyboard.display()
+
+        # delay after clicking before resizing
+        if button_pressed:
+            timer += 1
+
+        # resize the clicked button
+        if timer >= button_resizing_delay:
+            # to the next window (if the code was correct)
+            if pressed_button == 10:
+                if code == admin_code:
+                    correct_answer_sound.play()
+                    return
+                else:
+                    wrong_answer_sound.play()
+            else:
+                click_sound.play()
+            code = keyboard.keyboard_button_pressed(pressed_button, code)
+            keyboard.text_frame.change_input_text(code, m.white_color)
+            # reset
+            keyboard.resize_buttons()
+            button_pressed = False
+            pressed_button = 99
+            timer = 0
+
+        # every interaction with the game is an event ( mouse, Keyboard )
+        for event in m.pygame.event.get():
+
+            # when pressing the close button "X" at the top-right of the game-window
+            if event.type == m.pygame.QUIT:
+                m.pygame.quit()
+
+            # when pressing a mouse button
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+                pressed_button = keyboard.pressed_button()
+
+                if pressed_button in range(0, 12):
+                    button_pressed = True
+        # the window should be updated after each while-loop
+        m.pygame.display.update()
 
 
 #######################################################################################
@@ -143,15 +233,15 @@ def main():
 
     if __name__ == "__main__":
 
-        start_window()
-        explanation_window()
-        game_1_window()
-        game_2_window()
-        game_3_window()
-        game_4_window()
-        game_5_window()
-        game_6_window()
-        end_window()
+        while True:
+            if start_window() != 1 and explanation_window() != 1 and \
+                    game_1_window() != 1 and game_2_window() != 1 and \
+                    game_3_window() != 1 and game_4_window() != 1 and \
+                    game_5_window() != 1 and game_6_window() != 1 and \
+                    end_window() != 1:
+                pass
+            else:
+                admin_mode()
 
 
 main()
