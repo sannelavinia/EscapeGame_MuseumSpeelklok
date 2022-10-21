@@ -1,6 +1,5 @@
 import pygame
 import main as m
-from widgets.massage_box import Massage_box
 from widgets.instruction_box import Instruction_Box
 import widgets.button as b
 
@@ -9,7 +8,8 @@ import widgets.button as b
 
 def explanation_window():
 
-    massage = Instruction_Box(m.instruction_box, 1000, 450, m.text_2, m.black_color, 200, 175)
+    message = Instruction_Box(m.instruction_box, 1000,
+                              450, m.text_2, m.black_color, 200, 175)
 
     # background music
     # m.intro_sound.play()
@@ -22,19 +22,22 @@ def explanation_window():
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(m.background_gears, (0, 0))
-        massage.display()
+        message.display()
 
-        #display yellow title bar
-        m.SCREEN.blit(m.yellowbar, (0,30))
-        title1 = m.speelklok_website_font.render('Spelregels', True, m.black_color)
-        text_rect_title1 = title1.get_rect(center=(m.WIDTH/2, (m.HIGHT/2)-255))
+        # display yellow title bar
+        m.SCREEN.blit(m.yellowbar, (0, 30))
+        title1 = m.speelklok_website_font.render(
+            'Spelregels', True, m.black_color)
+        text_rect_title1 = title1.get_rect(
+            center=(m.WIDTH/2, (m.HEIGHT/2)-255))
         m.SCREEN.blit(title1, text_rect_title1)
 
-        #display logo
-        m.SCREEN.blit(m.ms_logo, (1400-130,700-46))
+        # display logo
+        m.SCREEN.blit(m.ms_logo, (1400-130, 700-46))
 
-        #display button
-        vbutton = b.Button(m.button_verder, m.button_verder, m.button_verder_small, m.WIDTH//2, (m.HIGHT//2)+225)
+        # display button
+        vbutton = b.Button(m.button_verder, m.button_verder,
+                           m.button_verder_small, m.WIDTH//2, (m.HEIGHT//2)+225)
         vbutton.display()
         if vbutton.pressed_button() == True:
             vbutton.display_click_animation()
@@ -42,7 +45,7 @@ def explanation_window():
             m.click_sound.play()
             pygame.time.delay(250)
             return
-    
+
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 

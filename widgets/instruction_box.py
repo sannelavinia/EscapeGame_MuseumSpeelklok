@@ -1,13 +1,21 @@
 import main as m
 
-class Instruction_Box():
 
-    # initializer
+class Instruction_Box():
+    """
+    useful for displaying more than one line of text,
+    the text should be in a .txt file 
+    ex: by instructions or tips
+    """
+
+    #######################################################################################
     def __init__(self, image, image_width, image_height, input_text, text_color, x_pos, y_pos):
+        """initializer"""
 
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.image = m.pygame.transform.scale(image, (image_width, image_height))
+        self.image = m.pygame.transform.scale(
+            image, (image_width, image_height))
 
         # render the text
         self.text = []
@@ -16,6 +24,7 @@ class Instruction_Box():
 
     #######################################################################################
     def display(self):
+        """displays the text"""
 
         x_pos = self.x_pos
         y_pos = self.y_pos

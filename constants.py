@@ -1,8 +1,4 @@
 
-# Constants
-HIGHT = 700     # hight of the displayed window
-WIDTH = 1400     # width of the displayed window
-
 # texts
 code_size = 50
 text_size = 20
@@ -16,7 +12,7 @@ red_color = (255, 0, 0)
 
 # keyboard buttons
 button_width = 100
-button_hight = 100
+button_height = 100
 button_spaces = 100
 reduction_ratio = 10
 button_resizing_delay = 10
