@@ -1,6 +1,6 @@
 import main as m
-from widgets.button import *
-from widgets.code_frame import *
+from widgets.button import Button
+from widgets.text_frame import Text_frame
 
 
 class Keyboard():
@@ -8,31 +8,31 @@ class Keyboard():
     # initializer
     def __init__(self, x_pos, y_pos):
         self.button_0 = Button(m.number_0,
-                               m.number_0, m.number_0_small, x_pos + m.button_spaces, y_pos + 3 * m.button_spaces)
+                               m.number_0, m.number_0_after_click, x_pos + m.button_spaces, y_pos + 3 * m.button_spaces, m.button_width, m.button_height)
         self.button_1 = Button(
-            m.number_1, m.number_1, m.number_1_small, x_pos, y_pos)
-        self.button_2 = Button(m.number_2, m.number_2, m.number_2_small,
-                               x_pos + m.button_spaces, y_pos)
-        self.button_3 = Button(m.number_3, m.number_3, m.number_3_small,
-                               x_pos + 2 * m.button_spaces, y_pos)
-        self.button_4 = Button(m.number_4, m.number_4, m.number_4_small,
-                               x_pos, y_pos + m.button_spaces)
-        self.button_5 = Button(m.number_5, m.number_5, m.number_5_small, x_pos + m.button_spaces,
-                               y_pos + m.button_spaces)
-        self.button_6 = Button(m.number_6, m.number_6, m.number_6_small, x_pos + 2 *
-                               m.button_spaces, y_pos + m.button_spaces)
-        self.button_7 = Button(m.number_7, m.number_7, m.number_7_small,
-                               x_pos, y_pos + 2 * m.button_spaces)
-        self.button_8 = Button(m.number_8, m.number_8, m.number_8_small, x_pos + m.button_spaces,
-                               y_pos + 2 * m.button_spaces)
-        self.button_9 = Button(m.number_9, m.number_9, m.number_9_small, x_pos + 2 * m.button_spaces,
-                               y_pos + 2 * m.button_spaces)
-        self.enter_button = Button(m.enter_button, m.enter_button, m.enter_button_small,
-                                   x_pos + 2 * m.button_spaces, y_pos + 3 * m.button_spaces)
+            m.number_1, m.number_1, m.number_1_after_click, x_pos, y_pos, m.button_width, m.button_height)
+        self.button_2 = Button(m.number_2, m.number_2, m.number_2_after_click,
+                               x_pos + m.button_spaces, y_pos, m.button_width, m.button_height)
+        self.button_3 = Button(m.number_3, m.number_3, m.number_3_after_click,
+                               x_pos + 2 * m.button_spaces, y_pos, m.button_width, m.button_height)
+        self.button_4 = Button(m.number_4, m.number_4, m.number_4_after_click,
+                               x_pos, y_pos + m.button_spaces, m.button_width, m.button_height)
+        self.button_5 = Button(m.number_5, m.number_5, m.number_5_after_click, x_pos + m.button_spaces,
+                               y_pos + m.button_spaces, m.button_width, m.button_height)
+        self.button_6 = Button(m.number_6, m.number_6, m.number_6_after_click, x_pos + 2 *
+                               m.button_spaces, y_pos + m.button_spaces, m.button_width, m.button_height)
+        self.button_7 = Button(m.number_7, m.number_7, m.number_7_after_click,
+                               x_pos, y_pos + 2 * m.button_spaces, m.button_width, m.button_height)
+        self.button_8 = Button(m.number_8, m.number_8, m.number_8_after_click, x_pos + m.button_spaces,
+                               y_pos + 2 * m.button_spaces, m.button_width, m.button_height)
+        self.button_9 = Button(m.number_9, m.number_9, m.number_9_after_click, x_pos + 2 * m.button_spaces,
+                               y_pos + 2 * m.button_spaces, m.button_width, m.button_height)
+        self.enter_button = Button(m.enter_button, m.enter_button, m.enter_button_after_click,
+                                   x_pos + 2 * m.button_spaces, y_pos + 3 * m.button_spaces, m.button_width, m.button_height)
         self.delete_button = Button(m.delete_button, m.delete_button,
-                                    m.delete_button_small, x_pos, y_pos + 3 * m.button_spaces)
+                                    m.delete_button_after_click, x_pos, y_pos + 3 * m.button_spaces, m.button_width, m.button_height)
         self.text_frame = Text_frame(
-            m.text_frame, "", m.white_color, m.code_font, x_pos + m.button_spaces, y_pos - m.button_spaces)
+            m.code_input_frame, m.button_width * 3, m.button_height, "", m.white_color, m.code_font, x_pos + m.button_spaces, y_pos - m.button_spaces)
 
     #######################################################################################
     def display(self):

@@ -1,42 +1,35 @@
-import pygame
 import main as m
 import widgets.keyboard as k
-from widgets.massage_box import Massage_box
-from widgets.code_frame import Text_frame
+from widgets.text_frame import Text_frame
 import widgets.button as b
 
 
 #######################################################################################
-def game_5_window():
+def games_window(game_number):
 
-    # massage = Massage_box(m.message, 400, 300,
-    #                       m.game_1_explanation, m.black_color, 100, 300)
-    title = Text_frame(None, "Spel 5", m.black_color,
-                       m.speelklok_website_font, m.WIDTH/2, (m.HIGHT/2)-255)
+    title = Text_frame(None, None, None, f"Spel {game_number}", m.black_color,
+                       m.speelklok_website_font, m.WIDTH/2, (m.HEIGHT/2)-255)
 
-    instruction_box = pygame.transform.scale(m.instruction_box, (500, 400))
+    instruction_box = Text_frame(m.instruction_box, 500, 400, "", m.black_color,
+                                 m.code_font, m.WIDTH/3, m.HEIGHT*3/5)
 
-    instruction_box = Text_frame(instruction_box, "", m.black_color,
-                                 m.code_font, m.WIDTH/3, m.HIGHT*3/5)
-
-    instruction_title = Text_frame(None, "Instructies", m.black_color,
+    instruction_title = Text_frame(None, None, None, "Instructies", m.black_color,
                                    m.code_font, 500, 300)
 
     logo_button = b.Button(m.ms_logo, m.ms_logo,
-                           m.ms_logo, m.WIDTH-70, m.HIGHT-27)
+                           m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
 
     tip_button = b.Button(m.tip_button, m.tip_button,
-                          m.tip_button_small, 40, m.HIGHT-40)
+                          m.tip_button_small, 40, m.HEIGHT-40)
 
-    tip_message_box = pygame.transform.scale(m.tip_message_box, (100, 200))
     tip_message_box = Text_frame(
-        tip_message_box, "", m.black_color, m.main_font, 100, m.HIGHT - 120)
+        m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
 
-    tip_message = Text_frame(None, "hint!", m.black_color,
-                             m.main_font, 150, m.HIGHT - 130)
+    tip_message = Text_frame(None, None, None, "hint!", m.black_color,
+                             m.main_font, 150, m.HEIGHT - 130)
 
     # background music
-    m.pygame.mixer.music.load("Assets/sounds/game_5.wav")
+    m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
     keyboard = k.Keyboard(m.WIDTH*2/3, 300)  # the input keyboard
@@ -52,8 +45,8 @@ def game_5_window():
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
     previous_second = 0
-    play_time = Text_frame(None, m.from_millisecond_to_clock(
-        m.TOTAL_PLAY_TIME + time_difference), m.green_color, m.code_font, m.WIDTH/8, (m.HIGHT/2)-260)
+    play_time = Text_frame(None, None, None, m.from_millisecond_to_clock(
+        m.TOTAL_PLAY_TIME + time_difference), m.green_color, m.code_font, m.WIDTH/8, (m.HEIGHT/2)-260)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -71,7 +64,7 @@ def game_5_window():
         title.display()
         instruction_box.display()
         instruction_title.display()
-        # massage.display()
+        # message.display()
         keyboard.display()
         logo_button.display()
 
