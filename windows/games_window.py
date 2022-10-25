@@ -189,7 +189,7 @@ def game_started(game_number):
         #     restart_timer = 0
 
         # resize the clicked button
-        if timer >= m.button_resizing_delay / 2:
+        if timer >= int(m.button_resizing_delay / 3):
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.game_1_code:
@@ -201,7 +201,7 @@ def game_started(game_number):
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
-            keyboard.text_frame.change_input_text(code, m.white_color)
+
             # reset
             keyboard.resize_buttons()
             # tip_button.restore_normal_size()
