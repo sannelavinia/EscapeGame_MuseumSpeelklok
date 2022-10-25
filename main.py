@@ -181,6 +181,16 @@ text_file = open("Assets/texts/text_2.txt", 'r')
 text_2 = text_file.read().split('\n')
 text_file = open("Assets/texts/game_1_explanation.txt", 'r')
 game_1_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_2_explanation.txt", 'r')
+game_2_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_3_explanation.txt", 'r')
+game_3_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_4_explanation.txt", 'r')
+game_4_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_5_explanation.txt", 'r')
+game_5_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_6_explanation.txt", 'r')
+game_6_explanation = text_file.read().split('\n')
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -210,13 +220,12 @@ def main():
     if __name__ == "__main__":
 
         while True:
-            if start_window() != 1 and explanation_window() != 1 and \
-                    games_window(1) != 1 and games_window(2) != 1 and \
-                    games_window(3) != 1 and games_window(4) != 1 and \
-                    games_window(5) != 1 and games_window(6) != 1 and \
-                    end_window() != 1:
-                pass
-            else:
+
+            if start_window() == 1 or explanation_window() == 1 or \
+                    games_window(1, game_1_explanation) == 1 or games_window(2, game_2_explanation) == 1 or \
+                    games_window(3, game_3_explanation) == 1 or games_window(4, game_4_explanation) == 1 or \
+                    games_window(5, game_5_explanation) == 1 or games_window(6, game_6_explanation) == 1 or \
+                    end_window() == 1:
                 admin_mode()
 
 
