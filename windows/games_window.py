@@ -1,3 +1,5 @@
+from asyncio import wait_for
+from time import sleep
 import main as m
 import widgets.keyboard as k
 from widgets.text_frame import Text_frame
@@ -5,7 +7,93 @@ import widgets.button as b
 
 
 #######################################################################################
-def games_window(game_number):
+def push_button_to_start(game_number):
+
+    # resizing the images
+    metal_plate_empty = m.pygame.transform.scale(
+        m.metal_plate_empty, (m.WIDTH/2, m.HEIGHT))
+    single_screw = m.pygame.transform.scale(
+        m.single_screw, (m.WIDTH/20, m.WIDTH/20))
+
+    # text variables
+    text_line_1 = Text_frame(
+        None, None, None, "Klik op de knop om", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)-50)
+    text_line_2 = Text_frame(
+        None, None, None, f"spel {game_number} ", m.white_color, m.code_font, m.WIDTH/4, m.HEIGHT/2)
+    text_line_3 = Text_frame(
+        None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)+50)
+
+    # start button
+    green_start_button = b.Button(m.green_start_button, m.green_start_button,
+                                  m.green_start_button_pushed, m.WIDTH*3/4, m.HEIGHT/2, m.WIDTH/4, m.WIDTH/4)
+
+    button_pressed = False
+    timer = 0  # used for animating the buttons
+
+    # game loop ( to prevent the window from closing after going throw the current events )
+    while True:
+
+        # display the background image ( it should be the fisrt image to display,
+        # so that the other objects will be displayed ontop of it )
+        m.SCREEN.blit(metal_plate_empty, (0, 0))
+        m.SCREEN.blit(metal_plate_empty, (m.WIDTH/2, 0))
+
+        # display the screws
+        m.SCREEN.blit(single_screw, (m.WIDTH/40, m.HEIGHT/20))
+        m.SCREEN.blit(single_screw, (m.WIDTH/2-(m.WIDTH/40) -
+                      (m.WIDTH/20), m.HEIGHT/20))
+        m.SCREEN.blit(single_screw, (m.WIDTH/2+(m.WIDTH/40), m.HEIGHT/20))
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH/40) -
+                      (m.WIDTH/20), m.HEIGHT/20))
+        m.SCREEN.blit(single_screw, (m.WIDTH/40, m.HEIGHT-(m.HEIGHT/20) -
+                      (m.WIDTH/20)))
+        m.SCREEN.blit(single_screw, (m.WIDTH/2-(m.WIDTH/40) -
+                      (m.WIDTH/20), m.HEIGHT-(m.HEIGHT/20) -
+                      (m.WIDTH/20)))
+        m.SCREEN.blit(single_screw, (m.WIDTH/2+(m.WIDTH/40), m.HEIGHT-(m.HEIGHT/20) -
+                      (m.WIDTH/20)))
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH/40) -
+                      (m.WIDTH/20), m.HEIGHT-(m.HEIGHT/20) -
+                      (m.WIDTH/20)))
+
+        # display the text
+        text_line_1.display()
+        text_line_2.display()
+        text_line_3.display()
+
+        # display the button
+        green_start_button.display()
+
+        # delay after clicking before resizing
+        if button_pressed:
+            timer += 1
+
+        # resize the clicked button
+        if timer >= m.button_resizing_delay:
+            return
+
+        # every interaction with the game is an event ( mouse, Keyboard )
+        for event in m.pygame.event.get():
+
+            # when pressing the close button "X" at the top-right of the game-window
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or \
+                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
+                m.pygame.quit()
+
+            # when pressing a mouse button
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+
+                if green_start_button.mouse_on_button():
+                    green_start_button.display_click_animation()
+                    button_pressed = True
+
+        # the window should be updated after each while-loop
+        m.pygame.display.update()
+
+
+#######################################################################################
+def game_started(game_number):
 
     title = Text_frame(None, None, None, f"Spel {game_number}", m.black_color,
                        m.speelklok_website_font, m.WIDTH/2, (m.HEIGHT/2)-255)
@@ -114,7 +202,9 @@ def games_window(game_number):
         for event in m.pygame.event.get():
 
             # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT:
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or \
+                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
 
             # when pressing a mouse button
@@ -140,3 +230,10 @@ def games_window(game_number):
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
+
+
+#######################################################################################
+def games_window(game_number):
+
+    push_button_to_start(game_number)
+    game_started(game_number)
