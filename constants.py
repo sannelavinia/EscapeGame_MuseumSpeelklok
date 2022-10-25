@@ -11,9 +11,8 @@ green_color = (0, 255, 0)
 red_color = (255, 0, 0)
 
 # keyboard buttons
-button_width = 100
-button_height = 100
-button_spaces = 100
+button_width = 110
+button_height = 90
 reduction_ratio = 10
 button_resizing_delay = 10
 

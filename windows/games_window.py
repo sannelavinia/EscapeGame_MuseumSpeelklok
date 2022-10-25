@@ -98,32 +98,36 @@ def push_button_to_start(game_number):
 #######################################################################################
 def game_started(game_number):
 
-    title = Text_frame(None, None, None, f"Spel {game_number}", m.black_color,
-                       m.speelklok_website_font, m.WIDTH/2, (m.HEIGHT/2)-255)
+    # resizing the images
+    background_games_template = m.pygame.transform.scale(
+        m.background_games_template, (m.WIDTH, m.HEIGHT))
 
-    instruction_box = Text_frame(m.instruction_box, 500, 400, "", m.black_color,
-                                 m.code_font, m.WIDTH/3, m.HEIGHT*3/5)
+    title = Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
+                       m.speelklok_website_font, m.WIDTH*5/8, m.HEIGHT/11)
 
-    instruction_title = Text_frame(None, None, None, "Instructies", m.black_color,
-                                   m.code_font, 500, 300)
+    # instruction_box = Text_frame(m.instruction_box, 500, 400, "", m.black_color,
+    #                              m.code_font, m.WIDTH/3, m.HEIGHT*3/5)
 
-    logo_button = b.Button(m.ms_logo, m.ms_logo,
-                           m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
+    # instruction_title = Text_frame(None, None, None, "Instructies", m.black_color,
+    #                                m.code_font, 500, 300)
 
-    tip_button = b.Button(m.tip_button, m.tip_button,
-                          m.tip_button_small, 40, m.HEIGHT-40)
+    # logo_button = b.Button(m.ms_logo, m.ms_logo,
+    #                        m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
 
-    tip_message_box = Text_frame(
-        m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
+    # tip_button = b.Button(m.tip_button, m.tip_button,
+    #                       m.tip_button_small, 40, m.HEIGHT-40)
 
-    tip_message = Text_frame(None, None, None, "hint!", m.black_color,
-                             m.main_font, 150, m.HEIGHT - 130)
+    # tip_message_box = Text_frame(
+    #     m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
+
+    # tip_message = Text_frame(None, None, None, "hint!", m.black_color,
+    #                          m.main_font, 150, m.HEIGHT - 130)
 
     # # background music
     # m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     # m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
-    keyboard = k.Keyboard(m.WIDTH*2/3, 300)  # the input keyboard
+    keyboard = k.Keyboard(m.WIDTH - 350, 350)  # the input keyboard
     button_pressed = False
     pressed_button = 99
     code = ""
@@ -137,7 +141,7 @@ def game_started(game_number):
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
     play_time_as_text = Text_frame(None, None, None, m.from_millisecond_to_clock(
-        m.TOTAL_PLAY_TIME), m.green_color, m.code_font, m.WIDTH/8, (m.HEIGHT/2)-260)
+        m.TOTAL_PLAY_TIME), m.green_color, m.code_font, m.WIDTH/9, m.HEIGHT/11)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -151,21 +155,22 @@ def game_started(game_number):
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(m.background_gears, (0, 0))
-        m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
+        m.SCREEN.blit(background_games_template, (0, 0))
+
+        # m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
         play_time_as_text.display()
         title.display()
-        instruction_box.display()
-        instruction_title.display()
+        # instruction_box.display()
+        # instruction_title.display()
 
         keyboard.display()
-        logo_button.display()
+        # logo_button.display()
 
-        if start_display_tip_icon:
-            tip_button.display()
-        if start_display_tip_message:
-            tip_message_box.display()
-            tip_message.display()
+        # if start_display_tip_icon:
+        #     tip_button.display()
+        # if start_display_tip_message:
+        #     tip_message_box.display()
+        #     tip_message.display()
 
         # tik-sound every second
         if play_time_seconds != previous_second:
@@ -176,12 +181,12 @@ def game_started(game_number):
         if button_pressed:
             timer += 1
 
-        # logo button functionality
-        if logo_button_pressed and logo_button.mouse_on_button():
-            restart_timer += 1
-        else:
-            logo_button_pressed = False
-            restart_timer = 0
+        # # logo button functionality
+        # if logo_button_pressed and logo_button.mouse_on_button():
+        #     restart_timer += 1
+        # else:
+        #     logo_button_pressed = False
+        #     restart_timer = 0
 
         # resize the clicked button
         if timer >= m.button_resizing_delay / 2:
@@ -199,7 +204,7 @@ def game_started(game_number):
             keyboard.text_frame.change_input_text(code, m.white_color)
             # reset
             keyboard.resize_buttons()
-            tip_button.restore_normal_size()
+            # tip_button.restore_normal_size()
             button_pressed = False
             pressed_button = 99
             timer = 0
@@ -219,12 +224,12 @@ def game_started(game_number):
 
                 if pressed_button in range(0, 12):
                     button_pressed = True
-                if tip_button.mouse_on_button() and start_display_tip_icon:
-                    tip_button.display_click_animation()
-                    button_pressed = True
-                    start_display_tip_message = True
-                if logo_button.mouse_on_button():
-                    logo_button_pressed = True
+                # if tip_button.mouse_on_button() and start_display_tip_icon:
+                #     tip_button.display_click_animation()
+                #     button_pressed = True
+                #     start_display_tip_message = True
+                # if logo_button.mouse_on_button():
+                #     logo_button_pressed = True
 
         if time_difference < m.game_1_normal_time:
             play_time_as_text.change_input_text(m.from_millisecond_to_clock(
