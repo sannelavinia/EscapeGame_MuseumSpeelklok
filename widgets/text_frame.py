@@ -23,7 +23,7 @@ class Text_frame():
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.textrect = self.text.get_rect(
-            center=(self.x_pos - 50, self.y_pos))
+            center=(self.x_pos, self.y_pos))
         self.image = image
         if self.image != None:
             self.image = m.pygame.transform.scale(

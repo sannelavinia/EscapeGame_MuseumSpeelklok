@@ -22,6 +22,8 @@ def push_button_to_start(game_number):
         None, None, None, f"spel {game_number} ", m.white_color, m.code_font, m.WIDTH/4, m.HEIGHT/2)
     text_line_3 = Text_frame(
         None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)+50)
+    text_button_start = Text_frame(
+        None, None, None, "START", m.white_color, m.code_font, m.WIDTH*3/4, m.HEIGHT/2)
 
     # start button
     green_start_button = b.Button(m.green_start_button, m.green_start_button,
@@ -63,6 +65,7 @@ def push_button_to_start(game_number):
 
         # display the button
         green_start_button.display()
+        text_button_start.display()
 
         # delay after clicking before resizing
         if button_pressed:
