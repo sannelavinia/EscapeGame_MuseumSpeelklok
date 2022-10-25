@@ -109,8 +109,8 @@ def game_started(game_number, game_instructions):
     instruction_box = i.Instruction_Box(
         m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18)
 
-    # logo_button = b.Button(m.ms_logo, m.ms_logo,
-    #                        m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
+    logo_button = b.Button(m.museum_logo_grey, m.museum_logo_grey,
+                           m.museum_logo_grey, m.WIDTH-(m.WIDTH/6.7), m.HEIGHT-(m.HEIGHT/12.55), m.WIDTH/6.75, m.HEIGHT/12.5)
 
     tip_button = b.Button(m.tip_button_grey, m.tip_button,
                           m.tip_button_pushed, (m.HEIGHT/8)+10, (m.HEIGHT-m.HEIGHT/8)-10, m.HEIGHT/4, m.HEIGHT/4)
@@ -162,8 +162,7 @@ def game_started(game_number, game_instructions):
         instruction_title.display()
         keyboard.display()
         tip_button.display()
-
-        # logo_button.display()
+        logo_button.display()
 
         # if start_display_tip_icon:
 
@@ -180,12 +179,12 @@ def game_started(game_number, game_instructions):
         if button_pressed:
             timer += 1
 
-        # # logo button functionality
-        # if logo_button_pressed and logo_button.mouse_on_button():
-        #     restart_timer += 1
-        # else:
-        #     logo_button_pressed = False
-        #     restart_timer = 0
+        # logo button functionality
+        if logo_button_pressed and logo_button.mouse_on_button():
+            restart_timer += 1
+        else:
+            logo_button_pressed = False
+            restart_timer = 0
 
         # resize the clicked button
         if timer >= int(m.button_resizing_delay / 3):
@@ -229,8 +228,8 @@ def game_started(game_number, game_instructions):
                     tip_button.display_click_animation()
                     button_pressed = True
                     # start_display_tip_message = True
-                # if logo_button.mouse_on_button():
-                #     logo_button_pressed = True
+                if logo_button.mouse_on_button():
+                    logo_button_pressed = True
 
         if time_difference <= m.game_normal_time:
             play_time_as_text.change_input_text(m.from_millisecond_to_clock(
@@ -257,4 +256,4 @@ def games_window(game_number, game_instructions):
         m.TOTAL_PLAY_TIME = 0
 
     push_button_to_start(game_number)
-    game_started(game_number, game_instructions)
+    return game_started(game_number, game_instructions)

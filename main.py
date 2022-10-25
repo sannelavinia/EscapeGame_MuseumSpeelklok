@@ -219,13 +219,38 @@ def main():
 
     if __name__ == "__main__":
 
+        keep_going = True
+
         while True:
 
-            if start_window() == 1 or explanation_window() == 1 or \
-                    games_window(1, game_1_explanation) == 1 or games_window(2, game_2_explanation) == 1 or \
-                    games_window(3, game_3_explanation) == 1 or games_window(4, game_4_explanation) == 1 or \
-                    games_window(5, game_5_explanation) == 1 or games_window(6, game_6_explanation) == 1 or \
-                    end_window() == 1:
+            if start_window() == 1:
+                keep_going = False
+            if keep_going:
+                if explanation_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(1, game_1_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(2, game_2_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(3, game_3_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(4, game_4_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(5, game_5_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(6, game_6_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if end_window() == 1:
+                    keep_going = False
+
+            if not keep_going:
                 admin_mode()
 
 
