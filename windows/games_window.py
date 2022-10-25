@@ -232,7 +232,7 @@ def game_started(game_number, game_instructions):
                 # if logo_button.mouse_on_button():
                 #     logo_button_pressed = True
 
-        if time_difference <= m.game_1_normal_time:
+        if time_difference <= m.game_normal_time:
             play_time_as_text.change_input_text(m.from_millisecond_to_clock(
                 play_time), m.green_color)
         else:
