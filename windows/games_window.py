@@ -112,8 +112,8 @@ def game_started(game_number, game_instructions):
     # logo_button = b.Button(m.ms_logo, m.ms_logo,
     #                        m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
 
-    # tip_button = b.Button(m.tip_button, m.tip_button,
-    #                       m.tip_button_small, 40, m.HEIGHT-40)
+    tip_button = b.Button(m.tip_button_grey, m.tip_button,
+                          m.tip_button_pushed, (m.HEIGHT/8)+10, (m.HEIGHT-m.HEIGHT/8)-10, m.HEIGHT/4, m.HEIGHT/4)
 
     # tip_message_box = t(
     #     m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
@@ -131,6 +131,7 @@ def game_started(game_number, game_instructions):
     code = ""
     timer = 0  # used for animating the buttons
     start_display_tip_icon = False
+    tip_button_to_yellow = False
     start_display_tip_message = False
     logo_button_pressed = False
     restart_timer = 0
@@ -155,17 +156,17 @@ def game_started(game_number, game_instructions):
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(background_games_template, (0, 0))
 
-        # m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
         play_time_as_text.display()
         title.display()
         instruction_box.display()
         instruction_title.display()
-
         keyboard.display()
+        tip_button.display()
+
         # logo_button.display()
 
         # if start_display_tip_icon:
-        #     tip_button.display()
+
         # if start_display_tip_message:
         #     tip_message_box.display()
         #     tip_message.display()
@@ -188,6 +189,15 @@ def game_started(game_number, game_instructions):
 
         # resize the clicked button
         if timer >= int(m.button_resizing_delay / 3):
+
+            # reset
+            keyboard.resize_buttons()
+            if tip_button_to_yellow:
+                tip_button.restore_normal_size()
+            button_pressed = False
+            pressed_button = 99
+            timer = 0
+
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.game_1_code:
@@ -199,13 +209,6 @@ def game_started(game_number, game_instructions):
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
-
-            # reset
-            keyboard.resize_buttons()
-            # tip_button.restore_normal_size()
-            button_pressed = False
-            pressed_button = 99
-            timer = 0
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -222,20 +225,25 @@ def game_started(game_number, game_instructions):
 
                 if pressed_button in range(0, 12):
                     button_pressed = True
-                # if tip_button.mouse_on_button() and start_display_tip_icon:
-                #     tip_button.display_click_animation()
-                #     button_pressed = True
-                #     start_display_tip_message = True
+                if tip_button.mouse_on_button() and start_display_tip_icon:
+                    tip_button.display_click_animation()
+                    button_pressed = True
+                    # start_display_tip_message = True
                 # if logo_button.mouse_on_button():
                 #     logo_button_pressed = True
 
-        if time_difference < m.game_1_normal_time:
+        if time_difference <= m.game_1_normal_time:
             play_time_as_text.change_input_text(m.from_millisecond_to_clock(
                 play_time), m.green_color)
         else:
             play_time_as_text.change_input_text(m.from_millisecond_to_clock(
                 play_time), m.red_color)
             start_display_tip_icon = True
+
+            # to display the yellow tip image ( instead of the grey one )
+            if not tip_button_to_yellow:
+                tip_button_to_yellow = True
+                tip_button.restore_normal_size()
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
