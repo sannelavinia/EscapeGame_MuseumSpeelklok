@@ -252,6 +252,7 @@ def main():
 
             if not keep_going:
                 admin_mode()
+                keep_going = True
 
 
 main()

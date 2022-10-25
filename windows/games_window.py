@@ -189,14 +189,6 @@ def game_started(game_number, game_instructions):
         # resize the clicked button
         if timer >= int(m.button_resizing_delay / 3):
 
-            # reset
-            keyboard.resize_buttons()
-            if tip_button_to_yellow:
-                tip_button.restore_normal_size()
-            button_pressed = False
-            pressed_button = 99
-            timer = 0
-
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.game_1_code:
@@ -208,6 +200,14 @@ def game_started(game_number, game_instructions):
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
+
+            # reset
+            keyboard.resize_buttons()
+            if tip_button_to_yellow:
+                tip_button.restore_normal_size()
+            button_pressed = False
+            pressed_button = 99
+            timer = 0
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -250,10 +250,6 @@ def game_started(game_number, game_instructions):
 
 #######################################################################################
 def games_window(game_number, game_instructions):
-
-    # reset
-    if game_number == 1:
-        m.TOTAL_PLAY_TIME = 0
 
     push_button_to_start(game_number)
     return game_started(game_number, game_instructions)

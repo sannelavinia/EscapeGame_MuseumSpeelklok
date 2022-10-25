@@ -3,7 +3,8 @@ import widgets.keyboard as k
 
 
 def admin_mode():
-    keyboard = k.Keyboard(m.WIDTH/2, m.HEIGHT/2)
+    keyboard = k.Keyboard((m.WIDTH/2)-(m.button_width),
+                          (m.HEIGHT/2)-(m.button_width))
     button_pressed = False
     pressed_button = 99
     code = ""
@@ -20,6 +21,7 @@ def admin_mode():
 
         # resize the clicked button
         if timer >= m.button_resizing_delay:
+
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.admin_code:
@@ -31,7 +33,7 @@ def admin_mode():
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
-            keyboard.text_frame.change_input_text(code, m.white_color)
+
             # reset
             keyboard.resize_buttons()
             button_pressed = False
