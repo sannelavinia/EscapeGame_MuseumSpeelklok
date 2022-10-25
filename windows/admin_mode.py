@@ -24,6 +24,7 @@ def admin_mode():
             if pressed_button == 10:
                 if code == m.admin_code:
                     m.correct_answer_sound.play()
+                    m.TOTAL_PLAY_TIME = 0
                     return
                 else:
                     m.wrong_answer_sound.play()
@@ -41,7 +42,9 @@ def admin_mode():
         for event in m.pygame.event.get():
 
             # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT:
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or \
+                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
 
             # when pressing a mouse button

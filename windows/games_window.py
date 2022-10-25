@@ -119,9 +119,9 @@ def game_started(game_number):
     tip_message = Text_frame(None, None, None, "hint!", m.black_color,
                              m.main_font, 150, m.HEIGHT - 130)
 
-    # background music
-    m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
-    m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
+    # # background music
+    # m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
+    # m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
     keyboard = k.Keyboard(m.WIDTH*2/3, 300)  # the input keyboard
     button_pressed = False
@@ -142,7 +142,7 @@ def game_started(game_number):
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
-        if restart_timer >= 300:
+        if restart_timer >= 30:
             return 1
 
         time_difference = m.pygame.time.get_ticks()-start_time
@@ -155,7 +155,7 @@ def game_started(game_number):
         title.display()
         instruction_box.display()
         instruction_title.display()
-        # message.display()
+
         keyboard.display()
         logo_button.display()
 
@@ -187,6 +187,7 @@ def game_started(game_number):
             if pressed_button == 10:
                 if code == m.game_1_code:
                     m.correct_answer_sound.play()
+                    m.TOTAL_PLAY_TIME += time_difference
                     return
                 else:
                     m.wrong_answer_sound.play()

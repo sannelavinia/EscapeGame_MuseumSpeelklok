@@ -201,7 +201,7 @@ def from_millisecond_to_clock(time_in_millisecond):
     minutes = int(((time_in_millisecond / 1000) / 60) % 60)
     hours = int((((time_in_millisecond / 1000) / 60) / 60) % 60)
 
-    return f"{hours}:{minutes}:{seconds}:{milliseconds}"
+    return "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
 
 
 #######################################################################################
