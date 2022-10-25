@@ -15,7 +15,7 @@ def start_window():
     start_button = Button(m.button_start, m.button_start,
                           m.button_start, m.WIDTH / 2, m.HEIGHT * 2/3)
 
-    title_1 = Text_frame(None, None, None, "Escaperoom Museum", m.black_color,
+    title_1 = Text_frame(None, None, None, "Escaperoom    Museum", m.black_color,
                          m.code_font, (m.WIDTH / 2) + 50, (m.HEIGHT / 2) - 50)
     title_2 = Text_frame(None, None, None, "Speelklok", m.black_color,
                          m.code_font, (m.WIDTH / 2) + 50, (m.HEIGHT / 2))
