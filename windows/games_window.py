@@ -1,9 +1,8 @@
-from asyncio import wait_for
-from time import sleep
 import main as m
 import widgets.keyboard as k
-from widgets.text_frame import Text_frame
+import widgets.text_frame as t
 import widgets.button as b
+import widgets.instruction_box as i
 
 
 #######################################################################################
@@ -16,13 +15,13 @@ def push_button_to_start(game_number):
         m.single_screw, (m.WIDTH/20, m.WIDTH/20))
 
     # text variables
-    text_line_1 = Text_frame(
+    text_line_1 = t.Text_frame(
         None, None, None, "Klik op de knop om", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)-50)
-    text_line_2 = Text_frame(
+    text_line_2 = t.Text_frame(
         None, None, None, f"spel {game_number} ", m.white_color, m.code_font, m.WIDTH/4, m.HEIGHT/2)
-    text_line_3 = Text_frame(
+    text_line_3 = t.Text_frame(
         None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)+50)
-    text_button_start = Text_frame(
+    text_button_start = t.Text_frame(
         None, None, None, "START", m.white_color, m.code_font, m.WIDTH*3/4, m.HEIGHT/2)
 
     # start button
@@ -96,20 +95,19 @@ def push_button_to_start(game_number):
 
 
 #######################################################################################
-def game_started(game_number):
+def game_started(game_number, game_instructions):
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
         m.background_games_template, (m.WIDTH, m.HEIGHT))
 
-    title = Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
-                       m.speelklok_website_font, m.WIDTH*5/8, m.HEIGHT/11)
+    title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
+                         m.speelklok_website_font, m.WIDTH*5/8, m.HEIGHT/11)
 
-    # instruction_box = Text_frame(m.instruction_box, 500, 400, "", m.black_color,
-    #                              m.code_font, m.WIDTH/3, m.HEIGHT*3/5)
-
-    # instruction_title = Text_frame(None, None, None, "Instructies", m.black_color,
-    #                                m.code_font, 500, 300)
+    instruction_title = t.Text_frame(None, None, None, "Instructies", m.green_color,
+                                     m.code_font, 500, 250)
+    instruction_box = i.Instruction_Box(
+        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18)
 
     # logo_button = b.Button(m.ms_logo, m.ms_logo,
     #                        m.ms_logo, m.WIDTH-70, m.HEIGHT-27)
@@ -117,10 +115,10 @@ def game_started(game_number):
     # tip_button = b.Button(m.tip_button, m.tip_button,
     #                       m.tip_button_small, 40, m.HEIGHT-40)
 
-    # tip_message_box = Text_frame(
+    # tip_message_box = t(
     #     m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
 
-    # tip_message = Text_frame(None, None, None, "hint!", m.black_color,
+    # tip_message = t(None, None, None, "hint!", m.black_color,
     #                          m.main_font, 150, m.HEIGHT - 130)
 
     # # background music
@@ -140,7 +138,7 @@ def game_started(game_number):
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
-    play_time_as_text = Text_frame(None, None, None, m.from_millisecond_to_clock(
+    play_time_as_text = t.Text_frame(None, None, None, m.from_millisecond_to_clock(
         m.TOTAL_PLAY_TIME), m.green_color, m.code_font, m.WIDTH/9, m.HEIGHT/11)
 
     # game loop ( to prevent the window from closing after going throw the current events )
@@ -160,8 +158,8 @@ def game_started(game_number):
         # m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
         play_time_as_text.display()
         title.display()
-        # instruction_box.display()
-        # instruction_title.display()
+        instruction_box.display()
+        instruction_title.display()
 
         keyboard.display()
         # logo_button.display()
@@ -244,7 +242,11 @@ def game_started(game_number):
 
 
 #######################################################################################
-def games_window(game_number):
+def games_window(game_number, game_instructions):
+
+    # reset
+    if game_number == 1:
+        m.TOTAL_PLAY_TIME = 0
 
     push_button_to_start(game_number)
-    game_started(game_number)
+    game_started(game_number, game_instructions)
