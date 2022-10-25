@@ -135,9 +135,9 @@ def game_started(game_number):
 
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
-    previous_second = 0
-    play_time = Text_frame(None, None, None, m.from_millisecond_to_clock(
-        m.TOTAL_PLAY_TIME + time_difference), m.green_color, m.code_font, m.WIDTH/8, (m.HEIGHT/2)-260)
+    previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
+    play_time_as_text = Text_frame(None, None, None, m.from_millisecond_to_clock(
+        m.TOTAL_PLAY_TIME), m.green_color, m.code_font, m.WIDTH/8, (m.HEIGHT/2)-260)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -146,12 +146,14 @@ def game_started(game_number):
             return 1
 
         time_difference = m.pygame.time.get_ticks()-start_time
+        play_time = m.TOTAL_PLAY_TIME + time_difference
+        play_time_seconds = int((play_time / 1000) % 60)
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(m.background_gears, (0, 0))
         m.SCREEN.blit(m.yellowbar, (0, 30))     # display yellow title bar
-        play_time.display()
+        play_time_as_text.display()
         title.display()
         instruction_box.display()
         instruction_title.display()
@@ -166,8 +168,8 @@ def game_started(game_number):
             tip_message.display()
 
         # tik-sound every second
-        if int((time_difference / 1000) % 60) != previous_second:
-            previous_second = int((time_difference / 1000) % 60)
+        if play_time_seconds != previous_second:
+            previous_second = play_time_seconds
             m.clock_tik.play()
 
         # delay after clicking before resizing
@@ -182,7 +184,7 @@ def game_started(game_number):
             restart_timer = 0
 
         # resize the clicked button
-        if timer >= m.button_resizing_delay:
+        if timer >= m.button_resizing_delay / 2:
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.game_1_code:
@@ -225,11 +227,11 @@ def game_started(game_number):
                     logo_button_pressed = True
 
         if time_difference < m.game_1_normal_time:
-            play_time.change_input_text(m.from_millisecond_to_clock(
-                m.TOTAL_PLAY_TIME + time_difference), m.green_color)
+            play_time_as_text.change_input_text(m.from_millisecond_to_clock(
+                play_time), m.green_color)
         else:
-            play_time.change_input_text(m.from_millisecond_to_clock(
-                m.TOTAL_PLAY_TIME + time_difference), m.red_color)
+            play_time_as_text.change_input_text(m.from_millisecond_to_clock(
+                play_time), m.red_color)
             start_display_tip_icon = True
 
         # the window should be updated after each while-loop
