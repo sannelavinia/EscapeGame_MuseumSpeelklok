@@ -103,6 +103,8 @@ red_gear = pygame.image.load("Assets/images/red_gear.png")
 green_gear = pygame.image.load("Assets/images/green_gear.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
+rings_for_gears_with_gears = pygame.image.load(
+    "Assets/images/rings_for_gears_with_gears.png")
 
 single_screw = pygame.image.load("Assets/images/single_screw.png")
 

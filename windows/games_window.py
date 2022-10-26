@@ -13,14 +13,30 @@ def push_button_to_start(game_number):
         m.metal_plate_empty, (m.WIDTH/2, m.HEIGHT))
     single_screw = m.pygame.transform.scale(
         m.single_screw, (m.WIDTH/20, m.WIDTH/20))
+    rings_for_gears_with_gears = m.pygame.transform.scale(
+        m.rings_for_gears_with_gears, (m.WIDTH*0.35, m.HEIGHT*0.23))
 
     # text variables
-    text_line_1 = t.Text_frame(
+    text_1 = t.Text_frame(
         None, None, None, "Klik op de knop om", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)-50)
-    text_line_2 = t.Text_frame(
+    text_2 = t.Text_frame(
         None, None, None, f"spel {game_number} ", m.white_color, m.code_font, m.WIDTH/4, m.HEIGHT/2)
-    text_line_3 = t.Text_frame(
+    text_3 = t.Text_frame(
         None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)+50)
+    # ( Na spel 6! )
+    text_4 = t.Text_frame(
+        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.code_font, m.WIDTH/4, m.HEIGHT*0.24)
+    text_5 = t.Text_frame(
+        None, None, None, "6 tandwielen", m.white_color, m.code_font, m.WIDTH*0.17, m.HEIGHT*0.3)
+    text_6 = t.Text_frame(
+        None, None, None, "verzameld.", m.black_color, m.code_font, m.WIDTH*0.35, m.HEIGHT*0.3)
+    text_7 = t.Text_frame(
+        None, None, None, "Klik op de knop om de", m.black_color, m.code_font, m.WIDTH*0.25, m.HEIGHT*0.36)
+    text_8 = t.Text_frame(
+        None, None, None, "eindmontage", m.white_color, m.code_font, m.WIDTH*0.18, m.HEIGHT*0.42)
+    text_9 = t.Text_frame(
+        None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH*0.35, m.HEIGHT*0.42)
+
     text_button_start = t.Text_frame(
         None, None, None, "START", m.white_color, m.code_font, m.WIDTH*3/4, m.HEIGHT/2)
 
@@ -58,9 +74,20 @@ def push_button_to_start(game_number):
                       (m.WIDTH/20)))
 
         # display the text
-        text_line_1.display()
-        text_line_2.display()
-        text_line_3.display()
+        if game_number <= 6:
+            text_1.display()
+            text_2.display()
+            text_3.display()
+        # ( Na spel 6! )
+        else:
+            text_4.display()
+            text_5.display()
+            text_6.display()
+            text_7.display()
+            text_8.display()
+            text_9.display()
+            m.SCREEN.blit(rings_for_gears_with_gears,
+                          (m.WIDTH*0.08, m.HEIGHT*0.6))
 
         # display the button
         green_start_button.display()
@@ -281,4 +308,10 @@ def game_started(game_number, game_instructions):
 def games_window(game_number, game_instructions):
 
     push_button_to_start(game_number)
-    return game_started(game_number, game_instructions)
+    if game_number != 6:
+        return game_started(game_number, game_instructions)
+    else:
+        return_value = game_started(game_number, game_instructions)
+        if return_value != 1:
+            push_button_to_start(game_number+1)
+        return return_value
