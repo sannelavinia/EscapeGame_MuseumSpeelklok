@@ -102,7 +102,7 @@ def game_started(game_number, game_instructions):
         m.background_games_template, (m.WIDTH, m.HEIGHT))
 
     title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
-                         m.speelklok_website_font, m.WIDTH*5/8, m.HEIGHT/11)
+                         m.speelklok_website_font, m.WIDTH*12/20, m.HEIGHT/11)
 
     instruction_title = t.Text_frame(None, None, None, "Instructies", m.green_color,
                                      m.code_font, 500, 250)
@@ -114,6 +114,9 @@ def game_started(game_number, game_instructions):
 
     tip_button = b.Button(m.tip_button_grey, m.tip_button,
                           m.tip_button_pushed, (m.HEIGHT/8)+10, (m.HEIGHT-m.HEIGHT/8)-10, m.HEIGHT/4, m.HEIGHT/4)
+
+    rings_for_gears = m.pygame.transform.scale(
+        m.rings_for_gears, (m.WIDTH/3, m.HEIGHT/6.5))
 
     # tip_message_box = t(
     #     m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
@@ -155,13 +158,13 @@ def game_started(game_number, game_instructions):
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         m.SCREEN.blit(background_games_template, (0, 0))
-
         play_time_as_text.display()
         title.display()
         instruction_box.display()
         instruction_title.display()
         keyboard.display()
         tip_button.display()
+        m.SCREEN.blit(rings_for_gears, (m.WIDTH/4, m.HEIGHT*16/20))
         logo_button.display()
 
         # if start_display_tip_icon:
