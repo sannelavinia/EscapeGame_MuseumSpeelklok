@@ -118,6 +118,19 @@ def game_started(game_number, game_instructions):
     rings_for_gears = m.pygame.transform.scale(
         m.rings_for_gears, (m.WIDTH/3, m.HEIGHT/6.5))
 
+    red_gear = m.pygame.transform.scale(
+        m.red_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+    orange_gear = m.pygame.transform.scale(
+        m.orange_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+    yellow_gear = m.pygame.transform.scale(
+        m.yellow_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+    green_gear = m.pygame.transform.scale(
+        m.green_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+    blue_gear = m.pygame.transform.scale(
+        m.blue_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+    purple_gear = m.pygame.transform.scale(
+        m.purple_gear, (m.WIDTH*0.07, m.WIDTH*0.07))
+
     # tip_message_box = t(
     #     m.tip_message_box, 100, 200, "", m.black_color, m.main_font, 100, m.HEIGHT - 120)
 
@@ -164,10 +177,23 @@ def game_started(game_number, game_instructions):
         instruction_title.display()
         keyboard.display()
         tip_button.display()
-        m.SCREEN.blit(rings_for_gears, (m.WIDTH/4, m.HEIGHT*16/20))
         logo_button.display()
 
-        # if start_display_tip_icon:
+        if game_number >= 2:
+            m.SCREEN.blit(red_gear, (m.WIDTH*0.2295, m.HEIGHT*0.794))
+        if game_number >= 3:
+            m.SCREEN.blit(orange_gear, (m.WIDTH*0.293, m.HEIGHT*0.858))
+        if game_number >= 4:
+            m.SCREEN.blit(yellow_gear, (m.WIDTH*0.358, m.HEIGHT*0.793))
+        if game_number >= 5:
+            m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT*0.761))
+        if game_number >= 6:
+            m.SCREEN.blit(blue_gear, (m.WIDTH*0.4715, m.HEIGHT*0.866))
+
+        # if game_number == 7
+        # m.SCREEN.blit(purple_gear, (m.WIDTH*0.5355, m.HEIGHT*0.802))
+
+        m.SCREEN.blit(rings_for_gears, (m.WIDTH/4, m.HEIGHT*16/20))
 
         # if start_display_tip_message:
         #     tip_message_box.display()
