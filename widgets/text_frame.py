@@ -50,3 +50,4 @@ class Text_frame():
             font = self.font
 
         self.text = font.render(input_text, True, text_color)
+        self.input_text = input_text
