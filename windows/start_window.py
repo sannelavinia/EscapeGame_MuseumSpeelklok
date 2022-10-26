@@ -1,6 +1,6 @@
 import main as m
-from widgets.button import Button
 from widgets.text_frame import Text_frame
+import widgets.keyboard as k
 
 
 #######################################################################################
@@ -15,11 +15,8 @@ def start_window():
     one_screw = m.pygame.transform.scale(
         m.single_screw, (m.WIDTH/20, m.WIDTH/20))
 
+    
 
-    # title_1 = Text_frame(None, None, None, "Escaperoom Museum", m.black_color,
-    #                      m.code_font, (m.WIDTH / 2) + 50, (m.HEIGHT / 2) - 50)
-    # title_2 = Text_frame(None, None, None, "Speelklok", m.black_color,
-    #                      m.code_font, (m.WIDTH / 2) + 50, (m.HEIGHT / 2))
     welkom_text_1 = Text_frame(None, None, None, "Welkom bij de",
                                m.white_color, m.code_font, m.WIDTH * 0.23, m.HEIGHT*0.42)
     welkom_text_2 = Text_frame(None, None, None, "Escaperoom van",
@@ -30,6 +27,19 @@ def start_window():
                                m.black_color, m.start_font, m.WIDTH * 0.78, m.HEIGHT*0.24 )
     instruction_3 = Text_frame(None, None, None, "te starten.​",
                                m.black_color, m.start_font, m.WIDTH * 0.77, m.HEIGHT*0.28 )
+    #keyboard 
+
+    keyboard = k.Keyboard(m.WIDTH * 0.68, m.HEIGHT * 0.52)
+
+
+
+    button_pressed = False
+    pressed_button = 99
+    code = ""
+    timer = 0
+
+
+
 
     # background music
     m.intro_sound.play()
@@ -39,15 +49,10 @@ def start_window():
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
-        # display the background image ( it should be the fisrt image to display,
-        # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(metalic_background_logo, (0, 0))
+        # displaying the background images 
 
+        m.SCREEN.blit(metalic_background_logo, (0, 0))
         m.SCREEN.blit(metalic_background__info_board, (m.WIDTH/2 , 0))
-        # title_1.display()
-        # title_2.display()
-        # start_button.display()
-        # logo.display()
 
         #displaying the screws
         m.SCREEN.blit(one_screw, (m.WIDTH/40, m.HEIGHT/20))
@@ -72,6 +77,31 @@ def start_window():
         instruction_1.display()
         instruction_2.display()
         instruction_3.display()
+        keyboard.display()
+
+        # delay after clicking before resizing
+        if button_pressed:
+            timer += 1
+
+        # resize the clicked button
+        if timer >= int(m.button_resizing_delay / 3):
+
+            # to the next window (if the code was correct)
+            if pressed_button == 10:
+                if code == m.game_1_code:
+                    m.correct_answer_sound.play()
+                    return
+                else:
+                    m.wrong_answer_sound.play()
+            else:
+                m.click_sound.play()
+            code = keyboard.keyboard_button_pressed(pressed_button, code)
+
+            # reset
+            keyboard.resize_buttons()
+            button_pressed = False
+            pressed_button = 99
+            timer = 0
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -81,6 +111,14 @@ def start_window():
             if event.type == m.pygame.QUIT or \
                     (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
+
+
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+                pressed_button = keyboard.pressed_button()
+
+                if pressed_button in range(0, 12):
+                    button_pressed = True
+
 
             # # when pressing a mouse button
             # if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
