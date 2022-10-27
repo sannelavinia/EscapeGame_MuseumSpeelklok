@@ -1,4 +1,3 @@
-from turtle import textinput
 import main as m
 from widgets.button import Button
 from widgets.text_frame import Text_frame
