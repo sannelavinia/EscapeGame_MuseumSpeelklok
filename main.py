@@ -15,8 +15,8 @@ from windows.teamname_window import team_name_window
 pygame.init()
 
 # global variables
-HEIGHT = pygame.display.Info().current_h     # height of the displayed window
-WIDTH = pygame.display.Info().current_w     # width of the displayed window
+HEIGHT = 1080     # height of the displayed window
+WIDTH = 1920     # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
 
