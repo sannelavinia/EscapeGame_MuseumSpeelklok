@@ -28,4 +28,5 @@ admin_code = "1111"
 
 
 # normal times per game (in milliseconds)
-game_1_normal_time = 180000
+game_normal_time = 180000
+

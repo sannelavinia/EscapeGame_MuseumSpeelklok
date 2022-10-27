@@ -103,6 +103,8 @@ red_gear = pygame.image.load("Assets/images/red_gear.png")
 green_gear = pygame.image.load("Assets/images/green_gear.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
+rings_for_gears_with_gears = pygame.image.load(
+    "Assets/images/rings_for_gears_with_gears.png")
 
 single_screw = pygame.image.load("Assets/images/single_screw.png")
 
@@ -181,6 +183,16 @@ text_file = open("Assets/texts/text_2.txt", 'r')
 text_2 = text_file.read().split('\n')
 text_file = open("Assets/texts/game_1_explanation.txt", 'r')
 game_1_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_2_explanation.txt", 'r')
+game_2_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_3_explanation.txt", 'r')
+game_3_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_4_explanation.txt", 'r')
+game_4_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_5_explanation.txt", 'r')
+game_5_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_6_explanation.txt", 'r')
+game_6_explanation = text_file.read().split('\n')
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -202,7 +214,7 @@ def from_millisecond_to_clock(time_in_millisecond):
     minutes = int(((time_in_millisecond / 1000) / 60) % 60)
     hours = int((((time_in_millisecond / 1000) / 60) / 60) % 60)
 
-    return f"{hours}:{minutes}:{seconds}:{milliseconds}"
+    return "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
 
 
 #######################################################################################
@@ -210,15 +222,40 @@ def main():
 
     if __name__ == "__main__":
 
+        keep_going = True
+
         while True:
-            if start_window() != 1 and explanation_window() != 1 and \
-                    games_window(1) != 1 and games_window(2) != 1 and \
-                    games_window(3) != 1 and games_window(4) != 1 and \
-                    games_window(5) != 1 and games_window(6) != 1 and \
-                    end_window() != 1:
-                pass
-            else:
+
+            if start_window() == 1:
+                keep_going = False
+            if keep_going:
+                if explanation_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(1, game_1_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(2, game_2_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(3, game_3_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(4, game_4_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(5, game_5_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if games_window(6, game_6_explanation) == 1:
+                    keep_going = False
+            if keep_going:
+                if end_window() == 1:
+                    keep_going = False
+
+            if not keep_going:
                 admin_mode()
+                keep_going = True
 
 
 main()
