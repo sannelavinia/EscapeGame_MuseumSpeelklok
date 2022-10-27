@@ -8,6 +8,7 @@ from windows.explanation_window import *
 from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
+from windows.teamname_window import team_name_window
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -210,7 +211,7 @@ def main():
     if __name__ == "__main__":
 
         while True:
-            if start_window() != 1 and explanation_window() != 1 and \
+            if start_window() != 1 and explanation_window() != 1 and team_name_window() != 1 and\
                     games_window(1) != 1 and games_window(2) != 1 and \
                     games_window(3) != 1 and games_window(4) != 1 and \
                     games_window(5) != 1 and games_window(6) != 1 and \

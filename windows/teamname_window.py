@@ -6,6 +6,7 @@ from widgets.text_frame import Text_frame
 def team_name_window():
 
     ## Create the widgets to be displayed on the screen
+    team_name = ""
     continue_button = Button(m.small_green_button, m.small_green_button, m.small_green_button,
     (m.WIDTH*0.6), (m.HEIGHT*0.6), (m.WIDTH*0.05), (m.WIDTH*0.05))
     team_name_inputbox = Text_frame(m.white_input_field_teamname, m.WIDTH*0.35, m.HEIGHT*0.1, "", text_color=m.black_color, x_pos=0.5*m.WIDTH, y_pos=0.5*m.HEIGHT)
@@ -24,7 +25,7 @@ def team_name_window():
         m.pygame.key.start_text_input()
         
         # every interaction with the game is an event ( mouse, Keyboard )
-        for event in m.pygame.event.get():            
+        for event in m.pygame.event.get(): 
             # when pressing the close button "X" at the top-right of the game-window
             if event.type == m.pygame.QUIT:
                 m.pygame.key.stop_text_input()
@@ -36,21 +37,23 @@ def team_name_window():
                 return
 
             if event.type == m.pygame.TEXTINPUT:
-                if event.text == m.pygame.K_BACKSPACE:
-    
-                    # get text input from 0 to -1 i.e. end.
-                    if team_name_inputbox.input_text == "":
-                        continue
-                    else: 
-                        team_name_inputbox.change_input_text(team_name_inputbox.input_text[:-1])
-
                 # text
-                elif len(event.text) >=20:
+                if len(team_name) >= 20:
                     continue
 
                 else:
                     team_name = team_name_inputbox.input_text + event.text
-                    team_name_inputbox.change_input_text(team_name)                               
+                    team_name_inputbox.change_input_text(team_name)   
+
+            if event.type == m.pygame.KEYDOWN: 
+                if event.key == m.pygame.K_BACKSPACE:
+                    # get text input from 0 to -1 i.e. end.
+                    if team_name == "":
+                        continue
+                    else: 
+                        team_name_inputbox.change_input_text(team_name[:-1])
+                        team_name = team_name[:-1]
+                            
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
