@@ -99,6 +99,7 @@ def push_button_to_start(game_number):
 
         # resize the clicked button
         if timer >= m.button_resizing_delay:
+            m.correct_answer_sound.play()
             return
 
         # every interaction with the game is an event ( mouse, Keyboard )
