@@ -23,7 +23,7 @@ class Text_frame():
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.textrect = self.text.get_rect(
-            center=(self.x_pos - 50, self.y_pos))
+            center=(self.x_pos, self.y_pos))
         self.image = image
         if self.image != None:
             self.image = m.pygame.transform.scale(
@@ -42,12 +42,11 @@ class Text_frame():
     def change_input_text(self, input_text=None, text_color=None, font=None):
         """to change the text, color or the font"""
 
-        if input_text == None:
+        if input_text != None:
             input_text = self.input_text
-        if text_color == None:
+        if text_color != None:
             text_color = self.color
-        if font == None:
+        if font != None:
             font = self.font
 
         self.text = font.render(input_text, True, text_color)
-        self.input_text = input_text

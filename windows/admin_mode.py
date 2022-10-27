@@ -3,7 +3,8 @@ import widgets.keyboard as k
 
 
 def admin_mode():
-    keyboard = k.Keyboard(m.WIDTH/2, m.HEIGHT/2)
+    keyboard = k.Keyboard((m.WIDTH/2)-(m.button_width),
+                          (m.HEIGHT/2)-(m.button_width))
     button_pressed = False
     pressed_button = 99
     code = ""
@@ -20,17 +21,19 @@ def admin_mode():
 
         # resize the clicked button
         if timer >= m.button_resizing_delay:
+
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.admin_code:
                     m.correct_answer_sound.play()
+                    m.TOTAL_PLAY_TIME = 0
                     return
                 else:
                     m.wrong_answer_sound.play()
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
-            keyboard.text_frame.change_input_text(code, m.white_color)
+
             # reset
             keyboard.resize_buttons()
             button_pressed = False
@@ -41,7 +44,9 @@ def admin_mode():
         for event in m.pygame.event.get():
 
             # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT:
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or \
+                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
 
             # when pressing a mouse button
