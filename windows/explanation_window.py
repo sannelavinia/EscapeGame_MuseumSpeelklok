@@ -1,15 +1,23 @@
 import pygame
 import main as m
 from widgets.instruction_box import Instruction_Box
+from widgets.button import Button
 import widgets.button as b
 
 #######################################################################################
-
+# Might be useful to load this image in main.py instead of here
+transparent_box = pygame.image.load("Assets/images/HD_transparent_picture.png")
+transparent_box = pygame.transform.scale(transparent_box, (0,0))
 
 def explanation_window():
+    message = Instruction_Box(transparent_box, 1000,
+                              450, m.text_2, m.green_color, m.WIDTH/10000, m.HEIGHT/12)
 
-    message = Instruction_Box(m.instruction_box, 1000,
-                              450, m.text_2, m.black_color, 200, 175)
+    # create title object that will be displayed on the screen
+    title = m.speelklok_website_font.render('Speluitleg', True, m.green_color)
+
+    start_button = Button(m.small_green_button, m.small_green_button, m.small_green_button, m.WIDTH / 1.3, m.HEIGHT / 1.2, 50, 50)
+    start_text = m.main_font.render('Begin', True, m.green_color)
 
     # background music
     # m.intro_sound.play()
@@ -21,42 +29,30 @@ def explanation_window():
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(m.background_gears, (0, 0))
+        black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
+        m.SCREEN.blit(black_screen_background, (0, 0))
+
+        
+        m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH/1.17,m.HEIGHT/1.10)) #This should be a button eventually
+        m.SCREEN.blit(title, (m.WIDTH/35, m.HEIGHT/50))
+
         message.display()
 
-        # display yellow title bar
-        m.SCREEN.blit(m.yellowbar, (0, 30))
-        title1 = m.speelklok_website_font.render(
-            'Spelregels', True, m.black_color)
-        text_rect_title1 = title1.get_rect(
-            center=(m.WIDTH/2, (m.HEIGHT/2)-255))
-        m.SCREEN.blit(title1, text_rect_title1)
-
-        # display logo
-        m.SCREEN.blit(m.ms_logo, (1400-130, 700-46))
-
-        # display button
-        vbutton = b.Button(m.button_verder, m.button_verder,
-                           m.button_verder_small, m.WIDTH//2, (m.HEIGHT//2)+225)
-        vbutton.display()
-        if vbutton.pressed_button() == True:
-            vbutton.display_click_animation()
-            vbutton.display()
-            m.click_sound.play()
-            pygame.time.delay(250)
-            return
+        start_button.display()
+        m.SCREEN.blit(start_text, (m.WIDTH/1.41, m.HEIGHT/1.21))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
             # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT:
+            if event.type == m.pygame.QUIT or \
+            (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
 
-            # when pressing a mouse button
-            # if event.type == m.pygame.MOUSEBUTTONDOWN:
-            #     m.correct_answer_sound.play()
-                # return
+            #when pressing a mouse button
+            if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
+                m.correct_answer_sound.play()
+                return
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
