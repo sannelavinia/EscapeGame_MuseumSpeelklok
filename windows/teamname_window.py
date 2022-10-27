@@ -26,8 +26,9 @@ def team_name_window():
         
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get(): 
-            # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT:
+            # when pressing the close button "X" or at the top-right of the game-window or escape key
+            if event.type == m.pygame.QUIT or \
+                (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.key.stop_text_input()
                 m.pygame.quit()
 
