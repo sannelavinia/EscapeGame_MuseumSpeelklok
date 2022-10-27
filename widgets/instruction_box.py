@@ -9,7 +9,7 @@ class Instruction_Box():
     """
 
     #######################################################################################
-    def __init__(self, image, image_width, image_height, input_text, text_color, x_pos, y_pos):
+    def __init__(self, image, image_width, image_height, input_text, text_color, x_pos, y_pos, text_font=None ):
         """initializer"""
 
         self.x_pos = x_pos
@@ -20,7 +20,10 @@ class Instruction_Box():
         # render the text
         self.text = []
         for line in input_text:
-            self.text.append(m.main_font.render(line, True, text_color))
+            if text_font is None:
+                self.text.append(m.main_font.render(line, True, text_color))
+            else:
+                self.text.append(text_font.render(line, True, text_color))
 
     #######################################################################################
     def display(self):
