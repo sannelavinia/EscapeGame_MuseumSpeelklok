@@ -17,6 +17,7 @@ reduction_ratio = 10
 button_resizing_delay = 10
 
 # codes
+start_code = "0000"
 game_1_code = "0000"
 game_2_code = "0000"
 game_3_code = "0000"
@@ -27,4 +28,4 @@ admin_code = "1111"
 
 
 # normal times per game (in milliseconds)
-game_normal_time = 180000
+game_1_normal_time = 180000

@@ -4,8 +4,7 @@ import widgets.keyboard as k
 
 
 #######################################################################################
-def start_window():
-
+def code_check():
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH/2, m.HEIGHT))
     
@@ -20,13 +19,26 @@ def start_window():
     welkom_text_1 = Text_frame(None, None, None, "Welkom bij de",
                                m.white_color, m.code_font, m.WIDTH * 0.23, m.HEIGHT*0.42)
     welkom_text_2 = Text_frame(None, None, None, "Escaperoom van",
-                               m.white_color, m.code_font, m.WIDTH * 0.245, m.HEIGHT*0.46)                           
+                               m.white_color, m.code_font, m.WIDTH * 0.245, m.HEIGHT*0.46)    
+
+    #code insertion instruction
+                                                      
     instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ​",
-                               m.black_color, m.start_font, m.WIDTH * 0.78, m.HEIGHT*0.2)
+                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.2)
     instruction_2 = Text_frame(None, None, None, "balie hebt gekregen om het spel ​",
-                               m.black_color, m.start_font, m.WIDTH * 0.78, m.HEIGHT*0.24 )
+                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.24 )
     instruction_3 = Text_frame(None, None, None, "te starten.​",
-                               m.black_color, m.start_font, m.WIDTH * 0.77, m.HEIGHT*0.28 )
+                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.28 )
+
+    #in case incorrect code display warning message
+
+    incorrect_code_message_1 = Text_frame(None, None, None, "De code is onjuist. Ga naar de ​",
+                               m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.2)
+    incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ​",
+                               m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.24 )
+    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom.​",
+                               m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.28 ) 
+     
     #keyboard 
 
     keyboard = k.Keyboard(m.WIDTH * 0.68, m.HEIGHT * 0.52)
@@ -37,6 +49,7 @@ def start_window():
     pressed_button = 99
     code = ""
     timer = 0
+    incorrect_code = False
 
 
 
@@ -74,9 +87,16 @@ def start_window():
 
         welkom_text_1.display()
         welkom_text_2.display()
-        instruction_1.display()
-        instruction_2.display()
-        instruction_3.display()
+
+        if not incorrect_code:
+            instruction_1.display()
+            instruction_2.display()
+            instruction_3.display()
+        else:
+            incorrect_code_message_1.display()
+            incorrect_code_message_2.display()
+            incorrect_code_message_3.display()
+
         keyboard.display()
 
         # delay after clicking before resizing
@@ -88,11 +108,12 @@ def start_window():
 
             # to the next window (if the code was correct)
             if pressed_button == 10:
-                if code == m.game_1_code:
+                if code == m.start_code:
                     m.correct_answer_sound.play()
                     return
                 else:
                     m.wrong_answer_sound.play()
+                    incorrect_code = True  
             else:
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
@@ -127,3 +148,46 @@ def start_window():
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
+
+######################################################################################################
+
+def corret_code():
+
+    black_background = m.pygame.transform.scale(
+        m.black_screen_background, (m.WIDTH, m.HEIGHT))
+
+    info_text = Text_frame(None, None, None, "De code is … juist​",
+         m.green_color, m.code_font, m.WIDTH * 0.45, m.HEIGHT*0.32)
+
+    green_gear = m.pygame.transform.scale(
+        m.green_gear, (m.WIDTH * 0.05, m.WIDTH * 0.05))
+
+    while True:
+
+        m.SCREEN.blit(black_background, (0, 0))
+        info_text.display()
+        m.SCREEN.blit(green_gear, (m.WIDTH*0.4, m.HEIGHT* 0.5))
+        m.SCREEN.blit(green_gear, (m.WIDTH*0.46, m.HEIGHT* 0.5))
+        m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT* 0.43))
+        m.SCREEN.blit(green_gear, (m.WIDTH*0.49, m.HEIGHT* 0.43))
+
+        
+        for event in m.pygame.event.get():
+
+            # when pressing the close button "X" at the top-right of the game-window
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or \
+                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
+                m.pygame.quit()
+            
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+                return
+        
+        # the window should be updated after each while-loop
+        m.pygame.display.update()
+
+
+######################################################################################################
+def start_window():
+    code_check()
+    corret_code()
