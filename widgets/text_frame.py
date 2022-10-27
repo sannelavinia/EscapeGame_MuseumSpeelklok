@@ -42,11 +42,11 @@ class Text_frame():
     def change_input_text(self, input_text=None, text_color=None, font=None):
         """to change the text, color or the font"""
 
-        if input_text == None:
+        if input_text != None:
             input_text = self.input_text
-        if text_color == None:
+        if text_color != None:
             text_color = self.color
-        if font == None:
+        if font != None:
             font = self.font
 
         self.text = font.render(input_text, True, text_color)

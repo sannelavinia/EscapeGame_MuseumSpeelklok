@@ -8,6 +8,7 @@ from windows.explanation_window import *
 from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
+from windows.teamname_window import team_name_window
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -230,6 +231,9 @@ def main():
                 keep_going = False
             if keep_going:
                 if explanation_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if team_name_window() == 1:
                     keep_going = False
             if keep_going:
                 if games_window(1, game_1_explanation) == 1:
