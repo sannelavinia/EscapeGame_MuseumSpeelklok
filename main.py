@@ -199,7 +199,7 @@ game_6_explanation = text_file.read().split('\n')
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
 start_font = pygame.font.SysFont("cambria", text_size + 20)
-
+speelklok_website_font = pygame.font.SysFont("cambria", text_size + 20)
 Consolas_font_10 = pygame.font.Font("Assets/fonts/Consolas.ttf", 10)
 Consolas_font_30 = pygame.font.Font("Assets/fonts/Consolas.ttf", 30)
 Consolas_font_50 = pygame.font.Font("Assets/fonts/Consolas.ttf", 50)
