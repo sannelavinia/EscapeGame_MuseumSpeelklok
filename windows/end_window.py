@@ -4,11 +4,6 @@ import main as m
 #######################################################################################
 def end_window():
 
-    # background music
-    m.clapping_sound.play()
-    m.pygame.mixer.music.load("Assets/sounds/end.wav")
-    m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
-
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
