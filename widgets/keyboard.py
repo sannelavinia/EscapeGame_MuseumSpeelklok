@@ -36,38 +36,18 @@ class Keyboard():
                                     m.delete_button_after_click, x_pos, y_pos + 3 * m.button_height, m.button_width, m.button_height)
 
         # code frame
-        self.code_backgroud_1 = m.pygame.transform.scale(
-            m.code_input_frame, (m.button_width*3/4, m.button_height))
-        self.rect_code_backgroud_1 = self.code_backgroud_1.get_rect(
-            center=(self.x_pos-(m.button_width/8), self.y_pos - m.button_height))
-        self.code_backgroud_2 = m.pygame.transform.scale(
-            m.code_input_frame, (m.button_width*3/4, m.button_height))
-        self.rect_code_backgroud_2 = self.code_backgroud_2.get_rect(
-            center=(self.x_pos+5*(m.button_width/8), self.y_pos - m.button_height))
-        self.code_backgroud_3 = m.pygame.transform.scale(
-            m.code_input_frame, (m.button_width*3/4, m.button_height))
-        self.rect_code_backgroud_3 = self.code_backgroud_3.get_rect(
-            center=(self.x_pos+11 * (m.button_width/8), self.y_pos - m.button_height))
-        self.code_backgroud_4 = m.pygame.transform.scale(
-            m.code_input_frame, (m.button_width*3/4, m.button_height))
-        self.rect_code_backgroud_4 = self.code_backgroud_4.get_rect(
-            center=(self.x_pos+17 * (m.button_width/8), self.y_pos - m.button_height))
-        self.code_frame_first_number = Text_frame(
-            None, None, None, "", m.white_color, m.code_font, x_pos-2*(m.button_width/8), y_pos - m.button_height)
-        self.code_frame_second_number = Text_frame(
-            None, None, None, "", m.white_color, m.code_font, x_pos+4*(m.button_width/8), y_pos - m.button_height)
-        self.code_frame_third_number = Text_frame(
-            None, None, None, "", m.white_color, m.code_font, x_pos+10*(m.button_width/8), y_pos - m.button_height)
-        self.code_frame_fourth_number = Text_frame(
-            None, None, None, "", m.white_color, m.code_font, x_pos+16*(m.button_width/8), y_pos - m.button_height)
+        self.code_frame_first_number = Text_frame(m.code_input_frame, m.button_width*3/4, m.button_height,
+                                                  "", m.white_color, m.code_font, self.x_pos-(m.button_width/8), self.y_pos - m.button_height)
+        self.code_frame_second_number = Text_frame(m.code_input_frame, m.button_width*3/4, m.button_height,
+                                                   "", m.white_color, m.code_font, self.x_pos+5*(m.button_width/8), self.y_pos - m.button_height)
+        self.code_frame_third_number = Text_frame(m.code_input_frame, m.button_width*3/4, m.button_height,
+                                                  "", m.white_color, m.code_font, self.x_pos+11 * (m.button_width/8), self.y_pos - m.button_height)
+        self.code_frame_fourth_number = Text_frame(m.code_input_frame, m.button_width*3/4, m.button_height,
+                                                   "", m.white_color, m.code_font, self.x_pos+17 * (m.button_width/8), self.y_pos - m.button_height)
 
     #######################################################################################
     def display(self):
 
-        m.SCREEN.blit(self.code_backgroud_1, self.rect_code_backgroud_1)
-        m.SCREEN.blit(self.code_backgroud_1, self.rect_code_backgroud_2)
-        m.SCREEN.blit(self.code_backgroud_1, self.rect_code_backgroud_3)
-        m.SCREEN.blit(self.code_backgroud_1, self.rect_code_backgroud_4)
         self.code_frame_first_number.display()
         self.code_frame_second_number.display()
         self.code_frame_third_number.display()

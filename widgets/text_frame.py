@@ -48,5 +48,10 @@ class Text_frame():
             text_color = self.color
         if font == None:
             font = self.font
-            
+
+        self.input_text = input_text
+        self.color = text_color
+        self.font = font
         self.text = font.render(input_text, True, text_color)
+        self.textrect = self.text.get_rect(
+            center=(self.x_pos, self.y_pos))

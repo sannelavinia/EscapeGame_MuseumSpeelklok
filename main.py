@@ -15,8 +15,8 @@ from windows.teamname_window import team_name_window
 pygame.init()
 
 # global variables
-HEIGHT = pygame.display.Info().current_h     # height of the displayed window
-WIDTH = pygame.display.Info().current_w     # width of the displayed window
+HEIGHT = 1080     # height of the displayed window
+WIDTH = 1920     # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
 
@@ -199,7 +199,24 @@ game_6_explanation = text_file.read().split('\n')
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
 start_font = pygame.font.SysFont("cambria", text_size + 20)
-speelklok_website_font = pygame.font.Font("Assets/fonts/Avenir Next.ttc", 70)
+
+Consolas_font_10 = pygame.font.Font("Assets/fonts/Consolas.ttf", 10)
+Consolas_font_30 = pygame.font.Font("Assets/fonts/Consolas.ttf", 30)
+Consolas_font_50 = pygame.font.Font("Assets/fonts/Consolas.ttf", 50)
+Consolas_font_70 = pygame.font.Font("Assets/fonts/Consolas.ttf", 70)
+Quantico_font_10 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 10)
+Quantico_font_30 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 30)
+Quantico_font_50 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 50)
+Quantico_font_70 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 70)
+MagdaClean_font_10 = pygame.font.Font(
+    "Assets/fonts/MagdaClean Regular.otf", 10)
+MagdaClean_font_30 = pygame.font.Font(
+    "Assets/fonts/MagdaClean Regular.otf", 30)
+MagdaClean_font_50 = pygame.font.Font(
+    "Assets/fonts/MagdaClean Regular.otf", 50)
+MagdaClean_font_70 = pygame.font.Font(
+    "Assets/fonts/MagdaClean Regular.otf", 70)
+
 
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
