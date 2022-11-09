@@ -12,7 +12,7 @@ transparent_box = pygame.transform.scale(transparent_box, (0, 0))
 
 def explanation_window():
     message = Instruction_Box(transparent_box, 1000,
-                              450, m.text_2, m.green_color, m.WIDTH/10000, m.HEIGHT/12)
+                              450, m.explanation_escaperoom.txt, m.green_color, m.WIDTH/10000, m.HEIGHT/12)
 
     # create title object that will be displayed on the screen
     title = m.Consolas_font_70.render('Speluitleg', True, m.green_color)
