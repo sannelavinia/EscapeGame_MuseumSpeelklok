@@ -15,7 +15,7 @@ def explanation_window():
                               450, m.text_2, m.green_color, m.WIDTH/10000, m.HEIGHT/12)
 
     # create title object that will be displayed on the screen
-    title = m.speelklok_website_font.render('Speluitleg', True, m.green_color)
+    title = m.Consolas_font_70.render('Speluitleg', True, m.green_color)
 
     start_button = Button(m.small_green_button, m.small_green_button,
                           m.small_green_button, m.WIDTH / 1.3, m.HEIGHT / 1.2, 50, 50)
@@ -32,7 +32,7 @@ def explanation_window():
 
         # This should be a button eventually
         m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH/1.17, m.HEIGHT/1.10))
-        m.SCREEN.blit(title, (m.WIDTH/35, m.HEIGHT/50))
+        m.SCREEN.blit(title, (m.WIDTH/35, m.HEIGHT/45))
 
         message.display()
 
