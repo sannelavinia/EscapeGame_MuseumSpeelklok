@@ -2,22 +2,28 @@ import main as m
 from widgets.button import Button
 from widgets.text_frame import Text_frame
 from pygame_vkeyboard import *
-from widgets.azerty_keyboard import *
+
+# Consumer created for onscreen keyboard
+def consumer(text):
+    print('current text: %s' %text)
 
 def team_name_window():
 
     # Create the widgets to be displayed on the screen
     team_name = ""
     continue_button = Button(m.small_green_button, m.small_green_button, m.small_green_button,
-                             (m.WIDTH*0.6), (m.HEIGHT*0.6), (m.WIDTH*0.05), (m.WIDTH*0.05))
+                             (m.WIDTH*0.6), (m.HEIGHT*0.35), (m.WIDTH*0.03), (m.WIDTH*0.03))
     team_name_inputbox = Text_frame(m.white_input_field_teamname, m.WIDTH*0.35,
                                     m.HEIGHT*0.1, "", text_color=m.black_color, x_pos=0.5*m.WIDTH, y_pos=0.5*m.HEIGHT)
     black_screen_background = m.pygame.transform.scale(
         m.black_screen_background, (m.WIDTH, m.HEIGHT))
     continue_text = m.MagdaClean_font_70.render('Verder', True, m.green_color)
+    continue_text_rect = continue_text.get_rect(center=(m.WIDTH*0.5, m.HEIGHT*0.35))
+    enter_teamname_text = m.MagdaClean_font_70.render('Vul hier je teamnaam in!', True, m.green_color)
+    enter_teamname_text_rect = enter_teamname_text.get_rect(center=(m.WIDTH*0.5, m.HEIGHT*0.25))
+ 
 
     # Initialize keyboard
-    #customized_renderer = create_renderer()
     layout = VKeyboardLayout(VKeyboardLayout.AZERTY)
     keyboard = VKeyboard(m.SCREEN, consumer, layout, True, renderer=VKeyboardRenderer.DARK)
 
@@ -26,10 +32,10 @@ def team_name_window():
 
         # display the background image and the widgets, first the background and the rest on top
         m.SCREEN.blit(black_screen_background, (0, 0))
-        m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH*0.85, m.HEIGHT*0.9))
-        team_name_inputbox.display()
+        #team_name_inputbox.display()
         continue_button.display()
-        m.SCREEN.blit(continue_text, (m.WIDTH*0.43, m.HEIGHT*0.57))
+        m.SCREEN.blit(continue_text, continue_text_rect)
+        m.SCREEN.blit(enter_teamname_text, enter_teamname_text_rect)
 
         # Indicates that you can now type input, should display a keyboard on screen if necessary
         m.pygame.key.start_text_input()
@@ -40,6 +46,8 @@ def team_name_window():
         keyboard.update(events)
 
         keyboard.draw(m.SCREEN, True)
+
+        m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH*0.85, m.HEIGHT*0.9))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in events:
