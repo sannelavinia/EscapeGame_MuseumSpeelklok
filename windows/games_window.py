@@ -3,6 +3,7 @@ import widgets.keyboard as k
 import widgets.text_frame as t
 import widgets.button as b
 import widgets.instruction_box as i
+import windows.start_window as sw
 
 
 #######################################################################################
@@ -254,6 +255,7 @@ def game_started(game_number, game_instructions, game_code):
                 if code == game_code:
                     m.correct_answer_sound.play()
                     m.TOTAL_PLAY_TIME += time_difference
+                    sw.corret_code()
                     return
                 else:
                     m.wrong_answer_sound.play()
