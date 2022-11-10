@@ -3,6 +3,7 @@ import widgets.keyboard as k
 import widgets.text_frame as t
 import widgets.button as b
 import widgets.instruction_box as i
+import windows.start_window as sw
 
 
 #######################################################################################
@@ -17,28 +18,30 @@ def push_button_to_start(game_number):
         m.rings_for_gears_with_gears, (m.WIDTH*0.35, m.HEIGHT*0.23))
 
     # text variables
+    text_0 = t.Text_frame(
+        None, None, None, "Druk op start om het spel", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)-60)
     text_1 = t.Text_frame(
-        None, None, None, "Klik op de knop om", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)-50)
+        None, None, None, "te beginnen. De tijd zal", m.black_color, m.Consolas_font_50, m.WIDTH/4, m.HEIGHT/2)
     text_2 = t.Text_frame(
-        None, None, None, f"spel {game_number} ", m.white_color, m.code_font, m.WIDTH/4, m.HEIGHT/2)
+        None, None, None, "dan ook meteen gaan lopen!", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)+60)
     text_3 = t.Text_frame(
-        None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH/4, (m.HEIGHT/2)+50)
-    # ( Na spel 6! )
+        None, None, None, "Dus … GO!!!! ", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)+120)
+# ( Na spel 6! )
     text_4 = t.Text_frame(
-        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.code_font, m.WIDTH/4, m.HEIGHT*0.24)
+        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.Consolas_font_50, m.WIDTH/4, m.HEIGHT*0.24)
     text_5 = t.Text_frame(
-        None, None, None, "6 tandwielen", m.white_color, m.code_font, m.WIDTH*0.17, m.HEIGHT*0.3)
+        None, None, None, "6 tandwielen", m.white_color, m.Consolas_font_50, m.WIDTH*0.17, m.HEIGHT*0.3)
     text_6 = t.Text_frame(
-        None, None, None, "verzameld.", m.black_color, m.code_font, m.WIDTH*0.35, m.HEIGHT*0.3)
+        None, None, None, "verzameld.", m.black_color, m.Consolas_font_50, m.WIDTH*0.35, m.HEIGHT*0.3)
     text_7 = t.Text_frame(
-        None, None, None, "Klik op de knop om de", m.black_color, m.code_font, m.WIDTH*0.25, m.HEIGHT*0.36)
+        None, None, None, "Klik op de knop om de", m.black_color, m.Consolas_font_50, m.WIDTH*0.25, m.HEIGHT*0.36)
     text_8 = t.Text_frame(
-        None, None, None, "eindmontage", m.white_color, m.code_font, m.WIDTH*0.18, m.HEIGHT*0.42)
+        None, None, None, "eindmontage", m.white_color, m.Consolas_font_50, m.WIDTH*0.18, m.HEIGHT*0.42)
     text_9 = t.Text_frame(
-        None, None, None, "te starten", m.black_color, m.code_font, m.WIDTH*0.35, m.HEIGHT*0.42)
+        None, None, None, "te starten", m.black_color, m.Consolas_font_50, m.WIDTH*0.35, m.HEIGHT*0.42)
 
     text_button_start = t.Text_frame(
-        None, None, None, "START", m.white_color, m.code_font, m.WIDTH*3/4, m.HEIGHT/2)
+        None, None, None, "START", m.white_color, m.Consolas_font_70, m.WIDTH*3/4, m.HEIGHT/2)
 
     # start button
     green_start_button = b.Button(m.green_start_button, m.green_start_button,
@@ -75,6 +78,7 @@ def push_button_to_start(game_number):
 
         # display the text
         if game_number <= 6:
+            text_0.display()
             text_1.display()
             text_2.display()
             text_3.display()
@@ -123,19 +127,19 @@ def push_button_to_start(game_number):
 
 
 #######################################################################################
-def game_started(game_number, game_instructions):
+def game_started(game_number, game_instructions, game_code):
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
         m.background_games_template, (m.WIDTH, m.HEIGHT))
 
     title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
-                         m.speelklok_website_font, m.WIDTH*12/20, m.HEIGHT/11)
+                         m.Consolas_font_70, m.WIDTH*12/20, m.HEIGHT/11)
 
     instruction_title = t.Text_frame(None, None, None, "Instructies", m.green_color,
-                                     m.code_font, 500, 250)
+                                     m.Consolas_font_50, 600, 300)
     instruction_box = i.Instruction_Box(
-        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18)
+        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18, m.Consolas_font_30, 40, 60, 50)
 
     logo_button = b.Button(m.museum_logo_grey, m.museum_logo_grey,
                            m.museum_logo_grey, m.WIDTH-(m.WIDTH/6.7), m.HEIGHT-(m.HEIGHT/12.55), m.WIDTH/6.75, m.HEIGHT/12.5)
@@ -169,7 +173,7 @@ def game_started(game_number, game_instructions):
     # m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     # m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
 
-    keyboard = k.Keyboard(m.WIDTH - 350, 350)  # the input keyboard
+    keyboard = k.Keyboard(m.WIDTH - 450, 430)  # the input keyboard
     button_pressed = False
     pressed_button = 99
     code = ""
@@ -184,7 +188,7 @@ def game_started(game_number, game_instructions):
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
     play_time_as_text = t.Text_frame(None, None, None, m.from_millisecond_to_clock(
-        m.TOTAL_PLAY_TIME), m.green_color, m.code_font, m.WIDTH/9, m.HEIGHT/11)
+        m.TOTAL_PLAY_TIME), m.green_color, m.Quantico_font_50, m.WIDTH/9, m.HEIGHT/11)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -248,9 +252,10 @@ def game_started(game_number, game_instructions):
 
             # to the next window (if the code was correct)
             if pressed_button == 10:
-                if code == m.game_1_code:
+                if code == game_code:
                     m.correct_answer_sound.play()
                     m.TOTAL_PLAY_TIME += time_difference
+                    sw.corret_code()
                     return
                 else:
                     m.wrong_answer_sound.play()
@@ -306,13 +311,13 @@ def game_started(game_number, game_instructions):
 
 
 #######################################################################################
-def games_window(game_number, game_instructions):
+def games_window(game_number, game_instructions, game_code):
 
     push_button_to_start(game_number)
     if game_number != 6:
-        return game_started(game_number, game_instructions)
+        return game_started(game_number, game_instructions, game_code)
     else:
-        return_value = game_started(game_number, game_instructions)
+        return_value = game_started(game_number, game_instructions, game_code)
         if return_value != 1:
             push_button_to_start(game_number+1)
         return return_value
