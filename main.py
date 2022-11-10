@@ -253,22 +253,22 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
-                if games_window(1, game_1_explanation) == 1:
+                if games_window(1, game_1_explanation, game_1_code) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(2, game_2_explanation) == 1:
+                if games_window(2, game_2_explanation, game_2_code) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(3, game_3_explanation) == 1:
+                if games_window(3, game_3_explanation, game_3_code) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(4, game_4_explanation) == 1:
+                if games_window(4, game_4_explanation, game_4_code) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(5, game_5_explanation) == 1:
+                if games_window(5, game_5_explanation, game_5_code) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(6, game_6_explanation) == 1:
+                if games_window(6, game_6_explanation, game_6_code) == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:
