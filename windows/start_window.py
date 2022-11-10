@@ -19,24 +19,24 @@ def code_check():
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
-                                m.white_color, m.code_font, m.WIDTH * 0.20, m.HEIGHT*0.42)
+                                m.white_color, m.Consolas_font_50, m.WIDTH * 0.20 + 10 , m.HEIGHT*0.42)
     welcome_text_2 = Text_frame(None, None, None, "Escaperoom van",
-                                m.white_color, m.code_font, m.WIDTH * 0.215, m.HEIGHT*0.46)
+                                m.white_color, m.Consolas_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
 
     # deviding the code-insertion instruction message to 3 separate phrases
-    instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ​",
-                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.2)
-    instruction_2 = Text_frame(None, None, None, "balie hebt gekregen om het spel ​",
-                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.24)
-    instruction_3 = Text_frame(None, None, None, "te starten.​",
-                               m.black_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.28)
+    instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ",
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+    instruction_2 = Text_frame(None, None, None, "balie hebt gekregen om het spel ",
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
+    instruction_3 = Text_frame(None, None, None, "te starten.",
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
     # deviding the incorrect-code  warning message to deviding
-    incorrect_code_message_1 = Text_frame(None, None, None, "De code is onjuist. Ga naar de ​",
-                                          m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.2)
-    incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ​",
-                                          m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.24)
-    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom.​",
-                                          m.red_color, m.start_font, m.WIDTH * 0.75, m.HEIGHT*0.28)
+    incorrect_code_message_1 = Text_frame(None, None, None, "De code is onjuist. Ga naar de ",
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+    incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ",
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
+    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom ",
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
 
     # keyboard
     keyboard = k.Keyboard(m.WIDTH * 0.68, m.HEIGHT * 0.52)
@@ -142,7 +142,7 @@ def corret_code():
 
     # scaling the message to appear once a correct code insertion occur
     info_text = Text_frame(None, None, None, "De code is … juist​",
-                           m.green_color, m.code_font, m.WIDTH * 0.45, m.HEIGHT*0.32)
+                           m.green_color, m.Consolas_font_50, m.WIDTH * 0.45, m.HEIGHT*0.32)
 
     # resizinf the gear image for later use as animation
     green_gear = m.pygame.transform.scale(
