@@ -34,6 +34,6 @@ All notable changes of the project will be documented in this file.
 - Real dialogue for the screens was added
 
 ### Changed
-- Design was edited, better fonts were added
+- Design was edited, the fonts have been changed
 
 ### Fixed
