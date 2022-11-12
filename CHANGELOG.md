@@ -35,5 +35,6 @@ All notable changes of the project will be documented in this file.
 
 ### Changed
 - Design was edited, the fonts have been changed
+- Starting the next release tags for releases will be pointing to the commit of editing the change log file
 
 ### Fixed
