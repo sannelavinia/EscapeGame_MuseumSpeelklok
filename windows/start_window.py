@@ -55,23 +55,27 @@ def code_check():
         m.SCREEN.blit(metalic_background__info_board, (m.WIDTH * 0.5, 0))
 
         # displaying the screws
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05))
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.025) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+        #top left, left part
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
+        #top right, left part
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
+        #top left, right part
         m.SCREEN.blit(one_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), m.HEIGHT * 0.05))
-        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.025) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT-(m.HEIGHT * 0.05) -
-                      (m.WIDTH * 0.05)))
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.025) -
-                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.05) -
-                      (m.WIDTH * 0.05)))
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), m.HEIGHT-(m.HEIGHT * 0.05) -
-                      (m.WIDTH * 0.05)))
-        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.025) -
-                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.05) -
-                      (m.WIDTH * 0.05)))
+                      (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
+        #top right, right part
+        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
+        #bottom left, left part
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
+        #bottom right, left part
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
+        #bottom left, right part
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
+        #bottom right, right part
+        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
 
         # displaying the welcoming message
         welcome_text_1.display()
