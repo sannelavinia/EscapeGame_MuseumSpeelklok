@@ -18,7 +18,7 @@ def explanation_window():
     title = m.MagdaClean_font_70.render('Speluitleg', True, m.green_color)
 
     start_button = Button(m.small_green_button, m.small_green_button,
-                          m.small_green_button, m.WIDTH /8, m.HEIGHT / 1.07, 50, 50)
+                          m.small_green_button, m.WIDTH /8, m.HEIGHT / 1.13, 50, 50)
     start_text = m.MagdaClean_font_30.render('Begin', True, m.green_color)
 
     # game loop ( to prevent the window from closing after going throw the current events )
@@ -37,7 +37,7 @@ def explanation_window():
         message.display()
 
         start_button.display()
-        m.SCREEN.blit(start_text, (m.WIDTH/15, m.HEIGHT/1.08))
+        m.SCREEN.blit(start_text, (m.WIDTH/15, m.HEIGHT/1.15))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
