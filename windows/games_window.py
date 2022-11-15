@@ -19,29 +19,29 @@ def push_button_to_start(game_number):
 
     # text variables
     text_0 = t.Text_frame(
-        None, None, None, "Druk op start om het spel", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)-60)
+        None, None, None, "Druk op start om het spel", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, (m.HEIGHT/2)-60)
     text_1 = t.Text_frame(
-        None, None, None, "te beginnen. De tijd zal", m.black_color, m.Consolas_font_50, m.WIDTH/4, m.HEIGHT/2)
+        None, None, None, "te beginnen. De tijd zal", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, m.HEIGHT/2)
     text_2 = t.Text_frame(
-        None, None, None, "dan ook meteen gaan lopen!", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)+60)
+        None, None, None, "dan ook meteen gaan lopen!", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, (m.HEIGHT/2)+60)
     text_3 = t.Text_frame(
-        None, None, None, "Dus … GO!!!! ", m.black_color, m.Consolas_font_50, m.WIDTH/4, (m.HEIGHT/2)+120)
+        None, None, None, "Dus … GO!!!! ", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, (m.HEIGHT/2)+120)
 # ( Na spel 6! )
     text_4 = t.Text_frame(
-        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.Consolas_font_50, m.WIDTH/4, m.HEIGHT*0.24)
+        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, m.HEIGHT*0.24)
     text_5 = t.Text_frame(
-        None, None, None, "6 tandwielen", m.white_color, m.Consolas_font_50, m.WIDTH*0.17, m.HEIGHT*0.3)
+        None, None, None, "6 tandwielen", m.white_color, m.MagdaClean_font_50, m.WIDTH*0.17, m.HEIGHT*0.3)
     text_6 = t.Text_frame(
-        None, None, None, "verzameld.", m.black_color, m.Consolas_font_50, m.WIDTH*0.35, m.HEIGHT*0.3)
+        None, None, None, "verzameld.", m.black_color, m.MagdaClean_font_50, m.WIDTH*0.35, m.HEIGHT*0.3)
     text_7 = t.Text_frame(
-        None, None, None, "Klik op de knop om de", m.black_color, m.Consolas_font_50, m.WIDTH*0.25, m.HEIGHT*0.36)
+        None, None, None, "Klik op de knop om de", m.black_color, m.MagdaClean_font_50, m.WIDTH*0.25, m.HEIGHT*0.36)
     text_8 = t.Text_frame(
-        None, None, None, "eindmontage", m.white_color, m.Consolas_font_50, m.WIDTH*0.18, m.HEIGHT*0.42)
+        None, None, None, "eindmontage", m.white_color, m.MagdaClean_font_50, m.WIDTH*0.18, m.HEIGHT*0.42)
     text_9 = t.Text_frame(
-        None, None, None, "te starten", m.black_color, m.Consolas_font_50, m.WIDTH*0.35, m.HEIGHT*0.42)
+        None, None, None, "te starten", m.black_color, m.MagdaClean_font_50, m.WIDTH*0.35, m.HEIGHT*0.42)
 
     text_button_start = t.Text_frame(
-        None, None, None, "START", m.white_color, m.Consolas_font_70, m.WIDTH*3/4, m.HEIGHT/2)
+        None, None, None, "START", m.white_color, m.MagdaClean_font_70, m.WIDTH*3/4, m.HEIGHT/2)
 
     # start button
     green_start_button = b.Button(m.green_start_button, m.green_start_button,
@@ -139,12 +139,12 @@ def game_started(game_number, game_instructions, game_code):
         m.background_games_template, (m.WIDTH, m.HEIGHT))
 
     title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
-                         m.Consolas_font_70, m.WIDTH*12/20, m.HEIGHT/11)
+                         m.MagdaClean_font_70, m.WIDTH*12/20, m.HEIGHT/11)
 
     instruction_title = t.Text_frame(None, None, None, "Instructies", m.green_color,
-                                     m.Consolas_font_50, 600, 300)
+                                     m.MagdaClean_font_50, 600, 300)
     instruction_box = i.Instruction_Box(
-        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18, m.Consolas_font_30, 40, 60, 50)
+        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18, m.MagdaClean_font_30, 40, 60, 50)
 
     logo_button = b.Button(m.museum_logo_grey, m.museum_logo_grey,
                            m.museum_logo_grey, m.WIDTH-(m.WIDTH/6.7), m.HEIGHT-(m.HEIGHT/12.55), m.WIDTH/6.75, m.HEIGHT/12.5)
