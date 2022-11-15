@@ -13,7 +13,7 @@ def push_button_to_start(game_number):
     metal_plate_empty = m.pygame.transform.scale(
         m.metal_plate_empty, (m.WIDTH/2, m.HEIGHT))
     single_screw = m.pygame.transform.scale(
-        m.single_screw, (m.WIDTH/20, m.WIDTH/20))
+        m.single_screw, (m.WIDTH * 0.025, m.WIDTH * 0.025))
     rings_for_gears_with_gears = m.pygame.transform.scale(
         m.rings_for_gears_with_gears, (m.WIDTH*0.35, m.HEIGHT*0.23))
 
@@ -59,22 +59,27 @@ def push_button_to_start(game_number):
         m.SCREEN.blit(metal_plate_empty, (m.WIDTH/2, 0))
 
         # display the screws
-        m.SCREEN.blit(single_screw, (m.WIDTH/40, m.HEIGHT/20))
-        m.SCREEN.blit(single_screw, (m.WIDTH/2-(m.WIDTH/40) -
-                      (m.WIDTH/20), m.HEIGHT/20))
-        m.SCREEN.blit(single_screw, (m.WIDTH/2+(m.WIDTH/40), m.HEIGHT/20))
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH/40) -
-                      (m.WIDTH/20), m.HEIGHT/20))
-        m.SCREEN.blit(single_screw, (m.WIDTH/40, m.HEIGHT-(m.HEIGHT/20) -
-                      (m.WIDTH/20)))
-        m.SCREEN.blit(single_screw, (m.WIDTH/2-(m.WIDTH/40) -
-                      (m.WIDTH/20), m.HEIGHT-(m.HEIGHT/20) -
-                      (m.WIDTH/20)))
-        m.SCREEN.blit(single_screw, (m.WIDTH/2+(m.WIDTH/40), m.HEIGHT-(m.HEIGHT/20) -
-                      (m.WIDTH/20)))
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH/40) -
-                      (m.WIDTH/20), m.HEIGHT-(m.HEIGHT/20) -
-                      (m.WIDTH/20)))
+        #top left, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
+        #top right, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
+        #top left, right part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
+                      (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
+        #top right, right part
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
+        #bottom left, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
+        #bottom right, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
+        #bottom left, right part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
+        #bottom right, right part
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                      (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
 
         # display the text
         if game_number <= 6:

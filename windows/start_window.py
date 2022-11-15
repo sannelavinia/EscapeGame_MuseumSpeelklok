@@ -14,7 +14,7 @@ def code_check():
         m.metal_plate_infoboard, (m.WIDTH * 0.5, m.HEIGHT))
 
     # resizing a single screw to later use by the backgrounds
-    one_screw = m.pygame.transform.scale(
+    single_screw = m.pygame.transform.scale(
         m.single_screw, (m.WIDTH * 0.025, m.WIDTH * 0.025))
 
     # deviding the welcoming message to 2 separate phrases
@@ -56,25 +56,25 @@ def code_check():
 
         # displaying the screws
         #top left, left part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
         #top right, left part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
         #top left, right part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5 +
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
                       (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
         #top right, right part
-        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
         #bottom left, left part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
         #bottom right, left part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
         #bottom left, right part
-        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
         #bottom right, right part
-        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
 
         # displaying the welcoming message
