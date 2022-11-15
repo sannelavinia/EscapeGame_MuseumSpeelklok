@@ -15,7 +15,7 @@ def code_check():
 
     # resizing a single screw to later use by the backgrounds
     one_screw = m.pygame.transform.scale(
-        m.single_screw, (m.WIDTH * 0.05, m.WIDTH * 0.05))
+        m.single_screw, (m.WIDTH * 0.025, m.WIDTH * 0.025))
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
