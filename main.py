@@ -83,6 +83,8 @@ background_games_template = pygame.image.load(
     "Assets/images/background_games_template.png")
 black_screen_background = pygame.image.load(
     "Assets/images/black_screen_background.png")
+celebration_background = pygame.image.load(
+    "Assets/images/celebration_background.png")
 
 # frames
 instruction_screen_games = pygame.image.load(
@@ -251,7 +253,7 @@ def main():
                     keep_going = False
             if keep_going:
                 if team_name_window() == 1:
-                    keep_going = False
+                    keep_going = False 
             if keep_going:
                 if games_window(1, game_1_explanation, game_1_code) == 1:
                     keep_going = False
