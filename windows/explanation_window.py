@@ -12,13 +12,13 @@ transparent_box = pygame.transform.scale(transparent_box, (0, 0))
 
 def explanation_window():
     message = Instruction_Box(transparent_box, 1000,
-                              450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/12, m.MagdaClean_font_30)
+                              450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
 
     # create title object that will be displayed on the screen
     title = m.MagdaClean_font_70.render('Speluitleg', True, m.green_color)
 
     start_button = Button(m.small_green_button, m.small_green_button,
-                          m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
+                          m.small_green_button, m.WIDTH /8, m.HEIGHT / 1.13, 50, 50)
     start_text = m.MagdaClean_font_30.render('Begin', True, m.green_color)
 
     # game loop ( to prevent the window from closing after going throw the current events )
@@ -37,7 +37,7 @@ def explanation_window():
         message.display()
 
         start_button.display()
-        m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
+        m.SCREEN.blit(start_text, (m.WIDTH/15, m.HEIGHT/1.15))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
