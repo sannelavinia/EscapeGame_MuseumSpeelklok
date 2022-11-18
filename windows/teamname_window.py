@@ -2,6 +2,8 @@ import main as m
 from widgets.button import Button
 from widgets.text_frame import Text_frame
 from pygame_vkeyboard import *
+from constants import *
+from windows.save_data import save_data
 
 # Consumer created for onscreen keyboard
 def consumer(text):
@@ -66,6 +68,7 @@ def team_name_window():
                     enter_teamname_text_rect = enter_teamname_text.get_rect(center=(m.WIDTH*0.5, m.HEIGHT*0.25))
                 else:
                     team_name = keyboard.get_text()
+                    save_data.team_name_save = team_name
                     return
             
             if len(keyboard.get_text()) > 0:
