@@ -10,7 +10,7 @@ for p in ports:
     # arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)  
 
 
-    serialcomm = serial.Serial(p.name, 9600)
+    serialcomm = serial.Serial(p.device, 9600)
 
     serialcomm.timeout = 1
 
