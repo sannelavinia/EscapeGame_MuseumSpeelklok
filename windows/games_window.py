@@ -47,60 +47,69 @@ def push_button_to_start(game_number):
     green_start_button = b.Button(m.green_start_button, m.green_start_button,
                                   m.green_start_button_pushed, m.WIDTH*3/4, m.HEIGHT/2, m.WIDTH/4, m.WIDTH/4)
 
+    # for speeding up
+    displayed = False
+    button_pushed = True
+
     button_pressed = False
     timer = 0  # used for animating the buttons
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
-        # display the background image ( it should be the fisrt image to display,
-        # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(metal_plate_empty, (0, 0))
-        m.SCREEN.blit(metal_plate_empty, (m.WIDTH/2, 0))
+        if not displayed:
+            # display the background image ( it should be the fisrt image to display,
+            # so that the other objects will be displayed ontop of it )
+            m.SCREEN.blit(metal_plate_empty, (0, 0))
+            m.SCREEN.blit(metal_plate_empty, (m.WIDTH/2, 0))
 
-        # display the screws
-        #top left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
-        #top right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #top left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
-        #top right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #bottom left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
-        #bottom right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
-        #bottom left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
-        #bottom right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
+            # display the screws
+            # top left, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05))
+            # top right, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                                         (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+            # top left, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
+                                         (m.WIDTH * 0.025), m.HEIGHT * 0.05))
+            # top right, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                                         (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+            # bottom left, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.025,
+                                         (m.HEIGHT - (m.HEIGHT * 0.1))))
+            # bottom right, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+                                         (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
+            # bottom left, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
+                                         (m.WIDTH * 0.025), (m.HEIGHT - (m.HEIGHT * 0.1))))
+            # bottom right, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                                         (m.WIDTH * 0.05), (m.HEIGHT - (m.HEIGHT * 0.1))))
 
-        # display the text
-        if game_number <= 6:
-            text_0.display()
-            text_1.display()
-            text_2.display()
-            text_3.display()
-        # ( Na spel 6! )
-        else:
-            text_4.display()
-            text_5.display()
-            text_6.display()
-            text_7.display()
-            text_8.display()
-            text_9.display()
-            m.SCREEN.blit(rings_for_gears_with_gears,
-                          (m.WIDTH*0.08, m.HEIGHT*0.6))
+            # display the text
+            if game_number <= 6:
+                text_0.display()
+                text_1.display()
+                text_2.display()
+                text_3.display()
+            # ( Na spel 6! )
+            else:
+                text_4.display()
+                text_5.display()
+                text_6.display()
+                text_7.display()
+                text_8.display()
+                text_9.display()
+                m.SCREEN.blit(rings_for_gears_with_gears,
+                              (m.WIDTH*0.08, m.HEIGHT*0.6))
 
-        # display the button
-        green_start_button.display()
-        text_button_start.display()
+        if button_pushed:
+            # display the button
+            green_start_button.display()
+            text_button_start.display()
+            button_pushed = False
 
         # delay after clicking before resizing
         if button_pressed:
@@ -126,6 +135,9 @@ def push_button_to_start(game_number):
                 if green_start_button.mouse_on_button():
                     green_start_button.display_click_animation()
                     button_pressed = True
+                    button_pushed = True
+
+        displayed = True
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
@@ -263,10 +275,12 @@ def game_started(game_number, game_instructions, game_code):
                     sw.corret_code()
                     return
                 else:
+                    code = keyboard.keyboard_button_pressed(
+                        pressed_button, code, m.red_color)
                     m.wrong_answer_sound.play()
             else:
                 m.click_sound.play()
-            code = keyboard.keyboard_button_pressed(pressed_button, code)
+                code = keyboard.keyboard_button_pressed(pressed_button, code)
 
             # reset
             keyboard.resize_buttons()

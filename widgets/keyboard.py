@@ -125,7 +125,7 @@ class Keyboard():
         self.__init__(x_pos, y_pos)
 
     #######################################################################################
-    def keyboard_button_pressed(self, pressed_button, code):
+    def keyboard_button_pressed(self, pressed_button, code, color=m.white_color):
         if len(code) < 4:
             if pressed_button == 0:
                 code += "0"
@@ -150,20 +150,21 @@ class Keyboard():
         if pressed_button == 11:    # when pressing the delete button
             if len(code) > 0:
                 code = code[:-1]
-                self.code_frame_first_number.change_input_text("")
-                self.code_frame_second_number.change_input_text("")
-                self.code_frame_third_number.change_input_text("")
-                self.code_frame_fourth_number.change_input_text("")
+                self.code_frame_first_number.change_input_text("", color)
+                self.code_frame_second_number.change_input_text("", color)
+                self.code_frame_third_number.change_input_text("", color)
+                self.code_frame_fourth_number.change_input_text("", color)
 
         # changing the displayed code
         if len(code) > 0:
-            self.code_frame_first_number.change_input_text(code[0])
+            self.code_frame_first_number.change_input_text(code[0], color)
             if len(code) > 1:
-                self.code_frame_second_number.change_input_text(code[1])
+                self.code_frame_second_number.change_input_text(code[1], color)
                 if len(code) > 2:
-                    self.code_frame_third_number.change_input_text(code[2])
+                    self.code_frame_third_number.change_input_text(
+                        code[2], color)
                     if len(code) > 3:
                         self.code_frame_fourth_number.change_input_text(
-                            code[3])
+                            code[3], color)
 
         return code
