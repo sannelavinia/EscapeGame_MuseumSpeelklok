@@ -1,2 +1,2 @@
 import os
-os.startfile("My project (1).exe")
+os.system("wine 'My project (1).exe'")
