@@ -26,51 +26,6 @@ pygame.display.set_caption("Speelklok")  # title of the window
 ICON = pygame.image.load("Assets/images/saxophone.png")  # icon of the game
 pygame.display.set_icon(ICON)
 
-#############################################################################################
-################################# ( te verwijderen ) ########################################
-#############################################################################################
-# images
-background_start = pygame.image.load("Assets/images/background_start.jpg")
-background_start = pygame.transform.scale(background_start, (WIDTH, HEIGHT))
-background_game_1 = pygame.image.load("Assets/images/background_game_1.jpg")
-background_game_1 = pygame.transform.scale(background_game_1, (WIDTH, HEIGHT))
-background_game_2 = pygame.image.load("Assets/images/background_game_2.jpg")
-background_game_2 = pygame.transform.scale(background_game_2, (WIDTH, HEIGHT))
-background_game_3 = pygame.image.load("Assets/images/background_game_3.jpg")
-background_game_3 = pygame.transform.scale(background_game_3, (WIDTH, HEIGHT))
-background_game_4 = pygame.image.load("Assets/images/background_game_4.jpg")
-background_game_4 = pygame.transform.scale(background_game_4, (WIDTH, HEIGHT))
-background_game_5 = pygame.image.load("Assets/images/background_game_5.jpg")
-background_game_5 = pygame.transform.scale(background_game_5, (WIDTH, HEIGHT))
-background_game_6 = pygame.image.load("Assets/images/background_game_6.jpg")
-background_game_6 = pygame.transform.scale(background_game_6, (WIDTH, HEIGHT))
-background_end = pygame.image.load("Assets/images/background_end.jpg")
-background_end = pygame.transform.scale(background_end, (WIDTH, HEIGHT))
-background_gears = pygame.image.load("Assets/images/background_gearsv1.jpg")
-background_gears = pygame.transform.scale(background_gears, (WIDTH, HEIGHT))
-yellowbar = pygame.image.load("Assets/images/yellowbar.jpg")
-yellowbar = pygame.transform.scale(yellowbar, (1400, 120))
-
-message = pygame.image.load("Assets/images/message.png")
-instruction_box = pygame.image.load("Assets/images/instructions_text_box.png")
-tip_message_box = pygame.image.load("Assets/images/tip_message_box.png")
-
-# buttons
-button_verder = pygame.image.load("Assets/images/button_verder.jpg")
-button_verder = pygame.transform.scale(button_verder, (166, 45))
-button_verder_small = pygame.transform.scale(
-    button_verder, (166 - 100, 45 - 10))
-
-button_start = pygame.image.load("Assets/images/button_start.png")
-button_start = pygame.transform.scale(button_start, (166, 45))
-tip_button_small = pygame.image.load("Assets/images/tip_button.png")
-
-# code frame
-text_frame = pygame.image.load("Assets/images/frame.png")
-
-#############################################################################################
-################################# ( te gebruiken ) ##########################################
-#############################################################################################
 # images
 
 # museum_logo
