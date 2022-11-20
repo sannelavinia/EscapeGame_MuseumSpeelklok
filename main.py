@@ -253,7 +253,7 @@ def main():
                     keep_going = False
             if keep_going:
                 if team_name_window() == 1:
-                    keep_going = False 
+                    keep_going = False
             if keep_going:
                 if games_window(1, game_1_explanation, game_1_code) == 1:
                     keep_going = False

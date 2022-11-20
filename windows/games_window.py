@@ -104,6 +104,7 @@ def push_button_to_start(game_number):
                 text_9.display()
                 m.SCREEN.blit(rings_for_gears_with_gears,
                               (m.WIDTH*0.08, m.HEIGHT*0.6))
+            displayed = True
 
         if button_pushed:
             # display the button
@@ -118,6 +119,7 @@ def push_button_to_start(game_number):
         # resize the clicked button
         if timer >= m.button_resizing_delay:
             m.correct_answer_sound.play()
+            button_pushed = True
             return
 
         # every interaction with the game is an event ( mouse, Keyboard )
@@ -137,8 +139,6 @@ def push_button_to_start(game_number):
                     button_pressed = True
                     button_pushed = True
 
-        displayed = True
-
         # the window should be updated after each while-loop
         m.pygame.display.update()
 
@@ -149,6 +149,9 @@ def game_started(game_number, game_instructions, game_code):
     # resizing the images
     background_games_template = m.pygame.transform.scale(
         m.background_games_template, (m.WIDTH, m.HEIGHT))
+
+    timer_bachground = m.pygame.transform.scale(
+        m.black_screen_background, (390, 200))
 
     title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
                          m.MagdaClean_font_70, m.WIDTH*12/20, m.HEIGHT/11)
@@ -207,6 +210,10 @@ def game_started(game_number, game_instructions, game_code):
     play_time_as_text = t.Text_frame(None, None, None, m.from_millisecond_to_clock(
         m.TOTAL_PLAY_TIME), m.green_color, m.Quantico_font_50, m.WIDTH/9, m.HEIGHT/11)
 
+    # for speeding up
+    displayed = False
+    button_pushed = True
+
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
@@ -217,32 +224,37 @@ def game_started(game_number, game_instructions, game_code):
         play_time = m.TOTAL_PLAY_TIME + time_difference
         play_time_seconds = int((play_time / 1000) % 60)
 
-        # display the background image ( it should be the fisrt image to display,
-        # so that the other objects will be displayed ontop of it )
-        m.SCREEN.blit(background_games_template, (0, 0))
+        if not displayed:
+            # display the background image ( it should be the fisrt image to display,
+            # so that the other objects will be displayed ontop of it )
+            m.SCREEN.blit(background_games_template, (0, 0))
+            title.display()
+            instruction_box.display()
+            instruction_title.display()
+            logo_button.display()
+            if game_number >= 2:
+                m.SCREEN.blit(red_gear, (m.WIDTH*0.2295, m.HEIGHT*0.794))
+            if game_number >= 3:
+                m.SCREEN.blit(orange_gear, (m.WIDTH*0.293, m.HEIGHT*0.858))
+            if game_number >= 4:
+                m.SCREEN.blit(yellow_gear, (m.WIDTH*0.358, m.HEIGHT*0.793))
+            if game_number >= 5:
+                m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT*0.761))
+            if game_number >= 6:
+                m.SCREEN.blit(blue_gear, (m.WIDTH*0.4715, m.HEIGHT*0.866))
+            m.SCREEN.blit(rings_for_gears, (m.WIDTH/4, m.HEIGHT*16/20))
+
+            displayed = True
+
+        # redisplay the pushed button
+        if button_pushed:
+            keyboard.display()
+            tip_button.display()
+            button_pushed = False
+
+        # display the timer
+        m.SCREEN.blit(timer_bachground, (0, 0))
         play_time_as_text.display()
-        title.display()
-        instruction_box.display()
-        instruction_title.display()
-        keyboard.display()
-        tip_button.display()
-        logo_button.display()
-
-        if game_number >= 2:
-            m.SCREEN.blit(red_gear, (m.WIDTH*0.2295, m.HEIGHT*0.794))
-        if game_number >= 3:
-            m.SCREEN.blit(orange_gear, (m.WIDTH*0.293, m.HEIGHT*0.858))
-        if game_number >= 4:
-            m.SCREEN.blit(yellow_gear, (m.WIDTH*0.358, m.HEIGHT*0.793))
-        if game_number >= 5:
-            m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT*0.761))
-        if game_number >= 6:
-            m.SCREEN.blit(blue_gear, (m.WIDTH*0.4715, m.HEIGHT*0.866))
-
-        # if game_number == 7
-        # m.SCREEN.blit(purple_gear, (m.WIDTH*0.5355, m.HEIGHT*0.802))
-
-        m.SCREEN.blit(rings_for_gears, (m.WIDTH/4, m.HEIGHT*16/20))
 
         # if start_display_tip_message:
         #     tip_message_box.display()
@@ -287,6 +299,7 @@ def game_started(game_number, game_instructions, game_code):
             if tip_button_to_yellow:
                 tip_button.restore_normal_size()
             button_pressed = False
+            button_pushed = True
             pressed_button = 99
             timer = 0
 
@@ -302,6 +315,7 @@ def game_started(game_number, game_instructions, game_code):
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
                 pressed_button = keyboard.pressed_button()
+                button_pushed = True
 
                 if pressed_button in range(0, 12):
                     button_pressed = True
