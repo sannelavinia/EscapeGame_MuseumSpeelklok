@@ -26,7 +26,6 @@ def admin_mode():
             if pressed_button == 10:
                 if code == m.admin_code:
                     m.correct_answer_sound.play()
-                    m.TOTAL_PLAY_TIME = 0
                     return
                 else:
                     m.wrong_answer_sound.play()
