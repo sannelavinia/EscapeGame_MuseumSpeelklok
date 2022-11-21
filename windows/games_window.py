@@ -421,6 +421,7 @@ def game_started(
     restart_timer = 0
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
+    miliseconds_total_time = m.TOTAL_PLAY_TIME % 1000
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
     play_time_as_text = t.Text_frame(
         None,
@@ -430,7 +431,19 @@ def game_started(
         m.green_color,
         m.Quantico_font_50,
         m.WIDTH / 9,
-        m.HEIGHT / 11,
+        m.HEIGHT / 11
+    )
+
+    tip_time = t.Text_frame(
+        None,
+        None,
+        None,
+        m.from_millisecond_to_clock(
+            m.game_tip_1_time, True),
+        m.black_color,
+        m.Quantico_font_50,
+        (m.HEIGHT / 8) + 10,
+        (m.HEIGHT - m.HEIGHT / 8) - 10,
     )
 
     # for speeding up
@@ -438,7 +451,7 @@ def game_started(
     button_pushed = True
     tip_message_1_displayed = False
     tip_message_2_displayed = False
-    tip_button_displayed = 0
+    reset_tip_button = True
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
@@ -473,16 +486,28 @@ def game_started(
             displayed = True
 
         # redisplay the pushed button
-        if button_pushed or tip_button_displayed == 1:
+        if button_pushed:
             keyboard.display()
             tip_button.display()
+            if time_difference < m.game_tip_2_time:
+                tip_time.display()
             button_pushed = False
-            if tip_button_displayed == 1:
-                tip_button_displayed = 2
 
         # display the timer
         m.SCREEN.blit(timer_bachground, (0, 0))
         play_time_as_text.display()
+
+        # tik-sound every second
+        if play_time_seconds != previous_second:
+            # dispaly tip button with timer on it
+            if time_difference < m.game_tip_2_time:
+                tip_button.display()
+                tip_time.display()
+            elif reset_tip_button:
+                tip_button.display()
+                reset_tip_button = False
+            previous_second = play_time_seconds
+            m.clock_tik.play()
 
         # display the tip message
         if display_tip_message_1 and time_difference >= m.game_tip_1_time:
@@ -505,11 +530,6 @@ def game_started(
                 m.SCREEN.blit(tip_image_4, (44, 240))
             tip_message_2_displayed = True
             display_tip_message_2 = False
-
-        # tik-sound every second
-        if play_time_seconds != previous_second:
-            previous_second = play_time_seconds
-            m.clock_tik.play()
 
         # delay after clicking before resizing
         if button_pressed:
@@ -602,12 +622,20 @@ def game_started(
                 m.from_millisecond_to_clock(play_time), m.red_color
             )
 
+        # display the tip button timer
+        if time_difference <= m.game_tip_1_time:
+            tip_time.change_input_text(m.from_millisecond_to_clock(
+                (m.game_tip_1_time) - time_difference, True))
+        elif time_difference <= m.game_tip_2_time:
+            tip_time.change_input_text(m.from_millisecond_to_clock(
+                (m.game_tip_2_time) - time_difference, True))
+
         # to display the yellow tip image ( instead of the grey one )
-        if tip_button_displayed == 0 and time_difference >= m.game_tip_1_time:
-            tip_button_displayed = 1
+        if time_difference >= m.game_tip_1_time:
             start_display_tip_icon = True
-            tip_button_to_yellow = True
-            tip_button.restore_normal_size()
+            if not tip_button_to_yellow:
+                tip_button_to_yellow = True
+                tip_button.restore_normal_size()
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
@@ -626,7 +654,7 @@ def games_window(
     game_tip_4_image=None
 ):
 
-    # push_button_to_start(game_number)
+    push_button_to_start(game_number)
     if game_number != 6:
         return game_started(
             game_number,

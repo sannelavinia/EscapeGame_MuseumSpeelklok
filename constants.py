@@ -31,4 +31,4 @@ admin_code = "1111"
 # normal times per game (in milliseconds)
 game_normal_time = 180000   # 3 min
 game_tip_1_time = 180000  # 3 min
-game_tip_2_time = 60000  # 4 min (3 min first tip + 1 min second tip)
+game_tip_2_time = 240000  # 4 min (3 min first tip + 1 min second tip)

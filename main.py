@@ -208,12 +208,15 @@ TOTAL_PLAY_TIME = 0
 
 
 #######################################################################################
-def from_millisecond_to_clock(time_in_millisecond):
+def from_millisecond_to_clock(time_in_millisecond, only_min=False):
 
     milliseconds = time_in_millisecond % 1000
     seconds = int((time_in_millisecond / 1000) % 60)
     minutes = int(((time_in_millisecond / 1000) / 60) % 60)
     hours = int((((time_in_millisecond / 1000) / 60) / 60) % 60)
+
+    if only_min:
+        return "{:<2}:{:<2}".format(str(minutes).zfill(2), str(seconds).zfill(2))
 
     return "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
 
