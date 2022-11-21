@@ -167,11 +167,13 @@ def push_button_to_start(game_number):
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
+                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 +
+                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -219,7 +221,8 @@ def push_button_to_start(game_number):
                 text_8.display()
                 text_9.display()
                 m.SCREEN.blit(
-                    rings_for_gears_with_gears, (m.WIDTH * 0.08, m.HEIGHT * 0.6)
+                    rings_for_gears_with_gears, (m.WIDTH *
+                                                 0.08, m.HEIGHT * 0.6)
                 )
             displayed = True
 
@@ -262,15 +265,65 @@ def push_button_to_start(game_number):
 
 
 #######################################################################################
-def game_started(game_number, game_instructions, game_code):
+def game_started(
+    game_number,
+    game_instructions,
+    game_code,
+    game_tip_1=None,
+    game_tip_2=None,
+    game_tip_1_image=None,
+    game_tip_2_image=None,
+    game_tip_3_image=None,
+    game_tip_4_image=None
+):
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
         m.background_games_template, (m.WIDTH, m.HEIGHT)
     )
 
-    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 200))
+    rings_for_gears = m.pygame.transform.scale(
+        m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)
+    )
 
+    red_gear = m.pygame.transform.scale(
+        m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    orange_gear = m.pygame.transform.scale(
+        m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    yellow_gear = m.pygame.transform.scale(
+        m.yellow_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    green_gear = m.pygame.transform.scale(
+        m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    blue_gear = m.pygame.transform.scale(
+        m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+
+    timer_bachground = m.pygame.transform.scale(
+        m.black_screen_background, (390, 200))
+
+    if game_tip_1_image != None:
+        tip_image_1 = m.pygame.transform.scale(
+            game_tip_1_image, (615, (m.HEIGHT / 2)-50))
+
+    if game_tip_2_image != None:
+        tip_image_2 = m.pygame.transform.scale(
+            game_tip_2_image, (615, (m.HEIGHT / 2)-50))
+
+    if game_tip_3_image != None:
+        tip_image_3 = m.pygame.transform.scale(
+            game_tip_3_image, (922, (m.HEIGHT / 2)-50))
+
+    if game_tip_4_image != None:
+        if game_tip_3_image != None:
+            tip_image_4 = m.pygame.transform.scale(
+                game_tip_4_image, (308, (m.HEIGHT / 2)-50))
+        else:
+            tip_image_4 = m.pygame.transform.scale(
+                game_tip_4_image, (1230, (m.HEIGHT / 2)-50))
+
+    # texts
     title = t.Text_frame(
         None,
         None,
@@ -285,9 +338,10 @@ def game_started(game_number, game_instructions, game_code):
     instruction_title = t.Text_frame(
         None, None, None, "Instructies", m.green_color, m.MagdaClean_font_50, 600, 300
     )
+
     instruction_box = i.Instruction_Box(
         m.instruction_screen_games,
-        (m.WIDTH * 4 / 6) + 36,
+        1316,
         (m.HEIGHT / 2) + 30,
         game_instructions,
         m.green_color,
@@ -299,6 +353,37 @@ def game_started(game_number, game_instructions, game_code):
         50,
     )
 
+    if game_tip_1 != None:
+        tip_message_1 = i.Instruction_Box(
+            m.instruction_screen_games,
+            1316,
+            (m.HEIGHT / 2) + 30,
+            game_tip_1,
+            m.green_color,
+            0,
+            (m.HEIGHT / 6) + 18,
+            m.MagdaClean_font_30,
+            40,
+            60,
+            50,
+        )
+
+    if game_tip_2 != None:
+        tip_message_2 = i.Instruction_Box(
+            m.instruction_screen_games,
+            1316,
+            (m.HEIGHT / 2) + 30,
+            game_tip_2,
+            m.green_color,
+            0,
+            (m.HEIGHT / 6) + 18,
+            m.MagdaClean_font_30,
+            40,
+            60,
+            50,
+        )
+
+    # buttons
     logo_button = b.Button(
         m.museum_logo_grey,
         m.museum_logo_grey,
@@ -319,36 +404,6 @@ def game_started(game_number, game_instructions, game_code):
         m.HEIGHT / 4,
     )
 
-    rings_for_gears = m.pygame.transform.scale(
-        m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)
-    )
-
-    red_gear = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
-    orange_gear = m.pygame.transform.scale(
-        m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
-    )
-    yellow_gear = m.pygame.transform.scale(
-        m.yellow_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
-    )
-    green_gear = m.pygame.transform.scale(
-        m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
-    )
-    blue_gear = m.pygame.transform.scale(m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
-
-    tip_message = i.Instruction_Box(
-        m.instruction_screen_games,
-        (m.WIDTH * 4 / 6) + 36,
-        (m.HEIGHT / 2) + 30,
-        m.text_2,
-        m.green_color,
-        0,
-        (m.HEIGHT / 6) + 18,
-        m.MagdaClean_font_30,
-        40,
-        60,
-        50,
-    )
-
     # # background music
     # m.pygame.mixer.music.load("Assets/sounds/game_1.wav")
     # m.pygame.mixer.music.play(-1)  # play the music in an infinite loop
@@ -364,7 +419,6 @@ def game_started(game_number, game_instructions, game_code):
     display_tip_message_2 = False
     logo_button_pressed = False
     restart_timer = 0
-
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
@@ -432,12 +486,23 @@ def game_started(game_number, game_instructions, game_code):
 
         # display the tip message
         if display_tip_message_1:
-            tip_message.display()
+            if game_tip_1 != None:
+                tip_message_1.display()
+            if game_tip_1_image != None:
+                m.SCREEN.blit(tip_image_1, (44, 240))
+            if game_tip_2_image != None:
+                m.SCREEN.blit(tip_image_2, (659, 240))
             display_tip_message_1 = False
             tip_message_1_displayed = True
+
         if display_tip_message_2:
-            # here display the second tip
-            m.correct_answer_sound.play()
+            if game_tip_2 != None:
+                tip_message_2.display()
+            if game_tip_3_image != None:
+                m.SCREEN.blit(tip_image_3, (44, 240))
+                m.SCREEN.blit(tip_image_4, (966, 240))
+            elif game_tip_4_image != None:
+                m.SCREEN.blit(tip_image_4, (44, 240))
             tip_message_2_displayed = True
             display_tip_message_2 = False
 
@@ -475,7 +540,8 @@ def game_started(game_number, game_instructions, game_code):
                         m.wrong_answer_sound.play()
                 else:
                     m.click_sound.play()
-                    code = keyboard.keyboard_button_pressed(pressed_button, code)
+                    code = keyboard.keyboard_button_pressed(
+                        pressed_button, code)
             else:
                 m.click_sound.play()
 
@@ -545,13 +611,43 @@ def game_started(game_number, game_instructions, game_code):
 
 
 #######################################################################################
-def games_window(game_number, game_instructions, game_code):
+def games_window(
+    game_number,
+    game_instructions,
+    game_code,
+    game_tip_1=None,
+    game_tip_2=None,
+    game_tip_1_image=None,
+    game_tip_2_image=None,
+    game_tip_3_image=None,
+    game_tip_4_image=None
+):
 
-    push_button_to_start(game_number)
+    # push_button_to_start(game_number)
     if game_number != 6:
-        return game_started(game_number, game_instructions, game_code)
+        return game_started(
+            game_number,
+            game_instructions,
+            game_code,
+            game_tip_1,
+            game_tip_2,
+            game_tip_1_image,
+            game_tip_2_image,
+            game_tip_3_image,
+            game_tip_4_image
+        )
     else:
-        return_value = game_started(game_number, game_instructions, game_code)
+        return_value = game_started(
+            game_number,
+            game_instructions,
+            game_code,
+            game_tip_1,
+            game_tip_2,
+            game_tip_1_image,
+            game_tip_2_image,
+            game_tip_3_image,
+            game_tip_4_image
+        )
         if return_value != 1:
             push_button_to_start(game_number + 1)
         return return_value

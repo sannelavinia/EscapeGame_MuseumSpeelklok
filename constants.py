@@ -29,4 +29,4 @@ game_6_code = "1948"
 admin_code = "1111"
 
 # normal times per game (in milliseconds)
-game_normal_time = 5000
+game_normal_time = 180000   # 3 min

@@ -53,6 +53,14 @@ white_input_field_teamname = pygame.image.load(
     "Assets/images/white_input_field_teamname.png")
 code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 
+# tip images
+game_1_tip_image = pygame.image.load("Assets/images/meterstand.png")
+game_3_tip_image = pygame.image.load("Assets/images/playmobil.jpg")
+game_4_tip_image_1 = pygame.image.load("Assets/images/Olland_schilderij.jpg")
+game_4_tip_image_2 = pygame.image.load("Assets/images/sprierkracht-orgel.tif")
+game_4_tip_image_3 = pygame.image.load("Assets/images/Violina.jpg")
+game_4_tip_image_4 = pygame.image.load("Assets/images/koppelduiker.jpg")
+
 # gears
 blue_gear = pygame.image.load("Assets/images/blue_gear.png")
 orange_gear = pygame.image.load("Assets/images/orange_gear.png")
@@ -139,6 +147,7 @@ text_file = open("Assets/texts/text_1.txt", 'r')
 text_1 = text_file.read().split('\n')
 text_file = open("Assets/texts/text_2.txt", 'r')
 text_2 = text_file.read().split('\n')
+
 text_file = open("Assets/texts/game_1_explanation.txt", 'r')
 game_1_explanation = text_file.read().split('\n')
 text_file = open("Assets/texts/game_2_explanation.txt", 'r')
@@ -151,6 +160,23 @@ text_file = open("Assets/texts/game_5_explanation.txt", 'r')
 game_5_explanation = text_file.read().split('\n')
 text_file = open("Assets/texts/game_6_explanation.txt", 'r')
 game_6_explanation = text_file.read().split('\n')
+
+text_file = open("Assets/texts/game_1_tip_1.txt", 'r')
+game_1_tip_1 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_2_tip_1.txt", 'r')
+game_2_tip_1 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_2_tip_2.txt", 'r')
+game_2_tip_2 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_3_tip_1.txt", 'r')
+game_3_tip_1 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_5_tip_1.txt", 'r')
+game_5_tip_1 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_5_tip_2.txt", 'r')
+game_5_tip_2 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_6_tip_1.txt", 'r')
+game_6_tip_1 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_6_tip_2.txt", 'r')
+game_6_tip_2 = text_file.read().split('\n')
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -210,22 +236,22 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
-                if games_window(1, game_1_explanation, game_1_code) == 1:
+                if games_window(1, game_1_explanation, game_1_code, game_1_tip_1, None, None, None, None, game_1_tip_image) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(2, game_2_explanation, game_2_code) == 1:
+                if games_window(2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(3, game_3_explanation, game_3_code) == 1:
+                if games_window(3, game_3_explanation, game_3_code, game_3_tip_1, None, None, None, None, game_3_tip_image) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(4, game_4_explanation, game_4_code) == 1:
+                if games_window(4, game_4_explanation, game_4_code, None, None, game_4_tip_image_1, game_4_tip_image_2, game_4_tip_image_3, game_4_tip_image_4) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(5, game_5_explanation, game_5_code) == 1:
+                if games_window(5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2) == 1:
                     keep_going = False
             if keep_going:
-                if games_window(6, game_6_explanation, game_6_code) == 1:
+                if games_window(6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2) == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:
