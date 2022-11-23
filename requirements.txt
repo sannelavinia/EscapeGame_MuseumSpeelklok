@@ -1,3 +1,4 @@
 pygame
 pygame_vkeyboard
 pre-commit
+black
