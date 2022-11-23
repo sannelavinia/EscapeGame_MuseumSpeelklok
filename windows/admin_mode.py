@@ -13,13 +13,34 @@ def admin_mode():
 
     # instructions displayed on the screen
     instruction_message_1 = t.Text_frame(
-        None, None, None, "Dit scherm is alleen bedoeld voor het personeel in het museum..!!!", m.red_color, m.MagdaClean_font_50, m.WIDTH/2, 150
+        None,
+        None,
+        None,
+        "Dit scherm is alleen bedoeld voor het personeel in het museum..!!!",
+        m.red_color,
+        m.MagdaClean_font_50,
+        m.WIDTH / 2,
+        150,
     )
     instruction_message_2 = t.Text_frame(
-        None, None, None, "U kunt teruggaan naar het spel door op TERUG te klikken", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, 200
+        None,
+        None,
+        None,
+        "U kunt teruggaan naar het spel door op TERUG te klikken",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH / 2,
+        200,
     )
     instruction_message_3 = t.Text_frame(
-        None, None, None, "De tijd blijft lopen! .. Snel TERUG!!", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, 250
+        None,
+        None,
+        None,
+        "De tijd blijft lopen! .. Snel TERUG!!",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH / 2,
+        250,
     )
 
     # back button
@@ -78,7 +99,8 @@ def admin_mode():
                     return 1
                 else:
                     code = keyboard.keyboard_button_pressed(
-                        pressed_button, code, m.red_color)
+                        pressed_button, code, m.red_color
+                    )
                     m.wrong_answer_sound.play()
             elif pressed_button == 12:
                 return
@@ -99,8 +121,9 @@ def admin_mode():
 
             # when pressing the close button "X" at the top-right of the game-window
             # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
+            if event.type == m.pygame.QUIT or (
+                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
+            ):
                 m.pygame.quit()
 
             # when pressing a mouse button

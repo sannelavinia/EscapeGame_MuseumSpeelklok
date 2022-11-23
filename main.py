@@ -1,4 +1,4 @@
-import pygame       # is a 2D-grafic liberary
+import pygame  # is a 2D-grafic liberary
 from widgets.keyboard import *
 from widgets.text_frame import *
 from constants import *
@@ -15,8 +15,8 @@ from windows.teamname_window import team_name_window
 pygame.init()
 
 # global variables
-HEIGHT = 1080     # height of the displayed window
-WIDTH = 1920     # width of the displayed window
+HEIGHT = 1080  # height of the displayed window
+WIDTH = 1920  # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
 
@@ -35,22 +35,21 @@ museum_logo_grey = pygame.image.load("Assets/images/museum_logo_grey.png")
 
 # backgrounds
 background_games_template = pygame.image.load(
-    "Assets/images/background_games_template.png")
-black_screen_background = pygame.image.load(
-    "Assets/images/black_screen_background.png")
-celebration_background = pygame.image.load(
-    "Assets/images/celebration_background.png")
+    "Assets/images/background_games_template.png"
+)
+black_screen_background = pygame.image.load("Assets/images/black_screen_background.png")
+celebration_background = pygame.image.load("Assets/images/celebration_background.png")
 
 # frames
 instruction_screen_games = pygame.image.load(
-    "Assets/images/instruction_screen_games.png")
+    "Assets/images/instruction_screen_games.png"
+)
 metal_plate_empty = pygame.image.load("Assets/images/metal_plate_empty.png")
-metal_plate_infoboard = pygame.image.load(
-    "Assets/images/metal_plate_infoboard.png")
-metal_plate_museumlogo = pygame.image.load(
-    "Assets/images/metal_plate_museumlogo.png")
+metal_plate_infoboard = pygame.image.load("Assets/images/metal_plate_infoboard.png")
+metal_plate_museumlogo = pygame.image.load("Assets/images/metal_plate_museumlogo.png")
 white_input_field_teamname = pygame.image.load(
-    "Assets/images/white_input_field_teamname.png")
+    "Assets/images/white_input_field_teamname.png"
+)
 code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 
 # tip images
@@ -70,14 +69,16 @@ green_gear = pygame.image.load("Assets/images/green_gear.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
 rings_for_gears_with_gears = pygame.image.load(
-    "Assets/images/rings_for_gears_with_gears.png")
+    "Assets/images/rings_for_gears_with_gears.png"
+)
 
 single_screw = pygame.image.load("Assets/images/single_screw.png")
 
 # buttons
 green_start_button = pygame.image.load("Assets/images/green_start_button.png")
 green_start_button_pushed = pygame.image.load(
-    "Assets/images/green_start_button_pushed.png")
+    "Assets/images/green_start_button_pushed.png"
+)
 small_green_button = pygame.image.load("Assets/images/small_green_button.png")
 
 tip_button = pygame.image.load("Assets/images/tip_button.png")
@@ -86,52 +87,40 @@ tip_button_pushed = pygame.image.load("Assets/images/tip_button_pushed.png")
 
 # keyboard buttons
 number_0 = pygame.image.load("Assets/images/number_0.png")
-number_0_after_click = pygame.image.load(
-    "Assets/images/number_0_after_click.png")
+number_0_after_click = pygame.image.load("Assets/images/number_0_after_click.png")
 
 number_1 = pygame.image.load("Assets/images/number_1.png")
-number_1_after_click = pygame.image.load(
-    "Assets/images/number_1_after_click.png")
+number_1_after_click = pygame.image.load("Assets/images/number_1_after_click.png")
 
 number_2 = pygame.image.load("Assets/images/number_2.png")
-number_2_after_click = pygame.image.load(
-    "Assets/images/number_2_after_click.png")
+number_2_after_click = pygame.image.load("Assets/images/number_2_after_click.png")
 
 number_3 = pygame.image.load("Assets/images/number_3.png")
-number_3_after_click = pygame.image.load(
-    "Assets/images/number_3_after_click.png")
+number_3_after_click = pygame.image.load("Assets/images/number_3_after_click.png")
 
 number_4 = pygame.image.load("Assets/images/number_4.png")
-number_4_after_click = pygame.image.load(
-    "Assets/images/number_4_after_click.png")
+number_4_after_click = pygame.image.load("Assets/images/number_4_after_click.png")
 
 number_5 = pygame.image.load("Assets/images/number_5.png")
-number_5_after_click = pygame.image.load(
-    "Assets/images/number_5_after_click.png")
+number_5_after_click = pygame.image.load("Assets/images/number_5_after_click.png")
 
 number_6 = pygame.image.load("Assets/images/number_6.png")
-number_6_after_click = pygame.image.load(
-    "Assets/images/number_6_after_click.png")
+number_6_after_click = pygame.image.load("Assets/images/number_6_after_click.png")
 
 number_7 = pygame.image.load("Assets/images/number_7.png")
-number_7_after_click = pygame.image.load(
-    "Assets/images/number_7_after_click.png")
+number_7_after_click = pygame.image.load("Assets/images/number_7_after_click.png")
 
 number_8 = pygame.image.load("Assets/images/number_8.png")
-number_8_after_click = pygame.image.load(
-    "Assets/images/number_8_after_click.png")
+number_8_after_click = pygame.image.load("Assets/images/number_8_after_click.png")
 
 number_9 = pygame.image.load("Assets/images/number_9.png")
-number_9_after_click = pygame.image.load(
-    "Assets/images/number_9_after_click.png")
+number_9_after_click = pygame.image.load("Assets/images/number_9_after_click.png")
 
 enter_button = pygame.image.load("Assets/images/enter.png")
-enter_button_after_click = pygame.image.load(
-    "Assets/images/enter_after_click.png")
+enter_button_after_click = pygame.image.load("Assets/images/enter_after_click.png")
 
 delete_button = pygame.image.load("Assets/images/delete.png")
-delete_button_after_click = pygame.image.load(
-    "Assets/images/delete_after_click.png")
+delete_button_after_click = pygame.image.load("Assets/images/delete_after_click.png")
 
 
 # sound effects
@@ -143,40 +132,40 @@ click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 
 # texts
-text_file = open("Assets/texts/text_1.txt", 'r')
-text_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/text_2.txt", 'r')
-text_2 = text_file.read().split('\n')
+text_file = open("Assets/texts/text_1.txt", "r")
+text_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/text_2.txt", "r")
+text_2 = text_file.read().split("\n")
 
-text_file = open("Assets/texts/game_1_explanation.txt", 'r')
-game_1_explanation = text_file.read().split('\n')
-text_file = open("Assets/texts/game_2_explanation.txt", 'r')
-game_2_explanation = text_file.read().split('\n')
-text_file = open("Assets/texts/game_3_explanation.txt", 'r')
-game_3_explanation = text_file.read().split('\n')
-text_file = open("Assets/texts/game_4_explanation.txt", 'r')
-game_4_explanation = text_file.read().split('\n')
-text_file = open("Assets/texts/game_5_explanation.txt", 'r')
-game_5_explanation = text_file.read().split('\n')
-text_file = open("Assets/texts/game_6_explanation.txt", 'r')
-game_6_explanation = text_file.read().split('\n')
+text_file = open("Assets/texts/game_1_explanation.txt", "r")
+game_1_explanation = text_file.read().split("\n")
+text_file = open("Assets/texts/game_2_explanation.txt", "r")
+game_2_explanation = text_file.read().split("\n")
+text_file = open("Assets/texts/game_3_explanation.txt", "r")
+game_3_explanation = text_file.read().split("\n")
+text_file = open("Assets/texts/game_4_explanation.txt", "r")
+game_4_explanation = text_file.read().split("\n")
+text_file = open("Assets/texts/game_5_explanation.txt", "r")
+game_5_explanation = text_file.read().split("\n")
+text_file = open("Assets/texts/game_6_explanation.txt", "r")
+game_6_explanation = text_file.read().split("\n")
 
-text_file = open("Assets/texts/game_1_tip_1.txt", 'r')
-game_1_tip_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_2_tip_1.txt", 'r')
-game_2_tip_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_2_tip_2.txt", 'r')
-game_2_tip_2 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_3_tip_1.txt", 'r')
-game_3_tip_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_5_tip_1.txt", 'r')
-game_5_tip_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_5_tip_2.txt", 'r')
-game_5_tip_2 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_6_tip_1.txt", 'r')
-game_6_tip_1 = text_file.read().split('\n')
-text_file = open("Assets/texts/game_6_tip_2.txt", 'r')
-game_6_tip_2 = text_file.read().split('\n')
+text_file = open("Assets/texts/game_1_tip_1.txt", "r")
+game_1_tip_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_2_tip_1.txt", "r")
+game_2_tip_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_2_tip_2.txt", "r")
+game_2_tip_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_3_tip_1.txt", "r")
+game_3_tip_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_5_tip_1.txt", "r")
+game_5_tip_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_5_tip_2.txt", "r")
+game_5_tip_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_6_tip_1.txt", "r")
+game_6_tip_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_6_tip_2.txt", "r")
+game_6_tip_2 = text_file.read().split("\n")
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -191,14 +180,10 @@ Quantico_font_10 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 10)
 Quantico_font_30 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 30)
 Quantico_font_50 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 50)
 Quantico_font_70 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 70)
-MagdaClean_font_10 = pygame.font.Font(
-    "Assets/fonts/MagdaClean Regular.otf", 10)
-MagdaClean_font_30 = pygame.font.Font(
-    "Assets/fonts/MagdaClean Regular.otf", 30)
-MagdaClean_font_50 = pygame.font.Font(
-    "Assets/fonts/MagdaClean Regular.otf", 50)
-MagdaClean_font_70 = pygame.font.Font(
-    "Assets/fonts/MagdaClean Regular.otf", 70)
+MagdaClean_font_10 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 10)
+MagdaClean_font_30 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 30)
+MagdaClean_font_50 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 50)
+MagdaClean_font_70 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 70)
 
 
 # the variable that represent the displayed window
@@ -218,7 +203,12 @@ def from_millisecond_to_clock(time_in_millisecond, only_min=False):
     if only_min:
         return "{:<2}:{:<2}".format(str(minutes).zfill(2), str(seconds).zfill(2))
 
-    return "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
+    return "{:<2}:{:<2}:{:<2}:{:<5}".format(
+        str(hours).zfill(2),
+        str(minutes).zfill(2),
+        str(seconds).zfill(2),
+        str(milliseconds).zfill(3),
+    )
 
 
 #######################################################################################
@@ -229,7 +219,6 @@ def main():
         keep_going = True
 
         while True:
-
             if start_window() == 1:
                 keep_going = False
             if keep_going:
@@ -239,22 +228,76 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
-                if games_window(1, game_1_explanation, game_1_code, game_1_tip_1, None, None, None, None, game_1_tip_image) == 1:
+                if (
+                    games_window(
+                        1,
+                        game_1_explanation,
+                        game_1_code,
+                        game_1_tip_1,
+                        None,
+                        None,
+                        None,
+                        None,
+                        game_1_tip_image,
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
-                if games_window(2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2) == 1:
+                if (
+                    games_window(
+                        2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
-                if games_window(3, game_3_explanation, game_3_code, game_3_tip_1, None, None, None, None, game_3_tip_image) == 1:
+                if (
+                    games_window(
+                        3,
+                        game_3_explanation,
+                        game_3_code,
+                        game_3_tip_1,
+                        None,
+                        None,
+                        None,
+                        None,
+                        game_3_tip_image,
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
-                if games_window(4, game_4_explanation, game_4_code, None, None, game_4_tip_image_1, game_4_tip_image_2, game_4_tip_image_3, game_4_tip_image_4) == 1:
+                if (
+                    games_window(
+                        4,
+                        game_4_explanation,
+                        game_4_code,
+                        None,
+                        None,
+                        game_4_tip_image_1,
+                        game_4_tip_image_2,
+                        game_4_tip_image_3,
+                        game_4_tip_image_4,
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
-                if games_window(5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2) == 1:
+                if (
+                    games_window(
+                        5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
-                if games_window(6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2) == 1:
+                if (
+                    games_window(
+                        6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2
+                    )
+                    == 1
+                ):
                     keep_going = False
             if keep_going:
                 if end_window() == 1:

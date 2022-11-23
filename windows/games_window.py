@@ -166,13 +166,11 @@ def push_button_to_start(game_number):
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
-                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 +
-                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -220,8 +218,7 @@ def push_button_to_start(game_number):
                 text_8.display()
                 text_9.display()
                 m.SCREEN.blit(
-                    rings_for_gears_with_gears, (m.WIDTH *
-                                                 0.08, m.HEIGHT * 0.6)
+                    rings_for_gears_with_gears, (m.WIDTH * 0.08, m.HEIGHT * 0.6)
                 )
             displayed = True
 
@@ -273,7 +270,7 @@ def game_started(
     game_tip_1_image=None,
     game_tip_2_image=None,
     game_tip_3_image=None,
-    game_tip_4_image=None
+    game_tip_4_image=None,
 ):
 
     # resizing the images
@@ -285,8 +282,7 @@ def game_started(
         m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)
     )
 
-    red_gear = m.pygame.transform.scale(
-        m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    red_gear = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
     orange_gear = m.pygame.transform.scale(
         m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
@@ -296,31 +292,34 @@ def game_started(
     green_gear = m.pygame.transform.scale(
         m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
-    blue_gear = m.pygame.transform.scale(
-        m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    blue_gear = m.pygame.transform.scale(m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
 
-    timer_bachground = m.pygame.transform.scale(
-        m.black_screen_background, (390, 200))
+    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 200))
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
-            game_tip_1_image, (615, (m.HEIGHT / 2)-50))
+            game_tip_1_image, (615, (m.HEIGHT / 2) - 50)
+        )
 
     if game_tip_2_image != None:
         tip_image_2 = m.pygame.transform.scale(
-            game_tip_2_image, (615, (m.HEIGHT / 2)-50))
+            game_tip_2_image, (615, (m.HEIGHT / 2) - 50)
+        )
 
     if game_tip_3_image != None:
         tip_image_3 = m.pygame.transform.scale(
-            game_tip_3_image, (922, (m.HEIGHT / 2)-50))
+            game_tip_3_image, (922, (m.HEIGHT / 2) - 50)
+        )
 
     if game_tip_4_image != None:
         if game_tip_3_image != None:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (308, (m.HEIGHT / 2)-50))
+                game_tip_4_image, (308, (m.HEIGHT / 2) - 50)
+            )
         else:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (1230, (m.HEIGHT / 2)-50))
+                game_tip_4_image, (1230, (m.HEIGHT / 2) - 50)
+            )
 
     # texts
     title = t.Text_frame(
@@ -430,15 +429,14 @@ def game_started(
         m.green_color,
         m.Quantico_font_50,
         m.WIDTH / 9,
-        m.HEIGHT / 11
+        m.HEIGHT / 11,
     )
 
     tip_time = t.Text_frame(
         None,
         None,
         None,
-        m.from_millisecond_to_clock(
-            m.game_tip_1_time, True),
+        m.from_millisecond_to_clock(m.game_tip_1_time, True),
         m.black_color,
         m.Quantico_font_50,
         (m.HEIGHT / 8) + 10,
@@ -567,8 +565,7 @@ def game_started(
                         m.wrong_answer_sound.play()
                 else:
                     m.click_sound.play()
-                    code = keyboard.keyboard_button_pressed(
-                        pressed_button, code)
+                    code = keyboard.keyboard_button_pressed(pressed_button, code)
             else:
                 m.click_sound.play()
 
@@ -607,7 +604,10 @@ def game_started(
                     button_pushed = True
                     pressed_button = 12
                     if tip_message_1_displayed:
-                        if not tip_message_2_displayed and time_difference >= m.game_tip_2_time:
+                        if (
+                            not tip_message_2_displayed
+                            and time_difference >= m.game_tip_2_time
+                        ):
                             display_tip_message_2 = True
                         else:
                             displayed = False
@@ -625,18 +625,20 @@ def game_started(
             play_time_as_text.change_input_text(
                 m.from_millisecond_to_clock(play_time), m.green_color
             )
-        else:   # display the timer in red color
+        else:  # display the timer in red color
             play_time_as_text.change_input_text(
                 m.from_millisecond_to_clock(play_time), m.red_color
             )
 
         # display the tip button timer
         if time_difference <= m.game_tip_1_time:
-            tip_time.change_input_text(m.from_millisecond_to_clock(
-                (m.game_tip_1_time) - time_difference, True))
+            tip_time.change_input_text(
+                m.from_millisecond_to_clock((m.game_tip_1_time) - time_difference, True)
+            )
         elif time_difference <= m.game_tip_2_time:
-            tip_time.change_input_text(m.from_millisecond_to_clock(
-                (m.game_tip_2_time) - time_difference, True))
+            tip_time.change_input_text(
+                m.from_millisecond_to_clock((m.game_tip_2_time) - time_difference, True)
+            )
 
         # to display the yellow tip image ( instead of the grey one )
         if time_difference >= m.game_tip_1_time:
@@ -659,7 +661,7 @@ def games_window(
     game_tip_1_image=None,
     game_tip_2_image=None,
     game_tip_3_image=None,
-    game_tip_4_image=None
+    game_tip_4_image=None,
 ):
 
     push_button_to_start(game_number)
@@ -673,7 +675,7 @@ def games_window(
             game_tip_1_image,
             game_tip_2_image,
             game_tip_3_image,
-            game_tip_4_image
+            game_tip_4_image,
         )
     else:
         return_value = game_started(
@@ -685,7 +687,7 @@ def games_window(
             game_tip_1_image,
             game_tip_2_image,
             game_tip_3_image,
-            game_tip_4_image
+            game_tip_4_image,
         )
         if return_value != 1:
             push_button_to_start(game_number + 1)
