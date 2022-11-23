@@ -260,9 +260,7 @@ def main():
                 if end_window() == 1:
                     keep_going = False
 
-            if not keep_going:
-                admin_mode()
-                keep_going = True
+            keep_going = True
 
 
 main()

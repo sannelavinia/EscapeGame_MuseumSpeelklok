@@ -148,7 +148,6 @@ def push_button_to_start(game_number):
     # for speeding up
     displayed = False
     button_pushed = True
-
     button_pressed = False
     timer = 0  # used for animating the buttons
 
@@ -456,8 +455,16 @@ def game_started(
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
-        if restart_timer >= 30:
-            return 1
+        if restart_timer >= m.restart_time_logo_pressed:
+            if m.admin_mode() == 1:
+                return 1
+
+            # reset for dispaly
+            displayed = False
+            button_pushed = True
+            tip_message_1_displayed = False
+            tip_message_2_displayed = False
+            reset_tip_button = True
 
         time_difference = m.pygame.time.get_ticks() - start_time
         play_time = m.TOTAL_PLAY_TIME + time_difference
@@ -587,16 +594,17 @@ def game_started(
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
                 pressed_button = keyboard.pressed_button()
-                button_pushed = True
 
                 # pressing a keyboard button
                 if pressed_button in range(0, 12):
                     button_pressed = True
+                    button_pushed = True
 
                 # pressing the tip button
                 if tip_button.mouse_on_button() and start_display_tip_icon:
                     tip_button.display_click_animation()
                     button_pressed = True
+                    button_pushed = True
                     pressed_button = 12
                     if tip_message_1_displayed:
                         if not tip_message_2_displayed and time_difference >= m.game_tip_2_time:
