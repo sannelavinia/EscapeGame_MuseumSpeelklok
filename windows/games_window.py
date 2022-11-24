@@ -66,7 +66,7 @@ def push_button_to_start(game_number):
         None,
         None,
         None,
-        "Gefeliciteerd! Je hebt alle",
+        "Gefeliciteerd! Jullie hebben alle",
         m.black_color,
         m.MagdaClean_font_50,
         m.WIDTH / 4,
