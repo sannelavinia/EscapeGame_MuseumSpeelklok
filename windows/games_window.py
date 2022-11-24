@@ -275,8 +275,21 @@ def game_started(
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
-        m.background_games_template, (m.WIDTH, m.HEIGHT)
-    )
+        m.background_games_template, (m.WIDTH, m.HEIGHT))
+
+    title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
+                         m.MagdaClean_font_70, m.WIDTH*12/20, m.HEIGHT/11)
+
+    instruction_title = t.Text_frame(None, None, None, "Instructie", m.green_color,
+                                     m.MagdaClean_font_50, 600, 300)
+    instruction_box = i.Instruction_Box(
+        m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18, m.MagdaClean_font_30, 40, 60, 50)
+
+    logo_button = b.Button(m.museum_logo_grey, m.museum_logo_grey,
+                           m.museum_logo_grey, m.WIDTH-(m.WIDTH/6.7), m.HEIGHT-(m.HEIGHT/12.55), m.WIDTH/6.75, m.HEIGHT/12.5)
+
+    tip_button = b.Button(m.tip_button_grey, m.tip_button,
+                          m.tip_button_pushed, (m.HEIGHT/8)+10, (m.HEIGHT-m.HEIGHT/8)-10, m.HEIGHT/4, m.HEIGHT/4)
 
     rings_for_gears = m.pygame.transform.scale(
         m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)

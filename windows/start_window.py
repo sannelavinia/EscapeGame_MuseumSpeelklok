@@ -14,8 +14,8 @@ def code_check():
         m.metal_plate_infoboard, (m.WIDTH * 0.5, m.HEIGHT))
 
     # resizing a single screw to later use by the backgrounds
-    single_screw = m.pygame.transform.scale(
-        m.single_screw, (m.WIDTH * 0.025, m.WIDTH * 0.025))
+    one_screw = m.pygame.transform.scale(
+        m.single_screw, (m.WIDTH * 0.05, m.WIDTH * 0.05))
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
@@ -25,15 +25,16 @@ def code_check():
 
     # deviding the code-insertion instruction message to 3 separate phrases
     instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     instruction_2 = Text_frame(None, None, None, "balie hebt gekregen om het spel ",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
     instruction_3 = Text_frame(None, None, None, "te starten.",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
     # deviding the incorrect-code  warning message to deviding
     incorrect_code_message_1 = Text_frame(None, None, None, "De code is onjuist. Ga naar de ",
-                                          m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ",
+
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
     incorrect_code_message_3 = Text_frame(None, None, None, "de Escape Game ",
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
