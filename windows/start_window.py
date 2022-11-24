@@ -147,7 +147,7 @@ def corret_code():
         m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
     # scaling the message to appear once a correct code insertion occur
-    info_text = Text_frame(None, None, None, "De code is … juist​",
+    info_text = Text_frame(None, None, None, "De code is … JUIST!",
                            m.green_color, m.MagdaClean_font_50, m.WIDTH * 0.45, m.HEIGHT*0.32)
 
     # resizinf the gear image for later use as animation
