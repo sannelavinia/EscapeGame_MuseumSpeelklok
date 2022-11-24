@@ -46,56 +46,66 @@ def code_check():
     code = ""
     timer = 0
     incorrect_code = False
+    display_background = True
+    button_pushed = True
+
 
     # play the music in an infinite loop
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
         # displaying the background images
-        m.SCREEN.blit(metalic_background_logo, (0, 0))
-        m.SCREEN.blit(metalic_background__info_board, (m.WIDTH * 0.5, 0))
-
-        # displaying the screws
-        # top left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05))
-        # top right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+        if display_background:
+            m.SCREEN.blit(metalic_background_logo, (0, 0))
+            # displaying the screws
+            #top left, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
+            #top right, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT * 0.05))
-        # top left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), m.HEIGHT * 0.05))
-        # top right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
-        # bottom left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025,
-                      (m.HEIGHT - (m.HEIGHT * 0.1))))
-        # bottom right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
+            #bottom left, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
+            #bottom right, left part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
-        # bottom left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), (m.HEIGHT - (m.HEIGHT * 0.1))))
-        # bottom right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), (m.HEIGHT - (m.HEIGHT * 0.1))))
+            # displaying the welcoming message
+            welcome_text_1.display()
+            welcome_text_2.display()
 
-        # displaying the welcoming message
-        welcome_text_1.display()
-        welcome_text_2.display()
+            display_background = False
 
-        # displaying the warning in case of incorrect code insertion
-        if not incorrect_code:
-            instruction_1.display()
-            instruction_2.display()
-            instruction_3.display()
-        else:
-            incorrect_code_message_1.display()
-            incorrect_code_message_2.display()
-            incorrect_code_message_3.display()
+        if button_pushed:
+            #displaying the right background   
+            m.SCREEN.blit(metalic_background__info_board, (m.WIDTH * 0.5, 0))
 
-        keyboard.display()
+            # displaying the screws
 
+            #top left, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
+                    (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
+            #top right, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                    (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
+            #bottom left, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
+            #bottom right, right part
+            m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
+                    (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
+
+            #displaying the keyboard            
+            keyboard.display()
+
+            # displaying the warning in case of incorrect code insertion
+            if not incorrect_code:
+                instruction_1.display()
+                instruction_2.display()
+                instruction_3.display()
+            else:
+                incorrect_code_message_1.display()
+                incorrect_code_message_2.display()
+                incorrect_code_message_3.display()
+            button_pushed = False
+            
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
@@ -120,6 +130,7 @@ def code_check():
             button_pressed = False
             pressed_button = 99
             timer = 0
+            button_pushed = True
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -133,8 +144,10 @@ def code_check():
             if event.type == m.pygame.MOUSEBUTTONDOWN:
                 pressed_button = keyboard.pressed_button()
 
+
                 if pressed_button in range(0, 12):
                     button_pressed = True
+                    button_pushed = True
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
@@ -143,6 +156,7 @@ def code_check():
 
 
 def corret_code():
+
     # resizinf the background image to fit the hole display
     black_background = m.pygame.transform.scale(
         m.black_screen_background, (m.WIDTH, m.HEIGHT))
@@ -155,14 +169,18 @@ def corret_code():
     green_gear = m.pygame.transform.scale(
         m.green_gear, (m.WIDTH * 0.05, m.WIDTH * 0.05))
 
-    while True:
+    
+    display_once = True
 
-        m.SCREEN.blit(black_background, (0, 0))
-        info_text.display()
-        m.SCREEN.blit(green_gear, (m.WIDTH*0.4, m.HEIGHT * 0.5))
-        m.SCREEN.blit(green_gear, (m.WIDTH*0.46, m.HEIGHT * 0.5))
-        m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT * 0.43))
-        m.SCREEN.blit(green_gear, (m.WIDTH*0.49, m.HEIGHT * 0.43))
+    while True:
+        if display_once:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear, (m.WIDTH*0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear, (m.WIDTH*0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear, (m.WIDTH*0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear, (m.WIDTH*0.49, m.HEIGHT * 0.43))
+            display_once = False
 
         for event in m.pygame.event.get():
 
