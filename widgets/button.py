@@ -3,18 +3,28 @@ from widgets.keyboard import *
 import pygame
 
 
-class Button():
+class Button:
 
     #######################################################################################
-    def __init__(self, current_image, image, after_click_image, x_pos, y_pos, image_width=200, image_height=100):
+    def __init__(
+        self,
+        current_image,
+        image,
+        after_click_image,
+        x_pos,
+        y_pos,
+        image_width=200,
+        image_height=100,
+    ):
         """initializer"""
 
         self.current_image = m.pygame.transform.scale(
-            current_image, (image_width, image_height))
-        self.image = m.pygame.transform.scale(
-            image, (image_width, image_height))
+            current_image, (image_width, image_height)
+        )
+        self.image = m.pygame.transform.scale(image, (image_width, image_height))
         self.after_click_image = m.pygame.transform.scale(
-            after_click_image, (image_width, image_height))
+            after_click_image, (image_width, image_height)
+        )
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
@@ -29,13 +39,14 @@ class Button():
     #######################################################################################
     def mouse_on_button(self):
         """
-        checking whether the mouse cursor is on the button 
+        checking whether the mouse cursor is on the button
         ( returns True if it is on it )
         """
 
         mouse_position = m.pygame.mouse.get_pos()
-        if mouse_position[0] in range(self.rect.left, self.rect.right) and \
-                mouse_position[1] in range(self.rect.top, self.rect.bottom):
+        if mouse_position[0] in range(
+            self.rect.left, self.rect.right
+        ) and mouse_position[1] in range(self.rect.top, self.rect.bottom):
             return True
 
     #######################################################################################
@@ -52,7 +63,7 @@ class Button():
         self.current_image = self.image
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 
-    #.....................................................................................#
+    # .....................................................................................#
     def pressed_button(self):
         action = False
         if self.mouse_on_button():
