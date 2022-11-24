@@ -20,7 +20,7 @@ def code_check():
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
                                 m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10, m.HEIGHT*0.42)
-    welcome_text_2 = Text_frame(None, None, None, "Escaperoom van",
+    welcome_text_2 = Text_frame(None, None, None, "Escape Game van",
                                 m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
 
     # deviding the code-insertion instruction message to 3 separate phrases
@@ -35,7 +35,7 @@ def code_check():
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ",
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
-    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom ",
+    incorrect_code_message_3 = Text_frame(None, None, None, "de Escape Game ",
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
 
     # keyboard
