@@ -28,7 +28,7 @@ def push_button_to_start(game_number):
         None, None, None, "Dus … GO!!!! ", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, (m.HEIGHT/2)+120)
 # ( Na spel 6! )
     text_4 = t.Text_frame(
-        None, None, None, "Gefeliciteerd! Je hebt alle", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, m.HEIGHT*0.24)
+        None, None, None, "Gefeliciteerd! Jullie hebben alle", m.black_color, m.MagdaClean_font_50, m.WIDTH/4, m.HEIGHT*0.24)
     text_5 = t.Text_frame(
         None, None, None, "6 tandwielen", m.white_color, m.MagdaClean_font_50, m.WIDTH*0.17, m.HEIGHT*0.3)
     text_6 = t.Text_frame(
@@ -141,7 +141,7 @@ def game_started(game_number, game_instructions, game_code):
     title = t.Text_frame(None, None, None, f"SPEL {game_number}", m.white_color,
                          m.MagdaClean_font_70, m.WIDTH*12/20, m.HEIGHT/11)
 
-    instruction_title = t.Text_frame(None, None, None, "Instructies", m.green_color,
+    instruction_title = t.Text_frame(None, None, None, "Instructie", m.green_color,
                                      m.MagdaClean_font_50, 600, 300)
     instruction_box = i.Instruction_Box(
         m.instruction_screen_games, (m.WIDTH*4/6)+36, (m.HEIGHT/2)+30, game_instructions, m.green_color, 0, (m.HEIGHT/6)+18, m.MagdaClean_font_30, 40, 60, 50)

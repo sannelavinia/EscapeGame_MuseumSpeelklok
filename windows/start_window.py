@@ -14,29 +14,29 @@ def code_check():
         m.metal_plate_infoboard, (m.WIDTH * 0.5, m.HEIGHT))
 
     # resizing a single screw to later use by the backgrounds
-    single_screw = m.pygame.transform.scale(
-        m.single_screw, (m.WIDTH * 0.025, m.WIDTH * 0.025))
+    one_screw = m.pygame.transform.scale(
+        m.single_screw, (m.WIDTH * 0.05, m.WIDTH * 0.05))
 
-    # deviding the welcoming message to 2 separate phrases
-    welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10 , m.HEIGHT*0.42)
-    welcome_text_2 = Text_frame(None, None, None, "Escaperoom van",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
+    # deviding the welcoming messaGame separate phrases
+    welcome_text_1 = Text_frame(None, None, None, " Welkom bij de",
+                                m.white_color, m.Consolas_font_70, m.WIDTH * 0.20 + 10 , m.HEIGHT*0.39)
+    welcome_text_2 = Text_frame(None, None, None, " Escape Game van",
+                                m.white_color, m.Consolas_font_70, m.WIDTH * 0.20, m.HEIGHT*0.46)
 
     # deviding the code-insertion instruction message to 3 separate phrases
     instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     instruction_2 = Text_frame(None, None, None, "balie hebt gekregen om het spel ",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
     instruction_3 = Text_frame(None, None, None, "te starten.",
-                               m.black_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
+                               m.black_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
     # deviding the incorrect-code  warning message to deviding
     incorrect_code_message_1 = Text_frame(None, None, None, "De code is onjuist. Ga naar de ",
-                                          m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ",
-                                          m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
-    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom ",
-                                          m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
+    incorrect_code_message_3 = Text_frame(None, None, None, "de Escape Game ",
+                                          m.red_color, m.Consolas_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
 
     # keyboard
     keyboard = k.Keyboard(m.WIDTH * 0.68, m.HEIGHT * 0.52)
@@ -55,27 +55,23 @@ def code_check():
         m.SCREEN.blit(metalic_background__info_board, (m.WIDTH * 0.5, 0))
 
         # displaying the screws
-        #top left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
-        #top right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #top left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
-        #top right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #bottom left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
-        #bottom right, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
-        #bottom left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
-        #bottom right, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.025) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5 +
+                      (m.WIDTH * 0.025), m.HEIGHT * 0.05))
+        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.025) -
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.025, m.HEIGHT-(m.HEIGHT * 0.05) -
+                      (m.WIDTH * 0.05)))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.025) -
+                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.05) -
+                      (m.WIDTH * 0.05)))
+        m.SCREEN.blit(one_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), m.HEIGHT-(m.HEIGHT * 0.05) -
+                      (m.WIDTH * 0.05)))
+        m.SCREEN.blit(one_screw, (m.WIDTH-(m.WIDTH * 0.025) -
+                      (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.05) -
+                      (m.WIDTH * 0.05)))
 
         # displaying the welcoming message
         welcome_text_1.display()
@@ -145,8 +141,8 @@ def corret_code():
         m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
     # scaling the message to appear once a correct code insertion occur
-    info_text = Text_frame(None, None, None, "De code is … juist​",
-                           m.green_color, m.MagdaClean_font_50, m.WIDTH * 0.45, m.HEIGHT*0.32)
+    info_text = Text_frame(None, None, None, "DE CODE IS … JUIST",
+                           m.green_color, m.Consolas_font_50, m.WIDTH * 0.45, m.HEIGHT*0.32)
 
     # resizinf the gear image for later use as animation
     green_gear = m.pygame.transform.scale(
