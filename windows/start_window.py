@@ -19,9 +19,9 @@ def code_check():
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10, m.HEIGHT*0.42)
+                                m.white_color, m.MagdaClean_font_70, m.WIDTH * 0.215 + 10, m.HEIGHT*0.39)
     welcome_text_2 = Text_frame(None, None, None, "Escape Game van",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
+                                m.white_color, m.MagdaClean_font_70, m.WIDTH * 0.255, m.HEIGHT*0.46)
 
     # deviding the code-insertion instruction message to 3 separate phrases
     instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ",
