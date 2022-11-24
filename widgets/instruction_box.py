@@ -1,15 +1,28 @@
 import main as m
 
 
-class Instruction_Box():
+class Instruction_Box:
     """
     useful for displaying more than one line of text,
-    the text should be in a .txt file 
+    the text should be in a .txt file
     ex: by instructions or tips
     """
 
     #######################################################################################
-    def __init__(self, image, image_width, image_height, input_text, text_color, x_pos, y_pos, text_font=None, lines_height=None, text_x_pos=None, text_y_pos=None):
+    def __init__(
+        self,
+        image,
+        image_width,
+        image_height,
+        input_text,
+        text_color,
+        x_pos,
+        y_pos,
+        text_font=None,
+        lines_height=None,
+        text_x_pos=None,
+        text_y_pos=None,
+    ):
         """initializer"""
 
         self.x_pos = x_pos
@@ -23,8 +36,7 @@ class Instruction_Box():
         self.lines_height = lines_height
         if self.lines_height == None:
             self.lines_height = m.line_space
-        self.image = m.pygame.transform.scale(
-            image, (image_width, image_height))
+        self.image = m.pygame.transform.scale(image, (image_width, image_height))
 
         # render the text
         self.text = []
@@ -42,6 +54,5 @@ class Instruction_Box():
         y_pos = self.y_pos
         m.SCREEN.blit(self.image, (x_pos, y_pos))
         for element in self.text:
-            m.SCREEN.blit(
-                element, (x_pos + self.text_x_pos, y_pos + self.text_y_pos))
+            m.SCREEN.blit(element, (x_pos + self.text_x_pos, y_pos + self.text_y_pos))
             y_pos += self.lines_height

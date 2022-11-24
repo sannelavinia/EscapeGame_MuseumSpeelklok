@@ -2,7 +2,7 @@ import main as m
 import constants as c
 
 
-class Text_frame():
+class Text_frame:
     """
     useful for displaying one line of text,
     can be used to make an animated text,
@@ -10,8 +10,17 @@ class Text_frame():
     """
 
     #######################################################################################
-    def __init__(self, image=None, image_width=40, image_height=20, input_text="", text_color=c.white_color,
-                 font=None, x_pos=0, y_pos=0):
+    def __init__(
+        self,
+        image=None,
+        image_width=40,
+        image_height=20,
+        input_text="",
+        text_color=c.white_color,
+        font=None,
+        x_pos=0,
+        y_pos=0,
+    ):
         """initializer"""
 
         self.color = text_color
@@ -22,12 +31,10 @@ class Text_frame():
         self.text = self.font.render(input_text, True, text_color)
         self.x_pos = x_pos
         self.y_pos = y_pos
-        self.textrect = self.text.get_rect(
-            center=(self.x_pos, self.y_pos))
+        self.textrect = self.text.get_rect(center=(self.x_pos, self.y_pos))
         self.image = image
         if self.image != None:
-            self.image = m.pygame.transform.scale(
-                image, (image_width, image_height))
+            self.image = m.pygame.transform.scale(image, (image_width, image_height))
             self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 
     #######################################################################################
@@ -53,5 +60,4 @@ class Text_frame():
         self.color = text_color
         self.font = font
         self.text = font.render(input_text, True, text_color)
-        self.textrect = self.text.get_rect(
-            center=(self.x_pos, self.y_pos))
+        self.textrect = self.text.get_rect(center=(self.x_pos, self.y_pos))

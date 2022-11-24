@@ -19,7 +19,7 @@ def code_check():
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10 , m.HEIGHT*0.42)
+                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10, m.HEIGHT*0.42)
     welcome_text_2 = Text_frame(None, None, None, "Escaperoom van",
                                 m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
 
@@ -55,27 +55,29 @@ def code_check():
         m.SCREEN.blit(metalic_background__info_board, (m.WIDTH * 0.5, 0))
 
         # displaying the screws
-        #top left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05)) 
-        #top right, left part
+        # top left, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, m.HEIGHT * 0.05))
+        # top right, left part
         m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #top left, right part
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+        # top left, right part
         m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
-                      (m.WIDTH * 0.025), m.HEIGHT * 0.05)) 
-        #top right, right part
+                      (m.WIDTH * 0.025), m.HEIGHT * 0.05))
+        # top right, right part
         m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), m.HEIGHT * 0.05)) 
-        #bottom left, left part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025, (m.HEIGHT -(m.HEIGHT * 0.1)))) 
-        #bottom right, left part
+                      (m.WIDTH * 0.05), m.HEIGHT * 0.05))
+        # bottom left, left part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.025,
+                      (m.HEIGHT - (m.HEIGHT * 0.1))))
+        # bottom right, left part
         m.SCREEN.blit(single_screw, (m.WIDTH * 0.5-(m.WIDTH * 0.001) -
                       (m.WIDTH * 0.05), m.HEIGHT-(m.HEIGHT * 0.1)))
-        #bottom left, right part
-        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5+(m.WIDTH * 0.025), (m.HEIGHT -(m.HEIGHT * 0.1))))
-        #bottom right, right part
+        # bottom left, right part
+        m.SCREEN.blit(single_screw, (m.WIDTH * 0.5 +
+                      (m.WIDTH * 0.025), (m.HEIGHT - (m.HEIGHT * 0.1))))
+        # bottom right, right part
         m.SCREEN.blit(single_screw, (m.WIDTH-(m.WIDTH * 0.001) -
-                      (m.WIDTH * 0.05), (m.HEIGHT -(m.HEIGHT * 0.1))))
+                      (m.WIDTH * 0.05), (m.HEIGHT - (m.HEIGHT * 0.1))))
 
         # displaying the welcoming message
         welcome_text_1.display()
@@ -179,5 +181,7 @@ def corret_code():
 ######################################################################################################
 
 def start_window():
+
+    m.TOTAL_PLAY_TIME = 0
     code_check()
     corret_code()
