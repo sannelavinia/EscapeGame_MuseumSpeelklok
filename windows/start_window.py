@@ -19,9 +19,9 @@ def code_check():
 
     # deviding the welcoming message to 2 separate phrases
     welcome_text_1 = Text_frame(None, None, None, "Welkom bij de",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.20 + 10 , m.HEIGHT*0.42)
-    welcome_text_2 = Text_frame(None, None, None, "Escaperoom van",
-                                m.white_color, m.MagdaClean_font_50, m.WIDTH * 0.21, m.HEIGHT*0.46)
+                                m.white_color, m.MagdaClean_font_70, m.WIDTH * 0.215 + 10, m.HEIGHT*0.39)
+    welcome_text_2 = Text_frame(None, None, None, "Escape Game van",
+                                m.white_color, m.MagdaClean_font_70, m.WIDTH * 0.255, m.HEIGHT*0.46)
 
     # deviding the code-insertion instruction message to 3 separate phrases
     instruction_1 = Text_frame(None, None, None, "Voer de code in die je bij de ",
@@ -35,7 +35,7 @@ def code_check():
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.2)
     incorrect_code_message_2 = Text_frame(None, None, None, "balie om je aan te melden voor ",
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.24)
-    incorrect_code_message_3 = Text_frame(None, None, None, "de Escaperoom ",
+    incorrect_code_message_3 = Text_frame(None, None, None, "de Escape Game ",
                                           m.red_color, m.MagdaClean_font_30, m.WIDTH * 0.75, m.HEIGHT*0.28)
 
     # keyboard
@@ -104,7 +104,7 @@ def code_check():
                 incorrect_code_message_2.display()
                 incorrect_code_message_3.display()
             button_pushed = False
-
+            
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
@@ -161,7 +161,7 @@ def corret_code():
         m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
     # scaling the message to appear once a correct code insertion occur
-    info_text = Text_frame(None, None, None, "De code is … juist​",
+    info_text = Text_frame(None, None, None, "De code is … JUIST!",
                            m.green_color, m.MagdaClean_font_50, m.WIDTH * 0.45, m.HEIGHT*0.32)
 
     # resizinf the gear image for later use as animation
