@@ -13,7 +13,7 @@ red_color = (255, 0, 0)
 button_width = 150
 button_height = 120
 reduction_ratio = 10
-button_resizing_delay = 10
+button_resizing_delay = 3
 
 # codes
 start_code = "0000"
