@@ -419,7 +419,6 @@ def game_started(
     restart_timer = 0
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
-    miliseconds_total_time = m.TOTAL_PLAY_TIME % 1000
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
     play_time_as_text = t.Text_frame(
         None,

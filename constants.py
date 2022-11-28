@@ -27,6 +27,7 @@ game_6_code = "1948"
 
 admin_code = "1111"
 restart_time_logo_pressed = 100
+restart_time_end_window = 300000  # 5 min
 
 # normal times per game (in milliseconds)
 game_normal_time = 180000  # 3 min
