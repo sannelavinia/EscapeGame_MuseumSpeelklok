@@ -9,6 +9,9 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+from windows.prequestions.multiplechoice_pq import multiplechoice_pq
+from windows.prequestions.spotdifferences_pq import spotdifferences_pq
+from windows.prequestions.organmaze_pq import organmaze_pq
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -122,6 +125,12 @@ enter_button_after_click = pygame.image.load("Assets/images/enter_after_click.pn
 delete_button = pygame.image.load("Assets/images/delete.png")
 delete_button_after_click = pygame.image.load("Assets/images/delete_after_click.png")
 
+# prequestion images
+thinking_boy = pygame.image.load("Assets/images/jongen_vragend.png")
+thinking_girl = pygame.image.load("Assets/images/meisje_vertwijfeld.png")
+organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
+spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
+gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
 # sound effects
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
@@ -228,6 +237,9 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(1) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         1,
@@ -244,12 +256,18 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(2) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if spotdifferences_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
@@ -268,6 +286,9 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(4) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         4,
@@ -284,12 +305,18 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(5) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if organmaze_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
