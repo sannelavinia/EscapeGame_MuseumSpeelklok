@@ -281,8 +281,8 @@ def corret_code():
 
     while True:
         # to go to next screen after 3 seconds
-        if  m.pygame.time.get_ticks() >= start_time + m.animation_delay:
-            return
+        if  m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
+                return
 
         # animating the gears 
         if green_gear_teller == 1 and delay >= animation:
