@@ -228,44 +228,44 @@ def main():
         keep_going = True
 
         while True:
-            # if start_window() == 1:
-            #     keep_going = False
-            # if keep_going:
-            #     if explanation_window() == 1:
-            #         keep_going = False
-            # if keep_going:
-            #     if team_name_window() == 1:
-            #         keep_going = False
-            # if keep_going:
-            #     if multiplechoice_pq(1) ==1:
-            #         keep_going = False
-            # if keep_going:
-            #     if (
-            #         games_window(
-            #             1,
-            #             game_1_explanation,
-            #             game_1_code,
-            #             game_1_tip_1,
-            #             None,
-            #             None,
-            #             None,
-            #             None,
-            #             game_1_tip_image,
-            #         )
-            #         == 1
-            #     ):
-            #         keep_going = False
-            # if keep_going:
-            #     if multiplechoice_pq(2) ==1:
-            #         keep_going = False
-            # if keep_going:
-            #     if (
-            #         games_window(
-            #             2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
-            #         )
-            #         == 1
-            #     ):
-            #         keep_going = False
+            if start_window() == 1:
+                keep_going = False
+            if keep_going:
+                if explanation_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if team_name_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if multiplechoice_pq(1) ==1:
+                    keep_going = False
+            if keep_going:
+                if (
+                    games_window(
+                        1,
+                        game_1_explanation,
+                        game_1_code,
+                        game_1_tip_1,
+                        None,
+                        None,
+                        None,
+                        None,
+                        game_1_tip_image,
+                    )
+                    == 1
+                ):
+                    keep_going = False
+            if keep_going:
+                if multiplechoice_pq(2) ==1:
+                    keep_going = False
+            if keep_going:
+                if (
+                    games_window(
+                        2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
+                    )
+                    == 1
+                ):
+                    keep_going = False
             if keep_going:
                 if spotdifferences_pq() ==1:
                     keep_going = False
