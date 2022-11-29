@@ -126,14 +126,15 @@ delete_button = pygame.image.load("Assets/images/delete.png")
 delete_button_after_click = pygame.image.load("Assets/images/delete_after_click.png")
 
 
-# sound effects
+# sound effectsh
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
-
+start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
+start_game_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/start_window_incorrect_code.mp3")
 # texts
 text_file = open("Assets/texts/text_1.txt", "r")
 text_1 = text_file.read().split("\n")
