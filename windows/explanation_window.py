@@ -23,6 +23,8 @@ def explanation_window():
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
+        #to stop previous window robot's sound 
+        m.start_game_robot_voice_correct_code.stop()
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
