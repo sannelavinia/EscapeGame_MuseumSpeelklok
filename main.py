@@ -9,6 +9,7 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+from windows.highscore_window import *
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -302,7 +303,9 @@ def main():
             if keep_going:
                 if end_window() == 1:
                     keep_going = False
-
+            if keep_going:
+                if highscore_window() == 1:
+                    keep_going = False
             keep_going = True
 
 
