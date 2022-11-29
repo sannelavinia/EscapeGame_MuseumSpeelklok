@@ -174,7 +174,7 @@ def code_check():
                 (
                     m.WIDTH - (m.WIDTH * 0.001) - (m.WIDTH * 0.05),
                     (m.HEIGHT - (m.HEIGHT * 0.1)),
-                ),
+                )
             )
 
             # displaying the keyboard
@@ -202,11 +202,16 @@ def code_check():
             if pressed_button == 10:
                 if code == m.start_code:
                     m.start_game_robot_voice_correct_code.play()
+                    # if event.type == m.pygame.MOUSEBUTTONDOWN:
+                    #     m.start_game_robot_voice_correct_code.stop()
                     return
                 else:
                     m.start_game_robot_voice_incorrect_code.play()
-                    incorrect_code = True
+                    
             else:
+                # to stop robot's sound by new code insertion
+                m.start_game_robot_voice_incorrect_code.stop()
+
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
 
@@ -228,6 +233,7 @@ def code_check():
                 m.pygame.quit()
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
+
                 pressed_button = keyboard.pressed_button()
 
                 if pressed_button in range(0, 12):
