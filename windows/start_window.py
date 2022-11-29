@@ -261,21 +261,68 @@ def corret_code():
     )
 
     # resizinf the gear image for later use as animation
-    green_gear = m.pygame.transform.scale(
-        m.green_gear, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    green_gear_1 = m.pygame.transform.scale(
+        m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_2 = m.pygame.transform.scale(
+        m.green_gear_2, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_3 = m.pygame.transform.scale(
+        m.green_gear_3, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_4 = m.pygame.transform.scale(
+        m.green_gear_4, (m.WIDTH * 0.05, m.WIDTH * 0.05)
     )
 
-    display_once = True
+    green_gear_teller = 1
+    delay = 0
+    animation = 100
+    start_time = m.pygame.time.get_ticks()
 
     while True:
-        if display_once:
+        # to go to next screen after 3 seconds
+        if  m.pygame.time.get_ticks() >= start_time + m.animation_delay:
+            return
+
+        # animating the gears 
+        if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            display_once = False
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1 
+            delay = 0
+        elif green_gear_teller == 2 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1
+            delay = 0
+        elif green_gear_teller == 3 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1
+            delay = 0
+        elif green_gear_teller == 4 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller = 1
+            delay = 0
+
+        delay += 1
 
         for event in m.pygame.event.get():
 
