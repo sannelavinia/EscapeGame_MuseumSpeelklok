@@ -176,6 +176,15 @@ game_6_tip_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/game_6_tip_2.txt", "r")
 game_6_tip_2 = text_file.read().split("\n")
 
+text_file = open("Assets/texts/prequestion_1.txt", "r")
+prequestion_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_1b.txt", "r")
+prequestion_1b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2.txt", "r")
+prequestion_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2b.txt", "r")
+prequestion_2b = text_file.read().split("\n")
+
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
