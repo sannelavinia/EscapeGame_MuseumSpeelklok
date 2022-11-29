@@ -10,7 +10,7 @@ def mc_temp(prequestion_x, prequestion_xb, answera, answerb, answerc, answerd):
                               450, prequestion_x, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
     mc_temp.prequestion_b = Instruction_Box(m.transparent_box, 1000,
                               450, prequestion_xb, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
-                              
+
     mc_temp.answera = answera
     mc_temp.answerb = answerb
     mc_temp.answerc = answerc
@@ -32,21 +32,29 @@ def multiplechoice_pq(game_number):
         mc_temp( m.prequestion_1, m.prequestion_1b, 'a) Slinger', 'b) Klepel', 'c) Was', 'd) Lepel')
         buttonwidth = 205
         button_y = m.WIDTH/4
-        answer_a_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.50, buttonwidth, 60)
-        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.00, buttonwidth, 60)
-        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.67, buttonwidth, 60)
-        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.43, buttonwidth, 60)
+        answer_a_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.30, buttonwidth, 60)
+        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.90, buttonwidth, 60)
+        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.57, buttonwidth, 60)
+        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.33, buttonwidth, 60)
         correct_button = answer_b_button
     if game_number == 2:
         mc_temp(m.prequestion_2, m.prequestion_2b, 'a) Een worst', 'b) Gouden bergen', 'c) Een jurk', 'd) Een spiegel')
         buttonwidth = 370
         button_y = m.WIDTH/3.5
-        answer_a_button = b.Button(m.green_start_button, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.50, buttonwidth, 60)
-        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.00, buttonwidth, 60)
-        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.67, buttonwidth, 60)
-        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.43, buttonwidth, 60)
+        answer_a_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.30, buttonwidth, 60)
+        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.90, buttonwidth, 60)
+        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.57, buttonwidth, 60)
+        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.33, buttonwidth, 60)
         correct_button = answer_d_button
-
+    if game_number == 4:
+        mc_temp(m.prequestion_4, m.prequestion_4b, 'a) 2 tegen de klok in, 4 tegen de klok in', 'b) 4 met de klok mee, 2 tegen de klok in', 'c) 2 met de klok mee, 4 met de klok mee', 'd) 4 met de klok mee, 2 draait niet')
+        buttonwidth = 1050
+        button_y = m.WIDTH/2.2
+        answer_a_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/2.30, buttonwidth, 60)
+        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.90, buttonwidth, 60)
+        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.57, buttonwidth, 60)
+        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.33, buttonwidth, 60)
+        correct_button = answer_b_button
     
 
     while True:
@@ -56,10 +64,10 @@ def multiplechoice_pq(game_number):
 
         mc_temp.prequestion.display()
 
-        m.SCREEN.blit(mc_temp.answer_a, (m.WIDTH/5, m.HEIGHT/2.7))
-        m.SCREEN.blit(mc_temp.answer_b, (m.WIDTH/5, m.HEIGHT/2.12))
-        m.SCREEN.blit(mc_temp.answer_c, (m.WIDTH/5, m.HEIGHT/1.75))
-        m.SCREEN.blit(mc_temp.answer_d, (m.WIDTH/5, m.HEIGHT/1.49))
+        m.SCREEN.blit(mc_temp.answer_a, (m.WIDTH/5, m.HEIGHT/2.5))
+        m.SCREEN.blit(mc_temp.answer_b, (m.WIDTH/5, m.HEIGHT/1.98))
+        m.SCREEN.blit(mc_temp.answer_c, (m.WIDTH/5, m.HEIGHT/1.65))
+        m.SCREEN.blit(mc_temp.answer_d, (m.WIDTH/5, m.HEIGHT/1.39))
 
         answer_a_button.display()
         answer_b_button.display()
@@ -103,7 +111,7 @@ def multiplechoice_pq(game_number):
             # answer d) is wrong, it will turn red
             if answer_d_button != correct_button and event.type == m.pygame.MOUSEBUTTONDOWN and answer_d_button.mouse_on_button():
                 m.wrong_answer_sound.play()
-                mc_temp.answer_b = m.MagdaClean_font_50.render(mc_temp.answerd, True, m.red_color)
+                mc_temp.answer_d = m.MagdaClean_font_50.render(mc_temp.answerd, True, m.red_color)
      
             
 

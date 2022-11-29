@@ -184,6 +184,11 @@ text_file = open("Assets/texts/prequestion_2.txt", "r")
 prequestion_2 = text_file.read().split("\n")
 text_file = open("Assets/texts/prequestion_2b.txt", "r")
 prequestion_2b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4.txt", "r")
+prequestion_4 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4b.txt", "r")
+prequestion_4b = text_file.read().split("\n")
+
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
