@@ -32,3 +32,4 @@ restart_time_logo_pressed = 100
 game_normal_time = 180000  # 3 min
 game_tip_1_time = 180000  # 3 min
 game_tip_2_time = 240000  # 4 min (3 min first tip + 1 min second tip)
+animation_delay = 3000   # 3 seconds gears animation delay
