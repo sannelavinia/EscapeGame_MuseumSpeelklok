@@ -19,6 +19,20 @@ def spotdifferences_pq():
     spot_differences_image = m.pygame.transform.scale(m.spot_differences, (1524, 857))
     spot_differences_rect = spot_differences_image.get_rect(center=(m.WIDTH/2, m.HEIGHT/1.8))
 
+    # Locations of difference are set in variables
+    location_diff_1 = (1385, 273)
+    location_diff_2 = (1167, 713)
+    location_diff_3 = (1197, 831)
+    location_diff_4 = (1234, 875)
+    location_diff_5 = (1297, 828)
+    location_diff_6 = (1377, 983)
+
+    # Get red circle image 
+    red_circle = pygame.image.load("Assets/images/red_circle.png")
+    red_circle = m.pygame.transform.scale(red_circle, (60,60))
+    red_circle_rect = red_circle.get_rect(center=(location_diff_1[0], location_diff_1[1]))
+
+
     diff = 0    #keeps track of how many differences are found
     found_differences = [0,0,0,0,0,0]
     
@@ -31,26 +45,21 @@ def spotdifferences_pq():
         m.SCREEN.blit(prequestion_3_explanation, prequestion_3_explanation_rect)
         m.SCREEN.blit(spot_differences_image, spot_differences_rect)
 
+        # Display red circle on places where a difference was found
         if found_differences[0] == 1:
-            m.SCREEN.blit(difference_1_red_circle, difference_1_red_circle_rect)
+            m.SCREEN.blit(red_circle, red_circle_rect)
 
         # update diff counter
         diff = found_differences.count(1)
         diff_counter = m.MagdaClean_font_30.render(f'Verschillen gevonden: {diff}/6', True, m.green_color)
         m.SCREEN.blit(diff_counter, (m.WIDTH/1.3, m.HEIGHT/15))
 
-        location_diff_1 = (1385, 273)
-        location_diff_2 = (1167, 713)
-        location_diff_3 = (1197, 831)
-        location_diff_4 = (1234, 875)
-        location_diff_5 = (1297, 828)
-        location_diff_6 = (1377, 983)
         difference_image = m.pygame.transform.scale(m.transparent_box, (50, 50))
 
         #Create invisible button and red circle for difference 1
         difference_1_button = b.Button(difference_image, difference_image, difference_image, \
             location_diff_1[0], location_diff_1[1], 50, 50)
-        difference_1_red_circle = m.MagdaClean_font_50.render('O', True, m.red_color)
+        difference_1_red_circle = m.code_font.render('O', True, m.red_color)
         difference_1_red_circle_rect = title.get_rect(center=(location_diff_1[0], location_diff_1[1]))
 
         difference_2_button = b.Button(difference_image, difference_image, difference_image, \
