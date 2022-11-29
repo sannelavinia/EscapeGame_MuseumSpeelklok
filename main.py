@@ -188,6 +188,10 @@ text_file = open("Assets/texts/prequestion_4.txt", "r")
 prequestion_4 = text_file.read().split("\n")
 text_file = open("Assets/texts/prequestion_4b.txt", "r")
 prequestion_4b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5.txt", "r")
+prequestion_5 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5b.txt", "r")
+prequestion_5b = text_file.read().split("\n")
 
 
 # fonts

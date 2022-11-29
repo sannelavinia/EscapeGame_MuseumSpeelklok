@@ -55,6 +55,15 @@ def multiplechoice_pq(game_number):
         answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.57, buttonwidth, 60)
         answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.33, buttonwidth, 60)
         correct_button = answer_b_button
+    if game_number == 5:
+        mc_temp(m.prequestion_5, m.prequestion_5b, 'a) dat de muziek is opgenomen en wordt afgespeeld', 'b) dat de muziek ter plekke wordt gespeeld', '', '')
+        buttonwidth = 1300
+        button_y = m.WIDTH/2.0
+        answer_a_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.90, buttonwidth, 60)
+        answer_b_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.60, buttonwidth, 60)
+        answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, 0, 0, 0, 0)
+        answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, 0, 0, 0, 0)
+        correct_button = answer_b_button
     
 
     while True:
@@ -64,8 +73,14 @@ def multiplechoice_pq(game_number):
 
         mc_temp.prequestion.display()
 
-        m.SCREEN.blit(mc_temp.answer_a, (m.WIDTH/5, m.HEIGHT/2.5))
-        m.SCREEN.blit(mc_temp.answer_b, (m.WIDTH/5, m.HEIGHT/1.98))
+        if game_number == 5:
+            answer_height1 = m.HEIGHT/2.0
+            answer_height2 = m.HEIGHT/1.68
+        else:
+            answer_height1 = m.HEIGHT/2.5
+            answer_height2 = m.HEIGHT/1.98
+        m.SCREEN.blit(mc_temp.answer_a, (m.WIDTH/5, answer_height1))
+        m.SCREEN.blit(mc_temp.answer_b, (m.WIDTH/5, answer_height2))
         m.SCREEN.blit(mc_temp.answer_c, (m.WIDTH/5, m.HEIGHT/1.65))
         m.SCREEN.blit(mc_temp.answer_d, (m.WIDTH/5, m.HEIGHT/1.39))
 
