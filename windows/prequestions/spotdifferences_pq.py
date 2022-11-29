@@ -15,6 +15,11 @@ def spotdifferences_pq():
     prequestion_3_explanation = m.MagdaClean_font_30.render(explanation_text, True, m.green_color)
     prequestion_3_explanation_rect = prequestion_3_explanation.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
 
+    # Get the text that says you found all differences and can continue
+    continue_text_string = "Goed zo! Tik op het scherm om verder te gaan."
+    continue_text = m.MagdaClean_font_30.render(continue_text_string, True, m.green_color)
+    continue_text_rect = continue_text.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
+
     # Get the spot_differences image with the right scale
     spot_differences_image = m.pygame.transform.scale(m.spot_differences, (1524, 857))
     spot_differences_rect = spot_differences_image.get_rect(center=(m.WIDTH/2, m.HEIGHT/1.8))
@@ -63,7 +68,6 @@ def spotdifferences_pq():
         # Display static elements of screen
         m.SCREEN.blit(black_screen_background, (0, 0))
         m.SCREEN.blit(title, title_rect)
-        m.SCREEN.blit(prequestion_3_explanation, prequestion_3_explanation_rect)
         m.SCREEN.blit(spot_differences_image, spot_differences_rect)
 
         # Display invisible buttons of differences 
@@ -92,6 +96,13 @@ def spotdifferences_pq():
         diff = found_differences.count(1)
         diff_counter = m.MagdaClean_font_30.render(f'Verschillen gevonden: {diff}/6', True, m.green_color)
         m.SCREEN.blit(diff_counter, (m.WIDTH/1.3, m.HEIGHT/15))
+
+        # if all differences are found, the continue text should be displayed, else the info text
+        if diff >= 6:
+            m.SCREEN.blit(continue_text, continue_text_rect)
+        else:
+            m.SCREEN.blit(prequestion_3_explanation, prequestion_3_explanation_rect)
+
                 
         for event in m.pygame.event.get():
 
