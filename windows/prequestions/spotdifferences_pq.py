@@ -1,32 +1,58 @@
 import main as m
 import pygame
 import widgets.button as b
+#from widgets.text_frame import Text_frame
+from widgets.instruction_box import Instruction_Box
 
 def spotdifferences_pq():
+    # Scale the background and texts 
     black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
-    title = m.MagdaClean_font_70.render(f'Voorvraag 3', True, m.green_color)
-    title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
+    title = m.MagdaClean_font_50.render('Voorvraag 3', True, m.green_color)
+    title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/14))
 
-    #prequestion_3 = Instruction_Box(m.transparent_box, 1000, \
-    #    450, m.prequestion_3, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
+    # Get the explanation for prequestion 3
+    explanation_text = "Zoek de verschillen. Klik op de rechterafbeelding de verschillen aan."
+    prequestion_3_explanation = m.MagdaClean_font_30.render(explanation_text, True, m.green_color)
+    prequestion_3_explanation_rect = prequestion_3_explanation.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
+
+    # Get the spot_differences image with the right scale
+    spot_differences_image = m.pygame.transform.scale(m.spot_differences, (1524, 857))
+    spot_differences_rect = spot_differences_image.get_rect(center=(m.WIDTH/2, m.HEIGHT/1.8))
+
     diff = 0    #keeps track of how many differences are found
-    diff_counter = m.MagdaClean_font_30.render(f'Verschillen gevonden: {diff}/6', True, m.green_color)
-
+    found_differences = [0,0,0,0,0,0]
+    
 
     while True:
 
+        # Display static elements of screen
         m.SCREEN.blit(black_screen_background, (0, 0))
         m.SCREEN.blit(title, title_rect)
+        m.SCREEN.blit(prequestion_3_explanation, prequestion_3_explanation_rect)
+        m.SCREEN.blit(spot_differences_image, spot_differences_rect)
 
-        location_diff_1 = (1240, 490)
+        if found_differences[0] == 1:
+            m.SCREEN.blit(difference_1_red_circle, difference_1_red_circle_rect)
+
+        # update diff counter
+        diff = found_differences.count(1)
+        diff_counter = m.MagdaClean_font_30.render(f'Verschillen gevonden: {diff}/6', True, m.green_color)
+        m.SCREEN.blit(diff_counter, (m.WIDTH/1.3, m.HEIGHT/15))
+
+        location_diff_1 = (1385, 273)
         location_diff_2 = (1167, 713)
         location_diff_3 = (1197, 831)
         location_diff_4 = (1234, 875)
         location_diff_5 = (1297, 828)
         location_diff_6 = (1377, 983)
         difference_image = m.pygame.transform.scale(m.transparent_box, (50, 50))
-        difference_1_button = b.Button(m.red_gear, m.red_gear, m.red_gear, \
+
+        #Create invisible button and red circle for difference 1
+        difference_1_button = b.Button(difference_image, difference_image, difference_image, \
             location_diff_1[0], location_diff_1[1], 50, 50)
+        difference_1_red_circle = m.MagdaClean_font_50.render('O', True, m.red_color)
+        difference_1_red_circle_rect = title.get_rect(center=(location_diff_1[0], location_diff_1[1]))
+
         difference_2_button = b.Button(difference_image, difference_image, difference_image, \
             location_diff_2[0], location_diff_2[1], 50, 50)
         difference_3_button = b.Button(difference_image, difference_image, difference_image, \
@@ -38,11 +64,9 @@ def spotdifferences_pq():
         difference_6_button = b.Button(difference_image, difference_image, difference_image, \
             location_diff_6[0], location_diff_6[1], 50, 50)
 
-        found_differences = [0,0,0,0,0,0]
+        
         rect_spot_the_differences = m.spot_differences.get_rect()
-        m.SCREEN.blit(m.spot_differences,(m.WIDTH/4.5, m.HEIGHT/2.5))
-        #prequestion_3.display()
-        m.SCREEN.blit(diff_counter, (m.WIDTH/1.3, m.HEIGHT/15))
+        
         difference_1_button.display()
         m.SCREEN.blit(m.red_gear, (location_diff_1[0], location_diff_1[1]))
 
@@ -54,16 +78,16 @@ def spotdifferences_pq():
                 m.pygame.quit()
 
             diff = found_differences.count(1)
+            # if the correct answer is chosen and you click on the screen you continue the game
             if event.type == m.pygame.MOUSEBUTTONDOWN and diff >= 6:
                 return
-            # if the correct answer is chosen and you click on the screen you continue the game
-            if event.type == m.pygame.QUIT or \
-                (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-                m.pygame.quit()
+            
+
             if event.type == m.pygame.MOUSEBUTTONDOWN and difference_1_button.mouse_on_button():
                 m.correct_answer_sound.play()
                 found_differences[0] = 1
-                m.SCREEN.blit(m.red_gear, (location_diff_1[0], location_diff_1[1]))
+                break
+                
             if event.type == m.pygame.MOUSEBUTTONDOWN and difference_2_button.mouse_on_button():
                 m.correct_answer_sound.play()
                 m.SCREEN.blit(m.red_gear, (location_diff_2[0], location_diff_2[1]))
