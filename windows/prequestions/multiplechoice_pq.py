@@ -122,6 +122,8 @@ def multiplechoice_pq(game_number):
                 mc_temp.answer_c = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.answer_d = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.prequestion = mc_temp.prequestion_b
+                thinking_boy = m.transparent_box
+                thinking_girl = m.transparent_box
                 continue
 
             # answer a) is wrong, it will turn red
