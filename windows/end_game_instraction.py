@@ -12,20 +12,17 @@ def end_game_instraction():
     arduino("activeMachine=3")
 
     text_1 = t.Text_frame(
-        None, None, None, "End Game Instruction: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
-    # text_3 = t.Text_frame(
-    #     None, None, None, "Jullie eindtijd is: " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
-    # text_4 = t.Text_frame(
-    #      None, None, None, "Bedankt voor jullie hulp!, we zijn weer in onze eigen tijd beland! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
-    # text_2 = t.Text_frame(
-    #      None, None, None, "Dat was een wilde maar gave rit zeg! Woohoo! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2,  (m.HEIGHT/7)*4)
-    
-    # print ("the time until now is: " + time_end)
+        None, None, None, "De instructies: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
+    text_3 = t.Text_frame(
+         None, None, None, "Jullie moeten ervoor zorgen dat de tandwielen die jullie hebben verzameld in de juiste volgorde staan. " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
+    text_4 = t.Text_frame(
+          None, None, None, "Let op! de tandwielen moeten allemaal draaien! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
+    text_2 = t.Text_frame(
+          None, None, None, "Klik op start om het eindspel te beginnen, Succes! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2,  (m.HEIGHT/7)*4)
 
-  
    
     # create title object that will be displayed on the screen
-    title = m.MagdaClean_font_70.render("End Game " , True, m.green_color)
+    title = m.MagdaClean_font_70.render("Eindspel" , True, m.green_color)
 
 
     start_button = Button(m.small_green_button, m.small_green_button,
@@ -49,9 +46,9 @@ def end_game_instraction():
 
         start_button.display()
         text_1.display()
-        # text_3.display()
-        # text_4.display()
-        # text_2.display()
+        text_3.display()
+        text_4.display()
+        text_2.display()
         m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
 
         # every interaction with the game is an event ( mouse, Keyboard )
