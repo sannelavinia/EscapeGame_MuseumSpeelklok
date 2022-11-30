@@ -153,6 +153,8 @@ def push_button_to_start(game_number):
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
+        m.game_1_to_6_robot_voice_correct_code.stop()
+
 
         if not displayed:
             # display the background image ( it should be the fisrt image to display,
@@ -561,9 +563,6 @@ def game_started(
                         
                         return
                     else:
-                        code = keyboard.keyboard_button_pressed(
-                            pressed_button, code, m.red_color
-                        )
                         if game_number == 1:        
                             m.game_1_robot_voice_incorrect_code.play()
                         elif game_number == 2:
@@ -576,9 +575,25 @@ def game_started(
                             m.game_5_robot_voice_incorrect_code.play() 
                         elif game_number == 6:
                             m.game_6_robot_voice_incorrect_code.play()
+                        code = keyboard.keyboard_button_pressed(
+                            pressed_button, code, m.red_color
+                        )
+                        
                         # incorrect_code(game_number)
          
                 else:
+                    if game_number == 1:        
+                        m.game_1_robot_voice_incorrect_code.stop()
+                    elif game_number == 2:
+                        m.game_2_robot_voice_incorrect_code.stop()
+                    elif game_number == 3:
+                        m.game_3_robot_voice_incorrect_code.stop()
+                    elif game_number == 4:
+                        m.game_4_robot_voice_incorrect_code.stop()
+                    elif game_number == 5:
+                        m.game_5_robot_voice_incorrect_code.stop() 
+                    elif game_number == 6:
+                        m.game_6_robot_voice_incorrect_code.stop()
                     m.click_sound.play()
                     code = keyboard.keyboard_button_pressed(pressed_button, code)
             else:
@@ -779,21 +794,6 @@ def game_started(
 #         # the window should be updated after each while-loop
 #         m.pygame.display.update()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################################################################
 def games_window(
     game_number,
@@ -806,6 +806,7 @@ def games_window(
     game_tip_3_image=None,
     game_tip_4_image=None,
 ):
+
 
     push_button_to_start(game_number)
     if game_number != 6:

@@ -189,6 +189,7 @@ def code_check():
                 incorrect_code_message_1.display()
                 incorrect_code_message_2.display()
                 incorrect_code_message_3.display()
+            
             button_pushed = False
 
         # delay after clicking before resizing
@@ -202,10 +203,9 @@ def code_check():
             if pressed_button == 10:
                 if code == m.start_code:
                     m.start_game_robot_voice_correct_code.play()
-                    # if event.type == m.pygame.MOUSEBUTTONDOWN:
-                    #     m.start_game_robot_voice_correct_code.stop()
                     return
                 else:
+                    incorrect_code = True
                     m.start_game_robot_voice_incorrect_code.play()
                     
             else:
