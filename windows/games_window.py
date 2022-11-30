@@ -296,7 +296,7 @@ def game_started(
     )
     blue_gear = m.pygame.transform.scale(m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
 
-    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 200))
+    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 198))
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
@@ -341,12 +341,12 @@ def game_started(
 
     instruction_box = i.Instruction_Box(
         m.instruction_screen_games,
-        1316,
-        (m.HEIGHT / 2) + 30,
+        1320,
+        (m.HEIGHT / 2) + 36,
         game_instructions,
         m.green_color,
-        0,
-        (m.HEIGHT / 6) + 18,
+        3,
+        (m.HEIGHT / 6) + 23,
         m.MagdaClean_font_30,
         40,
         60,
@@ -421,7 +421,6 @@ def game_started(
     restart_timer = 0
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
-    miliseconds_total_time = m.TOTAL_PLAY_TIME % 1000
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
     play_time_as_text = t.Text_frame(
         None,
