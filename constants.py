@@ -13,7 +13,7 @@ red_color = (255, 0, 0)
 button_width = 150
 button_height = 120
 reduction_ratio = 10
-button_resizing_delay = 10
+button_resizing_delay = 3
 
 # codes
 start_code = "0000"
@@ -27,8 +27,11 @@ game_6_code = "1948"
 
 admin_code = "1111"
 restart_time_logo_pressed = 100
+restart_time_end_window = 300000  # 5 min
 
 # normal times per game (in milliseconds)
 game_normal_time = 180000  # 3 min
 game_tip_1_time = 180000  # 3 min
 game_tip_2_time = 240000  # 4 min (3 min first tip + 1 min second tip)
+correct_code_animation_delay = 6000   # 6 seconds gears animation delay
+incorrect_code_animation_delay = 11000   # 11 seconds gears animation delay
