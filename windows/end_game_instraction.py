@@ -14,7 +14,7 @@ def end_game_instraction():
     text_1 = t.Text_frame(
         None, None, None, "De instructies: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
     text_3 = t.Text_frame(
-         None, None, None, "Jullie moeten ervoor zorgen dat de tandwielen die jullie hebben verzameld in de juiste volgorde staan. " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
+         None, None, None, "Jullie moeten ervoor zorgen dat de tandwielen die jullie hebben verzameld in de juiste volgorde staan. ", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
     text_4 = t.Text_frame(
           None, None, None, "Let op! de tandwielen moeten allemaal draaien! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
     text_2 = t.Text_frame(
