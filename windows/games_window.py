@@ -4,7 +4,7 @@ import widgets.text_frame as t
 import widgets.button as b
 import widgets.instruction_box as i
 import windows.start_window as sw
-
+from arduino.arduino_control import *
 
 #######################################################################################
 def push_button_to_start(game_number):
@@ -272,6 +272,8 @@ def game_started(
     game_tip_3_image=None,
     game_tip_4_image=None,
 ):
+    arduino("activeMachine=2")
+    arduino("activeGame=" + str(game_number))
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
