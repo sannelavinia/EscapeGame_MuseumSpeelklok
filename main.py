@@ -9,7 +9,8 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
-
+from windows.end_game_instraction import *
+from windows.end_game import *
 
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
@@ -224,6 +225,7 @@ def main():
             if keep_going:
                 if explanation_window() == 1:
                     keep_going = False
+
             if keep_going:
                 if team_name_window() == 1:
                     keep_going = False
@@ -298,6 +300,12 @@ def main():
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if end_game_instraction() == 1:
+                    keep_going = False
+            if keep_going:
+                if end_game() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:

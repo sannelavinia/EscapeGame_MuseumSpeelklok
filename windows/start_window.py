@@ -1,11 +1,14 @@
 import main as m
 from widgets.text_frame import Text_frame
 import widgets.keyboard as k
+from arduino.arduino_control import *
+
 
 
 #######################################################################################
 def code_check():
-
+    arduino("activeGame=0")
+    arduino("activeMachine=0")
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH * 0.5, m.HEIGHT)

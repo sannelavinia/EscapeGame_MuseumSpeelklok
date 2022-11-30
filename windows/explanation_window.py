@@ -3,6 +3,9 @@ import main as m
 from widgets.instruction_box import Instruction_Box
 from widgets.button import Button
 import widgets.button as b
+from arduino.arduino_control import *
+
+
 
 #######################################################################################
 # Might be useful to load this image in main.py instead of here
@@ -11,6 +14,9 @@ transparent_box = pygame.transform.scale(transparent_box, (0, 0))
 
 
 def explanation_window():
+    arduino("activeGame=0")
+    arduino("activeMachine=1")
+
     message = Instruction_Box(transparent_box, 1000,
                               450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
 

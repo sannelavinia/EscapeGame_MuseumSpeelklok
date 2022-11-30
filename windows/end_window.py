@@ -6,12 +6,15 @@ from widgets.instruction_box import Instruction_Box
 from widgets.button import Button
 import widgets.button as b
 import widgets.text_frame as t
+from arduino.arduino_control import *
+
 
 
 
 #######################################################################################
 def end_window():
-
+    arduino("activeGame=0")
+    arduino("activeMachine=5")
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
     seconds = int((m.TOTAL_PLAY_TIME / 1000) % 60)
