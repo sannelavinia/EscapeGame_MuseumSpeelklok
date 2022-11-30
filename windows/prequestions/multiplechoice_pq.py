@@ -124,6 +124,7 @@ def multiplechoice_pq(game_number):
                 mc_temp.prequestion = mc_temp.prequestion_b
                 thinking_boy = m.transparent_box
                 thinking_girl = m.transparent_box
+                gears_pq4 = m.transparent_box
                 continue
 
             # answer a) is wrong, it will turn red
