@@ -27,6 +27,9 @@ def multiplechoice_pq(game_number):
 
     black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
+    thinking_boy = pygame.transform.scale(m.thinking_boy, (1433 * 0.15, 1556 * 0.15))
+    thinking_girl = pygame.transform.scale(m.thinking_girl, (1768 * 0.15, 1669 * 0.15))
+
     # Multiple choice prequestion 1 text
     if game_number == 1:
         mc_temp( m.prequestion_1, m.prequestion_1b, 'a) Slinger', 'b) Klepel', 'c) Was', 'd) Lepel')
@@ -55,6 +58,8 @@ def multiplechoice_pq(game_number):
         answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.57, buttonwidth, 60)
         answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, button_y, m.HEIGHT/1.33, buttonwidth, 60)
         correct_button = answer_b_button
+        gears_pq4 = m.pygame.transform.scale(m.gears_pq4, (608 * 0.65, 454 * 0.65)
+    )
     if game_number == 5:
         mc_temp(m.prequestion_5, m.prequestion_5b, 'a) dat de muziek is opgenomen en wordt afgespeeld', 'b) dat de muziek ter plekke wordt gespeeld', '', '')
         buttonwidth = 1300
@@ -64,6 +69,8 @@ def multiplechoice_pq(game_number):
         answer_c_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, 0, 0, 0, 0)
         answer_d_button = b.Button(m.transparent_box, m.transparent_box, m.transparent_box, 0, 0, 0, 0)
         correct_button = answer_b_button
+
+
     
 
     while True:
@@ -88,6 +95,12 @@ def multiplechoice_pq(game_number):
         answer_b_button.display()
         answer_c_button.display()
         answer_d_button.display() 
+
+        m.SCREEN.blit(thinking_boy, (m.WIDTH*0.05,m.HEIGHT*0.75))
+        m.SCREEN.blit(thinking_girl, (m.WIDTH*0.85,m.HEIGHT*0.75))
+
+        if game_number == 4:
+            m.SCREEN.blit(gears_pq4,(m.WIDTH*0.76,m.HEIGHT*0.45))
 
         for event in m.pygame.event.get():
 
