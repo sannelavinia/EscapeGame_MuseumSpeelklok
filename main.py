@@ -9,8 +9,12 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+from windows.prequestions.multiplechoice_pq import multiplechoice_pq
+from windows.prequestions.spotdifferences_pq import spotdifferences_pq
+from windows.prequestions.organmaze_pq import organmaze_pq
 from windows.end_game_instraction import *
 from windows.end_game import *
+
 
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
@@ -131,6 +135,12 @@ enter_button_after_click = pygame.image.load("Assets/images/enter_after_click.pn
 delete_button = pygame.image.load("Assets/images/delete.png")
 delete_button_after_click = pygame.image.load("Assets/images/delete_after_click.png")
 
+# prequestion images
+thinking_boy = pygame.image.load("Assets/images/jongen_vragend.png")
+thinking_girl = pygame.image.load("Assets/images/meisje_vertwijfeld.png")
+organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
+spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
+gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
 # sound effectsh
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
@@ -183,6 +193,24 @@ text_file = open("Assets/texts/game_6_tip_1.txt", "r")
 game_6_tip_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/game_6_tip_2.txt", "r")
 game_6_tip_2 = text_file.read().split("\n")
+
+text_file = open("Assets/texts/prequestion_1.txt", "r")
+prequestion_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_1b.txt", "r")
+prequestion_1b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2.txt", "r")
+prequestion_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2b.txt", "r")
+prequestion_2b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4.txt", "r")
+prequestion_4 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4b.txt", "r")
+prequestion_4b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5.txt", "r")
+prequestion_5 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5b.txt", "r")
+prequestion_5b = text_file.read().split("\n")
+
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -246,6 +274,9 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(1) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         1,
@@ -262,12 +293,18 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(2) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if spotdifferences_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
@@ -286,6 +323,9 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(4) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         4,
@@ -302,12 +342,18 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(5) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if organmaze_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
