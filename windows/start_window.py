@@ -1,11 +1,14 @@
 import main as m
 from widgets.text_frame import Text_frame
 import widgets.keyboard as k
+from arduino.arduino_control import *
+
 
 
 #######################################################################################
 def code_check():
-
+    arduino("activeGame=0")
+    arduino("activeMachine=0")
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH * 0.5, m.HEIGHT)
@@ -174,7 +177,7 @@ def code_check():
                 (
                     m.WIDTH - (m.WIDTH * 0.001) - (m.WIDTH * 0.05),
                     (m.HEIGHT - (m.HEIGHT * 0.1)),
-                ),
+                )
             )
 
             # displaying the keyboard
@@ -189,6 +192,7 @@ def code_check():
                 incorrect_code_message_1.display()
                 incorrect_code_message_2.display()
                 incorrect_code_message_3.display()
+            
             button_pushed = False
 
         # delay after clicking before resizing
@@ -201,12 +205,16 @@ def code_check():
             # to the next window (if the code was correct)
             if pressed_button == 10:
                 if code == m.start_code:
-                    m.correct_answer_sound.play()
+                    m.start_game_robot_voice_correct_code.play()
                     return
                 else:
-                    m.wrong_answer_sound.play()
                     incorrect_code = True
+                    m.start_game_robot_voice_incorrect_code.play()
+                    
             else:
+                # to stop robot's sound by new code insertion
+                m.start_game_robot_voice_incorrect_code.stop()
+
                 m.click_sound.play()
             code = keyboard.keyboard_button_pressed(pressed_button, code)
 
@@ -228,6 +236,7 @@ def code_check():
                 m.pygame.quit()
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
+
                 pressed_button = keyboard.pressed_button()
 
                 if pressed_button in range(0, 12):
@@ -261,21 +270,68 @@ def corret_code():
     )
 
     # resizinf the gear image for later use as animation
-    green_gear = m.pygame.transform.scale(
-        m.green_gear, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    green_gear_1 = m.pygame.transform.scale(
+        m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_2 = m.pygame.transform.scale(
+        m.green_gear_2, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_3 = m.pygame.transform.scale(
+        m.green_gear_3, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    green_gear_4 = m.pygame.transform.scale(
+        m.green_gear_4, (m.WIDTH * 0.05, m.WIDTH * 0.05)
     )
 
-    display_once = True
+    green_gear_teller = 1
+    delay = 0
+    animation = 100
+    start_time = m.pygame.time.get_ticks()
 
     while True:
-        if display_once:
+        # to go to next screen after 3 seconds
+        if  m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
+                return
+
+        # animating the gears 
+        if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-            m.SCREEN.blit(green_gear, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            display_once = False
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1 
+            delay = 0
+        elif green_gear_teller == 2 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1
+            delay = 0
+        elif green_gear_teller == 3 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller +=1
+            delay = 0
+        elif green_gear_teller == 4 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            green_gear_teller = 1
+            delay = 0
+
+        delay += 1
 
         for event in m.pygame.event.get():
 

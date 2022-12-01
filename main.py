@@ -12,6 +12,8 @@ from windows.teamname_window import team_name_window
 from windows.prequestions.multiplechoice_pq import multiplechoice_pq
 from windows.prequestions.spotdifferences_pq import spotdifferences_pq
 from windows.prequestions.organmaze_pq import organmaze_pq
+from windows.end_game_instraction import *
+from windows.end_game import *
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -69,6 +71,14 @@ orange_gear = pygame.image.load("Assets/images/orange_gear.png")
 purple_gear = pygame.image.load("Assets/images/purple_gear.png")
 red_gear = pygame.image.load("Assets/images/red_gear.png")
 green_gear = pygame.image.load("Assets/images/green_gear.png")
+green_gear_1= pygame.image.load("Assets/images/green_gear_1.png")
+green_gear_2= pygame.image.load("Assets/images/green_gear_2.png")
+green_gear_3= pygame.image.load("Assets/images/green_gear_3.png")
+green_gear_4= pygame.image.load("Assets/images/green_gear_4.png")
+red_gear_1= pygame.image.load("Assets/images/red_gear_1.png")
+red_gear_2= pygame.image.load("Assets/images/red_gear_2.png")
+red_gear_3= pygame.image.load("Assets/images/red_gear_3.png")
+red_gear_4= pygame.image.load("Assets/images/red_gear_4.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
 rings_for_gears_with_gears = pygame.image.load(
@@ -132,14 +142,22 @@ organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
 spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
 gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
-# sound effects
+# sound effectsh
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
-
+start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
+start_game_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/start_window_incorrect_code.mp3")
+game_1_to_6_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/games_correct_code.mp3")
+game_1_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_1_incorrect_code.mp3")
+game_2_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_2_incorrect_code.mp3")
+game_3_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_3_incorrect_code.mp3")
+game_4_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_4_incorrect_code.mp3")
+game_5_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_5_incorrect_code.mp3")
+game_6_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_6_incorrect_code.mp3")
 # texts
 text_file = open("Assets/texts/text_1.txt", "r")
 text_1 = text_file.read().split("\n")
@@ -251,6 +269,7 @@ def main():
             if keep_going:
                 if explanation_window() == 1:
                     keep_going = False
+
             if keep_going:
                 if team_name_window() == 1:
                     keep_going = False
@@ -343,6 +362,12 @@ def main():
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if end_game_instraction() == 1:
+                    keep_going = False
+            if keep_going:
+                if end_game() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:
