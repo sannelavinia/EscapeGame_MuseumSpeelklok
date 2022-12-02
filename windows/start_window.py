@@ -52,7 +52,7 @@ def code_check():
         None,
         "Voer de code in die je bij de ",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.2,
     )
@@ -62,7 +62,7 @@ def code_check():
         None,
         "balie hebt gekregen om het spel ",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.24,
     )
@@ -72,7 +72,7 @@ def code_check():
         None,
         "te starten.",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.28,
     )
@@ -83,7 +83,7 @@ def code_check():
         None,
         "De code is onjuist. Ga naar de ",
         m.red_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.2,
     )
