@@ -2,4 +2,4 @@ pygame
 pygame_vkeyboard
 pre-commit
 black
-pyserial                  3.5
+pyserial==3.5
