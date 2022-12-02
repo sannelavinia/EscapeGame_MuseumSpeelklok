@@ -1,7 +1,7 @@
 name: run-unit-tests
 on: [pull_request]
 jobs:
-  run_tests:
+  run-tests:
     runs_on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.1.0
@@ -14,8 +14,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt # or any installs
  
-      - name: Run tests with Pytest
-        run: pytest tests/
+#       - name: Run tests with Pytest
+#         run: pytest tests/
 
 
 
