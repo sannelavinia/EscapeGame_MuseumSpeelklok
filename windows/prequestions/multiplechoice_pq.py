@@ -22,8 +22,8 @@ def mc_temp(prequestion_x, prequestion_xb, answera, answerb, answerc, answerd):
     mc_temp.answer_d = m.MagdaClean_font_50.render(answerd, True, m.green_color)
 
 def multiplechoice_pq(game_number):
-    title = m.MagdaClean_font_70.render(f'Voorvraag {game_number}', True, m.green_color)
-    title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
+    # title = m.MagdaClean_font_70.render(f'Voorvraag {game_number}', True, m.green_color)
+    # title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
 
     black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
@@ -76,7 +76,7 @@ def multiplechoice_pq(game_number):
     while True:
         
         m.SCREEN.blit(black_screen_background, (0, 0))
-        m.SCREEN.blit(title, title_rect)
+        # m.SCREEN.blit(title, title_rect)
 
         mc_temp.prequestion.display()
 
@@ -116,7 +116,7 @@ def multiplechoice_pq(game_number):
             # when correct answer is chosen you get a congratulatory message
             if event.type == m.pygame.MOUSEBUTTONDOWN and correct_button.mouse_on_button():
                 m.correct_answer_sound.play()
-                title = m.MagdaClean_font_50.render('', True, m.red_color)
+                # title = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.answer_a = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.answer_b = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.answer_c = m.MagdaClean_font_50.render('', True, m.red_color)

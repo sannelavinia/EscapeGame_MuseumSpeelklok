@@ -6,8 +6,8 @@ import widgets.button as b
 
 def organmaze_pq():
     # Get title for question
-    title = m.MagdaClean_font_50.render('Voorvraag 6', True, m.green_color)
-    title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/14))
+    # title = m.MagdaClean_font_50.render('Voorvraag 6', True, m.green_color)
+    # title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/14))
 
     black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
 
@@ -92,7 +92,7 @@ def organmaze_pq():
 
         m.SCREEN.blit(black_screen_background, (0, 0))
         m.SCREEN.blit(organ_maze, organ_maze_rect)
-        m.SCREEN.blit(title, title_rect)
+        # m.SCREEN.blit(title, title_rect)
         m.SCREEN.blit(prequestion_6_explanation1, prequestion_6_explanation1_rect)
         m.SCREEN.blit(prequestion_6_explanation2, prequestion_6_explanation2_rect)
 

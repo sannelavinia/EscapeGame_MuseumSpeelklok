@@ -7,8 +7,8 @@ from widgets.instruction_box import Instruction_Box
 def spotdifferences_pq():
     # Scale the background and texts 
     black_screen_background = pygame.transform.scale(m.black_screen_background, (m.WIDTH, m.HEIGHT))
-    title = m.MagdaClean_font_50.render('Voorvraag 3', True, m.green_color)
-    title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/14))
+    # title = m.MagdaClean_font_50.render('Voorvraag 3', True, m.green_color)
+    # title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/14))
 
     # Get the explanation for prequestion 3
     explanation_text = "Zoek de verschillen. Klik op de rechterafbeelding de verschillen aan."
@@ -67,7 +67,7 @@ def spotdifferences_pq():
 
         # Display static elements of screen
         m.SCREEN.blit(black_screen_background, (0, 0))
-        m.SCREEN.blit(title, title_rect)
+        # m.SCREEN.blit(title, title_rect)
         m.SCREEN.blit(spot_differences_image, spot_differences_rect)
 
         # Display invisible buttons of differences 
