@@ -12,7 +12,7 @@ from windows.teamname_window import team_name_window
 from windows.prequestions.multiplechoice_pq import multiplechoice_pq
 from windows.prequestions.spotdifferences_pq import spotdifferences_pq
 from windows.prequestions.organmaze_pq import organmaze_pq
-from windows.end_game_instraction import *
+from windows.end_game_instruction import *
 from windows.end_game import *
 
 
@@ -211,6 +211,8 @@ prequestion_5 = text_file.read().split("\n")
 text_file = open("Assets/texts/prequestion_5b.txt", "r")
 prequestion_5b = text_file.read().split("\n")
 
+text_file = open("Assets/texts/end_game_instruction.txt", "r")
+end_game_instruction_text = text_file.read().split("\n")
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -364,7 +366,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if end_game_instraction() == 1:
+                if end_game_instruction() == 1:
                     keep_going = False
             if keep_going:
                 if end_game() == 1:

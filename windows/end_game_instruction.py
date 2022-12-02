@@ -5,23 +5,15 @@ from widgets.button import Button
 import widgets.button as b
 import widgets.text_frame as t
 from arduino.arduino_control import *
+from widgets.instruction_box import Instruction_Box
 
 #######################################################################################
-def end_game_instraction():
+def end_game_instruction():
     arduino("activeGame=0")
     arduino("activeMachine=3")
 
-    text_1 = t.Text_frame(
-        None, None, None, "De instructies zijn als volgt: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
-    text_3 = t.Text_frame(
-         None, None, None, "Jullie moeten ervoor zorgen dat ", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
-    text_3 = t.Text_frame(
-         None, None, None, "de tandwielen die jullie hebben verzameld in de juiste volgorde staan. ", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)     
-    text_4 = t.Text_frame(
-          None, None, None, "Let op! De tandwielen moeten allemaal draaien! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
-    text_2 = t.Text_frame(
-          None, None, None, "Klik op start om het eindspel te beginnen, succes! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2,  (m.HEIGHT/7)*4)
-
+    explanation_text = Instruction_Box(m.transparent_box, 1000,
+                              450, m.end_game_instruction_text, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
    
     # create title object that will be displayed on the screen
     title = m.MagdaClean_font_70.render("Eindspel" , True, m.green_color)
@@ -47,10 +39,7 @@ def end_game_instraction():
         # message.display()
 
         start_button.display()
-        text_1.display()
-        text_3.display()
-        text_4.display()
-        text_2.display()
+        explanation_text.display()
         m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
 
         # every interaction with the game is an event ( mouse, Keyboard )
