@@ -1,11 +1,14 @@
 # deze functie is om een code (active) naar arduino sturen
 
 import serial
-
+import os
 import time
 import serial.tools.list_ports
 
 def arduino(active):
+    if (os.name=='mac'):
+        return
+
     ports = list(serial.tools.list_ports.comports())
     for p in ports:
         
@@ -34,3 +37,4 @@ def arduino(active):
             print(serialcomm.readline().decode('ascii'))
             
         serialcomm.close()
+    # serialcomm.close()
