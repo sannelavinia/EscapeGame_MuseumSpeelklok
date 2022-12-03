@@ -12,8 +12,8 @@ from arduino.arduino_control import *
 
 #######################################################################################
 def end_window():
-    arduino("activeGame=0")
-    arduino("activeMachine=5")
+    arduino("activeMachine=5&activeGame=0\n")
+    
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
     seconds = int((m.TOTAL_PLAY_TIME / 1000) % 60)

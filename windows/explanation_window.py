@@ -14,8 +14,7 @@ transparent_box = pygame.transform.scale(transparent_box, (0, 0))
 
 
 def explanation_window():
-    arduino("activeGame=0")
-    arduino("activeMachine=1")
+    arduino("activeMachine=1&activeGame=0\n")
 
     message = Instruction_Box(transparent_box, 1000,
                               450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
