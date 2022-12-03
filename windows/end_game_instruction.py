@@ -9,7 +9,7 @@ from widgets.instruction_box import Instruction_Box
 
 #######################################################################################
 
-def end_game_instraction():
+def end_game_instruction():
     arduino("activeMachine=3&activeGame=0\n")
 
     explanation_text = Instruction_Box(m.transparent_box, 1000,
