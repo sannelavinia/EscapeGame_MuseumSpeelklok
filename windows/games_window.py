@@ -301,27 +301,27 @@ def game_started(
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
-            game_tip_1_image, (615, (m.HEIGHT / 2) - 50)
+            game_tip_1_image, (620, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_2_image != None:
         tip_image_2 = m.pygame.transform.scale(
-            game_tip_2_image, (615, (m.HEIGHT / 2) - 50)
+            game_tip_2_image, (618, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_3_image != None:
         tip_image_3 = m.pygame.transform.scale(
-            game_tip_3_image, (922, (m.HEIGHT / 2) - 50)
+            game_tip_3_image, (929, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_4_image != None:
         if game_tip_3_image != None:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (308, (m.HEIGHT / 2) - 50)
+                game_tip_4_image, (310, (m.HEIGHT / 2) - 45)
             )
         else:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (1230, (m.HEIGHT / 2) - 50)
+                game_tip_4_image, (1238, (m.HEIGHT / 2) - 45)
             )
 
     # texts
@@ -357,12 +357,12 @@ def game_started(
     if game_tip_1 != None:
         tip_message_1 = i.Instruction_Box(
             m.instruction_screen_games,
-            1316,
-            (m.HEIGHT / 2) + 30,
+            1320,
+            (m.HEIGHT / 2) + 36,
             game_tip_1,
             m.green_color,
-            0,
-            (m.HEIGHT / 6) + 18,
+            3,
+            (m.HEIGHT / 6) + 23,
             m.MagdaClean_font_30,
             40,
             60,
@@ -372,12 +372,12 @@ def game_started(
     if game_tip_2 != None:
         tip_message_2 = i.Instruction_Box(
             m.instruction_screen_games,
-            1316,
-            (m.HEIGHT / 2) + 30,
+            1320,
+            (m.HEIGHT / 2) + 36,
             game_tip_2,
             m.green_color,
-            0,
-            (m.HEIGHT / 6) + 18,
+            3,
+            (m.HEIGHT / 6) + 23,
             m.MagdaClean_font_30,
             40,
             60,
@@ -521,9 +521,9 @@ def game_started(
             if game_tip_1 != None:
                 tip_message_1.display()
             if game_tip_1_image != None:
-                m.SCREEN.blit(tip_image_1, (44, 240))
+                m.SCREEN.blit(tip_image_1, (44, 244))
             if game_tip_2_image != None:
-                m.SCREEN.blit(tip_image_2, (659, 240))
+                m.SCREEN.blit(tip_image_2, (663, 244))
             display_tip_message_1 = False
             tip_message_1_displayed = True
 
@@ -531,10 +531,10 @@ def game_started(
             if game_tip_2 != None:
                 tip_message_2.display()
             if game_tip_3_image != None:
-                m.SCREEN.blit(tip_image_3, (44, 240))
-                m.SCREEN.blit(tip_image_4, (966, 240))
+                m.SCREEN.blit(tip_image_3, (44, 244))
+                m.SCREEN.blit(tip_image_4, (972, 244))
             elif game_tip_4_image != None:
-                m.SCREEN.blit(tip_image_4, (44, 240))
+                m.SCREEN.blit(tip_image_4, (44, 244))
             tip_message_2_displayed = True
             display_tip_message_2 = False
 
