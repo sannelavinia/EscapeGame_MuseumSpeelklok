@@ -8,8 +8,7 @@ from arduino.arduino_control import *
 
 #######################################################################################
 def end_game_instraction():
-    arduino("activeGame=0")
-    arduino("activeMachine=3")
+    arduino("activeMachine=3&activeGame=0\n")
 
     text_1 = t.Text_frame(
         None, None, None, "End Game Instruction: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)

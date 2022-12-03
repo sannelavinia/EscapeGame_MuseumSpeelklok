@@ -272,8 +272,8 @@ def game_started(
     game_tip_3_image=None,
     game_tip_4_image=None,
 ):
-    arduino("activeMachine=2")
-    arduino("activeGame=" + str(game_number))
+        
+    arduino("activeMachine=2&" + "activeGame=" + str(game_number) + "\n")
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(

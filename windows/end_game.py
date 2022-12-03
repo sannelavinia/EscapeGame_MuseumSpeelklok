@@ -5,8 +5,7 @@ import pygame
 
 #######################################################################################
 def end_game():
-    arduino("activeGame=0")
-    arduino("activeMachine=4")
+    arduino("activeMachine=4&activeGame=0\n")
 
     start_time = m.pygame.time.get_ticks()
     open_end_game()

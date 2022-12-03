@@ -7,8 +7,8 @@ from arduino.arduino_control import *
 
 #######################################################################################
 def code_check():
-    arduino("activeGame=0")
-    arduino("activeMachine=0")
+    arduino("activeMachine=0&activeGame=0\n")
+    
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH * 0.5, m.HEIGHT)
@@ -52,7 +52,7 @@ def code_check():
         None,
         "Voer de code in die je bij de ",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.2,
     )
@@ -62,7 +62,7 @@ def code_check():
         None,
         "balie hebt gekregen om het spel ",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.24,
     )
@@ -72,7 +72,7 @@ def code_check():
         None,
         "te starten.",
         m.black_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.28,
     )
@@ -83,7 +83,7 @@ def code_check():
         None,
         "De code is onjuist. Ga naar de ",
         m.red_color,
-        m.Consolas_font_30,
+        m.MagdaClean_font_30,
         m.WIDTH * 0.75,
         m.HEIGHT * 0.2,
     )
