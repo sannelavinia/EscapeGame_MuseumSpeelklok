@@ -6,7 +6,7 @@ import time
 import serial.tools.list_ports
 
 def arduino(active):
-    print (active[0:15]+'\n'+active[17:])
+    print (active[0:15]+'\n'+active[16:])
     try:
 
         ports = list(serial.tools.list_ports.comports())
