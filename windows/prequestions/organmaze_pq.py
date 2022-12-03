@@ -106,7 +106,6 @@ class OrganMaze:
 
             m.SCREEN.blit(black_screen_background, (0, 0))
             m.SCREEN.blit(organ_maze, organ_maze_rect)
-            # m.SCREEN.blit(title, title_rect)
             m.SCREEN.blit(prequestion_6_explanation1, prequestion_6_explanation1_rect)
             m.SCREEN.blit(prequestion_6_explanation2, prequestion_6_explanation2_rect)
 
@@ -191,8 +190,8 @@ class OrganMaze:
 
 
                 # if all correct answers are chosen and you click on the screen you continue the game
-                # if event.type == m.pygame.MOUSEBUTTONDOWN:
-                #     return
+                if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict)==6:
+                    return 
 
                 # if event.type == m.pygame.MOUSEBUTTONDOWN and location_A_button.mouse_on_button() and not selected1:
                 #     clicked = location_A_button
