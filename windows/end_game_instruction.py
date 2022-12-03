@@ -8,9 +8,9 @@ from arduino.arduino_control import *
 from widgets.instruction_box import Instruction_Box
 
 #######################################################################################
+
 def end_game_instruction():
-    arduino("activeGame=0")
-    arduino("activeMachine=3")
+    arduino("activeMachine=3&activeGame=0\n")
 
     explanation_text = Instruction_Box(m.transparent_box, 1000,
                               450, m.end_game_instruction_text, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)

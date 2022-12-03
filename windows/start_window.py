@@ -7,8 +7,8 @@ from arduino.arduino_control import *
 
 #######################################################################################
 def code_check():
-    arduino("activeGame=0")
-    arduino("activeMachine=0")
+    arduino("activeMachine=0&activeGame=0\n")
+    
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH * 0.5, m.HEIGHT)

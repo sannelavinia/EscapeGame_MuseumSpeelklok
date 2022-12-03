@@ -1,3 +1,3 @@
 from arduino_control import *
 
-arduino("activeGame=2")
+arduino("activeMachine=2&activeGame=1\n")
