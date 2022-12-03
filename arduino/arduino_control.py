@@ -35,8 +35,6 @@ def arduino(active):
 
             serialcomm.close()
 
-        
     except:
         return
-
 
