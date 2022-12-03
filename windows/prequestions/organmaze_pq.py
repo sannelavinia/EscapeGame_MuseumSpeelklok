@@ -59,6 +59,8 @@ class OrganMaze:
             self.location_C_button: self.location_organ2_button, self.location_D_button: self.location_organ1_button,
             self.location_E_button: self.location_organ5_button, self.location_F_button: self.location_organ3_button}
 
+        # Create a dictionary that keeps track of all the correct answers that were found
+        self.correct_buttons_dict = {}
 
     def organmaze_pq(self):
         # Get background
@@ -122,9 +124,14 @@ class OrganMaze:
             self.location_organ5_button.display()
             self.location_organ6_button.display()
 
-            if self.last_clicked_letter_button!=-1 and self.correct_corresponding_organ!=-1:
+            if self.last_clicked_letter_button!=-1 and self.correct_corresponding_organ!=-1 \
+                and (self.last_clicked_letter_button in self.buttons_dict):
                 m.SCREEN.blit(orange_circle, (self.last_clicked_letter_button.x_pos, self.last_clicked_letter_button.y_pos))
                 m.SCREEN.blit(testimage, (self.correct_corresponding_organ.x_pos, self.correct_corresponding_organ.y_pos))
+
+            for button in self.correct_buttons_dict:
+                m.SCREEN.blit(green_check, (button.x_pos, button.y_pos))
+
 
             # if clicked in buttons1:
             #     selected1 = clicked
@@ -169,10 +176,19 @@ class OrganMaze:
                     m.pygame.quit()
 
                 for button in self.buttons_dict:
-                   if event.type == m.pygame.MOUSEBUTTONDOWN and button.mouse_on_button():
-                    self.correct_corresponding_organ = self.buttons_dict[button]
-                    self.last_clicked_letter_button = button
-                    break
+                    corresponding_organ = self.buttons_dict[button]
+
+                    if event.type == m.pygame.MOUSEBUTTONDOWN and button.mouse_on_button():
+                        self.correct_corresponding_organ = corresponding_organ
+                        self.last_clicked_letter_button = button
+                        break
+                    
+                    if event.type == m.pygame.MOUSEBUTTONDOWN and corresponding_organ.mouse_on_button():
+                        if corresponding_organ == self.correct_corresponding_organ:
+                            self.correct_buttons_dict[button] = corresponding_organ
+                            del self.buttons_dict[button]
+                            break
+
 
                 # if all correct answers are chosen and you click on the screen you continue the game
                 # if event.type == m.pygame.MOUSEBUTTONDOWN:
