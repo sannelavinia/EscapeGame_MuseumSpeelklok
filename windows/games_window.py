@@ -155,7 +155,6 @@ def push_button_to_start(game_number):
     while True:
         m.game_1_to_6_robot_voice_correct_code.stop()
 
-
         if not displayed:
             # display the background image ( it should be the fisrt image to display,
             # so that the other objects will be displayed ontop of it )
@@ -274,7 +273,7 @@ def game_started(
     game_tip_3_image=None,
     game_tip_4_image=None,
 ):
-        
+
     arduino("activeMachine=2&" + "activeGame=" + str(game_number) + "\n")
 
     # resizing the images
@@ -471,7 +470,6 @@ def game_started(
         play_time = m.TOTAL_PLAY_TIME + time_difference
         play_time_seconds = int((play_time / 1000) % 60)
 
-
         if not displayed:
             # display the background image ( it should be the fisrt image to display,
             # so that the other objects will be displayed ontop of it )
@@ -561,10 +559,10 @@ def game_started(
                         m.game_1_to_6_robot_voice_correct_code.play()
                         m.TOTAL_PLAY_TIME += time_difference
                         sw.corret_code()
-                        
+
                         return
                     else:
-                        if game_number == 1:        
+                        if game_number == 1:
                             m.game_1_robot_voice_incorrect_code.play()
                         elif game_number == 2:
                             m.game_2_robot_voice_incorrect_code.play()
@@ -573,17 +571,17 @@ def game_started(
                         elif game_number == 4:
                             m.game_4_robot_voice_incorrect_code.play()
                         elif game_number == 5:
-                            m.game_5_robot_voice_incorrect_code.play() 
+                            m.game_5_robot_voice_incorrect_code.play()
                         elif game_number == 6:
                             m.game_6_robot_voice_incorrect_code.play()
                         code = keyboard.keyboard_button_pressed(
                             pressed_button, code, m.red_color
                         )
-                        
+
                         # incorrect_code(game_number)
-         
+
                 else:
-                    if game_number == 1:        
+                    if game_number == 1:
                         m.game_1_robot_voice_incorrect_code.stop()
                     elif game_number == 2:
                         m.game_2_robot_voice_incorrect_code.stop()
@@ -592,7 +590,7 @@ def game_started(
                     elif game_number == 4:
                         m.game_4_robot_voice_incorrect_code.stop()
                     elif game_number == 5:
-                        m.game_5_robot_voice_incorrect_code.stop() 
+                        m.game_5_robot_voice_incorrect_code.stop()
                     elif game_number == 6:
                         m.game_6_robot_voice_incorrect_code.stop()
                     m.click_sound.play()
@@ -727,7 +725,7 @@ def game_started(
 #         if  m.pygame.time.get_ticks() >= start_time + m.incorrect_code_animation_delay:
 #             return
 
-#         if game_number == 1:        
+#         if game_number == 1:
 #             m.game_1_robot_voice_incorrect_code.play()
 #         elif game_number == 2:
 #             m.game_2_robot_voice_incorrect_code.play()
@@ -736,19 +734,19 @@ def game_started(
 #         elif game_number == 4:
 #             m.game_4_robot_voice_incorrect_code.play()
 #         elif game_number == 5:
-#             m.game_5_robot_voice_incorrect_code.play() 
+#             m.game_5_robot_voice_incorrect_code.play()
 #         elif game_number == 6:
 #             m.game_6_robot_voice_incorrect_code.play()
 
-#         # animating the gears 
+#         # animating the gears
 #         if red_gear_teller == 1 and delay >= animation:
 #             m.SCREEN.blit(black_background, (0, 0))
-#             info_text.display() 
+#             info_text.display()
 #             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
 #             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
 #             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
 #             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-#             red_gear_teller +=1 
+#             red_gear_teller +=1
 #             delay = 0
 #         elif red_gear_teller == 2 and delay >= animation:
 #             m.SCREEN.blit(black_background, (0, 0))
@@ -808,8 +806,8 @@ def games_window(
     game_tip_4_image=None,
 ):
 
-
-    push_button_to_start(game_number)
+    if game_number == 1:
+        push_button_to_start(game_number)
     if game_number != 6:
         return game_started(
             game_number,
