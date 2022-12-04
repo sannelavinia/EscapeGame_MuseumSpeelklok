@@ -9,12 +9,12 @@ class OrganMaze:
         self.correct_corresponding_organ = correct_corresponding_organ
 
         # Initialize static locations of buttons. Locations of  buttons are set as variables.
-        self.location_A = (450, 400)
-        self.location_B = (420, 490)
-        self.location_C = (450, 580)
-        self.location_D = (450, 660)
-        self.location_E = (420, 730)
-        self.location_F = (450, 820)
+        self.location_A = (430, 395)
+        self.location_B = (422, 485)
+        self.location_C = (432, 570)
+        self.location_D = (425, 653)
+        self.location_E = (405, 732)
+        self.location_F = (430, 812)
         self.location_organ1 = (1330, 340)
         self.location_organ2 = (1470, 500)
         self.location_organ3 = (1270, 600)
@@ -60,7 +60,7 @@ class OrganMaze:
             self.location_E_button: self.location_organ5_button, self.location_F_button: self.location_organ3_button}
 
         # Create a dictionary that keeps track of all the correct answers that were found
-        self.correct_buttons_dict = {}
+        self.correct_buttons_dict = {}    
 
     def organmaze_pq(self):
         # Get background
@@ -72,42 +72,30 @@ class OrganMaze:
 
         # Get images
         orange_circle = pygame.image.load("Assets/images/orange_circle.png")
-        orange_circle = m.pygame.transform.scale(orange_circle, (100,100))
+        orange_circle = m.pygame.transform.scale(orange_circle, (75, 75))
 
         green_check = pygame.image.load("Assets/images/green_check.png")
-        green_check = m.pygame.transform.scale(green_check, (100, 100))
+        green_check = m.pygame.transform.scale(green_check, (75, 75))
 
-        # TODO: delete this!!
-        testimage = m.pygame.transform.scale(m.green_start_button, (50, 50))
-
-        # Get the explanation for prequestion 3
+        # Get the explanation for prequestion 6
         explanation_text1 = "Voordat jullie kunnen beginnen aan het laatste spel, moeten jullie eerst deze opdracht doen:" 
         explanation_text2 = "Loop door het doolhof van slangen en breng lucht naar het orgel."
+        explanation_text3 = "Klik eerst op een blaasbalg en dan op een orgel."
         prequestion_6_explanation1 = m.MagdaClean_font_30.render(explanation_text1, True, m.green_color)
-        prequestion_6_explanation1_rect = prequestion_6_explanation1.get_rect(center=(m.WIDTH/2, m.HEIGHT/9))
+        prequestion_6_explanation1_rect = prequestion_6_explanation1.get_rect(center=(m.WIDTH/2, m.HEIGHT/10))
         prequestion_6_explanation2 = m.MagdaClean_font_30.render(explanation_text2, True, m.green_color)
-        prequestion_6_explanation2_rect = prequestion_6_explanation2.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
+        prequestion_6_explanation2_rect = prequestion_6_explanation2.get_rect(center=(m.WIDTH/2, m.HEIGHT/8))
+        prequestion_6_explanation3 = m.MagdaClean_font_30.render(explanation_text3, True, m.green_color)
+        prequestion_6_explanation3_rect = prequestion_6_explanation3.get_rect(center=(m.WIDTH/2, m.HEIGHT/6))
 
-        # Set up correct answer counter
-        correct = 0 # keeps track of how many correct answers were found
-        found_answers = [0, 0, 0, 0, 0, 0] # keeps track of which answers were found 
-
-        # Pairs of bellows and organs
-        # pairs = [(location_A_button, self.location_organ6_button), (location_B_button, self.location_organ4_button), \
-        #         (location_C_button, self.location_organ2_button), (location_D_button, self.location_organ1_button),
-        #         (location_E_button, self.location_organ5_button), (location_F_button, self.location_organ3_button)]
-                
-        # selected1 = 0
-        # selected2 = 0
-        # clicked = 0
-        # correct_index = 1000
 
         while True:
-
+            # Display images and explanations
             m.SCREEN.blit(black_screen_background, (0, 0))
             m.SCREEN.blit(organ_maze, organ_maze_rect)
             m.SCREEN.blit(prequestion_6_explanation1, prequestion_6_explanation1_rect)
             m.SCREEN.blit(prequestion_6_explanation2, prequestion_6_explanation2_rect)
+            m.SCREEN.blit(prequestion_6_explanation3, prequestion_6_explanation3_rect)
 
             self.location_A_button.display()
             self.location_B_button.display()
@@ -124,47 +112,11 @@ class OrganMaze:
             self.location_organ6_button.display()
 
             if self.last_clicked_letter_button!=-1 and self.correct_corresponding_organ!=-1 \
-                and (self.last_clicked_letter_button in self.buttons_dict):
-                m.SCREEN.blit(orange_circle, (self.last_clicked_letter_button.x_pos, self.last_clicked_letter_button.y_pos))
-                m.SCREEN.blit(testimage, (self.correct_corresponding_organ.x_pos, self.correct_corresponding_organ.y_pos))
+                and (self.last_clicked_letter_button in self.buttons_dict) and (self.last_clicked_letter_button not in self.correct_buttons_dict):
+                m.SCREEN.blit(orange_circle, (self.last_clicked_letter_button.x_pos - 37.5, self.last_clicked_letter_button.y_pos - 37.5))
 
             for button in self.correct_buttons_dict:
-                m.SCREEN.blit(green_check, (button.x_pos, button.y_pos))
-
-
-            # if clicked in buttons1:
-            #     selected1 = clicked
-            #     selected_location = location
-            # if clicked in buttons2:
-            #     selected2 = clicked
-            #     selected_location = location
-            
-            # if selected1 != 0 and selected2 != 0:
-            #     if (selected1, selected2) in pairs:
-            #         correct_index = pairs.index((selected1, selected2))
-            #         selected1 = 0
-            #         selected2 = 0
-            #     else:
-            #         selected1 = 0
-            #         selected2 = 0
-            
-            # if correct_index != 1000:
-            #     found_answers[correct_index] = 1
-            #     correct_index = 1000
-
-            
-            # #Counting correct answers
-            # correct = found_answers.count(1)
-
-            #TODO delete this
-            # array = m.MagdaClean_font_30.render(str(found_answers), True, m.green_color)
-            # m.SCREEN.blit(array, (0,0))
-            # selection1 = m.MagdaClean_font_30.render(str(selected1), True, m.green_color)
-            # m.SCREEN.blit(selection1, (0,20))
-            # selection2 = m.MagdaClean_font_30.render(str(selected2), True, m.green_color)
-            # m.SCREEN.blit(selection2, (0,40))
-
-
+                m.SCREEN.blit(green_check, (button.x_pos - 37.5, button.y_pos - 37.5))
 
 
             for event in m.pygame.event.get():
@@ -173,6 +125,10 @@ class OrganMaze:
                 if event.type == m.pygame.QUIT or \
                         (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                     m.pygame.quit()
+
+                # if all correct answers are chosen and you click on the screen you continue the game
+                if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict) == 6:
+                    return 
 
                 for button in self.buttons_dict:
                     corresponding_organ = self.buttons_dict[button]
@@ -184,52 +140,26 @@ class OrganMaze:
                     
                     if event.type == m.pygame.MOUSEBUTTONDOWN and corresponding_organ.mouse_on_button():
                         if corresponding_organ == self.correct_corresponding_organ:
+                            m.correct_answer_sound.play()
                             self.correct_buttons_dict[button] = corresponding_organ
-                            del self.buttons_dict[button]
+                            # del self.buttons_dict[button]
                             break
+                        else:
+                            self.wrong_answer_clicked = True
+                            m.wrong_answer_sound.play()
+
+                if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict) == 6:
+                    # Get the congratulatory message for prequestion 6
+                    congratulatory_text1 = "Goed gedaan!" 
+                    congratulatory_text2 = "Klik op het scherm om verder te gaan."
+                    prequestion_6_explanation1 = m.MagdaClean_font_30.render(congratulatory_text1, True, m.green_color)
+                    prequestion_6_explanation1_rect = prequestion_6_explanation1.get_rect(center=(m.WIDTH/2, m.HEIGHT/10))
+                    prequestion_6_explanation2 = m.MagdaClean_font_30.render(congratulatory_text2, True, m.green_color)
+                    prequestion_6_explanation2_rect = prequestion_6_explanation2.get_rect(center=(m.WIDTH/2, m.HEIGHT/8))
+                    prequestion_6_explanation3 = m.MagdaClean_font_30.render('', True, m.green_color) # Remove text
+    
 
 
-                # if all correct answers are chosen and you click on the screen you continue the game
-                if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict)==6:
-                    return 
-
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and location_A_button.mouse_on_button() and not selected1:
-                #     clicked = location_A_button
-                #     location = location_A
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and self.location_organ6_button.mouse_on_button() and not selected2:
-                #     clicked = self.location_organ6_button
-                #     location = self.location_organ6
-
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and location_B_button.mouse_on_button() and not selected1:
-                #     clicked = location_B_button
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and self.location_organ4_button.mouse_on_button() and not selected2:
-                #     clicked = self.location_organ4_button
-
-                # # Correct first pair
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and location_A_button.mouse_on_button():
-                #     m.correct_answer_sound.play()
-                #     if found_answers.count([1,0]) == 0:
-                #         found_answers[0][0] = 1
-                #     else:
-                #         # TODO: what happens if already another bellow selected
-                #         pass
-                #     break
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and self.location_organ6_button.mouse_on_button():
-                #     m.correct_answer_sound.play()
-                #     if found_answers.count([0,1]) == 0:
-                #         found_answers[0][1] = 1
-                #     else:
-                #         # TODO: what happens if another organ is already selected?
-                #         pass
-                #     break
-                    
-
-                # For each difference, if it is found then the found_difference list will be updated
-                # and the correct answer sound will be played. 
-                # if event.type == m.pygame.MOUSEBUTTONDOWN and _button.mouse_on_button() \
-                #     and found_answers[0] != 1:
-                #     m.correct_answer_sound.play()
-                #     found_differences[0] = 1
-                    #break # go out of event for loop so that everything is correctly updated
+        
 
             m.pygame.display.update()
