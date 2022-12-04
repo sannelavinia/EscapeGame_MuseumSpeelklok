@@ -77,6 +77,9 @@ class OrganMaze:
         green_check = pygame.image.load("Assets/images/green_check.png")
         green_check = m.pygame.transform.scale(green_check, (75, 75))
 
+        red_cross = pygame.image.load("Assets/images/red_cross.png")
+        red_cross = m.pygame.transform.scale(red_cross, (75, 75))
+
         # Get the explanation for prequestion 6
         explanation_text1 = "Voordat jullie kunnen beginnen aan het laatste spel, moeten jullie eerst deze opdracht doen:" 
         explanation_text2 = "Loop door het doolhof van slangen en breng lucht naar het orgel."
@@ -140,13 +143,17 @@ class OrganMaze:
                     
                     if event.type == m.pygame.MOUSEBUTTONDOWN and corresponding_organ.mouse_on_button():
                         if corresponding_organ == self.correct_corresponding_organ:
-                            m.correct_answer_sound.play()
                             self.correct_buttons_dict[button] = corresponding_organ
-                            # del self.buttons_dict[button]
+                            m.SCREEN.blit(green_check, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
+                            m.pygame.display.update()
+                            m.correct_answer_sound.play()
+                            pygame.time.delay(500)
                             break
                         else:
-                            self.wrong_answer_clicked = True
+                            m.SCREEN.blit(red_cross, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
+                            m.pygame.display.update()
                             m.wrong_answer_sound.play()
+                            pygame.time.delay(500)
 
                 if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict) == 6:
                     # Get the congratulatory message for prequestion 6
