@@ -6,4 +6,4 @@ def quit_game(event):
 
     if event.type == m.pygame.QUIT or (
         event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-        m.pygame.quit()
+        return m.pygame.quit()

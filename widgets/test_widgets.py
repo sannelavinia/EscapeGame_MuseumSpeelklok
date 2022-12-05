@@ -1,5 +1,6 @@
 import unittest
 from widgets.keyboard import Keyboard
+from widgets.quit_game import quit_game
 
 class WidgetTests(unittest.TestCase):
 
