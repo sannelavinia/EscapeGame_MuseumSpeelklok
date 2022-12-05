@@ -33,8 +33,7 @@ def spotdifferences_pq():
     location_diff_6 = (1565, 960)
 
     # Get red circle image and transparent image
-    red_circle = pygame.image.load("Assets/images/red_circle.png")
-    red_circle = m.pygame.transform.scale(red_circle, (60,60))
+    red_circle = m.red_circle
     difference_image = m.pygame.transform.scale(m.transparent_box, (60, 60))
 
     # Create invisible buttons for each difference

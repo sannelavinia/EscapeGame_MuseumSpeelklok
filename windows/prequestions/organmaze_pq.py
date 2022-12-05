@@ -70,16 +70,6 @@ class OrganMaze:
         organ_maze = pygame.transform.scale(m.organ_maze, (m.WIDTH * 0.7, m.HEIGHT * 0.7))
         organ_maze_rect = organ_maze.get_rect(center=(m.WIDTH/2, m.HEIGHT/1.8))
 
-        # Get images
-        orange_circle = pygame.image.load("Assets/images/orange_circle.png")
-        orange_circle = m.pygame.transform.scale(orange_circle, (75, 75))
-
-        green_check = pygame.image.load("Assets/images/green_check.png")
-        green_check = m.pygame.transform.scale(green_check, (75, 75))
-
-        red_cross = pygame.image.load("Assets/images/red_cross.png")
-        red_cross = m.pygame.transform.scale(red_cross, (75, 75))
-
         # Get the explanation for prequestion 6
         explanation_text1 = "Voordat jullie kunnen beginnen aan het laatste spel, moeten jullie eerst deze opdracht doen:" 
         explanation_text2 = "Loop door het doolhof van slangen en breng lucht naar het orgel."
@@ -116,10 +106,10 @@ class OrganMaze:
 
             if self.last_clicked_letter_button!=-1 and self.correct_corresponding_organ!=-1 \
                 and (self.last_clicked_letter_button in self.buttons_dict) and (self.last_clicked_letter_button not in self.correct_buttons_dict):
-                m.SCREEN.blit(orange_circle, (self.last_clicked_letter_button.x_pos - 37.5, self.last_clicked_letter_button.y_pos - 37.5))
+                m.SCREEN.blit(m.orange_circle, (self.last_clicked_letter_button.x_pos - 37.5, self.last_clicked_letter_button.y_pos - 37.5))
 
             for button in self.correct_buttons_dict:
-                m.SCREEN.blit(green_check, (button.x_pos - 37.5, button.y_pos - 37.5))
+                m.SCREEN.blit(m.green_check, (button.x_pos - 37.5, button.y_pos - 37.5))
 
 
             for event in m.pygame.event.get():
@@ -144,13 +134,13 @@ class OrganMaze:
                     if event.type == m.pygame.MOUSEBUTTONDOWN and corresponding_organ.mouse_on_button():
                         if corresponding_organ == self.correct_corresponding_organ:
                             self.correct_buttons_dict[button] = corresponding_organ
-                            m.SCREEN.blit(green_check, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
+                            m.SCREEN.blit(m.green_check, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
                             m.pygame.display.update()
                             m.correct_answer_sound.play()
                             pygame.time.delay(500)
                             break
                         else:
-                            m.SCREEN.blit(red_cross, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
+                            m.SCREEN.blit(m.red_cross, (corresponding_organ.x_pos - 37.5, corresponding_organ.y_pos - 37.5))
                             m.pygame.display.update()
                             m.wrong_answer_sound.play()
                             pygame.time.delay(500)

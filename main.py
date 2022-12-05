@@ -140,6 +140,19 @@ organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
 spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
 gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
+red_circle = pygame.image.load("Assets/images/red_circle.png")
+red_circle = m.pygame.transform.scale(red_circle, (60,60))
+
+orange_circle = pygame.image.load("Assets/images/orange_circle.png")
+orange_circle = m.pygame.transform.scale(orange_circle, (75, 75))
+
+green_check = pygame.image.load("Assets/images/green_check.png")
+green_check = m.pygame.transform.scale(green_check, (75, 75))
+
+red_cross = pygame.image.load("Assets/images/red_cross.png")
+red_cross = m.pygame.transform.scale(red_cross, (75, 75))
+
+
 # sound effectsh
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
