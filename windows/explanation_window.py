@@ -15,7 +15,7 @@ def explanation_window():
     arduino("activeMachine=1&activeGame=0\n")
 
     message = Instruction_Box(m.transparent_box, 1000,
-                              450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
+                              450, m.game_instruction, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
 
     # create title object that will be displayed on the screen
     title = m.MagdaClean_font_70.render('Speluitleg', True, m.green_color)

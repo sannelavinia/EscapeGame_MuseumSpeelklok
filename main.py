@@ -167,11 +167,10 @@ game_3_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_3_inc
 game_4_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_4_incorrect_code.mp3")
 game_5_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_5_incorrect_code.mp3")
 game_6_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_6_incorrect_code.mp3")
+
 # texts
-text_file = open("Assets/texts/text_1.txt", "r")
-text_1 = text_file.read().split("\n")
-text_file = open("Assets/texts/text_2.txt", "r")
-text_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_instruction.txt", "r")
+game_instruction = text_file.read().split("\n")
 
 text_file = open("Assets/texts/game_1_explanation.txt", "r")
 game_1_explanation = text_file.read().split("\n")
