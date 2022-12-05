@@ -16,8 +16,8 @@ from windows.high_score import *
 pygame.init()
 
 # global variables
-HEIGHT = 1080  # height of the displayed window
-WIDTH = 1920  # width of the displayed window
+HEIGHT = 800  # height of the displayed window
+WIDTH = 1080  # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
 

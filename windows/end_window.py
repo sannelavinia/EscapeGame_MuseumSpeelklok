@@ -40,7 +40,7 @@ def end_window():
 
     start_button = Button(m.small_green_button, m.small_green_button,
                           m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
-    start_text = m.MagdaClean_font_30.render('End', True, m.green_color)
+    start_text = m.MagdaClean_font_30.render('Verder', True, m.green_color)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
