@@ -44,6 +44,7 @@ background_games_template = pygame.image.load(
 )
 black_screen_background = pygame.image.load("Assets/images/black_screen_background.png")
 celebration_background = pygame.image.load("Assets/images/celebration_background.png")
+transparent_box = pygame.image.load("Assets/images/HD_transparent_picture.png")
 
 # frames
 instruction_screen_games = pygame.image.load(
@@ -52,9 +53,6 @@ instruction_screen_games = pygame.image.load(
 metal_plate_empty = pygame.image.load("Assets/images/metal_plate_empty.png")
 metal_plate_infoboard = pygame.image.load("Assets/images/metal_plate_infoboard.png")
 metal_plate_museumlogo = pygame.image.load("Assets/images/metal_plate_museumlogo.png")
-white_input_field_teamname = pygame.image.load(
-    "Assets/images/white_input_field_teamname.png"
-)
 code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 
 # tip images
