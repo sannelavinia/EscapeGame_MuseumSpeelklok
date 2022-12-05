@@ -2,7 +2,7 @@ import main as m
 from widgets.text_frame import Text_frame
 import widgets.keyboard as k
 from arduino.arduino_control import *
-
+from widgets.quit_game import *
 
 
 #######################################################################################
@@ -335,12 +335,13 @@ def corret_code():
 
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            quit_game(event)
+            # # when pressing the close button "X" at the top-right of the game-window
+            # # or the escape button on the keyboard
+            # if event.type == m.pygame.QUIT or (
+            #     event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
+            # ):
+            #     m.pygame.quit()
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
                 return
