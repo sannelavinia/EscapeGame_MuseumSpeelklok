@@ -72,6 +72,7 @@ def end_window():
     print("the time until now is: " + time_end)
 
     # create title object that will be displayed on the screen
+
     title = m.MagdaClean_font_70.render(
         "De teamname is "
         + team_name
@@ -94,6 +95,7 @@ def end_window():
     start_text = m.MagdaClean_font_30.render("End", True, m.green_color)
 
     start_time = m.pygame.time.get_ticks()
+
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
