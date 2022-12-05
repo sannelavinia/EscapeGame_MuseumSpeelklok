@@ -22,6 +22,10 @@ def mc_temp(prequestion_x, prequestion_xb, answera, answerb, answerc, answerd):
     mc_temp.answer_d = m.MagdaClean_font_50.render(answerd, True, m.green_color)
 
 def multiplechoice_pq(game_number):
+
+    # the start time of the pre questions (helps with updating the game time)
+    start_time = m.pygame.time.get_ticks()
+    
     # title = m.MagdaClean_font_70.render(f'Voorvraag {game_number}', True, m.green_color)
     # title_rect = title.get_rect(center=(m.WIDTH/2, m.HEIGHT/7))
 
@@ -71,6 +75,7 @@ def multiplechoice_pq(game_number):
         correct_button = answer_b_button
 
 
+
     
 
     while True:
@@ -115,6 +120,12 @@ def multiplechoice_pq(game_number):
 
             # when correct answer is chosen you get a congratulatory message
             if event.type == m.pygame.MOUSEBUTTONDOWN and correct_button.mouse_on_button():
+                
+                # update the game time
+                end_time = m.pygame.time.get_ticks()
+                time_difference = end_time - start_time
+                play_time = m.TOTAL_PLAY_TIME + time_difference
+
                 m.correct_answer_sound.play()
                 # title = m.MagdaClean_font_50.render('', True, m.red_color)
                 mc_temp.answer_a = m.MagdaClean_font_50.render('', True, m.red_color)
