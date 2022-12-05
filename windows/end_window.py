@@ -81,14 +81,8 @@ def end_window():
     #     m.green_color,
     # )
 
-    start_time = m.pygame.time.get_ticks()
-
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
-
-        # restart the game after a 5 min (no action needed)
-        if m.pygame.time.get_ticks() > start_time + m.restart_time_end_window:
-            return
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
