@@ -4,6 +4,7 @@ import widgets.text_frame as t
 import widgets.button as b
 import widgets.instruction_box as i
 import windows.start_window as sw
+import widgets.quit_game as q
 from arduino.arduino_control import *
 
 #######################################################################################
@@ -243,12 +244,7 @@ def push_button_to_start(game_number):
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
@@ -612,12 +608,7 @@ def game_started(
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
@@ -782,12 +773,7 @@ def game_started(
 
 #         for event in m.pygame.event.get():
 
-#             # when pressing the close button "X" at the top-right of the game-window
-#             # or the escape button on the keyboard
-#             if event.type == m.pygame.QUIT or (
-#                 event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-#             ):
-#                 m.pygame.quit()
+#             q.quit_game(event)
 
 #             if event.type == m.pygame.MOUSEBUTTONDOWN:
 #                 return
