@@ -2,7 +2,7 @@ import main as m
 from widgets.text_frame import Text_frame
 import widgets.keyboard as k
 from arduino.arduino_control import *
-
+import windows.games_window as gw
 
 
 #######################################################################################
@@ -131,7 +131,8 @@ def code_check():
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
+                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # bottom left, left part
             m.SCREEN.blit(
@@ -159,7 +160,8 @@ def code_check():
 
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 +
+                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -192,7 +194,7 @@ def code_check():
                 incorrect_code_message_1.display()
                 incorrect_code_message_2.display()
                 incorrect_code_message_3.display()
-            
+
             button_pushed = False
 
         # delay after clicking before resizing
@@ -209,14 +211,26 @@ def code_check():
                     return
                 else:
                     incorrect_code = True
+                    code = keyboard.keyboard_button_pressed(
+                        pressed_button, code, m.red_color)
+
+                    # to stop robot's sound by new code insertion
+                    m.start_game_robot_voice_incorrect_code.stop()
                     m.start_game_robot_voice_incorrect_code.play()
-                    
+
+                    gw.incorrect_code(12500)
+                    # reset for redispaly the main window
+                    display_background = True
+                    button_pushed = True
+
             else:
                 # to stop robot's sound by new code insertion
                 m.start_game_robot_voice_incorrect_code.stop()
 
+                incorrect_code = False
+
                 m.click_sound.play()
-            code = keyboard.keyboard_button_pressed(pressed_button, code)
+                code = keyboard.keyboard_button_pressed(pressed_button, code)
 
             # reset
             keyboard.resize_buttons()
@@ -236,9 +250,7 @@ def code_check():
                 m.pygame.quit()
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
-
                 pressed_button = keyboard.pressed_button()
-
                 if pressed_button in range(0, 12):
                     button_pressed = True
                     button_pushed = True
@@ -285,15 +297,15 @@ def corret_code():
 
     green_gear_teller = 1
     delay = 0
-    animation = 100
+    animation = 20
     start_time = m.pygame.time.get_ticks()
 
     while True:
         # to go to next screen after 3 seconds
-        if  m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
-                return
+        if m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
+            return
 
-        # animating the gears 
+        # animating the gears
         if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
@@ -301,7 +313,7 @@ def corret_code():
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1 
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 2 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
@@ -310,7 +322,7 @@ def corret_code():
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 3 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
@@ -319,7 +331,7 @@ def corret_code():
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 4 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
@@ -341,9 +353,6 @@ def corret_code():
                 event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
             ):
                 m.pygame.quit()
-
-            if event.type == m.pygame.MOUSEBUTTONDOWN:
-                return
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
