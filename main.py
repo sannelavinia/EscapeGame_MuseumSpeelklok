@@ -9,6 +9,7 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+from windows.high_score import *
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -167,6 +168,9 @@ game_6_tip_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/game_6_tip_2.txt", "r")
 game_6_tip_2 = text_file.read().split("\n")
 
+text_file = open("Assets/texts/highscore.txt", "r")
+high_score_1 = text_file.read().split("\n")
+
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
@@ -302,7 +306,9 @@ def main():
             if keep_going:
                 if end_window() == 1:
                     keep_going = False
-
+            if keep_going:
+                if high_score() == 1:
+                    keep_going = False
             keep_going = True
 
 
