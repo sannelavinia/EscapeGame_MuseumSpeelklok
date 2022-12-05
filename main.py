@@ -226,9 +226,6 @@ text_file = open("Assets/texts/end_game_instruction.txt", "r")
 end_game_instruction_text = text_file.read().split("\n")
 
 # fonts
-main_font = pygame.font.SysFont("cambria", text_size)
-code_font = pygame.font.SysFont("cambria", code_size)
-start_font = pygame.font.SysFont("cambria", text_size + 20)
 speelklok_website_font = pygame.font.SysFont("cambria", text_size + 20)
 MagdaClean_font_30 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 30)
 MagdaClean_font_50 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 50)
