@@ -11,7 +11,7 @@ from windows.admin_mode import *
 from windows.teamname_window import team_name_window
 from windows.prequestions.multiplechoice_pq import multiplechoice_pq
 from windows.prequestions.spotdifferences_pq import spotdifferences_pq
-from windows.prequestions.organmaze_pq import organmaze_pq
+from windows.prequestions.organmaze_pq import OrganMaze
 from windows.end_game_instruction import *
 from windows.end_game import *
 
@@ -355,7 +355,8 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if organmaze_pq() ==1:
+                organ_maze = OrganMaze()
+                if organ_maze.organmaze_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
