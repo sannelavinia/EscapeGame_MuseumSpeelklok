@@ -262,7 +262,7 @@ def code_check():
 ######################################################################################################
 
 
-def corret_code():
+def corret_code(game_number=0):
 
     # resizinf the background image to fit the hole display
     black_background = m.pygame.transform.scale(
@@ -278,9 +278,18 @@ def corret_code():
         m.green_color,
         m.MagdaClean_font_50,
         m.WIDTH * 0.45,
+        m.HEIGHT * 0.32 - 50,
+    )
+    info_text_1 = Text_frame(
+        None,
+        None,
+        None,
+        "Jullie hebben een nieuw tandwiel verdiend!!",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH * 0.45,
         m.HEIGHT * 0.32,
     )
-
     # resizinf the gear image for later use as animation
     green_gear_1 = m.pygame.transform.scale(
         m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
@@ -309,6 +318,7 @@ def corret_code():
         if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -318,6 +328,7 @@ def corret_code():
         elif green_gear_teller == 2 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -327,6 +338,7 @@ def corret_code():
         elif green_gear_teller == 3 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -336,6 +348,7 @@ def corret_code():
         elif green_gear_teller == 4 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))

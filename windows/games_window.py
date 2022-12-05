@@ -566,7 +566,7 @@ def game_started(
                     if code == game_code:
                         m.game_1_to_6_robot_voice_correct_code.play()
                         m.TOTAL_PLAY_TIME += time_difference
-                        sw.corret_code()
+                        sw.corret_code(game_number)
                         return
                     else:
                         if game_number == 1:
