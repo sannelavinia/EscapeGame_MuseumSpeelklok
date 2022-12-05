@@ -154,10 +154,8 @@ red_cross = m.pygame.transform.scale(red_cross, (75, 75))
 
 
 # sound effectsh
-intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
-clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
