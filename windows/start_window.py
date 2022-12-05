@@ -131,8 +131,7 @@ def code_check():
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
-                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # bottom left, left part
             m.SCREEN.blit(
@@ -160,8 +159,7 @@ def code_check():
 
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 +
-                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -179,7 +177,7 @@ def code_check():
                 (
                     m.WIDTH - (m.WIDTH * 0.001) - (m.WIDTH * 0.05),
                     (m.HEIGHT - (m.HEIGHT * 0.1)),
-                )
+                ),
             )
 
             # displaying the keyboard
@@ -212,7 +210,8 @@ def code_check():
                 else:
                     incorrect_code = True
                     code = keyboard.keyboard_button_pressed(
-                        pressed_button, code, m.red_color)
+                        pressed_button, code, m.red_color
+                    )
 
                     # to stop robot's sound by new code insertion
                     m.start_game_robot_voice_incorrect_code.stop()
