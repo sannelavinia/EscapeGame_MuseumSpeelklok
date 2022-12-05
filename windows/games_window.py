@@ -419,7 +419,11 @@ def game_started(
     display_tip_message_1 = False
     display_tip_message_2 = False
     logo_button_pressed = False
+    tip_1_penalty_taken = False
+    tip_2_penalty_taken = False
     restart_timer = 0
+    tip_1_time = m.game_tip_1_time
+    tip_2_time = m.game_tip_2_time
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
@@ -438,7 +442,7 @@ def game_started(
         None,
         None,
         None,
-        m.from_millisecond_to_clock(m.game_tip_1_time, True),
+        m.from_millisecond_to_clock(tip_1_time, True),
         m.black_color,
         m.Quantico_font_50,
         (m.HEIGHT / 8) + 10,
@@ -496,7 +500,7 @@ def game_started(
         if button_pushed:
             keyboard.display()
             tip_button.display()
-            if time_difference < m.game_tip_2_time:
+            if time_difference < tip_2_time:
                 tip_time.display()
             button_pushed = False
 
@@ -507,7 +511,7 @@ def game_started(
         # tik-sound every second
         if play_time_seconds != previous_second:
             # dispaly tip button with timer on it
-            if time_difference < m.game_tip_2_time:
+            if time_difference < tip_2_time:
                 tip_button.display()
                 tip_time.display()
             elif reset_tip_button:
@@ -517,7 +521,7 @@ def game_started(
             m.clock_tik.play()
 
         # display the tip message
-        if display_tip_message_1 and time_difference >= m.game_tip_1_time:
+        if display_tip_message_1 and time_difference >= tip_1_time:
             if game_tip_1 != None:
                 tip_message_1.display()
             if game_tip_1_image != None:
@@ -527,7 +531,7 @@ def game_started(
             display_tip_message_1 = False
             tip_message_1_displayed = True
 
-        if display_tip_message_2 and time_difference >= m.game_tip_2_time:
+        if display_tip_message_2 and time_difference >= tip_2_time:
             if game_tip_2 != None:
                 tip_message_2.display()
             if game_tip_3_image != None:
@@ -559,7 +563,6 @@ def game_started(
                         m.game_1_to_6_robot_voice_correct_code.play()
                         m.TOTAL_PLAY_TIME += time_difference
                         sw.corret_code()
-
                         return
                     else:
                         if game_number == 1:
@@ -632,18 +635,35 @@ def game_started(
                     button_pressed = True
                     button_pushed = True
                     pressed_button = 12
+
                     if tip_message_1_displayed:
+
+                        # display tip message 2
                         if (
                             not tip_message_2_displayed
-                            and time_difference >= m.game_tip_2_time
+                            and time_difference >= tip_2_time
                         ):
                             display_tip_message_2 = True
+                            if not tip_2_penalty_taken:
+                                start_time -= m.tip_2_penalty_time
+                                tip_1_time += m.tip_2_penalty_time
+                                tip_2_time += m.tip_2_penalty_time
+                                tip_2_penalty_taken = True
+
+                        # display instructions
                         else:
                             displayed = False
                             tip_message_1_displayed = False
                             tip_message_2_displayed = False
+
+                    # display tip message 1
                     else:
                         display_tip_message_1 = True
+                        if not tip_1_penalty_taken:
+                            start_time -= m.tip_1_penalty_time
+                            tip_1_time += m.tip_1_penalty_time
+                            tip_2_time += m.tip_1_penalty_time
+                            tip_1_penalty_taken = True
 
                 # pressing the logo button
                 if logo_button.mouse_on_button():
@@ -660,17 +680,17 @@ def game_started(
             )
 
         # display the tip button timer
-        if time_difference <= m.game_tip_1_time:
+        if time_difference <= tip_1_time:
             tip_time.change_input_text(
-                m.from_millisecond_to_clock((m.game_tip_1_time) - time_difference, True)
+                m.from_millisecond_to_clock((tip_1_time) - time_difference, True)
             )
-        elif time_difference <= m.game_tip_2_time:
+        elif time_difference <= tip_2_time:
             tip_time.change_input_text(
-                m.from_millisecond_to_clock((m.game_tip_2_time) - time_difference, True)
+                m.from_millisecond_to_clock((tip_2_time) - time_difference, True)
             )
 
         # to display the yellow tip image ( instead of the grey one )
-        if time_difference >= m.game_tip_1_time:
+        if time_difference >= tip_1_time:
             start_display_tip_icon = True
             if not tip_button_to_yellow:
                 tip_button_to_yellow = True
