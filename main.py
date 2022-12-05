@@ -9,7 +9,14 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+
 from windows.high_score import *
+
+from windows.prequestions.multiplechoice_pq import multiplechoice_pq
+from windows.prequestions.spotdifferences_pq import spotdifferences_pq
+from windows.prequestions.organmaze_pq import OrganMaze
+from windows.end_game_instruction import *
+from windows.end_game import *
 
 
 # initializing the pygame ( preventing unexpected behavior )
@@ -67,6 +74,14 @@ orange_gear = pygame.image.load("Assets/images/orange_gear.png")
 purple_gear = pygame.image.load("Assets/images/purple_gear.png")
 red_gear = pygame.image.load("Assets/images/red_gear.png")
 green_gear = pygame.image.load("Assets/images/green_gear.png")
+green_gear_1= pygame.image.load("Assets/images/green_gear_1.png")
+green_gear_2= pygame.image.load("Assets/images/green_gear_2.png")
+green_gear_3= pygame.image.load("Assets/images/green_gear_3.png")
+green_gear_4= pygame.image.load("Assets/images/green_gear_4.png")
+red_gear_1= pygame.image.load("Assets/images/red_gear_1.png")
+red_gear_2= pygame.image.load("Assets/images/red_gear_2.png")
+red_gear_3= pygame.image.load("Assets/images/red_gear_3.png")
+red_gear_4= pygame.image.load("Assets/images/red_gear_4.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
 rings_for_gears_with_gears = pygame.image.load(
@@ -123,15 +138,29 @@ enter_button_after_click = pygame.image.load("Assets/images/enter_after_click.pn
 delete_button = pygame.image.load("Assets/images/delete.png")
 delete_button_after_click = pygame.image.load("Assets/images/delete_after_click.png")
 
+# prequestion images
+thinking_boy = pygame.image.load("Assets/images/jongen_vragend.png")
+thinking_girl = pygame.image.load("Assets/images/meisje_vertwijfeld.png")
+organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
+spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
+gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
-# sound effects
+# sound effectsh
 intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
-
+start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
+start_game_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/start_window_incorrect_code.mp3")
+game_1_to_6_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/games_correct_code.mp3")
+game_1_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_1_incorrect_code.mp3")
+game_2_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_2_incorrect_code.mp3")
+game_3_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_3_incorrect_code.mp3")
+game_4_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_4_incorrect_code.mp3")
+game_5_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_5_incorrect_code.mp3")
+game_6_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_6_incorrect_code.mp3")
 # texts
 text_file = open("Assets/texts/text_1.txt", "r")
 text_1 = text_file.read().split("\n")
@@ -171,15 +200,36 @@ game_6_tip_2 = text_file.read().split("\n")
 text_file = open("Assets/texts/highscore.txt", "r")
 high_score_1 = text_file.read().split("\n")
 
+text_file = open("Assets/texts/prequestion_1.txt", "r")
+prequestion_1 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_1b.txt", "r")
+prequestion_1b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2.txt", "r")
+prequestion_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_2b.txt", "r")
+prequestion_2b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4.txt", "r")
+prequestion_4 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_4b.txt", "r")
+prequestion_4b = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5.txt", "r")
+prequestion_5 = text_file.read().split("\n")
+text_file = open("Assets/texts/prequestion_5b.txt", "r")
+prequestion_5b = text_file.read().split("\n")
+
+text_file = open("Assets/texts/end_game_instruction.txt", "r")
+end_game_instruction_text = text_file.read().split("\n")
+
+
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
 code_font = pygame.font.SysFont("cambria", code_size)
 start_font = pygame.font.SysFont("cambria", text_size + 20)
 speelklok_website_font = pygame.font.SysFont("cambria", text_size + 20)
-Consolas_font_10 = pygame.font.Font("Assets/fonts/Consolas.ttf", 10)
-Consolas_font_30 = pygame.font.Font("Assets/fonts/Consolas.ttf", 30)
-Consolas_font_50 = pygame.font.Font("Assets/fonts/Consolas.ttf", 50)
-Consolas_font_70 = pygame.font.Font("Assets/fonts/Consolas.ttf", 70)
+MagdaClean_font_10 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 10)
+MagdaClean_font_30 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 30)
+MagdaClean_font_50 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 50)
+MagdaClean_font_70 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 70)
 Quantico_font_10 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 10)
 Quantico_font_30 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 30)
 Quantico_font_50 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 50)
@@ -228,8 +278,12 @@ def main():
             if keep_going:
                 if explanation_window() == 1:
                     keep_going = False
+
             if keep_going:
                 if team_name_window() == 1:
+                    keep_going = False
+            if keep_going:
+                if multiplechoice_pq(1) ==1:
                     keep_going = False
             if keep_going:
                 if (
@@ -248,12 +302,18 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(2) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if spotdifferences_pq() ==1:
                     keep_going = False
             if keep_going:
                 if (
@@ -272,6 +332,9 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(4) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         4,
@@ -288,6 +351,9 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                if multiplechoice_pq(5) ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
@@ -296,12 +362,22 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                organ_maze = OrganMaze()
+                if organ_maze.organmaze_pq() ==1:
+                    keep_going = False
+            if keep_going:
                 if (
                     games_window(
                         6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2
                     )
                     == 1
                 ):
+                    keep_going = False
+            if keep_going:
+                if end_game_instruction() == 1:
+                    keep_going = False
+            if keep_going:
+                if end_game() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:

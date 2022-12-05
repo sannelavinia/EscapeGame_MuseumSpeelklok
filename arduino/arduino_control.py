@@ -1,33 +1,40 @@
-import serial
+# deze functie is om een code (active) naar arduino sturen
 
+import serial
+import os
 import time
 import serial.tools.list_ports
 
+def arduino(active):
+    print (active[0:15]+'\n'+active[16:])
+    try:
 
-ports = list(serial.tools.list_ports.comports())
-for p in ports:
+        ports = list(serial.tools.list_ports.comports())
+        for p in ports:
 
     # arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)  
 
+            serialcomm = serial.Serial(p.name, 9600)
 
-    serialcomm = serial.Serial(p.device, 9600)
+            serialcomm.timeout = 1
 
-    serialcomm.timeout = 1
+            while True:
 
-    while True:
+                # i = input("Enter Input: ").strip()
 
-        i = input("Enter Input: ").strip()
+                i = active.strip()
+                
+                serialcomm.write(i.encode())
 
-        if i == "Done":
+                time.sleep(0.1)
 
-            print('finished')
+                s = 'stop'
 
-            break
+                if s in serialcomm.readline().decode():
+                    break
 
-        serialcomm.write(i.encode())
+            serialcomm.close()
 
-        time.sleep(0.5)
+    except:
+        return
 
-        print(serialcomm.readline().decode('ascii'))
-
-    serialcomm.close()
