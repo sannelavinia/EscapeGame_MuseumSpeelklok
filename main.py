@@ -9,6 +9,9 @@ from windows.games_window import *
 from windows.end_window import *
 from windows.admin_mode import *
 from windows.teamname_window import team_name_window
+
+from windows.high_score import *
+
 from windows.prequestions.multiplechoice_pq import multiplechoice_pq
 from windows.prequestions.spotdifferences_pq import spotdifferences_pq
 from windows.prequestions.organmaze_pq import OrganMaze
@@ -194,6 +197,9 @@ game_6_tip_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/game_6_tip_2.txt", "r")
 game_6_tip_2 = text_file.read().split("\n")
 
+text_file = open("Assets/texts/highscore.txt", "r")
+high_score_1 = text_file.read().split("\n")
+
 text_file = open("Assets/texts/prequestion_1.txt", "r")
 prequestion_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/prequestion_1b.txt", "r")
@@ -213,6 +219,7 @@ prequestion_5b = text_file.read().split("\n")
 
 text_file = open("Assets/texts/end_game_instruction.txt", "r")
 end_game_instruction_text = text_file.read().split("\n")
+
 
 # fonts
 main_font = pygame.font.SysFont("cambria", text_size)
@@ -375,7 +382,9 @@ def main():
             if keep_going:
                 if end_window() == 1:
                     keep_going = False
-
+            if keep_going:
+                if high_score() == 1:
+                    keep_going = False
             keep_going = True
 
 
