@@ -826,8 +826,6 @@ def games_window(
     game_tip_4_image=None,
 ):
 
-    if game_number == 1:
-        push_button_to_start(game_number)
     if game_number != 6:
         return game_started(
             game_number,
