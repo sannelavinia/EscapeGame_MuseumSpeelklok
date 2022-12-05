@@ -23,8 +23,8 @@ def high_score():
     team_name = save_data.team_name_save
     read_file(str(team_name), int(m.TOTAL_PLAY_TIME))
 
-    # text_1 = t.Text_frame(
-    #     None, None, None, "high score " + team_name, m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
+    text_1 = t.Text_frame(
+        None, None, None, "high score " + team_name, m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
     # text_3 = t.Text_frame(
     #     None, None, None, "Jullie eindtijd is: " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
     # text_4 = t.Text_frame(
@@ -39,6 +39,8 @@ def high_score():
                                 450, m.high_score_1, m.green_color, m.WIDTH/9, m.HEIGHT/15, m.MagdaClean_font_50)
    
     # create title object that will be displayed on the screen
+
+    # if len(o) < 10:
     title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
 
 
@@ -46,8 +48,14 @@ def high_score():
                           m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
     start_text = m.MagdaClean_font_30.render('End', True, m.green_color)
 
+    start_time = m.pygame.time.get_ticks()
+
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
+
+        # restart the game after a 5 min (no action needed)
+        if m.pygame.time.get_ticks() > start_time + m.restart_time_end_window:
+            return
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
