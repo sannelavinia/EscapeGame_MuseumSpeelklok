@@ -24,7 +24,7 @@ def high_score():
     read_file(str(team_name), int(m.TOTAL_PLAY_TIME))
 
     text_1 = t.Text_frame(
-        None, None, None, "high score " + team_name, m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
+        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
     # text_3 = t.Text_frame(
     #     None, None, None, "Jullie eindtijd is: " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
     # text_4 = t.Text_frame(
@@ -34,9 +34,10 @@ def high_score():
     
     # print ("the time until now is: " + time_end)
     
-
+    text_file = open("Assets/texts/highscore.txt", "r")
+    high_score_1 = text_file.read().split("\n")
     explanation_text = Instruction_Box(m.transparent_box, 1000,
-                                450, m.high_score_1, m.green_color, m.WIDTH/9, m.HEIGHT/15, m.MagdaClean_font_50)
+                                450, high_score_1, m.green_color, m.WIDTH/9, m.HEIGHT/15, m.MagdaClean_font_50)
    
     # create title object that will be displayed on the screen
 
@@ -44,9 +45,9 @@ def high_score():
     title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
 
 
-    start_button = Button(m.small_green_button, m.small_green_button,
-                          m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
-    start_text = m.MagdaClean_font_30.render('End', True, m.green_color)
+    # start_button = Button(m.small_green_button, m.small_green_button,
+    #                       m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
+    # start_text = m.MagdaClean_font_30.render('End', True, m.green_color)
 
     start_time = m.pygame.time.get_ticks()
 
@@ -69,13 +70,13 @@ def high_score():
 
         # message.display()
 
-        start_button.display()
-        # text_1.display()
+        # start_button.display()
+        text_1.display()
         # text_3.display()
         # text_4.display()
         # text_2.display()
         explanation_text.display()
-        m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
+        # m.SCREEN.blit(explanation_text, (m.WIDTH/2, m.HEIGHT/1.08))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -86,9 +87,9 @@ def high_score():
                 m.pygame.quit()
 
             # when pressing a mouse button
-            if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
-                m.correct_answer_sound.play()
-                return
+            # if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
+            #     m.correct_answer_sound.play()
+            #     return
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

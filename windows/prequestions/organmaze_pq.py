@@ -1,8 +1,11 @@
 import main as m
 import pygame
 import widgets.button as b
+import widgets.text_frame as t
 
 class OrganMaze: 
+
+    
 
     def __init__(self, last_clicked_letter_button=-1, correct_corresponding_organ=-1):
         self.last_clicked_letter_button = last_clicked_letter_button
@@ -91,6 +94,23 @@ class OrganMaze:
         prequestion_6_explanation3 = m.MagdaClean_font_30.render(explanation_text3, True, m.green_color)
         prequestion_6_explanation3_rect = prequestion_6_explanation3.get_rect(center=(m.WIDTH/2, m.HEIGHT/6))
 
+        play_time_as_text = t.Text_frame(
+            None,
+            None,
+            None,
+            m.from_millisecond_to_clock(m.TOTAL_PLAY_TIME),
+            m.green_color,
+            m.Quantico_font_50,
+            m.WIDTH / 9,
+            m.HEIGHT / 20,
+        )
+
+        # the start time of the pre questions (helps with updating the game time)
+        start_time = m.pygame.time.get_ticks()
+
+        previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
+        prequestion_on = True
+
 
         while True:
             # Display images and explanations
@@ -114,6 +134,26 @@ class OrganMaze:
             self.location_organ5_button.display()
             self.location_organ6_button.display()
 
+            if prequestion_on == True:
+            
+                play_time_as_text.display() 
+                end_time = m.pygame.time.get_ticks()
+                time_difference = end_time - start_time
+
+                play_time = m.TOTAL_PLAY_TIME + time_difference
+                
+                play_time_seconds = int((play_time / 1000) % 60)
+                if play_time_seconds != previous_second:
+                    
+                    previous_second = play_time_seconds
+                    play_time_seconds = int((play_time / 1000) % 60)
+                    m.clock_tik.play()
+
+                # m.TOTAL_PLAY_TIME += time_difference
+                play_time_as_text.change_input_text(
+                    m.from_millisecond_to_clock(play_time), m.green_color
+                )
+
             if self.last_clicked_letter_button!=-1 and self.correct_corresponding_organ!=-1 \
                 and (self.last_clicked_letter_button in self.buttons_dict) and (self.last_clicked_letter_button not in self.correct_buttons_dict):
                 m.SCREEN.blit(orange_circle, (self.last_clicked_letter_button.x_pos - 37.5, self.last_clicked_letter_button.y_pos - 37.5))
@@ -131,6 +171,8 @@ class OrganMaze:
 
                 # if all correct answers are chosen and you click on the screen you continue the game
                 if event.type == m.pygame.MOUSEBUTTONDOWN and len(self.correct_buttons_dict) == 6:
+                    m.TOTAL_PLAY_TIME = play_time
+                    prequestion_on = False
                     return 
 
                 for button in self.buttons_dict:
