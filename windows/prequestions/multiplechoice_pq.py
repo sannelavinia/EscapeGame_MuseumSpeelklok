@@ -4,7 +4,7 @@ from widgets.instruction_box import Instruction_Box
 from widgets.button import Button
 import widgets.button as b
 import widgets.text_frame as t
-
+import widgets.quit_game as q
 
 
 def mc_temp(prequestion_x, prequestion_xb, answera, answerb, answerc, answerd):
@@ -155,10 +155,7 @@ def multiplechoice_pq(game_number):
 
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # if the correct answer is chosen and you click on the screen you continue the game
             if event.type == m.pygame.MOUSEBUTTONDOWN and mc_temp.prequestion == mc_temp.prequestion_b: 

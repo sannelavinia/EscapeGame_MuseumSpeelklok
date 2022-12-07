@@ -1,7 +1,0 @@
-hallo
-this is an example of the text that will
-be displayed
-you can type multiple lines
-you can change the color depenting on 
-the background color
-it is now white
