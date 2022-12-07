@@ -3,6 +3,7 @@ import pygame
 import widgets.button as b
 #from widgets.text_frame import Text_frame
 from widgets.instruction_box import Instruction_Box
+import widgets.quit_game as q
 
 def spotdifferences_pq():
     # Scale the background and texts 
@@ -33,8 +34,7 @@ def spotdifferences_pq():
     location_diff_6 = (1565, 960)
 
     # Get red circle image and transparent image
-    red_circle = pygame.image.load("Assets/images/red_circle.png")
-    red_circle = m.pygame.transform.scale(red_circle, (60,60))
+    red_circle = m.red_circle
     difference_image = m.pygame.transform.scale(m.transparent_box, (60, 60))
 
     # Create invisible buttons for each difference
@@ -106,10 +106,7 @@ def spotdifferences_pq():
                 
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # if the correct answer is chosen and you click on the screen you continue the game
             if event.type == m.pygame.MOUSEBUTTONDOWN and diff >= 6:

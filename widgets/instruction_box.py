@@ -42,7 +42,7 @@ class Instruction_Box:
         self.text = []
         for line in input_text:
             if text_font is None:
-                self.text.append(m.main_font.render(line, True, text_color))
+                self.text.append(m.MagdaClean_font_30.render(line, True, text_color))
             else:
                 self.text.append(text_font.render(line, True, text_color))
 

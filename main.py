@@ -47,6 +47,7 @@ background_games_template = pygame.image.load(
 )
 black_screen_background = pygame.image.load("Assets/images/black_screen_background.png")
 celebration_background = pygame.image.load("Assets/images/celebration_background.png")
+transparent_box = pygame.image.load("Assets/images/HD_transparent_picture.png")
 
 # frames
 instruction_screen_games = pygame.image.load(
@@ -55,9 +56,6 @@ instruction_screen_games = pygame.image.load(
 metal_plate_empty = pygame.image.load("Assets/images/metal_plate_empty.png")
 metal_plate_infoboard = pygame.image.load("Assets/images/metal_plate_infoboard.png")
 metal_plate_museumlogo = pygame.image.load("Assets/images/metal_plate_museumlogo.png")
-white_input_field_teamname = pygame.image.load(
-    "Assets/images/white_input_field_teamname.png"
-)
 code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 
 # tip images
@@ -145,11 +143,22 @@ organ_maze = pygame.image.load("Assets/images/organmaze_art.png")
 spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
 gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
+red_circle = pygame.image.load("Assets/images/red_circle.png")
+red_circle = m.pygame.transform.scale(red_circle, (60,60))
+
+orange_circle = pygame.image.load("Assets/images/orange_circle.png")
+orange_circle = m.pygame.transform.scale(orange_circle, (75, 75))
+
+green_check = pygame.image.load("Assets/images/green_check.png")
+green_check = m.pygame.transform.scale(green_check, (75, 75))
+
+red_cross = pygame.image.load("Assets/images/red_cross.png")
+red_cross = m.pygame.transform.scale(red_cross, (75, 75))
+
+
 # sound effectsh
-intro_sound = pygame.mixer.Sound("Assets/sounds/intro2.wav")
 wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
-clapping_sound = pygame.mixer.Sound("Assets/sounds/clapping.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
@@ -161,11 +170,10 @@ game_3_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_3_inc
 game_4_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_4_incorrect_code.mp3")
 game_5_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_5_incorrect_code.mp3")
 game_6_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_6_incorrect_code.mp3")
+
 # texts
-text_file = open("Assets/texts/text_1.txt", "r")
-text_1 = text_file.read().split("\n")
-text_file = open("Assets/texts/text_2.txt", "r")
-text_2 = text_file.read().split("\n")
+text_file = open("Assets/texts/game_instruction.txt", "r")
+game_instruction = text_file.read().split("\n")
 
 text_file = open("Assets/texts/game_1_explanation.txt", "r")
 game_1_explanation = text_file.read().split("\n")
@@ -222,23 +230,12 @@ end_game_instruction_text = text_file.read().split("\n")
 
 
 # fonts
-main_font = pygame.font.SysFont("cambria", text_size)
-code_font = pygame.font.SysFont("cambria", code_size)
-start_font = pygame.font.SysFont("cambria", text_size + 20)
 speelklok_website_font = pygame.font.SysFont("cambria", text_size + 20)
-MagdaClean_font_10 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 10)
 MagdaClean_font_30 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 30)
 MagdaClean_font_50 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 50)
 MagdaClean_font_70 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 70)
-Quantico_font_10 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 10)
-Quantico_font_30 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 30)
 Quantico_font_50 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 50)
 Quantico_font_70 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 70)
-MagdaClean_font_10 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 10)
-MagdaClean_font_30 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 30)
-MagdaClean_font_50 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 50)
-MagdaClean_font_70 = pygame.font.Font("Assets/fonts/MagdaClean Regular.otf", 70)
-
 
 # the variable that represent the displayed window
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
