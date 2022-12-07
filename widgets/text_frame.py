@@ -27,7 +27,7 @@ class Text_frame:
         self.input_text = input_text
         self.font = font
         if self.font == None:
-            self.font = m.main_font
+            self.font = m.MagdaClean_font_30
         self.text = self.font.render(input_text, True, text_color)
         self.x_pos = x_pos
         self.y_pos = y_pos

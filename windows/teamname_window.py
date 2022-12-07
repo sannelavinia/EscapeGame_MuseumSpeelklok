@@ -3,6 +3,7 @@ from widgets.button import Button
 from widgets.text_frame import Text_frame
 from pygame_vkeyboard import *
 from constants import *
+import widgets.quit_game as q
 from windows.save_data import save_data
 
 # Consumer created for onscreen keyboard
@@ -53,11 +54,7 @@ def team_name_window():
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in events:
 
-            # when pressing the close button "X" or at the top-right of the game-window or escape key
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-                m.pygame.key.stop_text_input()
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing the continue key
             if event.type == m.pygame.MOUSEBUTTONDOWN and continue_button.mouse_on_button():

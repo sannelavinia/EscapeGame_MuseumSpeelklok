@@ -4,6 +4,7 @@ from windows.save_data import save_data
 import pygame
 from widgets.instruction_box import Instruction_Box
 from widgets.button import Button
+import widgets.quit_game as q
 import widgets.button as b
 import widgets.text_frame as t
 from arduino.arduino_control import *
@@ -70,17 +71,6 @@ def end_window():
 
     print("the time until now is: " + time_end)
 
-    # # create title object that will be displayed on the screen
-    # title = m.MagdaClean_font_70.render(
-    #     "De teamname is "
-    #     + team_name
-    #     + "\n en het kost "
-    #     + time_end
-    #     + "om het spel te eindigen",
-    #     True,
-    #     m.green_color,
-    # )
-
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
 
@@ -104,11 +94,7 @@ def end_window():
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

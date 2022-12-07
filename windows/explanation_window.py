@@ -4,20 +4,18 @@ from widgets.instruction_box import Instruction_Box
 from widgets.button import Button
 import widgets.button as b
 from arduino.arduino_control import *
-
+import widgets.quit_game as q
 
 
 #######################################################################################
 # Might be useful to load this image in main.py instead of here
-transparent_box = pygame.image.load("Assets/images/HD_transparent_picture.png")
-transparent_box = pygame.transform.scale(transparent_box, (0, 0))
 
 
 def explanation_window():
     arduino("activeMachine=1&activeGame=0\n")
 
-    message = Instruction_Box(transparent_box, 1000,
-                              450, m.text_2, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
+    message = Instruction_Box(m.transparent_box, 1000,
+                              450, m.game_instruction, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
 
     # create title object that will be displayed on the screen
     title = m.MagdaClean_font_70.render('Speluitleg', True, m.green_color)
@@ -49,10 +47,7 @@ def explanation_window():
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():

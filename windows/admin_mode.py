@@ -2,7 +2,7 @@ import main as m
 import widgets.keyboard as k
 import widgets.text_frame as t
 import widgets.button as b
-
+import widgets.quit_game as q
 
 def admin_mode():
 
@@ -119,12 +119,7 @@ def admin_mode():
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:

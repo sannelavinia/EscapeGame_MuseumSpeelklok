@@ -2,8 +2,8 @@ import main as m
 from widgets.text_frame import Text_frame
 import widgets.keyboard as k
 from arduino.arduino_control import *
-
-
+import widgets.quit_game as q
+import windows.games_window as gw
 
 #######################################################################################
 def code_check():
@@ -177,7 +177,7 @@ def code_check():
                 (
                     m.WIDTH - (m.WIDTH * 0.001) - (m.WIDTH * 0.05),
                     (m.HEIGHT - (m.HEIGHT * 0.1)),
-                )
+                ),
             )
 
             # displaying the keyboard
@@ -192,7 +192,7 @@ def code_check():
                 incorrect_code_message_1.display()
                 incorrect_code_message_2.display()
                 incorrect_code_message_3.display()
-            
+
             button_pushed = False
 
         # delay after clicking before resizing
@@ -209,14 +209,27 @@ def code_check():
                     return
                 else:
                     incorrect_code = True
+                    code = keyboard.keyboard_button_pressed(
+                        pressed_button, code, m.red_color
+                    )
+
+                    # to stop robot's sound by new code insertion
+                    m.start_game_robot_voice_incorrect_code.stop()
                     m.start_game_robot_voice_incorrect_code.play()
-                    
+
+                    gw.incorrect_code(12500)
+                    # reset for redispaly the main window
+                    display_background = True
+                    button_pushed = True
+
             else:
                 # to stop robot's sound by new code insertion
                 m.start_game_robot_voice_incorrect_code.stop()
 
+                incorrect_code = False
+
                 m.click_sound.play()
-            code = keyboard.keyboard_button_pressed(pressed_button, code)
+                code = keyboard.keyboard_button_pressed(pressed_button, code)
 
             # reset
             keyboard.resize_buttons()
@@ -228,17 +241,10 @@ def code_check():
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
-
                 pressed_button = keyboard.pressed_button()
-
                 if pressed_button in range(0, 12):
                     button_pressed = True
                     button_pushed = True
@@ -250,7 +256,7 @@ def code_check():
 ######################################################################################################
 
 
-def corret_code():
+def corret_code(game_number=0):
 
     # resizinf the background image to fit the hole display
     black_background = m.pygame.transform.scale(
@@ -266,9 +272,18 @@ def corret_code():
         m.green_color,
         m.MagdaClean_font_50,
         m.WIDTH * 0.45,
+        m.HEIGHT * 0.32 - 50,
+    )
+    info_text_1 = Text_frame(
+        None,
+        None,
+        None,
+        "Jullie hebben een nieuw tandwiel verdiend!!",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH * 0.45,
         m.HEIGHT * 0.32,
     )
-
     # resizinf the gear image for later use as animation
     green_gear_1 = m.pygame.transform.scale(
         m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
@@ -285,45 +300,49 @@ def corret_code():
 
     green_gear_teller = 1
     delay = 0
-    animation = 100
+    animation = 20
     start_time = m.pygame.time.get_ticks()
 
     while True:
         # to go to next screen after 3 seconds
-        if  m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
-                return
+        if m.pygame.time.get_ticks() >= start_time + m.correct_code_animation_delay:
+            return
 
-        # animating the gears 
+        # animating the gears
         if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1 
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 2 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 3 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-            green_gear_teller +=1
+            green_gear_teller += 1
             delay = 0
         elif green_gear_teller == 4 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
+            info_text_1.display()
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -335,15 +354,7 @@ def corret_code():
 
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
-
-            if event.type == m.pygame.MOUSEBUTTONDOWN:
-                return
+            q.quit_game(event)
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

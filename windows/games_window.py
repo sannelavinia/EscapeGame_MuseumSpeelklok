@@ -4,9 +4,12 @@ import widgets.text_frame as t
 import widgets.button as b
 import widgets.instruction_box as i
 import windows.start_window as sw
+import widgets.quit_game as q
 from arduino.arduino_control import *
 
 #######################################################################################
+
+
 def push_button_to_start(game_number):
 
     # resizing the images
@@ -167,11 +170,13 @@ def push_button_to_start(game_number):
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
+                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 +
+                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -219,7 +224,8 @@ def push_button_to_start(game_number):
                 text_8.display()
                 text_9.display()
                 m.SCREEN.blit(
-                    rings_for_gears_with_gears, (m.WIDTH * 0.08, m.HEIGHT * 0.6)
+                    rings_for_gears_with_gears, (m.WIDTH *
+                                                 0.08, m.HEIGHT * 0.6)
                 )
             displayed = True
 
@@ -242,12 +248,7 @@ def push_button_to_start(game_number):
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
@@ -285,7 +286,8 @@ def game_started(
         m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)
     )
 
-    red_gear = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    red_gear = m.pygame.transform.scale(
+        m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
     orange_gear = m.pygame.transform.scale(
         m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
@@ -295,9 +297,11 @@ def game_started(
     green_gear = m.pygame.transform.scale(
         m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
-    blue_gear = m.pygame.transform.scale(m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    blue_gear = m.pygame.transform.scale(
+        m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
 
-    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 198))
+    timer_bachground = m.pygame.transform.scale(
+        m.black_screen_background, (390, 198))
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
@@ -562,26 +566,39 @@ def game_started(
                     if code == game_code:
                         m.game_1_to_6_robot_voice_correct_code.play()
                         m.TOTAL_PLAY_TIME += time_difference
-                        sw.corret_code()
+                        sw.corret_code(game_number)
                         return
                     else:
                         if game_number == 1:
+                            m.game_1_robot_voice_incorrect_code.stop()
                             m.game_1_robot_voice_incorrect_code.play()
                         elif game_number == 2:
+                            m.game_2_robot_voice_incorrect_code.stop()
                             m.game_2_robot_voice_incorrect_code.play()
                         elif game_number == 3:
+                            m.game_3_robot_voice_incorrect_code.stop()
                             m.game_3_robot_voice_incorrect_code.play()
                         elif game_number == 4:
+                            m.game_4_robot_voice_incorrect_code.stop()
                             m.game_4_robot_voice_incorrect_code.play()
                         elif game_number == 5:
+                            m.game_5_robot_voice_incorrect_code.stop()
                             m.game_5_robot_voice_incorrect_code.play()
                         elif game_number == 6:
+                            m.game_6_robot_voice_incorrect_code.stop()
                             m.game_6_robot_voice_incorrect_code.play()
+
                         code = keyboard.keyboard_button_pressed(
                             pressed_button, code, m.red_color
                         )
 
-                        # incorrect_code(game_number)
+                        incorrect_code()
+                        # reset for redispaly the main window
+                        displayed = False
+                        button_pushed = True
+                        tip_message_1_displayed = False
+                        tip_message_2_displayed = False
+                        reset_tip_button = True
 
                 else:
                     if game_number == 1:
@@ -597,7 +614,8 @@ def game_started(
                     elif game_number == 6:
                         m.game_6_robot_voice_incorrect_code.stop()
                     m.click_sound.play()
-                    code = keyboard.keyboard_button_pressed(pressed_button, code)
+                    code = keyboard.keyboard_button_pressed(
+                        pressed_button, code)
             else:
                 m.click_sound.play()
 
@@ -613,12 +631,7 @@ def game_started(
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
-            # when pressing the close button "X" at the top-right of the game-window
-            # or the escape button on the keyboard
-            if event.type == m.pygame.QUIT or (
-                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-            ):
-                m.pygame.quit()
+            q.quit_game(event)
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN:
@@ -702,118 +715,104 @@ def game_started(
 
 #######################################################################################
 
-# def incorrect_code(game_number):
+def incorrect_code(duration=m.incorrect_code_animation_delay):
 
-#     # resizinf the background image to fit the hole display
-#     black_background = m.pygame.transform.scale(
-#         m.black_screen_background, (m.WIDTH, m.HEIGHT)
-#     )
+    # resizing the background image to fit the hole display
+    black_background = m.pygame.transform.scale(
+        m.black_screen_background, (m.WIDTH, m.HEIGHT)
+    )
 
-#     # scaling the message to appear once a correct code insertion occur
-#     info_text = m.Text_frame(
-#         None,
-#         None,
-#         None,
-#         "De code is … ONJUIST!",
-#         m.red_color,
-#         m.MagdaClean_font_50,
-#         m.WIDTH * 0.45,
-#         m.HEIGHT * 0.32,
-#     )
+    # scaling the message to appear once an incorrect code insertion occur
+    info_text = m.Text_frame(
+        None,
+        None,
+        None,
+        "De code is … ONJUIST!",
+        m.red_color,
+        m.MagdaClean_font_50,
+        m.WIDTH * 0.45,
+        m.HEIGHT * 0.32,
+    )
 
-#     # resizinf the gear image for later use as animation
-#     red_gear_1 = m.pygame.transform.scale(
-#         m.red_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
-#     )
-#     red_gear_2 = m.pygame.transform.scale(
-#         m.red_gear_2, (m.WIDTH * 0.05, m.WIDTH * 0.05)
-#     )
-#     red_gear_3 = m.pygame.transform.scale(
-#         m.red_gear_3, (m.WIDTH * 0.05, m.WIDTH * 0.05)
-#     )
-#     red_gear_4 = m.pygame.transform.scale(
-#         m.red_gear_4, (m.WIDTH * 0.05, m.WIDTH * 0.05)
-#     )
+    # resizinf the gear image for later use as animation
+    red_gear_1 = m.pygame.transform.scale(
+        m.red_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    red_gear_2 = m.pygame.transform.scale(
+        m.red_gear_2, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    red_gear_3 = m.pygame.transform.scale(
+        m.red_gear_3, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
+    red_gear_4 = m.pygame.transform.scale(
+        m.red_gear_4, (m.WIDTH * 0.05, m.WIDTH * 0.05)
+    )
 
-#     red_gear_teller = 1
-#     delay = 0
-#     animation = 100
-#     start_time = m.pygame.time.get_ticks()
+    red_gear_teller = 1
+    delay = 0
+    animation = 20
+    start_time = m.pygame.time.get_ticks()
 
-#     while True:
-#         # to go to next screen after 3 seconds
-#         if  m.pygame.time.get_ticks() >= start_time + m.incorrect_code_animation_delay:
-#             return
+    while True:
+        # to go to next screen after 3 seconds
+        if m.pygame.time.get_ticks() >= start_time + duration:
+            return
 
-#         if game_number == 1:
-#             m.game_1_robot_voice_incorrect_code.play()
-#         elif game_number == 2:
-#             m.game_2_robot_voice_incorrect_code.play()
-#         elif game_number == 3:
-#             m.game_3_robot_voice_incorrect_code.play()
-#         elif game_number == 4:
-#             m.game_4_robot_voice_incorrect_code.play()
-#         elif game_number == 5:
-#             m.game_5_robot_voice_incorrect_code.play()
-#         elif game_number == 6:
-#             m.game_6_robot_voice_incorrect_code.play()
+        # animating the gears
+        if red_gear_teller == 1 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            red_gear_teller += 1
+            delay = 0
+        elif red_gear_teller == 2 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            red_gear_teller += 1
+            delay = 0
+        elif red_gear_teller == 3 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            red_gear_teller += 1
+            delay = 0
+        elif red_gear_teller == 4 and delay >= animation:
+            m.SCREEN.blit(black_background, (0, 0))
+            info_text.display()
+            m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
+            m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
+            m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
+            red_gear_teller = 1
+            delay = 0
 
-#         # animating the gears
-#         if red_gear_teller == 1 and delay >= animation:
-#             m.SCREEN.blit(black_background, (0, 0))
-#             info_text.display()
-#             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-#             m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-#             red_gear_teller +=1
-#             delay = 0
-#         elif red_gear_teller == 2 and delay >= animation:
-#             m.SCREEN.blit(black_background, (0, 0))
-#             info_text.display()
-#             m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-#             m.SCREEN.blit(red_gear_2, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-#             red_gear_teller +=1
-#             delay = 0
-#         elif red_gear_teller == 3 and delay >= animation:
-#             m.SCREEN.blit(black_background, (0, 0))
-#             info_text.display()
-#             m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-#             m.SCREEN.blit(red_gear_3, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-#             red_gear_teller +=1
-#             delay = 0
-#         elif red_gear_teller == 4 and delay >= animation:
-#             m.SCREEN.blit(black_background, (0, 0))
-#             info_text.display()
-#             m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
-#             m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
-#             m.SCREEN.blit(red_gear_4, (m.WIDTH * 0.49, m.HEIGHT * 0.43))
-#             red_gear_teller = 1
-#             delay = 0
+        delay += 1
 
-#         delay += 1
+        for event in m.pygame.event.get():
 
-#         for event in m.pygame.event.get():
+            # when pressing the close button "X" at the top-right of the game-window
+            # or the escape button on the keyboard
+            if event.type == m.pygame.QUIT or (
+                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
+            ):
+                m.pygame.quit()
 
-#             # when pressing the close button "X" at the top-right of the game-window
-#             # or the escape button on the keyboard
-#             if event.type == m.pygame.QUIT or (
-#                 event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
-#             ):
-#                 m.pygame.quit()
-
-#             if event.type == m.pygame.MOUSEBUTTONDOWN:
-#                 return
-
-#         # the window should be updated after each while-loop
-#         m.pygame.display.update()
+        # the window should be updated after each while-loop
+        m.pygame.display.update()
 
 ###########################################################################################
+
+
 def games_window(
     game_number,
     game_instructions,
