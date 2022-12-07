@@ -3,6 +3,7 @@ import pygame
 import widgets.button as b
 #from widgets.text_frame import Text_frame
 from widgets.instruction_box import Instruction_Box
+import widgets.text_frame as t
 import widgets.quit_game as q
 
 def spotdifferences_pq():
@@ -63,6 +64,22 @@ def spotdifferences_pq():
     diff = 0 # keeps track of how many differences were found
     found_differences = [0,0,0,0,0,0] # keeps track of which differences were found 
 
+    play_time_as_text = t.Text_frame(
+        None,
+        None,
+        None,
+        m.from_millisecond_to_clock(m.TOTAL_PLAY_TIME),
+        m.green_color,
+        m.Quantico_font_50,
+        m.WIDTH / 9,
+        m.HEIGHT / 11,
+    )
+
+    start_time = m.pygame.time.get_ticks()
+
+    previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
+    prequestion_on = True
+
     while True:
 
         # Display static elements of screen
@@ -77,6 +94,27 @@ def spotdifferences_pq():
         difference_4_button.display()
         difference_5_button.display()
         difference_6_button.display()
+
+        # turn timer on when the pre questions are on
+        if prequestion_on == True:
+            
+            play_time_as_text.display() 
+            end_time = m.pygame.time.get_ticks()
+            time_difference = end_time - start_time
+
+            play_time = m.TOTAL_PLAY_TIME + time_difference
+            
+            play_time_seconds = int((play_time / 1000) % 60)
+            if play_time_seconds != previous_second:
+                
+                previous_second = play_time_seconds
+                play_time_seconds = int((play_time / 1000) % 60)
+                m.clock_tik.play()
+
+            # m.TOTAL_PLAY_TIME += time_difference
+            play_time_as_text.change_input_text(
+                m.from_millisecond_to_clock(play_time), m.green_color
+            )
 
         # Display red circle on places where a difference was found
         if found_differences[0] == 1:
@@ -100,6 +138,8 @@ def spotdifferences_pq():
         # if all differences are found, the continue text should be displayed, else the info text
         if diff >= 6:
             m.SCREEN.blit(continue_text, continue_text_rect)
+            prequestion_on = False
+            m.TOTAL_PLAY_TIME = play_time
         else:
             m.SCREEN.blit(prequestion_3_explanation, prequestion_3_explanation_rect)
 

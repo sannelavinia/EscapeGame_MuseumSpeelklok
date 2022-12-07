@@ -205,9 +205,6 @@ game_6_tip_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/game_6_tip_2.txt", "r")
 game_6_tip_2 = text_file.read().split("\n")
 
-text_file = open("Assets/texts/highscore.txt", "r")
-high_score_1 = text_file.read().split("\n")
-
 text_file = open("Assets/texts/prequestion_1.txt", "r")
 prequestion_1 = text_file.read().split("\n")
 text_file = open("Assets/texts/prequestion_1b.txt", "r")
