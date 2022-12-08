@@ -274,7 +274,7 @@ def game_started(
     game_tip_3_image=None,
     game_tip_4_image=None,
 ):
-        
+
     arduino("activeMachine=2&" + "activeGame=" + str(game_number) + "\n")
 
     # resizing the images
@@ -305,27 +305,27 @@ def game_started(
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
-            game_tip_1_image, (615, (m.HEIGHT / 2) - 50)
+            game_tip_1_image, (620, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_2_image != None:
         tip_image_2 = m.pygame.transform.scale(
-            game_tip_2_image, (615, (m.HEIGHT / 2) - 50)
+            game_tip_2_image, (618, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_3_image != None:
         tip_image_3 = m.pygame.transform.scale(
-            game_tip_3_image, (922, (m.HEIGHT / 2) - 50)
+            game_tip_3_image, (929, (m.HEIGHT / 2) - 45)
         )
 
     if game_tip_4_image != None:
         if game_tip_3_image != None:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (308, (m.HEIGHT / 2) - 50)
+                game_tip_4_image, (310, (m.HEIGHT / 2) - 45)
             )
         else:
             tip_image_4 = m.pygame.transform.scale(
-                game_tip_4_image, (1230, (m.HEIGHT / 2) - 50)
+                game_tip_4_image, (1238, (m.HEIGHT / 2) - 45)
             )
 
     # texts
@@ -361,12 +361,12 @@ def game_started(
     if game_tip_1 != None:
         tip_message_1 = i.Instruction_Box(
             m.instruction_screen_games,
-            1316,
-            (m.HEIGHT / 2) + 30,
+            1320,
+            (m.HEIGHT / 2) + 36,
             game_tip_1,
             m.green_color,
-            0,
-            (m.HEIGHT / 6) + 18,
+            3,
+            (m.HEIGHT / 6) + 23,
             m.MagdaClean_font_30,
             40,
             60,
@@ -376,12 +376,12 @@ def game_started(
     if game_tip_2 != None:
         tip_message_2 = i.Instruction_Box(
             m.instruction_screen_games,
-            1316,
-            (m.HEIGHT / 2) + 30,
+            1320,
+            (m.HEIGHT / 2) + 36,
             game_tip_2,
             m.green_color,
-            0,
-            (m.HEIGHT / 6) + 18,
+            3,
+            (m.HEIGHT / 6) + 23,
             m.MagdaClean_font_30,
             40,
             60,
@@ -423,7 +423,11 @@ def game_started(
     display_tip_message_1 = False
     display_tip_message_2 = False
     logo_button_pressed = False
+    tip_1_penalty_taken = False
+    tip_2_penalty_taken = False
     restart_timer = 0
+    tip_1_time = m.game_tip_1_time
+    tip_2_time = m.game_tip_2_time
     start_time = m.pygame.time.get_ticks()
     time_difference = 0
     previous_second = int((m.TOTAL_PLAY_TIME / 1000) % 60)
@@ -442,7 +446,7 @@ def game_started(
         None,
         None,
         None,
-        m.from_millisecond_to_clock(m.game_tip_1_time, True),
+        m.from_millisecond_to_clock(tip_1_time, True),
         m.black_color,
         m.Quantico_font_50,
         (m.HEIGHT / 8) + 10,
@@ -500,7 +504,7 @@ def game_started(
         if button_pushed:
             keyboard.display()
             tip_button.display()
-            if time_difference < m.game_tip_2_time:
+            if time_difference < tip_2_time:
                 tip_time.display()
             button_pushed = False
 
@@ -511,7 +515,7 @@ def game_started(
         # tik-sound every second
         if play_time_seconds != previous_second:
             # dispaly tip button with timer on it
-            if time_difference < m.game_tip_2_time:
+            if time_difference < tip_2_time:
                 tip_button.display()
                 tip_time.display()
             elif reset_tip_button:
@@ -521,24 +525,24 @@ def game_started(
             m.clock_tik.play()
 
         # display the tip message
-        if display_tip_message_1 and time_difference >= m.game_tip_1_time:
+        if display_tip_message_1 and time_difference >= tip_1_time:
             if game_tip_1 != None:
                 tip_message_1.display()
             if game_tip_1_image != None:
-                m.SCREEN.blit(tip_image_1, (44, 240))
+                m.SCREEN.blit(tip_image_1, (44, 244))
             if game_tip_2_image != None:
-                m.SCREEN.blit(tip_image_2, (659, 240))
+                m.SCREEN.blit(tip_image_2, (663, 244))
             display_tip_message_1 = False
             tip_message_1_displayed = True
 
-        if display_tip_message_2 and time_difference >= m.game_tip_2_time:
+        if display_tip_message_2 and time_difference >= tip_2_time:
             if game_tip_2 != None:
                 tip_message_2.display()
             if game_tip_3_image != None:
-                m.SCREEN.blit(tip_image_3, (44, 240))
-                m.SCREEN.blit(tip_image_4, (966, 240))
+                m.SCREEN.blit(tip_image_3, (44, 244))
+                m.SCREEN.blit(tip_image_4, (972, 244))
             elif game_tip_4_image != None:
-                m.SCREEN.blit(tip_image_4, (44, 240))
+                m.SCREEN.blit(tip_image_4, (44, 244))
             tip_message_2_displayed = True
             display_tip_message_2 = False
 
@@ -644,18 +648,35 @@ def game_started(
                     button_pressed = True
                     button_pushed = True
                     pressed_button = 12
+
                     if tip_message_1_displayed:
+
+                        # display tip message 2
                         if (
                             not tip_message_2_displayed
-                            and time_difference >= m.game_tip_2_time
+                            and time_difference >= tip_2_time
                         ):
                             display_tip_message_2 = True
+                            if not tip_2_penalty_taken:
+                                start_time -= m.tip_2_penalty_time
+                                tip_1_time += m.tip_2_penalty_time
+                                tip_2_time += m.tip_2_penalty_time
+                                tip_2_penalty_taken = True
+
+                        # display instructions
                         else:
                             displayed = False
                             tip_message_1_displayed = False
                             tip_message_2_displayed = False
+
+                    # display tip message 1
                     else:
                         display_tip_message_1 = True
+                        if not tip_1_penalty_taken:
+                            start_time -= m.tip_1_penalty_time
+                            tip_1_time += m.tip_1_penalty_time
+                            tip_2_time += m.tip_1_penalty_time
+                            tip_1_penalty_taken = True
 
                 # pressing the logo button
                 if logo_button.mouse_on_button():
@@ -672,19 +693,17 @@ def game_started(
             )
 
         # display the tip button timer
-        if time_difference <= m.game_tip_1_time:
+        if time_difference <= tip_1_time:
             tip_time.change_input_text(
-                m.from_millisecond_to_clock(
-                    (m.game_tip_1_time) - time_difference, True)
+                m.from_millisecond_to_clock((tip_1_time) - time_difference, True)
             )
-        elif time_difference <= m.game_tip_2_time:
+        elif time_difference <= tip_2_time:
             tip_time.change_input_text(
-                m.from_millisecond_to_clock(
-                    (m.game_tip_2_time) - time_difference, True)
+                m.from_millisecond_to_clock((tip_2_time) - time_difference, True)
             )
 
         # to display the yellow tip image ( instead of the grey one )
-        if time_difference >= m.game_tip_1_time:
+        if time_difference >= tip_1_time:
             start_display_tip_icon = True
             if not tip_button_to_yellow:
                 tip_button_to_yellow = True
@@ -806,7 +825,6 @@ def games_window(
     game_tip_4_image=None,
 ):
 
-    push_button_to_start(game_number)
     if game_number != 6:
         return game_started(
             game_number,

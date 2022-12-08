@@ -72,14 +72,14 @@ orange_gear = pygame.image.load("Assets/images/orange_gear.png")
 purple_gear = pygame.image.load("Assets/images/purple_gear.png")
 red_gear = pygame.image.load("Assets/images/red_gear.png")
 green_gear = pygame.image.load("Assets/images/green_gear.png")
-green_gear_1= pygame.image.load("Assets/images/green_gear_1.png")
-green_gear_2= pygame.image.load("Assets/images/green_gear_2.png")
-green_gear_3= pygame.image.load("Assets/images/green_gear_3.png")
-green_gear_4= pygame.image.load("Assets/images/green_gear_4.png")
-red_gear_1= pygame.image.load("Assets/images/red_gear_1.png")
-red_gear_2= pygame.image.load("Assets/images/red_gear_2.png")
-red_gear_3= pygame.image.load("Assets/images/red_gear_3.png")
-red_gear_4= pygame.image.load("Assets/images/red_gear_4.png")
+green_gear_1 = pygame.image.load("Assets/images/green_gear_1.png")
+green_gear_2 = pygame.image.load("Assets/images/green_gear_2.png")
+green_gear_3 = pygame.image.load("Assets/images/green_gear_3.png")
+green_gear_4 = pygame.image.load("Assets/images/green_gear_4.png")
+red_gear_1 = pygame.image.load("Assets/images/red_gear_1.png")
+red_gear_2 = pygame.image.load("Assets/images/red_gear_2.png")
+red_gear_3 = pygame.image.load("Assets/images/red_gear_3.png")
+red_gear_4 = pygame.image.load("Assets/images/red_gear_4.png")
 yellow_gear = pygame.image.load("Assets/images/yellow_gear.png")
 rings_for_gears = pygame.image.load("Assets/images/rings_for_gears.png")
 rings_for_gears_with_gears = pygame.image.load(
@@ -161,15 +161,34 @@ wrong_answer_sound = pygame.mixer.Sound("Assets/sounds/wrong_answer.wav")
 correct_answer_sound = pygame.mixer.Sound("Assets/sounds/correct_answer.wav")
 click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
-start_game_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/start_window_correct_code.mp3")
-start_game_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/start_window_incorrect_code.mp3")
-game_1_to_6_robot_voice_correct_code = pygame.mixer.Sound("Assets/sounds/games_correct_code.mp3")
-game_1_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_1_incorrect_code.mp3")
-game_2_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_2_incorrect_code.mp3")
-game_3_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_3_incorrect_code.mp3")
-game_4_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_4_incorrect_code.mp3")
-game_5_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_5_incorrect_code.mp3")
-game_6_robot_voice_incorrect_code = pygame.mixer.Sound("Assets/sounds/game_6_incorrect_code.mp3")
+
+start_game_robot_voice_correct_code = pygame.mixer.Sound(
+    "Assets/sounds/start_window_correct_code.mp3"
+)
+start_game_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/start_window_incorrect_code.mp3"
+)
+game_1_to_6_robot_voice_correct_code = pygame.mixer.Sound(
+    "Assets/sounds/games_correct_code.mp3"
+)
+game_1_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_1_incorrect_code.mp3"
+)
+game_2_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_2_incorrect_code.mp3"
+)
+game_3_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_3_incorrect_code.mp3"
+)
+game_4_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_4_incorrect_code.mp3"
+)
+game_5_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_5_incorrect_code.mp3"
+)
+game_6_robot_voice_incorrect_code = pygame.mixer.Sound(
+    "Assets/sounds/game_6_incorrect_code.mp3"
+)
 
 # texts
 text_file = open("Assets/texts/game_instruction.txt", "r")
@@ -277,7 +296,8 @@ def main():
                 if team_name_window() == 1:
                     keep_going = False
             if keep_going:
-                if multiplechoice_pq(1) ==1:
+                push_button_to_start(1)
+                if multiplechoice_pq(1) == 1:
                     keep_going = False
             if keep_going:
                 if (
@@ -296,7 +316,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if multiplechoice_pq(2) ==1:
+                if multiplechoice_pq(2) == 1:
                     keep_going = False
             if keep_going:
                 if (
@@ -307,7 +327,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if spotdifferences_pq() ==1:
+                if spotdifferences_pq() == 1:
                     keep_going = False
             if keep_going:
                 if (
@@ -326,7 +346,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if multiplechoice_pq(4) ==1:
+                if multiplechoice_pq(4) == 1:
                     keep_going = False
             if keep_going:
                 if (
@@ -345,7 +365,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
-                if multiplechoice_pq(5) ==1:
+                if multiplechoice_pq(5) == 1:
                     keep_going = False
             if keep_going:
                 if (
