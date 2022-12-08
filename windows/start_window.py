@@ -279,12 +279,30 @@ def corret_code(game_number=0):
         None,
         None,
         None,
-        "Jullie hebben een nieuw tandwiel verdiend!!",
+        "Jullie hebben een nieuw tandwiel verdiend",
         m.green_color,
         m.MagdaClean_font_50,
         m.WIDTH * 0.45,
         m.HEIGHT * 0.32,
     )
+    # adding colored gears when a the code inserted is correct
+    red_gear_1 = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03))
+    orange_gear_1 = m.pygame.transform.scale(
+        m.orange_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03)
+    )
+    yellow_gear_1 = m.pygame.transform.scale(
+        m.yellow_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03)
+    )
+    green_gear_5 = m.pygame.transform.scale(
+        m.green_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03)
+    )
+    blue_gear_1 = m.pygame.transform.scale(
+        m.blue_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03)
+    )
+    purple_gear_1 = m.pygame.transform.scale(
+        m.purple_gear, (m.WIDTH * 0.03, m.WIDTH * 0.03)
+    )
+
     # resizinf the gear image for later use as animation
     green_gear_1 = m.pygame.transform.scale(
         m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
@@ -315,6 +333,19 @@ def corret_code(game_number=0):
             info_text.display()
             if game_number != 0:
                 info_text_1.display()
+                if game_number == 1:
+                    m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 2:
+                    m.SCREEN.blit(orange_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 3:
+                    m.SCREEN.blit(yellow_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 4:
+                    m.SCREEN.blit(green_gear_5, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 5:
+                    m.SCREEN.blit(blue_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 6:
+                    m.SCREEN.blit(purple_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -326,6 +357,18 @@ def corret_code(game_number=0):
             info_text.display()
             if game_number != 0:
                 info_text_1.display()
+                if game_number == 1:
+                    m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 2:
+                    m.SCREEN.blit(orange_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 3:
+                    m.SCREEN.blit(yellow_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 4:
+                    m.SCREEN.blit(green_gear_5, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 5:
+                    m.SCREEN.blit(blue_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 6:
+                    m.SCREEN.blit(purple_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -337,6 +380,18 @@ def corret_code(game_number=0):
             info_text.display()
             if game_number != 0:
                 info_text_1.display()
+                if game_number == 1:
+                    m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 2:
+                    m.SCREEN.blit(orange_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 3:
+                    m.SCREEN.blit(yellow_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 4:
+                    m.SCREEN.blit(green_gear_5, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 5:
+                    m.SCREEN.blit(blue_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 6:
+                    m.SCREEN.blit(purple_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -348,6 +403,18 @@ def corret_code(game_number=0):
             info_text.display()
             if game_number != 0:
                 info_text_1.display()
+                if game_number == 1:
+                    m.SCREEN.blit(red_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 2:
+                    m.SCREEN.blit(orange_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 3:
+                    m.SCREEN.blit(yellow_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 4:
+                    m.SCREEN.blit(green_gear_5, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 5:
+                    m.SCREEN.blit(blue_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
+                if game_number == 6:
+                    m.SCREEN.blit(purple_gear_1, (m.WIDTH * 0.73, m.HEIGHT * 0.29))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
