@@ -8,7 +8,7 @@ import windows.games_window as gw
 #######################################################################################
 def code_check():
     arduino("activeMachine=0&activeGame=0\n")
-    
+
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
         m.metal_plate_museumlogo, (m.WIDTH * 0.5, m.HEIGHT)
@@ -198,7 +198,7 @@ def code_check():
         # delay after clicking before resizing
         if button_pressed:
             timer += 1
-
+        # test
         # resize the clicked button
         if timer >= int(m.button_resizing_delay / 3):
 
@@ -274,6 +274,7 @@ def corret_code(game_number=0):
         m.WIDTH * 0.45,
         m.HEIGHT * 0.32 - 50,
     )
+
     info_text_1 = Text_frame(
         None,
         None,
@@ -312,7 +313,8 @@ def corret_code(game_number=0):
         if green_gear_teller == 1 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            info_text_1.display()
+            if game_number != 0:
+                info_text_1.display()
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_1, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -322,7 +324,8 @@ def corret_code(game_number=0):
         elif green_gear_teller == 2 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            info_text_1.display()
+            if game_number != 0:
+                info_text_1.display()
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_2, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -332,7 +335,8 @@ def corret_code(game_number=0):
         elif green_gear_teller == 3 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            info_text_1.display()
+            if game_number != 0:
+                info_text_1.display()
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_3, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
@@ -342,7 +346,8 @@ def corret_code(game_number=0):
         elif green_gear_teller == 4 and delay >= animation:
             m.SCREEN.blit(black_background, (0, 0))
             info_text.display()
-            info_text_1.display()
+            if game_number != 0:
+                info_text_1.display()
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.4, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.46, m.HEIGHT * 0.5))
             m.SCREEN.blit(green_gear_4, (m.WIDTH * 0.43, m.HEIGHT * 0.43))
