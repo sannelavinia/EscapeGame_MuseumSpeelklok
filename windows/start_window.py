@@ -285,6 +285,24 @@ def corret_code(game_number=0):
         m.WIDTH * 0.45,
         m.HEIGHT * 0.32,
     )
+    # adding colored gears when a the code inserted is correct
+    red_gear_1 = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    orange_gear_1 = m.pygame.transform.scale(
+        m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    yellow_gear_1 = m.pygame.transform.scale(
+        m.yellow_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    green_gear_5 = m.pygame.transform.scale(
+        m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    blue_gear_1 = m.pygame.transform.scale(
+        m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+    purple_gear_1 = m.pygame.transform.scale(
+        m.purple_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
+    )
+
     # resizinf the gear image for later use as animation
     green_gear_1 = m.pygame.transform.scale(
         m.green_gear_1, (m.WIDTH * 0.05, m.WIDTH * 0.05)
