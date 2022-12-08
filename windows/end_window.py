@@ -96,5 +96,8 @@ def end_window():
 
             q.quit_game(event)
 
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+                return
+
         # the window should be updated after each while-loop
         m.pygame.display.update()
