@@ -7,7 +7,7 @@ import windows.games_window as gw
 
 #######################################################################################
 def code_check():
-    arduino("activeMachine=0&activeGame=0\n")
+    arduino("aStatus=0\n")
 
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
