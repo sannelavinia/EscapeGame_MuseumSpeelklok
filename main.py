@@ -18,7 +18,7 @@ from windows.prequestions.organmaze_pq import OrganMaze
 from windows.end_game_instruction import *
 from windows.end_game import *
 
-from open_port import *
+from arduino.open_port import *
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
 
@@ -278,7 +278,7 @@ def from_millisecond_to_clock(time_in_millisecond, only_min=False):
     )
 
 # arduino
-# serial_name = port_name() 
+# serial_message = port_name() 
 
 #######################################################################################
 def main():
