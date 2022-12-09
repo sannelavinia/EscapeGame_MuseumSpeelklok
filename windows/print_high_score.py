@@ -44,7 +44,7 @@ def read_file(current_team_name, current_team_time):
     for o in team_s:
         if len(str(o))>1:
             team_info = []
-            ty = o.split("                        ")
+            ty = o.split("s                        ")
             team_score = int(ty[0])
             team_name = str(ty[1])
             team_info.append(team_score)
@@ -75,7 +75,7 @@ def write_file(self):
     temp = ''
     # temp = "   High Scores\nTime        Team name:"
     for x in self:
-        temp = temp + str(x[0]) + "                        " + x[1] + "\n" + '\n' + '\n'
+        temp = temp + str(x[0]) + "s                       " + x[1] + "\n" + '\n' + '\n'
     
     with open("Assets/texts/highscore.txt", 'w') as f:
         f.write (temp )
