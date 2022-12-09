@@ -7,7 +7,7 @@ import psutil
 
 #######################################################################################
 def end_game():
-    arduino("activeMachine=4&activeGame=0\n")
+    arduino("aStatus=9\n")
 
     start_time = m.pygame.time.get_ticks()
 
