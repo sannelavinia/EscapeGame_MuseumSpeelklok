@@ -8,11 +8,13 @@ import widgets.quit_game as q
 import widgets.button as b
 import widgets.text_frame as t
 from arduino.arduino_control import *
+from arduino.write_to_arduino import *
 
 
 #######################################################################################
 def end_window():
-    arduino("activeMachine=5&activeGame=0\n")
+    # arduino("aStatus=8\n")
+    send_message(m.serial_message, "aStatus=10\n")
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000

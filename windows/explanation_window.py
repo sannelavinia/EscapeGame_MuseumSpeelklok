@@ -5,6 +5,7 @@ from widgets.button import Button
 import widgets.button as b
 from arduino.arduino_control import *
 import widgets.quit_game as q
+from arduino.write_to_arduino import *
 
 
 #######################################################################################
@@ -12,8 +13,10 @@ import widgets.quit_game as q
 
 
 def explanation_window():
-    arduino("activeMachine=1&activeGame=0\n")
+    # arduino("aStatus=1\n")
+    send_message(m.serial_message, "aStatus=1\n")
 
+    # send_message(m.serial_message, "aStatus=1\n")
     message = Instruction_Box(m.transparent_box, 1000,
                               450, m.game_instruction, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)
 

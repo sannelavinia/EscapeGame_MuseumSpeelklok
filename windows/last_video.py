@@ -11,15 +11,15 @@ from arduino.write_to_arduino import *
 
 #######################################################################################
 
-def end_game_instruction():
+def last_video():
     # arduino("aStatus=10\n")
-    # send_message(m.serial_message, "aStatus=8\n")
+    send_message(m.serial_message, "aStatus=9\n")
 
     explanation_text = Instruction_Box(m.transparent_box, 1000,
                               450, m.end_game_instruction_text, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
    
     # create title object that will be displayed on the screen
-    title = m.MagdaClean_font_70.render("Eindspel" , True, m.green_color)
+    title = m.MagdaClean_font_70.render("this window is for last video" , True, m.green_color)
 
 
     start_button = Button(m.small_green_button, m.small_green_button,
@@ -42,7 +42,7 @@ def end_game_instruction():
         # message.display()
 
         start_button.display()
-        explanation_text.display()
+        # explanation_text.display()
         m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
 
         # every interaction with the game is an event ( mouse, Keyboard )

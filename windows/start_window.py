@@ -4,10 +4,13 @@ import widgets.keyboard as k
 from arduino.arduino_control import *
 import widgets.quit_game as q
 import windows.games_window as gw
+from arduino.write_to_arduino import *
 
 #######################################################################################
 def code_check():
-    arduino("activeMachine=0&activeGame=0\n")
+    # arduino("aStatus=0\n")
+    send_message(m.serial_message, "aStatus=0\n")
+    send_message(m.serial_message, "aStatus=0\n")
 
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(
