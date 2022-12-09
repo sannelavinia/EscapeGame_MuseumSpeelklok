@@ -70,7 +70,7 @@ def write_file(self):
     
     temp = ""
     for x in self:
-        temp = temp + str(x[0]) + " " + x[1] + "\n" + '\n' + '\n'
+        temp = temp + str(x[0]) + "     " + x[1] + "\n" + '\n' + '\n'
     
     with open("Assets/texts/highscore.txt", 'w') as f:
         f.write (temp )

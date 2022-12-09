@@ -24,9 +24,9 @@ def high_score():
     read_file(str(team_name), int(m.TOTAL_PLAY_TIME))
 
     text_1 = t.Text_frame(
-        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_50, m.WIDTH/2, m.HEIGHT/7)
-    # text_3 = t.Text_frame(
-    #     None, None, None, "Jullie eindtijd is: " + time_end , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
+        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_70, m.WIDTH/2, m.HEIGHT/7)
+    text_3 = t.Text_frame(
+        None, None, None, "Tijd in seconden:     Naam: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
     # text_4 = t.Text_frame(
     #      None, None, None, "Bedankt voor jullie hulp!, we zijn weer in onze eigen tijd beland! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
     # text_2 = t.Text_frame(
@@ -37,12 +37,13 @@ def high_score():
     text_file = open("Assets/texts/highscore.txt", "r")
     high_score_1 = text_file.read().split("\n")
     explanation_text = Instruction_Box(m.transparent_box, 1000,
-                                450, high_score_1, m.green_color, m.WIDTH/9, m.HEIGHT/15, m.MagdaClean_font_50)
+                                450, high_score_1, m.green_color, m.WIDTH/8, m.HEIGHT/8, m.MagdaClean_font_50)
+    
    
     # create title object that will be displayed on the screen
 
     # if len(o) < 10:
-    title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
+    #title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
 
 
     # start_button = Button(m.small_green_button, m.small_green_button,
@@ -72,7 +73,7 @@ def high_score():
 
         # start_button.display()
         text_1.display()
-        # text_3.display()
+        text_3.display()
         # text_4.display()
         # text_2.display()
         explanation_text.display()
