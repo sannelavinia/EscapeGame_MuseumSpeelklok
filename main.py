@@ -23,8 +23,8 @@ from windows.end_game import *
 pygame.init()
 
 # global variables
-HEIGHT =  800 # height of the displayed window
-WIDTH = 1200  # width of the displayed window
+HEIGHT =  1080 # height of the displayed window
+WIDTH = 1920  # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
 
@@ -288,9 +288,9 @@ def main():
         while True:
             if start_window() == 1:
                 keep_going = False
-            if keep_going:
-                if explanation_window() == 1:
-                    keep_going = False
+            # if keep_going:
+            #     if explanation_window() == 1:
+            #         keep_going = False
 
             if keep_going:
                 if team_name_window() == 1:
@@ -299,100 +299,100 @@ def main():
                 push_button_to_start(1)
                 if multiplechoice_pq(1) == 1:
                     keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        1,
-                        game_1_explanation,
-                        game_1_code,
-                        game_1_tip_1,
-                        None,
-                        None,
-                        None,
-                        None,
-                        game_1_tip_image,
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                if multiplechoice_pq(2) == 1:
-                    keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                if spotdifferences_pq() == 1:
-                    keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        3,
-                        game_3_explanation,
-                        game_3_code,
-                        game_3_tip_1,
-                        None,
-                        None,
-                        None,
-                        None,
-                        game_3_tip_image,
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                if multiplechoice_pq(4) == 1:
-                    keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        4,
-                        game_4_explanation,
-                        game_4_code,
-                        None,
-                        None,
-                        game_4_tip_image_1,
-                        game_4_tip_image_2,
-                        game_4_tip_image_3,
-                        game_4_tip_image_4,
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                if multiplechoice_pq(5) == 1:
-                    keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                organ_maze = OrganMaze()
-                if organ_maze.organmaze_pq() ==1:
-                    keep_going = False
-            if keep_going:
-                if (
-                    games_window(
-                        6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2
-                    )
-                    == 1
-                ):
-                    keep_going = False
-            if keep_going:
-                if end_game_instruction() == 1:
-                    keep_going = False
-            if keep_going:
-                if end_game() == 1:
-                    keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             1,
+            #             game_1_explanation,
+            #             game_1_code,
+            #             game_1_tip_1,
+            #             None,
+            #             None,
+            #             None,
+            #             None,
+            #             game_1_tip_image,
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     if multiplechoice_pq(2) == 1:
+            #         keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             2, game_2_explanation, game_2_code, game_2_tip_1, game_2_tip_2
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     if spotdifferences_pq() == 1:
+            #         keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             3,
+            #             game_3_explanation,
+            #             game_3_code,
+            #             game_3_tip_1,
+            #             None,
+            #             None,
+            #             None,
+            #             None,
+            #             game_3_tip_image,
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     if multiplechoice_pq(4) == 1:
+            #         keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             4,
+            #             game_4_explanation,
+            #             game_4_code,
+            #             None,
+            #             None,
+            #             game_4_tip_image_1,
+            #             game_4_tip_image_2,
+            #             game_4_tip_image_3,
+            #             game_4_tip_image_4,
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     if multiplechoice_pq(5) == 1:
+            #         keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             5, game_5_explanation, game_5_code, game_5_tip_1, game_5_tip_2
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     organ_maze = OrganMaze()
+            #     if organ_maze.organmaze_pq() ==1:
+            #         keep_going = False
+            # if keep_going:
+            #     if (
+            #         games_window(
+            #             6, game_6_explanation, game_6_code, game_6_tip_1, game_6_tip_2
+            #         )
+            #         == 1
+            #     ):
+            #         keep_going = False
+            # if keep_going:
+            #     if end_game_instruction() == 1:
+            #         keep_going = False
+            # if keep_going:
+            #     if end_game() == 1:
+            #         keep_going = False
             if keep_going:
                 if end_window() == 1:
                     keep_going = False

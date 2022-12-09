@@ -15,18 +15,18 @@ def high_score():
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
-    seconds = int((m.TOTAL_PLAY_TIME / 1000) % 60)
+    seconds = int((m.TOTAL_PLAY_TIME ) / 1000)
     minutes = int(((m.TOTAL_PLAY_TIME / 1000) / 60) % 60)
     hours = int((((m.TOTAL_PLAY_TIME / 1000) / 60) / 60) % 60)
     time_end = "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
 
     team_name = save_data.team_name_save
-    read_file(str(team_name), int(m.TOTAL_PLAY_TIME))
+    read_file(str(team_name), int(seconds))
 
     text_1 = t.Text_frame(
-        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_70, m.WIDTH/2, m.HEIGHT/7)
+        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_70, m.WIDTH/2.5, m.HEIGHT/7)
     text_3 = t.Text_frame(
-        None, None, None, "Tijd in seconden:     Naam: " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*2)
+        None, None, None, "Tijd in seconden     Naam " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2.5, (m.HEIGHT/7)*2)
     # text_4 = t.Text_frame(
     #      None, None, None, "Bedankt voor jullie hulp!, we zijn weer in onze eigen tijd beland! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
     # text_2 = t.Text_frame(
@@ -37,7 +37,7 @@ def high_score():
     text_file = open("Assets/texts/highscore.txt", "r")
     high_score_1 = text_file.read().split("\n")
     explanation_text = Instruction_Box(m.transparent_box, 1000,
-                                450, high_score_1, m.green_color, m.WIDTH/8, m.HEIGHT/8, m.MagdaClean_font_50)
+                                450, high_score_1, m.green_color, m.WIDTH/9, (m.HEIGHT/7), m.MagdaClean_font_50)
     
    
     # create title object that will be displayed on the screen

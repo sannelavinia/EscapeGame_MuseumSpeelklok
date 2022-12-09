@@ -21,6 +21,7 @@ def read_file(current_team_name, current_team_time):
     team_name = ""
     team_score = 0
     teams_info = []
+    # read = True
     for x in contents:
 
     #print(len(contents))    
@@ -28,6 +29,10 @@ def read_file(current_team_name, current_team_time):
         # print (x)
         # team = team + x
         # print (team)
+        # read = False
+        # if x == ':':
+        #     read = True
+        # if read is True:
         if (x !='\n'):
             team = team + x
         elif (x =='\n' and team != None):
@@ -39,7 +44,7 @@ def read_file(current_team_name, current_team_time):
     for o in team_s:
         if len(str(o))>1:
             team_info = []
-            ty = o.split(" ")
+            ty = o.split("                        ")
             team_score = int(ty[0])
             team_name = str(ty[1])
             team_info.append(team_score)
@@ -56,7 +61,7 @@ def read_file(current_team_name, current_team_time):
     tema_extra.append(str(current_team_name))
     teams_info.append(tema_extra)
 
-    teams_info = sort_high_score(teams_info)
+    teams_info.sort()
     # print (teams_info[0][0])
     print (teams_info)
     write_file(teams_info)
@@ -65,12 +70,12 @@ def write_file(self):
     # write to the folder
     print ("self is" )
     print (self)
-    if (len(self)>10):
+    if (len(self)>5):
         del self[0]
-    
-    temp = ""
+    temp = ''
+    # temp = "   High Scores\nTime        Team name:"
     for x in self:
-        temp = temp + str(x[0]) + "     " + x[1] + "\n" + '\n' + '\n'
+        temp = temp + str(x[0]) + "                        " + x[1] + "\n" + '\n' + '\n'
     
     with open("Assets/texts/highscore.txt", 'w') as f:
         f.write (temp )
