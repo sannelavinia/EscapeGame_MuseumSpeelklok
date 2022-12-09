@@ -6,6 +6,7 @@ import widgets.instruction_box as i
 import windows.start_window as sw
 import widgets.quit_game as q
 from arduino.arduino_control import *
+from arduino.write_to_arduino import *
 
 #######################################################################################
 
@@ -276,6 +277,8 @@ def game_started(
 ):
 
     arduino("aStatus=" + str(game_number+1) + "\n")
+    # message_game = "aStatus=" + str(game_number+1) + "\n"
+    # send_message(m.serial_message, message_game)
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
