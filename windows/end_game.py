@@ -4,11 +4,12 @@ from open_the_project import *
 import pygame
 # import subprocess
 import psutil
+from arduino.write_to_arduino import *
 
 #######################################################################################
 def end_game():
-    arduino("aStatus=9\n")
-
+    # arduino("aStatus=9\n")
+    send_message(m.serial_message, "aStatus=8\n")
     start_time = m.pygame.time.get_ticks()
 
     open_end_game()

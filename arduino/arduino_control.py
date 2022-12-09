@@ -18,7 +18,7 @@ def arduino(active):
 
             serialcomm.timeout = 1
 
-            while True:
+            while d in range (10):
 
                 # i = input("Enter Input: ").strip()
 
@@ -28,10 +28,10 @@ def arduino(active):
 
                 time.sleep(0.1)
 
-                s = 'stop'
+                # s = 'stop'
 
-                if s in serialcomm.readline().decode():
-                    break
+                # if s in serialcomm.readline().decode():
+                #     break
 
             serialcomm.close()
 

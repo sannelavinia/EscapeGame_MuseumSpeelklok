@@ -19,6 +19,7 @@ from windows.end_game_instruction import *
 from windows.end_game import *
 
 from arduino.open_port import *
+from windows.last_video import *
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
 
@@ -277,8 +278,8 @@ def from_millisecond_to_clock(time_in_millisecond, only_min=False):
         str(milliseconds).zfill(3),
     )
 
-# arduino
-# serial_message = port_name() 
+arduino
+serial_message = port_name() 
 
 #######################################################################################
 def main():
@@ -394,6 +395,9 @@ def main():
                     keep_going = False
             if keep_going:
                 if end_game() == 1:
+                    keep_going = False
+            if keep_going:
+                if last_video() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:

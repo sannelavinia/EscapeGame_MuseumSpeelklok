@@ -276,9 +276,9 @@ def game_started(
     game_tip_4_image=None,
 ):
 
-    arduino("aStatus=" + str(game_number+1) + "\n")
-    # message_game = "aStatus=" + str(game_number+1) + "\n"
-    # send_message(m.serial_message, message_game)
+    # arduino("aStatus=" + str(game_number+1) + "\n")
+    message_game = "aStatus=" + str(game_number+1) + "\n"
+    send_message(m.serial_message, message_game)
 
     # resizing the images
     background_games_template = m.pygame.transform.scale(
