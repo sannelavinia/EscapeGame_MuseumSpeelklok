@@ -12,7 +12,7 @@ from arduino.arduino_control import *
 
 #######################################################################################
 def end_window():
-    arduino("activeMachine=5&activeGame=0\n")
+    arduino("aStatus=8\n")
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
