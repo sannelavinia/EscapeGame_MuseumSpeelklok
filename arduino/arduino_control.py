@@ -6,7 +6,7 @@ import time
 import serial.tools.list_ports
 
 def arduino(active):
-    print (active[0:15]+'\n'+active[16:])
+    print (active)
     try:
 
         ports = list(serial.tools.list_ports.comports())
@@ -22,7 +22,7 @@ def arduino(active):
 
                 # i = input("Enter Input: ").strip()
 
-                i = active.strip()
+                i = active
                 
                 serialcomm.write(i.encode())
 
