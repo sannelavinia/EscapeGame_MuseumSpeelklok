@@ -62,7 +62,7 @@ code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 game_1_tip_image = pygame.image.load("Assets/images/meterstand.png")
 game_3_tip_image = pygame.image.load("Assets/images/playmobil.jpg")
 game_4_tip_image_1 = pygame.image.load("Assets/images/Olland_schilderij.jpg")
-game_4_tip_image_2 = pygame.image.load("Assets/images/sprierkracht-orgel.tif")
+game_4_tip_image_2 = pygame.image.load("Assets/images/sprierkracht-orgel.png")
 game_4_tip_image_3 = pygame.image.load("Assets/images/Violina.jpg")
 game_4_tip_image_4 = pygame.image.load("Assets/images/koppelduiker.jpg")
 
