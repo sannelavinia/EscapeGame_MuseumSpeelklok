@@ -27,7 +27,21 @@ def last_video():
     start_text = m.MagdaClean_font_30.render('Start', True, m.green_color)
 
     # game loop ( to prevent the window from closing after going throw the current events )
+    logo_button = b.Button(
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.WIDTH - (m.WIDTH / 10 - 3) ,
+        m.HEIGHT - (m.HEIGHT / 15 + 1),
+        m.WIDTH / 10.5,
+        m.HEIGHT / 22,
+    )
+    logo_button_pressed = False
+    restart_timer = 0
     while True:
+        if restart_timer >= m.restart_time_logo_pressed:
+            if m.admin_mode() == 1:
+                return 1
 
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
@@ -44,6 +58,13 @@ def last_video():
         start_button.display()
         # explanation_text.display()
         m.SCREEN.blit(start_text, (m.WIDTH/1.3, m.HEIGHT/1.08))
+        logo_button.display()
+        if logo_button_pressed and logo_button.mouse_on_button():
+            restart_timer += 1
+            # print ("pressed")
+        else:
+            logo_button_pressed = False
+            restart_timer = 0
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -54,6 +75,11 @@ def last_video():
             if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
                 m.correct_answer_sound.play()
                 return
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+
+                if logo_button.mouse_on_button():
+                        logo_button_pressed = True
+
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

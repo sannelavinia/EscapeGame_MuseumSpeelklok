@@ -70,12 +70,25 @@ def end_window():
         m.WIDTH / 2,
         (m.HEIGHT / 7) * 4,
     )
+    logo_button = b.Button(
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.WIDTH - (m.WIDTH / 10 - 3) ,
+        m.HEIGHT - (m.HEIGHT / 15 + 1),
+        m.WIDTH / 10.5,
+        m.HEIGHT / 22,
+    )
+    logo_button_pressed = False
+    restart_timer = 0
 
     print("the time until now is: " + time_end)
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
-
+        if restart_timer >= m.restart_time_logo_pressed:
+            if m.admin_mode() == 1:
+                return 1
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         celebration_background = pygame.transform.scale(
@@ -92,6 +105,13 @@ def end_window():
         text_3.display()
         text_4.display()
         text_2.display()
+        logo_button.display()
+        if logo_button_pressed and logo_button.mouse_on_button():
+            restart_timer += 1
+            # print ("pressed")
+        else:
+            logo_button_pressed = False
+            restart_timer = 0
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
@@ -99,7 +119,11 @@ def end_window():
             q.quit_game(event)
 
             if event.type == m.pygame.MOUSEBUTTONDOWN:
-                return
+
+                if logo_button.mouse_on_button():
+                        logo_button_pressed = True
+                else:
+                    return
 
         # the window should be updated after each while-loop
         m.pygame.display.update()

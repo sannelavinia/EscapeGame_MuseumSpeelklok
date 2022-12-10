@@ -50,9 +50,23 @@ def high_score():
     # start_text = m.MagdaClean_font_30.render('End', True, m.green_color)
 
     start_time = m.pygame.time.get_ticks()
+    logo_button = b.Button(
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.museum_logo_grey,
+        m.WIDTH - (m.WIDTH / 10 - 3) ,
+        m.HEIGHT - (m.HEIGHT / 15 + 1),
+        m.WIDTH / 10.5,
+        m.HEIGHT / 22,
+    )
+    logo_button_pressed = False
+    restart_timer = 0
 
     # game loop ( to prevent the window from closing after going throw the current events )
     while True:
+        if restart_timer >= m.restart_time_logo_pressed:
+            if m.admin_mode() == 1:
+                return 1
 
         # restart the game after a 5 min (no action needed)
         if m.pygame.time.get_ticks() > start_time + m.restart_time_end_window:
@@ -76,15 +90,27 @@ def high_score():
         # text_4.display()
         # text_2.display()
         explanation_text.display()
+        logo_button.display()
+        if logo_button_pressed and logo_button.mouse_on_button():
+            restart_timer += 1
+            # print ("pressed")
+        else:
+            logo_button_pressed = False
+            restart_timer = 0
         # m.SCREEN.blit(explanation_text, (m.WIDTH/2, m.HEIGHT/1.08))
 
         # every interaction with the game is an event ( mouse, Keyboard )
         for event in m.pygame.event.get():
 
             # when pressing the close button "X" at the top-right of the game-window
+            if event.type == m.pygame.MOUSEBUTTONDOWN:
+
+                if logo_button.mouse_on_button():
+                        logo_button_pressed = True
             if event.type == m.pygame.QUIT or \
                     (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
                 m.pygame.quit()
+
 
             # when pressing a mouse button
             # if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():

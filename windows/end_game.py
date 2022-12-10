@@ -27,6 +27,7 @@ def end_game():
     time_difference = end_time - start_time
     play_time = m.TOTAL_PLAY_TIME + time_difference
     play_time_seconds = int((play_time / 1000) % 60)
+    
 
     return
 
