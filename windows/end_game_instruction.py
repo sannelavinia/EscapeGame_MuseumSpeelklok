@@ -7,11 +7,13 @@ import widgets.text_frame as t
 import widgets.quit_game as q
 from arduino.arduino_control import *
 from widgets.instruction_box import Instruction_Box
+from arduino.write_to_arduino import *
 
 #######################################################################################
 
 def end_game_instruction():
-    arduino("activeMachine=3&activeGame=0\n")
+    # arduino("aStatus=10\n")
+    # send_message(m.serial_message, "aStatus=8\n")
 
     explanation_text = Instruction_Box(m.transparent_box, 1000,
                               450, m.end_game_instruction_text, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)

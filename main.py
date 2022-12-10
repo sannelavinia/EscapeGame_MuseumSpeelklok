@@ -18,7 +18,8 @@ from windows.prequestions.organmaze_pq import OrganMaze
 from windows.end_game_instruction import *
 from windows.end_game import *
 
-
+from arduino.open_port import *
+from windows.last_video import *
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
 
@@ -62,7 +63,7 @@ code_input_frame = pygame.image.load("Assets/images/code_input_frame.png")
 game_1_tip_image = pygame.image.load("Assets/images/meterstand.png")
 game_3_tip_image = pygame.image.load("Assets/images/playmobil.jpg")
 game_4_tip_image_1 = pygame.image.load("Assets/images/Olland_schilderij.jpg")
-game_4_tip_image_2 = pygame.image.load("Assets/images/sprierkracht-orgel.tif")
+game_4_tip_image_2 = pygame.image.load("Assets/images/sprierkracht-orgel.png")
 game_4_tip_image_3 = pygame.image.load("Assets/images/Violina.jpg")
 game_4_tip_image_4 = pygame.image.load("Assets/images/koppelduiker.jpg")
 
@@ -163,31 +164,31 @@ click_sound = pygame.mixer.Sound("Assets/sounds/click.wav")
 clock_tik = pygame.mixer.Sound("Assets/sounds/clock_tik.wav")
 
 start_game_robot_voice_correct_code = pygame.mixer.Sound(
-    "Assets/sounds/start_window_correct_code.mp3"
+    "Assets/sounds/start_window_correct_code.wav"
 )
 start_game_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/start_window_incorrect_code.mp3"
+    "Assets/sounds/start_window_incorrect_code.wav"
 )
 game_1_to_6_robot_voice_correct_code = pygame.mixer.Sound(
-    "Assets/sounds/games_correct_code.mp3"
+    "Assets/sounds/games_correct_code.wav"
 )
 game_1_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_1_incorrect_code.mp3"
+    "Assets/sounds/game_1_incorrect_code.wav"
 )
 game_2_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_2_incorrect_code.mp3"
+    "Assets/sounds/game_2_incorrect_code.wav"
 )
 game_3_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_3_incorrect_code.mp3"
+    "Assets/sounds/game_3_incorrect_code.wav"
 )
 game_4_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_4_incorrect_code.mp3"
+    "Assets/sounds/game_4_incorrect_code.wav"
 )
 game_5_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_5_incorrect_code.mp3"
+    "Assets/sounds/game_5_incorrect_code.wav"
 )
 game_6_robot_voice_incorrect_code = pygame.mixer.Sound(
-    "Assets/sounds/game_6_incorrect_code.mp3"
+    "Assets/sounds/game_6_incorrect_code.wav"
 )
 
 # texts
@@ -277,6 +278,8 @@ def from_millisecond_to_clock(time_in_millisecond, only_min=False):
         str(milliseconds).zfill(3),
     )
 
+arduino
+serial_message = port_name() 
 
 #######################################################################################
 def main():
@@ -391,6 +394,9 @@ def main():
                     keep_going = False
             if keep_going:
                 if end_game() == 1:
+                    keep_going = False
+            if keep_going:
+                if last_video() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:
