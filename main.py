@@ -20,11 +20,16 @@ from windows.end_game import *
 
 from arduino.open_port import *
 from windows.last_video import *
+
+import cv2
+import time
+from ffpyplayer.player import MediaPlayer
+
 # initializing the pygame ( preventing unexpected behavior )
 pygame.init()
 
 # global variables
-HEIGHT =  1080 # height of the displayed window
+HEIGHT = 1080  # height of the displayed window
 WIDTH = 1920  # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
@@ -145,7 +150,7 @@ spot_differences = pygame.image.load("Assets/images/spotdifferences_art.png")
 gears_pq4 = pygame.image.load("Assets/images/gears_pq4.png")
 
 red_circle = pygame.image.load("Assets/images/red_circle.png")
-red_circle = m.pygame.transform.scale(red_circle, (60,60))
+red_circle = m.pygame.transform.scale(red_circle, (60, 60))
 
 orange_circle = pygame.image.load("Assets/images/orange_circle.png")
 orange_circle = m.pygame.transform.scale(orange_circle, (75, 75))
@@ -278,8 +283,64 @@ def from_millisecond_to_clock(time_in_millisecond, only_min=False):
         str(milliseconds).zfill(3),
     )
 
+
 arduino
-serial_message = port_name() 
+serial_message = port_name()
+
+
+#######################################################################################
+def play_video(game_number):
+
+    if game_number == 1:
+        video("Assets/films/Film1DEF2.mp4")
+    elif game_number == 2:
+        video("Assets/films/Film2DEF2.mp4")
+    elif game_number == 3:
+        video("Assets/films/Film3DEF2.mp4")
+    elif game_number == 4:
+        video("Assets/films/Film4DEF2.mp4")
+    elif game_number == 5:
+        video("Assets/films/Film5DEF2.mp4")
+    elif game_number == 6:
+        video("Assets/films/Film6DEF2.mp4")
+    elif game_number == 7:
+        video("Assets/films/Film7DEF2.mp4")
+    elif game_number == 8:
+        video("Assets/films/Film8DEF2.mp4")
+
+
+#######################################################################################
+def video(file):
+    cap = cv2.VideoCapture(file)
+    player = MediaPlayer(file)
+    start_time = time.time()
+    window_name = file
+
+    cv2.namedWindow(window_name, cv2.WND_PROP_FULLSCREEN)
+
+    cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
+    while cap.isOpened():
+
+        ret, frame = cap.read()
+        if not ret:
+            break
+        _, val = player.get_frame(show=False)
+        if val == "eof":
+            break
+
+        cv2.imshow(window_name, frame)
+
+        elapsed = (time.time() - start_time) * 1000  # msec
+        play_time = int(cap.get(cv2.CAP_PROP_POS_MSEC))
+        sleep = max(1, int(play_time - elapsed))
+        if cv2.waitKey(sleep) & 0xFF == ord("q"):
+            break
+
+    player.close_player()
+    cap.release()
+    cv2.destroyAllWindows()
+
 
 #######################################################################################
 def main():
@@ -299,6 +360,7 @@ def main():
                     keep_going = False
             if keep_going:
                 push_button_to_start(1)
+                play_video(1)
                 if multiplechoice_pq(1) == 1:
                     keep_going = False
             if keep_going:
@@ -318,6 +380,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(2)
                 if multiplechoice_pq(2) == 1:
                     keep_going = False
             if keep_going:
@@ -329,6 +392,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(3)
                 if spotdifferences_pq() == 1:
                     keep_going = False
             if keep_going:
@@ -348,6 +412,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(4)
                 if multiplechoice_pq(4) == 1:
                     keep_going = False
             if keep_going:
@@ -367,6 +432,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(5)
                 if multiplechoice_pq(5) == 1:
                     keep_going = False
             if keep_going:
@@ -378,8 +444,9 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(6)
                 organ_maze = OrganMaze()
-                if organ_maze.organmaze_pq() ==1:
+                if organ_maze.organmaze_pq() == 1:
                     keep_going = False
             if keep_going:
                 if (
@@ -390,6 +457,7 @@ def main():
                 ):
                     keep_going = False
             if keep_going:
+                play_video(7)
                 if end_game_instruction() == 1:
                     keep_going = False
             if keep_going:
@@ -399,6 +467,7 @@ def main():
                 if last_video() == 1:
                     keep_going = False
             if keep_going:
+                play_video(8)
                 if end_window() == 1:
                     keep_going = False
             if keep_going:
