@@ -24,7 +24,7 @@ from windows.last_video import *
 pygame.init()
 
 # global variables
-HEIGHT = 1080  # height of the displayed window
+HEIGHT =  1080 # height of the displayed window
 WIDTH = 1920  # width of the displayed window
 TEAMS_NAMES = ["11", "22", "33", "44", "55"]
 TEAMS_SCORES = ["11", "22", "33", "44", "55"]
@@ -294,7 +294,6 @@ def main():
             if keep_going:
                 if explanation_window() == 1:
                     keep_going = False
-
             if keep_going:
                 if team_name_window() == 1:
                     keep_going = False

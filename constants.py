@@ -31,7 +31,7 @@ admin_code = "1111"
 restart_time_logo_pressed = 200
 
 # after finishing the game (in milliseconds)
-restart_time_end_window = 300  # 5 min
+restart_time_end_window = 300000  # 5 min
 
 # normal times per game (in milliseconds)
 game_normal_time = 300000  # 5 min
