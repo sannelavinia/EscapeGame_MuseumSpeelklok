@@ -12,9 +12,6 @@ from arduino.write_to_arduino import *
 #######################################################################################
 
 def end_game_instruction():
-    # arduino("aStatus=10\n")
-    # send_message(m.serial_message, "aStatus=8\n")
-
     explanation_text = Instruction_Box(m.transparent_box, 1000,
                               450, m.end_game_instruction_text, m.green_color, m.WIDTH/18, m.HEIGHT/15, m.MagdaClean_font_50)
    

@@ -350,9 +350,11 @@ def main():
         keep_going = True
 
         while True:
+            send_message(m.serial_message, "aStatus=0\n")
             if start_window() == 1:
                 keep_going = False
             if keep_going:
+                send_message(m.serial_message, "aStatus=1\n")
                 if explanation_window() == 1:
                     keep_going = False
             if keep_going:
@@ -461,16 +463,19 @@ def main():
                 if end_game_instruction() == 1:
                     keep_going = False
             if keep_going:
+                send_message(m.serial_message, "aStatus=8\n")
                 if end_game() == 1:
                     keep_going = False
             if keep_going:
                 if end_window() == 1:
-                    keep_going = False  
+                    keep_going = False
+                send_message(m.serial_message, "aStatus=9\n")  
                 play_video(8)             
             if keep_going:
+                send_message(m.serial_message, "aStatus=10\n")
                 if high_score() == 1:
                     keep_going = False
             keep_going = True
-            
+
 
 main()

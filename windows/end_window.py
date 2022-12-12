@@ -13,8 +13,6 @@ from arduino.write_to_arduino import *
 
 #######################################################################################
 def end_window():
-    # arduino("aStatus=8\n")
-    send_message(m.serial_message, "aStatus=10\n")
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
