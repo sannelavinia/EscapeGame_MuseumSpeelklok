@@ -73,6 +73,7 @@ def end_game_instruction():
 
             # when pressing a mouse button
             if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
+                m.SCREEN.blit(black_screen_background, (0, 0))
                 m.correct_answer_sound.play()
                 return
             if event.type == m.pygame.MOUSEBUTTONDOWN:

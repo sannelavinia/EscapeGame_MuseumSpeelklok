@@ -464,16 +464,13 @@ def main():
                 if end_game() == 1:
                     keep_going = False
             if keep_going:
-                if last_video() == 1:
-                    keep_going = False
-            if keep_going:
-                play_video(8)
                 if end_window() == 1:
-                    keep_going = False
+                    keep_going = False  
+                play_video(8)             
             if keep_going:
                 if high_score() == 1:
                     keep_going = False
             keep_going = True
-
+            
 
 main()
