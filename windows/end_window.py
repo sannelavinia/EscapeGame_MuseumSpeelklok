@@ -54,7 +54,7 @@ def end_window():
         None,
         None,
         None,
-        "Bedankt voor jullie hulp!, we zijn weer in onze eigen tijd beland! ",
+        "Bedankt voor jullie hulp, we zijn weer in onze eigen tijd beland! ",
         m.green_color,
         m.MagdaClean_font_50,
         m.WIDTH / 2,
