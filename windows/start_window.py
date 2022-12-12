@@ -8,9 +8,6 @@ from arduino.write_to_arduino import *
 
 #######################################################################################
 def code_check():
-    # arduino("aStatus=0\n")
-    send_message(m.serial_message, "aStatus=0\n")
-    send_message(m.serial_message, "aStatus=0\n")
 
     # resizing the background to fit the display
     metalic_background_logo = m.pygame.transform.scale(

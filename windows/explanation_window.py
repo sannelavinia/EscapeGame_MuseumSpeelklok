@@ -13,9 +13,6 @@ from arduino.write_to_arduino import *
 
 
 def explanation_window():
-    # arduino("aStatus=1\n")
-    send_message(m.serial_message, "aStatus=1\n")
-
     # send_message(m.serial_message, "aStatus=1\n")
     message = Instruction_Box(m.transparent_box, 1000,
                               450, m.game_instruction, m.green_color, m.WIDTH/8000, m.HEIGHT/25, m.MagdaClean_font_30)

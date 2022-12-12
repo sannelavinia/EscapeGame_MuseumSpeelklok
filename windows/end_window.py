@@ -13,8 +13,6 @@ from arduino.write_to_arduino import *
 
 #######################################################################################
 def end_window():
-    # arduino("aStatus=8\n")
-    send_message(m.serial_message, "aStatus=10\n")
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
@@ -70,6 +68,16 @@ def end_window():
         m.WIDTH / 2,
         (m.HEIGHT / 7) * 4,
     )
+    text_5 = t.Text_frame(
+        None,
+        None,
+        None,
+        "Tik op het scherm om verder te gaan!",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH / 2,
+        (m.HEIGHT / 7) * 5,
+    )
     logo_button = b.Button(
         m.museum_logo_grey,
         m.museum_logo_grey,
@@ -105,6 +113,7 @@ def end_window():
         text_3.display()
         text_4.display()
         text_2.display()
+        text_5.display()
         logo_button.display()
         if logo_button_pressed and logo_button.mouse_on_button():
             restart_timer += 1
