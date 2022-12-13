@@ -16,7 +16,7 @@ reduction_ratio = 10
 button_resizing_delay = 15
 
 # codes
-start_code = "0000"
+start_codes = ["0000", "1234", "2345", "3456", "4567"]
 
 game_1_code = "3529"
 game_2_code = "1750"
@@ -25,7 +25,7 @@ game_4_code = "9482"
 game_5_code = "8521"
 game_6_code = "1948"
 
-admin_code = "1111"
+admin_code = "3511"
 
 # hold duration of the logo button (in milliseconds)
 restart_time_logo_pressed = 200
