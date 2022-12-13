@@ -4,6 +4,7 @@ import widgets.text_frame as t
 import widgets.button as b
 import widgets.quit_game as q
 
+
 def admin_mode():
 
     # resizing the images

@@ -2,6 +2,8 @@ import serial
 import os
 import time
 import serial.tools.list_ports
+
+
 def send_message(serial_message, active):
 
     try:
@@ -10,8 +12,6 @@ def send_message(serial_message, active):
         time.sleep(0.1)
         if active == "stop":
             serial_message.close()
-
-
 
     except:
         return

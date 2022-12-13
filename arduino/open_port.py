@@ -3,14 +3,15 @@ import os
 import time
 import serial.tools.list_ports
 
+
 def port_name():
-   
+
     try:
 
         ports = list(serial.tools.list_ports.comports())
         for p in ports:
 
-            # arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)  
+            # arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)
 
             serialcomm = serial.Serial(p.name, 9600)
 
@@ -29,9 +30,9 @@ def port_name():
         # s = 'stop'
 
         # if s in serialcomm.readline().decode():
-            # break
+        # break
 
         # serialcomm.close()
 
     except:
-        return "$"  
+        return "$"

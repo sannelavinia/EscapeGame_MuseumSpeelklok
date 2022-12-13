@@ -11,40 +11,66 @@ from windows.print_high_score import *
 
 #######################################################################################
 def high_score():
-    
 
     # the end time
     milliseconds = m.TOTAL_PLAY_TIME % 1000
-    seconds = int((m.TOTAL_PLAY_TIME ) / 1000)
+    seconds = int((m.TOTAL_PLAY_TIME) / 1000)
     minutes = int(((m.TOTAL_PLAY_TIME / 1000) / 60) % 60)
     hours = int((((m.TOTAL_PLAY_TIME / 1000) / 60) / 60) % 60)
-    time_end = "{:<2}:{:<2}:{:<2}:{:<5}".format(str(hours).zfill(2), str(minutes).zfill(2), str(seconds).zfill(2), str(milliseconds).zfill(3))
+    time_end = "{:<2}:{:<2}:{:<2}:{:<5}".format(
+        str(hours).zfill(2),
+        str(minutes).zfill(2),
+        str(seconds).zfill(2),
+        str(milliseconds).zfill(3),
+    )
 
     team_name = save_data.team_name_save
     read_file(str(team_name), int(seconds))
 
     text_1 = t.Text_frame(
-        None, None, None, "High scores ", m.green_color, m.MagdaClean_font_70, m.WIDTH/2.5, m.HEIGHT/7)
+        None,
+        None,
+        None,
+        "High scores ",
+        m.green_color,
+        m.MagdaClean_font_70,
+        m.WIDTH / 2.5,
+        m.HEIGHT / 7,
+    )
     text_3 = t.Text_frame(
-        None, None, None, "Tijd in seconden     Naam " , m.green_color, m.MagdaClean_font_50, m.WIDTH/2.5, (m.HEIGHT/7)*2)
+        None,
+        None,
+        None,
+        "Tijd in seconden     Naam ",
+        m.green_color,
+        m.MagdaClean_font_50,
+        m.WIDTH / 2.5,
+        (m.HEIGHT / 7) * 2,
+    )
     # text_4 = t.Text_frame(
     #      None, None, None, "Bedankt voor jullie hulp!, we zijn weer in onze eigen tijd beland! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2, (m.HEIGHT/7)*3)
     # text_2 = t.Text_frame(
     #      None, None, None, "Dat was een wilde maar gave rit zeg! Woohoo! "  , m.green_color, m.MagdaClean_font_50, m.WIDTH/2,  (m.HEIGHT/7)*4)
-    
+
     # print ("the time until now is: " + time_end)
-    
+
     text_file = open("Assets/texts/highscore.txt", "r")
     high_score_1 = text_file.read().split("\n")
-    explanation_text = Instruction_Box(m.transparent_box, 1000,
-                                450, high_score_1, m.green_color, m.WIDTH/9, (m.HEIGHT/7), m.MagdaClean_font_50)
-    
-   
+    explanation_text = Instruction_Box(
+        m.transparent_box,
+        1000,
+        450,
+        high_score_1,
+        m.green_color,
+        m.WIDTH / 9,
+        (m.HEIGHT / 7),
+        m.MagdaClean_font_50,
+    )
+
     # create title object that will be displayed on the screen
 
     # if len(o) < 10:
-    #title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
-
+    # title = m.MagdaClean_font_70.render("De teamname is " + team_name + "\n en het kost " + time_end + "om het spel te eindigen", True, m.green_color)
 
     # start_button = Button(m.small_green_button, m.small_green_button,
     #                       m.small_green_button, m.WIDTH / 1.2, m.HEIGHT / 1.07, 50, 50)
@@ -55,7 +81,7 @@ def high_score():
         m.museum_logo_grey,
         m.museum_logo_grey,
         m.museum_logo_grey,
-        m.WIDTH - (m.WIDTH / 10 - 3) ,
+        m.WIDTH - (m.WIDTH / 10 - 3),
         m.HEIGHT - (m.HEIGHT / 15 + 1),
         m.WIDTH / 10.5,
         m.HEIGHT / 22,
@@ -76,11 +102,12 @@ def high_score():
         # display the background image ( it should be the fisrt image to display,
         # so that the other objects will be displayed ontop of it )
         celebration_background = pygame.transform.scale(
-            m.celebration_background, (m.WIDTH, m.HEIGHT))
+            m.celebration_background, (m.WIDTH, m.HEIGHT)
+        )
         m.SCREEN.blit(celebration_background, (0, 0))
 
         # This should be a button eventually
-        m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH/1.17, m.HEIGHT/1.10))
+        m.SCREEN.blit(m.museum_logo_grey, (m.WIDTH / 1.17, m.HEIGHT / 1.10))
         # m.SCREEN.blit(title, (m.WIDTH/2, m.HEIGHT/2))
 
         # message.display()
@@ -107,11 +134,11 @@ def high_score():
             if event.type == m.pygame.MOUSEBUTTONDOWN:
 
                 if logo_button.mouse_on_button():
-                        logo_button_pressed = True
-            if event.type == m.pygame.QUIT or \
-                    (event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE):
+                    logo_button_pressed = True
+            if event.type == m.pygame.QUIT or (
+                event.type == m.pygame.KEYDOWN and event.key == m.pygame.K_ESCAPE
+            ):
                 m.pygame.quit()
-
 
             # when pressing a mouse button
             # if event.type == m.pygame.MOUSEBUTTONDOWN and start_button.mouse_on_button():
@@ -120,5 +147,3 @@ def high_score():
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
-
-
