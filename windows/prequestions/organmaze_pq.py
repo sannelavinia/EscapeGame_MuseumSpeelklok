@@ -170,7 +170,7 @@ class OrganMaze:
         # Get the explanation for prequestion 6
         explanation_text1 = "Voordat jullie kunnen beginnen aan het laatste spel, moeten jullie eerst deze opdracht doen:"
         explanation_text2 = (
-            "Loop door het doolhof van slangen en breng lucht naar het orgel."
+            "Loop door het doolhof van slangen en breng lucht naar elk orgel."
         )
         explanation_text3 = "Klik eerst op een blaasbalg en dan op een orgel."
         prequestion_6_explanation1 = m.MagdaClean_font_30.render(
