@@ -16,7 +16,7 @@ reduction_ratio = 10
 button_resizing_delay = 15
 
 # codes
-start_codes = ["0000", "1234", "2345", "3456", "4567"]
+start_codes = ["2010"]
 
 game_1_code = "3529"
 game_2_code = "1750"
@@ -38,7 +38,7 @@ game_normal_time = 300000  # 5 min
 
 # times related to the tip button (in milliseconds)
 game_tip_1_time = 180000  # 3 min
-game_tip_2_time = 240000  # 4 min (3 min first tip + 1 min second tip)
+game_tip_2_time = 24000  # 4 min (3 min first tip + 1 min second tip)
 tip_1_penalty_time = 180000  # 3 min
 tip_2_penalty_time = 180000  # 3 min
 
