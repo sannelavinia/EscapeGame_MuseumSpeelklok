@@ -204,7 +204,7 @@ def code_check():
 
             # to the next window (if the code was correct)
             if pressed_button == 10:
-                if code == m.start_code:
+                if code in m.start_codes:
                     m.start_game_robot_voice_correct_code.play()
                     return
                 else:

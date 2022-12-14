@@ -260,7 +260,7 @@ Quantico_font_50 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 50)
 Quantico_font_70 = pygame.font.Font("Assets/fonts/Quantico-Regular.otf", 70)
 
 # the variable that represent the displayed window
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT), pygame.NOFRAME)
 
 TOTAL_PLAY_TIME = 0
 
@@ -469,8 +469,8 @@ def main():
             if keep_going:
                 if end_window() == 1:
                     keep_going = False
-                send_message(m.serial_message, "aStatus=9\n")  
-                play_video(8)             
+                send_message(m.serial_message, "aStatus=9\n")
+                play_video(8)
             if keep_going:
                 send_message(m.serial_message, "aStatus=10\n")
                 if high_score() == 1:

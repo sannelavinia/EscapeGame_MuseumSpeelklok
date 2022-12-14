@@ -171,13 +171,11 @@ def push_button_to_start(game_number):
             # top right, left part
             m.SCREEN.blit(
                 single_screw,
-                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) -
-                 (m.WIDTH * 0.05), m.HEIGHT * 0.05),
+                (m.WIDTH * 0.5 - (m.WIDTH * 0.001) - (m.WIDTH * 0.05), m.HEIGHT * 0.05),
             )
             # top left, right part
             m.SCREEN.blit(
-                single_screw, (m.WIDTH * 0.5 +
-                               (m.WIDTH * 0.025), m.HEIGHT * 0.05)
+                single_screw, (m.WIDTH * 0.5 + (m.WIDTH * 0.025), m.HEIGHT * 0.05)
             )
             # top right, right part
             m.SCREEN.blit(
@@ -225,8 +223,7 @@ def push_button_to_start(game_number):
                 text_8.display()
                 text_9.display()
                 m.SCREEN.blit(
-                    rings_for_gears_with_gears, (m.WIDTH *
-                                                 0.08, m.HEIGHT * 0.6)
+                    rings_for_gears_with_gears, (m.WIDTH * 0.08, m.HEIGHT * 0.6)
                 )
             displayed = True
 
@@ -277,7 +274,7 @@ def game_started(
 ):
 
     # arduino("aStatus=" + str(game_number+1) + "\n")
-    message_game = "aStatus=" + str(game_number+1) + "\n"
+    message_game = "aStatus=" + str(game_number + 1) + "\n"
     send_message(m.serial_message, message_game)
 
     # resizing the images
@@ -289,8 +286,7 @@ def game_started(
         m.rings_for_gears, (m.WIDTH / 3, m.HEIGHT / 6.5)
     )
 
-    red_gear = m.pygame.transform.scale(
-        m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    red_gear = m.pygame.transform.scale(m.red_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
     orange_gear = m.pygame.transform.scale(
         m.orange_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
@@ -300,11 +296,9 @@ def game_started(
     green_gear = m.pygame.transform.scale(
         m.green_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07)
     )
-    blue_gear = m.pygame.transform.scale(
-        m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
+    blue_gear = m.pygame.transform.scale(m.blue_gear, (m.WIDTH * 0.07, m.WIDTH * 0.07))
 
-    timer_bachground = m.pygame.transform.scale(
-        m.black_screen_background, (390, 198))
+    timer_bachground = m.pygame.transform.scale(m.black_screen_background, (390, 198))
 
     if game_tip_1_image != None:
         tip_image_1 = m.pygame.transform.scale(
@@ -617,8 +611,7 @@ def game_started(
                     elif game_number == 6:
                         m.game_6_robot_voice_incorrect_code.stop()
                     m.click_sound.play()
-                    code = keyboard.keyboard_button_pressed(
-                        pressed_button, code)
+                    code = keyboard.keyboard_button_pressed(pressed_button, code)
             else:
                 m.click_sound.play()
 
@@ -718,6 +711,7 @@ def game_started(
 
 #######################################################################################
 
+
 def incorrect_code(duration=m.incorrect_code_animation_delay):
 
     # resizing the background image to fit the hole display
@@ -812,6 +806,7 @@ def incorrect_code(duration=m.incorrect_code_animation_delay):
 
         # the window should be updated after each while-loop
         m.pygame.display.update()
+
 
 ###########################################################################################
 

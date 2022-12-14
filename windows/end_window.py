@@ -82,7 +82,7 @@ def end_window():
         m.museum_logo_grey,
         m.museum_logo_grey,
         m.museum_logo_grey,
-        m.WIDTH - (m.WIDTH / 10 - 3) ,
+        m.WIDTH - (m.WIDTH / 10 - 3),
         m.HEIGHT - (m.HEIGHT / 15 + 1),
         m.WIDTH / 10.5,
         m.HEIGHT / 22,
@@ -130,7 +130,7 @@ def end_window():
             if event.type == m.pygame.MOUSEBUTTONDOWN:
 
                 if logo_button.mouse_on_button():
-                        logo_button_pressed = True
+                    logo_button_pressed = True
                 else:
                     return
 
