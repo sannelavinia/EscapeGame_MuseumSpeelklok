@@ -3,3 +3,4 @@ venv
 .vscode/
 Assets/texts/highscore.txt
 Assets/films
+.DS_store
